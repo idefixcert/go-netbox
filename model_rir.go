@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the RIR type satisfies the MappedNullable interface at compile time
@@ -21,20 +21,20 @@ var _ MappedNullable = &RIR{}
 
 // RIR Adds support for custom fields and tags.
 type RIR struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
+	Id         int32   `json:"id"`
+	Url        string  `json:"url"`
 	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Display    string  `json:"display"`
+	Name       string  `json:"name"`
+	Slug       string  `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	// IP space managed by this RIR is considered private
-	IsPrivate *bool `json:"is_private,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
-	AggregateCount *int64 `json:"aggregate_count,omitempty"`
+	IsPrivate            *bool                  `json:"is_private,omitempty"`
+	Description          *string                `json:"description,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
+	AggregateCount       *int64                 `json:"aggregate_count,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -86,7 +86,6 @@ func (o *RIR) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *RIR) GetUrl() string {
 	if o == nil {
@@ -110,7 +109,6 @@ func (o *RIR) GetUrlOk() (*string, bool) {
 func (o *RIR) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *RIR) GetDisplayUrl() string {
@@ -168,7 +166,6 @@ func (o *RIR) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *RIR) GetName() string {
 	if o == nil {
@@ -193,7 +190,6 @@ func (o *RIR) SetName(v string) {
 	o.Name = v
 }
 
-
 // GetSlug returns the Slug field value
 func (o *RIR) GetSlug() string {
 	if o == nil {
@@ -217,7 +213,6 @@ func (o *RIR) GetSlugOk() (*string, bool) {
 func (o *RIR) SetSlug(v string) {
 	o.Slug = v
 }
-
 
 // GetIsPrivate returns the IsPrivate field value if set, zero value otherwise.
 func (o *RIR) GetIsPrivate() bool {
@@ -379,6 +374,7 @@ func (o *RIR) HasCreated() bool {
 func (o *RIR) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *RIR) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -421,6 +417,7 @@ func (o *RIR) HasLastUpdated() bool {
 func (o *RIR) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *RIR) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -464,7 +461,7 @@ func (o *RIR) SetAggregateCount(v int64) {
 }
 
 func (o RIR) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -524,32 +521,31 @@ func (o *RIR) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -620,5 +616,3 @@ func (v *NullableRIR) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

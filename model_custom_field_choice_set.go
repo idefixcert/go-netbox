@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the CustomFieldChoiceSet type satisfies the MappedNullable interface at compile time
@@ -21,19 +21,19 @@ var _ MappedNullable = &CustomFieldChoiceSet{}
 
 // CustomFieldChoiceSet Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type CustomFieldChoiceSet struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
-	BaseChoices *CustomFieldChoiceSetBaseChoices `json:"base_choices,omitempty"`
-	ExtraChoices [][]interface{} `json:"extra_choices"`
+	Id           int32                            `json:"id"`
+	Url          string                           `json:"url"`
+	DisplayUrl   *string                          `json:"display_url,omitempty"`
+	Display      string                           `json:"display"`
+	Name         string                           `json:"name"`
+	Description  *string                          `json:"description,omitempty"`
+	BaseChoices  *CustomFieldChoiceSetBaseChoices `json:"base_choices,omitempty"`
+	ExtraChoices [][]interface{}                  `json:"extra_choices"`
 	// Choices are automatically ordered alphabetically
-	OrderAlphabetically *bool `json:"order_alphabetically,omitempty"`
-	ChoicesCount *string `json:"choices_count,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	OrderAlphabetically  *bool        `json:"order_alphabetically,omitempty"`
+	ChoicesCount         *string      `json:"choices_count,omitempty"`
+	Created              NullableTime `json:"created,omitempty"`
+	LastUpdated          NullableTime `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -85,7 +85,6 @@ func (o *CustomFieldChoiceSet) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *CustomFieldChoiceSet) GetUrl() string {
 	if o == nil {
@@ -109,7 +108,6 @@ func (o *CustomFieldChoiceSet) GetUrlOk() (*string, bool) {
 func (o *CustomFieldChoiceSet) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *CustomFieldChoiceSet) GetDisplayUrl() string {
@@ -167,7 +165,6 @@ func (o *CustomFieldChoiceSet) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *CustomFieldChoiceSet) GetName() string {
 	if o == nil {
@@ -191,7 +188,6 @@ func (o *CustomFieldChoiceSet) GetNameOk() (*string, bool) {
 func (o *CustomFieldChoiceSet) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CustomFieldChoiceSet) GetDescription() string {
@@ -280,7 +276,6 @@ func (o *CustomFieldChoiceSet) GetExtraChoicesOk() ([][]interface{}, bool) {
 func (o *CustomFieldChoiceSet) SetExtraChoices(v [][]interface{}) {
 	o.ExtraChoices = v
 }
-
 
 // GetOrderAlphabetically returns the OrderAlphabetically field value if set, zero value otherwise.
 func (o *CustomFieldChoiceSet) GetOrderAlphabetically() bool {
@@ -378,6 +373,7 @@ func (o *CustomFieldChoiceSet) HasCreated() bool {
 func (o *CustomFieldChoiceSet) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *CustomFieldChoiceSet) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -420,6 +416,7 @@ func (o *CustomFieldChoiceSet) HasLastUpdated() bool {
 func (o *CustomFieldChoiceSet) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *CustomFieldChoiceSet) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -431,7 +428,7 @@ func (o *CustomFieldChoiceSet) UnsetLastUpdated() {
 }
 
 func (o CustomFieldChoiceSet) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -488,32 +485,31 @@ func (o *CustomFieldChoiceSet) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -583,5 +579,3 @@ func (v *NullableCustomFieldChoiceSet) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

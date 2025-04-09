@@ -19,17 +19,17 @@ var _ MappedNullable = &PatchedModuleBayRequest{}
 
 // PatchedModuleBayRequest Adds support for custom fields and tags.
 type PatchedModuleBayRequest struct {
-	Device *BriefDeviceRequest `json:"device,omitempty"`
-	Module NullableBriefModuleRequest `json:"module,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Device          *BriefDeviceRequest        `json:"device,omitempty"`
+	Module          NullableBriefModuleRequest `json:"module,omitempty"`
+	Name            *string                    `json:"name,omitempty"`
 	InstalledModule NullableBriefModuleRequest `json:"installed_module,omitempty"`
 	// Physical label
 	Label *string `json:"label,omitempty"`
 	// Identifier to reference when renaming installed components
-	Position *string `json:"position,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Position             *string                `json:"position,omitempty"`
+	Description          *string                `json:"description,omitempty"`
+	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -116,6 +116,7 @@ func (o *PatchedModuleBayRequest) HasModule() bool {
 func (o *PatchedModuleBayRequest) SetModule(v BriefModuleRequest) {
 	o.Module.Set(&v)
 }
+
 // SetModuleNil sets the value for Module to be an explicit nil
 func (o *PatchedModuleBayRequest) SetModuleNil() {
 	o.Module.Set(nil)
@@ -190,6 +191,7 @@ func (o *PatchedModuleBayRequest) HasInstalledModule() bool {
 func (o *PatchedModuleBayRequest) SetInstalledModule(v BriefModuleRequest) {
 	o.InstalledModule.Set(&v)
 }
+
 // SetInstalledModuleNil sets the value for InstalledModule to be an explicit nil
 func (o *PatchedModuleBayRequest) SetInstalledModuleNil() {
 	o.InstalledModule.Set(nil)
@@ -361,7 +363,7 @@ func (o *PatchedModuleBayRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o PatchedModuleBayRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -469,5 +471,3 @@ func (v *NullablePatchedModuleBayRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

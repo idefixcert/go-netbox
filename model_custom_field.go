@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the CustomField type satisfies the MappedNullable interface at compile time
@@ -21,30 +21,30 @@ var _ MappedNullable = &CustomField{}
 
 // CustomField Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type CustomField struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	ObjectTypes []string `json:"object_types"`
-	Type CustomFieldType `json:"type"`
-	RelatedObjectType NullableString `json:"related_object_type,omitempty"`
-	DataType string `json:"data_type"`
+	Id                int32           `json:"id"`
+	Url               string          `json:"url"`
+	DisplayUrl        *string         `json:"display_url,omitempty"`
+	Display           string          `json:"display"`
+	ObjectTypes       []string        `json:"object_types"`
+	Type              CustomFieldType `json:"type"`
+	RelatedObjectType NullableString  `json:"related_object_type,omitempty"`
+	DataType          string          `json:"data_type"`
 	// Internal field name
 	Name string `json:"name" validate:"regexp=^[a-z0-9_]+$"`
 	// Name of the field as displayed to users (if not provided, 'the field's name will be used)
 	Label *string `json:"label,omitempty"`
 	// Custom fields within the same group will be displayed together
-	GroupName *string `json:"group_name,omitempty"`
+	GroupName   *string `json:"group_name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// This field is required when creating new objects or editing an existing object.
 	Required *bool `json:"required,omitempty"`
 	// The value of this field must be unique for the assigned object
 	Unique *bool `json:"unique,omitempty"`
 	// Weighting for search. Lower values are considered more important. Fields with a search weight of zero will be ignored.
-	SearchWeight *int32 `json:"search_weight,omitempty"`
-	FilterLogic *CustomFieldFilterLogic `json:"filter_logic,omitempty"`
-	UiVisible *CustomFieldUiVisible `json:"ui_visible,omitempty"`
-	UiEditable *CustomFieldUiEditable `json:"ui_editable,omitempty"`
+	SearchWeight *int32                  `json:"search_weight,omitempty"`
+	FilterLogic  *CustomFieldFilterLogic `json:"filter_logic,omitempty"`
+	UiVisible    *CustomFieldUiVisible   `json:"ui_visible,omitempty"`
+	UiEditable   *CustomFieldUiEditable  `json:"ui_editable,omitempty"`
 	// Replicate this value when cloning objects
 	IsCloneable *bool `json:"is_cloneable,omitempty"`
 	// Default value for the field (must be a JSON value). Encapsulate strings with double quotes (e.g. \"Foo\").
@@ -58,11 +58,11 @@ type CustomField struct {
 	// Maximum allowed value (for numeric fields)
 	ValidationMaximum NullableInt64 `json:"validation_maximum,omitempty"`
 	// Regular expression to enforce on text field values. Use ^ and $ to force matching of entire string. For example, <code>^[A-Z]{3}$</code> will limit values to exactly three uppercase letters.
-	ValidationRegex *string `json:"validation_regex,omitempty"`
-	ChoiceSet NullableBriefCustomFieldChoiceSet `json:"choice_set,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	ValidationRegex      *string                           `json:"validation_regex,omitempty"`
+	ChoiceSet            NullableBriefCustomFieldChoiceSet `json:"choice_set,omitempty"`
+	Comments             *string                           `json:"comments,omitempty"`
+	Created              NullableTime                      `json:"created,omitempty"`
+	LastUpdated          NullableTime                      `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -116,7 +116,6 @@ func (o *CustomField) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *CustomField) GetUrl() string {
 	if o == nil {
@@ -140,7 +139,6 @@ func (o *CustomField) GetUrlOk() (*string, bool) {
 func (o *CustomField) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *CustomField) GetDisplayUrl() string {
@@ -198,7 +196,6 @@ func (o *CustomField) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetObjectTypes returns the ObjectTypes field value
 func (o *CustomField) GetObjectTypes() []string {
 	if o == nil {
@@ -223,7 +220,6 @@ func (o *CustomField) SetObjectTypes(v []string) {
 	o.ObjectTypes = v
 }
 
-
 // GetType returns the Type field value
 func (o *CustomField) GetType() CustomFieldType {
 	if o == nil {
@@ -247,7 +243,6 @@ func (o *CustomField) GetTypeOk() (*CustomFieldType, bool) {
 func (o *CustomField) SetType(v CustomFieldType) {
 	o.Type = v
 }
-
 
 // GetRelatedObjectType returns the RelatedObjectType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomField) GetRelatedObjectType() string {
@@ -281,6 +276,7 @@ func (o *CustomField) HasRelatedObjectType() bool {
 func (o *CustomField) SetRelatedObjectType(v string) {
 	o.RelatedObjectType.Set(&v)
 }
+
 // SetRelatedObjectTypeNil sets the value for RelatedObjectType to be an explicit nil
 func (o *CustomField) SetRelatedObjectTypeNil() {
 	o.RelatedObjectType.Set(nil)
@@ -315,7 +311,6 @@ func (o *CustomField) SetDataType(v string) {
 	o.DataType = v
 }
 
-
 // GetName returns the Name field value
 func (o *CustomField) GetName() string {
 	if o == nil {
@@ -339,7 +334,6 @@ func (o *CustomField) GetNameOk() (*string, bool) {
 func (o *CustomField) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *CustomField) GetLabel() string {
@@ -791,6 +785,7 @@ func (o *CustomField) HasValidationMinimum() bool {
 func (o *CustomField) SetValidationMinimum(v int64) {
 	o.ValidationMinimum.Set(&v)
 }
+
 // SetValidationMinimumNil sets the value for ValidationMinimum to be an explicit nil
 func (o *CustomField) SetValidationMinimumNil() {
 	o.ValidationMinimum.Set(nil)
@@ -833,6 +828,7 @@ func (o *CustomField) HasValidationMaximum() bool {
 func (o *CustomField) SetValidationMaximum(v int64) {
 	o.ValidationMaximum.Set(&v)
 }
+
 // SetValidationMaximumNil sets the value for ValidationMaximum to be an explicit nil
 func (o *CustomField) SetValidationMaximumNil() {
 	o.ValidationMaximum.Set(nil)
@@ -907,6 +903,7 @@ func (o *CustomField) HasChoiceSet() bool {
 func (o *CustomField) SetChoiceSet(v BriefCustomFieldChoiceSet) {
 	o.ChoiceSet.Set(&v)
 }
+
 // SetChoiceSetNil sets the value for ChoiceSet to be an explicit nil
 func (o *CustomField) SetChoiceSetNil() {
 	o.ChoiceSet.Set(nil)
@@ -981,6 +978,7 @@ func (o *CustomField) HasCreated() bool {
 func (o *CustomField) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *CustomField) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -1023,6 +1021,7 @@ func (o *CustomField) HasLastUpdated() bool {
 func (o *CustomField) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *CustomField) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -1034,7 +1033,7 @@ func (o *CustomField) UnsetLastUpdated() {
 }
 
 func (o CustomField) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1140,32 +1139,31 @@ func (o *CustomField) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -1252,5 +1250,3 @@ func (v *NullableCustomField) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

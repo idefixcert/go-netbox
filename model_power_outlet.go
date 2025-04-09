@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the PowerOutlet type satisfies the MappedNullable interface at compile time
@@ -21,36 +21,36 @@ var _ MappedNullable = &PowerOutlet{}
 
 // PowerOutlet Adds support for custom fields and tags.
 type PowerOutlet struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Device BriefDevice `json:"device"`
-	Module NullableBriefModule `json:"module,omitempty"`
-	Name string `json:"name"`
+	Id         int32               `json:"id"`
+	Url        string              `json:"url"`
+	DisplayUrl *string             `json:"display_url,omitempty"`
+	Display    string              `json:"display"`
+	Device     BriefDevice         `json:"device"`
+	Module     NullableBriefModule `json:"module,omitempty"`
+	Name       string              `json:"name"`
 	// Physical label
-	Label *string `json:"label,omitempty"`
-	Type NullablePowerOutletType `json:"type,omitempty"`
-	Color *string `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
-	PowerPort NullableBriefPowerPort `json:"power_port,omitempty"`
-	FeedLeg NullablePowerOutletFeedLeg `json:"feed_leg,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Label       *string                    `json:"label,omitempty"`
+	Type        NullablePowerOutletType    `json:"type,omitempty"`
+	Color       *string                    `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
+	PowerPort   NullableBriefPowerPort     `json:"power_port,omitempty"`
+	FeedLeg     NullablePowerOutletFeedLeg `json:"feed_leg,omitempty"`
+	Description *string                    `json:"description,omitempty"`
 	// Treat as if a cable is connected
-	MarkConnected *bool `json:"mark_connected,omitempty"`
-	Cable NullableBriefCable `json:"cable,omitempty"`
-	CableEnd *string `json:"cable_end,omitempty"`
-	LinkPeers []interface{} `json:"link_peers"`
+	MarkConnected *bool              `json:"mark_connected,omitempty"`
+	Cable         NullableBriefCable `json:"cable,omitempty"`
+	CableEnd      *string            `json:"cable_end,omitempty"`
+	LinkPeers     []interface{}      `json:"link_peers"`
 	// Return the type of the peer link terminations, or None.
-	LinkPeersType NullableString `json:"link_peers_type,omitempty"`
-	ConnectedEndpoints []interface{} `json:"connected_endpoints,omitempty"`
-	ConnectedEndpointsType NullableString `json:"connected_endpoints_type,omitempty"`
-	ConnectedEndpointsReachable bool `json:"connected_endpoints_reachable"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
-	Occupied bool `json:"_occupied"`
-	AdditionalProperties map[string]interface{}
+	LinkPeersType               NullableString         `json:"link_peers_type,omitempty"`
+	ConnectedEndpoints          []interface{}          `json:"connected_endpoints,omitempty"`
+	ConnectedEndpointsType      NullableString         `json:"connected_endpoints_type,omitempty"`
+	ConnectedEndpointsReachable bool                   `json:"connected_endpoints_reachable"`
+	Tags                        []NestedTag            `json:"tags,omitempty"`
+	CustomFields                map[string]interface{} `json:"custom_fields,omitempty"`
+	Created                     NullableTime           `json:"created,omitempty"`
+	LastUpdated                 NullableTime           `json:"last_updated,omitempty"`
+	Occupied                    bool                   `json:"_occupied"`
+	AdditionalProperties        map[string]interface{}
 }
 
 type _PowerOutlet PowerOutlet
@@ -104,7 +104,6 @@ func (o *PowerOutlet) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *PowerOutlet) GetUrl() string {
 	if o == nil {
@@ -128,7 +127,6 @@ func (o *PowerOutlet) GetUrlOk() (*string, bool) {
 func (o *PowerOutlet) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *PowerOutlet) GetDisplayUrl() string {
@@ -186,7 +184,6 @@ func (o *PowerOutlet) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetDevice returns the Device field value
 func (o *PowerOutlet) GetDevice() BriefDevice {
 	if o == nil {
@@ -210,7 +207,6 @@ func (o *PowerOutlet) GetDeviceOk() (*BriefDevice, bool) {
 func (o *PowerOutlet) SetDevice(v BriefDevice) {
 	o.Device = v
 }
-
 
 // GetModule returns the Module field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PowerOutlet) GetModule() BriefModule {
@@ -244,6 +240,7 @@ func (o *PowerOutlet) HasModule() bool {
 func (o *PowerOutlet) SetModule(v BriefModule) {
 	o.Module.Set(&v)
 }
+
 // SetModuleNil sets the value for Module to be an explicit nil
 func (o *PowerOutlet) SetModuleNil() {
 	o.Module.Set(nil)
@@ -277,7 +274,6 @@ func (o *PowerOutlet) GetNameOk() (*string, bool) {
 func (o *PowerOutlet) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *PowerOutlet) GetLabel() string {
@@ -343,6 +339,7 @@ func (o *PowerOutlet) HasType() bool {
 func (o *PowerOutlet) SetType(v PowerOutletType) {
 	o.Type.Set(&v)
 }
+
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *PowerOutlet) SetTypeNil() {
 	o.Type.Set(nil)
@@ -417,6 +414,7 @@ func (o *PowerOutlet) HasPowerPort() bool {
 func (o *PowerOutlet) SetPowerPort(v BriefPowerPort) {
 	o.PowerPort.Set(&v)
 }
+
 // SetPowerPortNil sets the value for PowerPort to be an explicit nil
 func (o *PowerOutlet) SetPowerPortNil() {
 	o.PowerPort.Set(nil)
@@ -459,6 +457,7 @@ func (o *PowerOutlet) HasFeedLeg() bool {
 func (o *PowerOutlet) SetFeedLeg(v PowerOutletFeedLeg) {
 	o.FeedLeg.Set(&v)
 }
+
 // SetFeedLegNil sets the value for FeedLeg to be an explicit nil
 func (o *PowerOutlet) SetFeedLegNil() {
 	o.FeedLeg.Set(nil)
@@ -565,6 +564,7 @@ func (o *PowerOutlet) HasCable() bool {
 func (o *PowerOutlet) SetCable(v BriefCable) {
 	o.Cable.Set(&v)
 }
+
 // SetCableNil sets the value for Cable to be an explicit nil
 func (o *PowerOutlet) SetCableNil() {
 	o.Cable.Set(nil)
@@ -631,7 +631,6 @@ func (o *PowerOutlet) SetLinkPeers(v []interface{}) {
 	o.LinkPeers = v
 }
 
-
 // GetLinkPeersType returns the LinkPeersType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PowerOutlet) GetLinkPeersType() string {
 	if o == nil || IsNil(o.LinkPeersType.Get()) {
@@ -664,6 +663,7 @@ func (o *PowerOutlet) HasLinkPeersType() bool {
 func (o *PowerOutlet) SetLinkPeersType(v string) {
 	o.LinkPeersType.Set(&v)
 }
+
 // SetLinkPeersTypeNil sets the value for LinkPeersType to be an explicit nil
 func (o *PowerOutlet) SetLinkPeersTypeNil() {
 	o.LinkPeersType.Set(nil)
@@ -739,6 +739,7 @@ func (o *PowerOutlet) HasConnectedEndpointsType() bool {
 func (o *PowerOutlet) SetConnectedEndpointsType(v string) {
 	o.ConnectedEndpointsType.Set(&v)
 }
+
 // SetConnectedEndpointsTypeNil sets the value for ConnectedEndpointsType to be an explicit nil
 func (o *PowerOutlet) SetConnectedEndpointsTypeNil() {
 	o.ConnectedEndpointsType.Set(nil)
@@ -772,7 +773,6 @@ func (o *PowerOutlet) GetConnectedEndpointsReachableOk() (*bool, bool) {
 func (o *PowerOutlet) SetConnectedEndpointsReachable(v bool) {
 	o.ConnectedEndpointsReachable = v
 }
-
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *PowerOutlet) GetTags() []NestedTag {
@@ -870,6 +870,7 @@ func (o *PowerOutlet) HasCreated() bool {
 func (o *PowerOutlet) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *PowerOutlet) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -912,6 +913,7 @@ func (o *PowerOutlet) HasLastUpdated() bool {
 func (o *PowerOutlet) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *PowerOutlet) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -946,9 +948,8 @@ func (o *PowerOutlet) SetOccupied(v bool) {
 	o.Occupied = v
 }
 
-
 func (o PowerOutlet) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1044,32 +1045,31 @@ func (o *PowerOutlet) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -1153,5 +1153,3 @@ func (v *NullablePowerOutlet) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

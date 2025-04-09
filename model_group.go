@@ -20,14 +20,14 @@ var _ MappedNullable = &Group{}
 
 // Group Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type Group struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
-	Permissions []ObjectPermission `json:"permissions,omitempty"`
-	UserCount *int32 `json:"user_count,omitempty"`
+	Id                   int32              `json:"id"`
+	Url                  string             `json:"url"`
+	DisplayUrl           *string            `json:"display_url,omitempty"`
+	Display              string             `json:"display"`
+	Name                 string             `json:"name"`
+	Description          *string            `json:"description,omitempty"`
+	Permissions          []ObjectPermission `json:"permissions,omitempty"`
+	UserCount            *int32             `json:"user_count,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,7 +78,6 @@ func (o *Group) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *Group) GetUrl() string {
 	if o == nil {
@@ -102,7 +101,6 @@ func (o *Group) GetUrlOk() (*string, bool) {
 func (o *Group) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *Group) GetDisplayUrl() string {
@@ -160,7 +158,6 @@ func (o *Group) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *Group) GetName() string {
 	if o == nil {
@@ -184,7 +181,6 @@ func (o *Group) GetNameOk() (*string, bool) {
 func (o *Group) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Group) GetDescription() string {
@@ -283,7 +279,7 @@ func (o *Group) SetUserCount(v int32) {
 }
 
 func (o Group) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -329,32 +325,31 @@ func (o *Group) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -420,5 +415,3 @@ func (v *NullableGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

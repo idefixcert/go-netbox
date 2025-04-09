@@ -133365,6 +133365,7 @@ components:
               - staged
               - failed
               - decommissioning
+              - paused
               type: string
               description: '* `offline` - Offline
 
@@ -133376,7 +133377,9 @@ components:
 
                 * `failed` - Failed
 
-                * `decommissioning` - Decommissioning'
+                * `decommissioning` - Decommissioning
+
+                * `paused` - Paused'
               x-spec-enum-id: 2217e87d0c3efdda
             label:
               type: string
@@ -133387,6 +133390,7 @@ components:
               - Staged
               - Failed
               - Decommissioning
+              - Paused
         role:
           allOf:
           - $ref: '#/components/schemas/BriefInventoryItemRole'
@@ -133479,6 +133483,7 @@ components:
           - staged
           - failed
           - decommissioning
+          - paused
           type: string
           description: '* `offline` - Offline
 
@@ -133490,7 +133495,9 @@ components:
 
             * `failed` - Failed
 
-            * `decommissioning` - Decommissioning'
+            * `decommissioning` - Decommissioning
+
+            * `paused` - Paused'
           x-spec-enum-id: 2217e87d0c3efdda
         role:
           allOf:
@@ -134669,6 +134676,7 @@ components:
               - staged
               - failed
               - decommissioning
+              - paused
               type: string
               description: '* `offline` - Offline
 
@@ -134680,7 +134688,9 @@ components:
 
                 * `failed` - Failed
 
-                * `decommissioning` - Decommissioning'
+                * `decommissioning` - Decommissioning
+
+                * `paused` - Paused'
               x-spec-enum-id: 2217e87d0c3efdda
             label:
               type: string
@@ -134691,6 +134701,7 @@ components:
               - Staged
               - Failed
               - Decommissioning
+              - Paused
         serial:
           type: string
           title: Serial number

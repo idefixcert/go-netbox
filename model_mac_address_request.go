@@ -20,13 +20,13 @@ var _ MappedNullable = &MACAddressRequest{}
 
 // MACAddressRequest Adds support for custom fields and tags.
 type MACAddressRequest struct {
-	MacAddress string `json:"mac_address"`
-	AssignedObjectType NullableString `json:"assigned_object_type,omitempty"`
-	AssignedObjectId NullableInt64 `json:"assigned_object_id,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	MacAddress           string                 `json:"mac_address"`
+	AssignedObjectType   NullableString         `json:"assigned_object_type,omitempty"`
+	AssignedObjectId     NullableInt64          `json:"assigned_object_id,omitempty"`
+	Description          *string                `json:"description,omitempty"`
+	Comments             *string                `json:"comments,omitempty"`
+	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -74,7 +74,6 @@ func (o *MACAddressRequest) SetMacAddress(v string) {
 	o.MacAddress = v
 }
 
-
 // GetAssignedObjectType returns the AssignedObjectType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MACAddressRequest) GetAssignedObjectType() string {
 	if o == nil || IsNil(o.AssignedObjectType.Get()) {
@@ -107,6 +106,7 @@ func (o *MACAddressRequest) HasAssignedObjectType() bool {
 func (o *MACAddressRequest) SetAssignedObjectType(v string) {
 	o.AssignedObjectType.Set(&v)
 }
+
 // SetAssignedObjectTypeNil sets the value for AssignedObjectType to be an explicit nil
 func (o *MACAddressRequest) SetAssignedObjectTypeNil() {
 	o.AssignedObjectType.Set(nil)
@@ -149,6 +149,7 @@ func (o *MACAddressRequest) HasAssignedObjectId() bool {
 func (o *MACAddressRequest) SetAssignedObjectId(v int64) {
 	o.AssignedObjectId.Set(&v)
 }
+
 // SetAssignedObjectIdNil sets the value for AssignedObjectId to be an explicit nil
 func (o *MACAddressRequest) SetAssignedObjectIdNil() {
 	o.AssignedObjectId.Set(nil)
@@ -288,7 +289,7 @@ func (o *MACAddressRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o MACAddressRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -334,32 +335,31 @@ func (o *MACAddressRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -424,5 +424,3 @@ func (v *NullableMACAddressRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the Token type satisfies the MappedNullable interface at compile time
@@ -21,18 +21,18 @@ var _ MappedNullable = &Token{}
 
 // Token Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type Token struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	User BriefUser `json:"user"`
-	Created *time.Time `json:"created,omitempty"`
-	Expires NullableTime `json:"expires,omitempty"`
-	LastUsed NullableTime `json:"last_used,omitempty"`
-	Key *string `json:"key,omitempty"`
+	Id         int32        `json:"id"`
+	Url        string       `json:"url"`
+	DisplayUrl *string      `json:"display_url,omitempty"`
+	Display    string       `json:"display"`
+	User       BriefUser    `json:"user"`
+	Created    *time.Time   `json:"created,omitempty"`
+	Expires    NullableTime `json:"expires,omitempty"`
+	LastUsed   NullableTime `json:"last_used,omitempty"`
+	Key        *string      `json:"key,omitempty"`
 	// Permit create/update/delete operations using this key
-	WriteEnabled *bool `json:"write_enabled,omitempty"`
-	Description *string `json:"description,omitempty"`
+	WriteEnabled         *bool   `json:"write_enabled,omitempty"`
+	Description          *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -83,7 +83,6 @@ func (o *Token) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *Token) GetUrl() string {
 	if o == nil {
@@ -107,7 +106,6 @@ func (o *Token) GetUrlOk() (*string, bool) {
 func (o *Token) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *Token) GetDisplayUrl() string {
@@ -165,7 +163,6 @@ func (o *Token) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetUser returns the User field value
 func (o *Token) GetUser() BriefUser {
 	if o == nil {
@@ -189,7 +186,6 @@ func (o *Token) GetUserOk() (*BriefUser, bool) {
 func (o *Token) SetUser(v BriefUser) {
 	o.User = v
 }
-
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Token) GetCreated() time.Time {
@@ -255,6 +251,7 @@ func (o *Token) HasExpires() bool {
 func (o *Token) SetExpires(v time.Time) {
 	o.Expires.Set(&v)
 }
+
 // SetExpiresNil sets the value for Expires to be an explicit nil
 func (o *Token) SetExpiresNil() {
 	o.Expires.Set(nil)
@@ -297,6 +294,7 @@ func (o *Token) HasLastUsed() bool {
 func (o *Token) SetLastUsed(v time.Time) {
 	o.LastUsed.Set(&v)
 }
+
 // SetLastUsedNil sets the value for LastUsed to be an explicit nil
 func (o *Token) SetLastUsedNil() {
 	o.LastUsed.Set(nil)
@@ -404,7 +402,7 @@ func (o *Token) SetDescription(v string) {
 }
 
 func (o Token) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -459,32 +457,31 @@ func (o *Token) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -553,5 +550,3 @@ func (v *NullableToken) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

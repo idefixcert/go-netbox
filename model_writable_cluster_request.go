@@ -20,17 +20,17 @@ var _ MappedNullable = &WritableClusterRequest{}
 
 // WritableClusterRequest Adds support for custom fields and tags.
 type WritableClusterRequest struct {
-	Name string `json:"name"`
-	Type BriefClusterTypeRequest `json:"type"`
-	Group NullableBriefClusterGroupRequest `json:"group,omitempty"`
-	Status *ClusterStatusValue `json:"status,omitempty"`
-	Tenant NullableBriefTenantRequest `json:"tenant,omitempty"`
-	ScopeType NullableString `json:"scope_type,omitempty"`
-	ScopeId NullableInt32 `json:"scope_id,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Name                 string                           `json:"name"`
+	Type                 BriefClusterTypeRequest          `json:"type"`
+	Group                NullableBriefClusterGroupRequest `json:"group,omitempty"`
+	Status               *ClusterStatusValue              `json:"status,omitempty"`
+	Tenant               NullableBriefTenantRequest       `json:"tenant,omitempty"`
+	ScopeType            NullableString                   `json:"scope_type,omitempty"`
+	ScopeId              NullableInt32                    `json:"scope_id,omitempty"`
+	Description          *string                          `json:"description,omitempty"`
+	Comments             *string                          `json:"comments,omitempty"`
+	Tags                 []NestedTagRequest               `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}           `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,7 +79,6 @@ func (o *WritableClusterRequest) SetName(v string) {
 	o.Name = v
 }
 
-
 // GetType returns the Type field value
 func (o *WritableClusterRequest) GetType() BriefClusterTypeRequest {
 	if o == nil {
@@ -103,7 +102,6 @@ func (o *WritableClusterRequest) GetTypeOk() (*BriefClusterTypeRequest, bool) {
 func (o *WritableClusterRequest) SetType(v BriefClusterTypeRequest) {
 	o.Type = v
 }
-
 
 // GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableClusterRequest) GetGroup() BriefClusterGroupRequest {
@@ -137,6 +135,7 @@ func (o *WritableClusterRequest) HasGroup() bool {
 func (o *WritableClusterRequest) SetGroup(v BriefClusterGroupRequest) {
 	o.Group.Set(&v)
 }
+
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *WritableClusterRequest) SetGroupNil() {
 	o.Group.Set(nil)
@@ -211,6 +210,7 @@ func (o *WritableClusterRequest) HasTenant() bool {
 func (o *WritableClusterRequest) SetTenant(v BriefTenantRequest) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *WritableClusterRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -253,6 +253,7 @@ func (o *WritableClusterRequest) HasScopeType() bool {
 func (o *WritableClusterRequest) SetScopeType(v string) {
 	o.ScopeType.Set(&v)
 }
+
 // SetScopeTypeNil sets the value for ScopeType to be an explicit nil
 func (o *WritableClusterRequest) SetScopeTypeNil() {
 	o.ScopeType.Set(nil)
@@ -295,6 +296,7 @@ func (o *WritableClusterRequest) HasScopeId() bool {
 func (o *WritableClusterRequest) SetScopeId(v int32) {
 	o.ScopeId.Set(&v)
 }
+
 // SetScopeIdNil sets the value for ScopeId to be an explicit nil
 func (o *WritableClusterRequest) SetScopeIdNil() {
 	o.ScopeId.Set(nil)
@@ -434,7 +436,7 @@ func (o *WritableClusterRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o WritableClusterRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -491,32 +493,31 @@ func (o *WritableClusterRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -585,5 +586,3 @@ func (v *NullableWritableClusterRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

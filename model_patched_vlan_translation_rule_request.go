@@ -23,8 +23,8 @@ type PatchedVLANTranslationRuleRequest struct {
 	// Numeric VLAN ID (1-4094)
 	LocalVid *int32 `json:"local_vid,omitempty"`
 	// Numeric VLAN ID (1-4094)
-	RemoteVid *int32 `json:"remote_vid,omitempty"`
-	Description *string `json:"description,omitempty"`
+	RemoteVid            *int32  `json:"remote_vid,omitempty"`
+	Description          *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -176,7 +176,7 @@ func (o *PatchedVLANTranslationRuleRequest) SetDescription(v string) {
 }
 
 func (o PatchedVLANTranslationRuleRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,5 +264,3 @@ func (v *NullablePatchedVLANTranslationRuleRequest) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

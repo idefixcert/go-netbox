@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the IPSecPolicy type satisfies the MappedNullable interface at compile time
@@ -21,19 +21,19 @@ var _ MappedNullable = &IPSecPolicy{}
 
 // IPSecPolicy Adds support for custom fields and tags.
 type IPSecPolicy struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
-	Proposals []IPSecProposal `json:"proposals,omitempty"`
-	PfsGroup *IKEProposalGroup `json:"pfs_group,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Id                   int32                  `json:"id"`
+	Url                  string                 `json:"url"`
+	DisplayUrl           *string                `json:"display_url,omitempty"`
+	Display              string                 `json:"display"`
+	Name                 string                 `json:"name"`
+	Description          *string                `json:"description,omitempty"`
+	Proposals            []IPSecProposal        `json:"proposals,omitempty"`
+	PfsGroup             *IKEProposalGroup      `json:"pfs_group,omitempty"`
+	Comments             *string                `json:"comments,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -84,7 +84,6 @@ func (o *IPSecPolicy) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *IPSecPolicy) GetUrl() string {
 	if o == nil {
@@ -108,7 +107,6 @@ func (o *IPSecPolicy) GetUrlOk() (*string, bool) {
 func (o *IPSecPolicy) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *IPSecPolicy) GetDisplayUrl() string {
@@ -166,7 +164,6 @@ func (o *IPSecPolicy) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *IPSecPolicy) GetName() string {
 	if o == nil {
@@ -190,7 +187,6 @@ func (o *IPSecPolicy) GetNameOk() (*string, bool) {
 func (o *IPSecPolicy) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *IPSecPolicy) GetDescription() string {
@@ -416,6 +412,7 @@ func (o *IPSecPolicy) HasCreated() bool {
 func (o *IPSecPolicy) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *IPSecPolicy) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -458,6 +455,7 @@ func (o *IPSecPolicy) HasLastUpdated() bool {
 func (o *IPSecPolicy) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *IPSecPolicy) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -469,7 +467,7 @@ func (o *IPSecPolicy) UnsetLastUpdated() {
 }
 
 func (o IPSecPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -530,32 +528,31 @@ func (o *IPSecPolicy) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -626,5 +623,3 @@ func (v *NullableIPSecPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

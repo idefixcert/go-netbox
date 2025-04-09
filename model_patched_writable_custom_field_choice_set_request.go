@@ -19,12 +19,12 @@ var _ MappedNullable = &PatchedWritableCustomFieldChoiceSetRequest{}
 
 // PatchedWritableCustomFieldChoiceSetRequest Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type PatchedWritableCustomFieldChoiceSetRequest struct {
-	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	BaseChoices NullablePatchedWritableCustomFieldChoiceSetRequestBaseChoices `json:"base_choices,omitempty"`
-	ExtraChoices [][]interface{} `json:"extra_choices,omitempty"`
+	Name         *string                                                       `json:"name,omitempty"`
+	Description  *string                                                       `json:"description,omitempty"`
+	BaseChoices  NullablePatchedWritableCustomFieldChoiceSetRequestBaseChoices `json:"base_choices,omitempty"`
+	ExtraChoices [][]interface{}                                               `json:"extra_choices,omitempty"`
 	// Choices are automatically ordered alphabetically
-	OrderAlphabetically *bool `json:"order_alphabetically,omitempty"`
+	OrderAlphabetically  *bool `json:"order_alphabetically,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -143,6 +143,7 @@ func (o *PatchedWritableCustomFieldChoiceSetRequest) HasBaseChoices() bool {
 func (o *PatchedWritableCustomFieldChoiceSetRequest) SetBaseChoices(v PatchedWritableCustomFieldChoiceSetRequestBaseChoices) {
 	o.BaseChoices.Set(&v)
 }
+
 // SetBaseChoicesNil sets the value for BaseChoices to be an explicit nil
 func (o *PatchedWritableCustomFieldChoiceSetRequest) SetBaseChoicesNil() {
 	o.BaseChoices.Set(nil)
@@ -218,7 +219,7 @@ func (o *PatchedWritableCustomFieldChoiceSetRequest) SetOrderAlphabetically(v bo
 }
 
 func (o PatchedWritableCustomFieldChoiceSetRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -310,5 +311,3 @@ func (v *NullablePatchedWritableCustomFieldChoiceSetRequest) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,11 +20,11 @@ var _ MappedNullable = &NestedDevice{}
 
 // NestedDevice Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a dictionary of attributes which can be used to uniquely identify the related object. This class should be subclassed to return a full representation of the related object on read.
 type NestedDevice struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name NullableString `json:"name,omitempty"`
+	Id                   int32          `json:"id"`
+	Url                  string         `json:"url"`
+	DisplayUrl           *string        `json:"display_url,omitempty"`
+	Display              string         `json:"display"`
+	Name                 NullableString `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -74,7 +74,6 @@ func (o *NestedDevice) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *NestedDevice) GetUrl() string {
 	if o == nil {
@@ -98,7 +97,6 @@ func (o *NestedDevice) GetUrlOk() (*string, bool) {
 func (o *NestedDevice) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *NestedDevice) GetDisplayUrl() string {
@@ -156,7 +154,6 @@ func (o *NestedDevice) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NestedDevice) GetName() string {
 	if o == nil || IsNil(o.Name.Get()) {
@@ -189,6 +186,7 @@ func (o *NestedDevice) HasName() bool {
 func (o *NestedDevice) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *NestedDevice) SetNameNil() {
 	o.Name.Set(nil)
@@ -200,7 +198,7 @@ func (o *NestedDevice) UnsetName() {
 }
 
 func (o NestedDevice) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -238,32 +236,31 @@ func (o *NestedDevice) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -326,5 +323,3 @@ func (v *NullableNestedDevice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,17 +19,17 @@ var _ MappedNullable = &PatchedWritableModuleRequest{}
 
 // PatchedWritableModuleRequest Adds support for custom fields and tags.
 type PatchedWritableModuleRequest struct {
-	Device *BriefDeviceRequest `json:"device,omitempty"`
-	ModuleBay *int32 `json:"module_bay,omitempty"`
+	Device     *BriefDeviceRequest     `json:"device,omitempty"`
+	ModuleBay  *int32                  `json:"module_bay,omitempty"`
 	ModuleType *BriefModuleTypeRequest `json:"module_type,omitempty"`
-	Status *InventoryItemStatusValue `json:"status,omitempty"`
-	Serial *string `json:"serial,omitempty"`
+	Status     *ModuleRequestStatus    `json:"status,omitempty"`
+	Serial     *string                 `json:"serial,omitempty"`
 	// A unique tag used to identify this device
-	AssetTag NullableString `json:"asset_tag,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	AssetTag             NullableString         `json:"asset_tag,omitempty"`
+	Description          *string                `json:"description,omitempty"`
+	Comments             *string                `json:"comments,omitempty"`
+	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -149,9 +149,9 @@ func (o *PatchedWritableModuleRequest) SetModuleType(v BriefModuleTypeRequest) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *PatchedWritableModuleRequest) GetStatus() InventoryItemStatusValue {
+func (o *PatchedWritableModuleRequest) GetStatus() ModuleRequestStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret InventoryItemStatusValue
+		var ret ModuleRequestStatus
 		return ret
 	}
 	return *o.Status
@@ -159,7 +159,7 @@ func (o *PatchedWritableModuleRequest) GetStatus() InventoryItemStatusValue {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedWritableModuleRequest) GetStatusOk() (*InventoryItemStatusValue, bool) {
+func (o *PatchedWritableModuleRequest) GetStatusOk() (*ModuleRequestStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -175,8 +175,8 @@ func (o *PatchedWritableModuleRequest) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given InventoryItemStatusValue and assigns it to the Status field.
-func (o *PatchedWritableModuleRequest) SetStatus(v InventoryItemStatusValue) {
+// SetStatus gets a reference to the given ModuleRequestStatus and assigns it to the Status field.
+func (o *PatchedWritableModuleRequest) SetStatus(v ModuleRequestStatus) {
 	o.Status = &v
 }
 
@@ -244,6 +244,7 @@ func (o *PatchedWritableModuleRequest) HasAssetTag() bool {
 func (o *PatchedWritableModuleRequest) SetAssetTag(v string) {
 	o.AssetTag.Set(&v)
 }
+
 // SetAssetTagNil sets the value for AssetTag to be an explicit nil
 func (o *PatchedWritableModuleRequest) SetAssetTagNil() {
 	o.AssetTag.Set(nil)
@@ -383,7 +384,7 @@ func (o *PatchedWritableModuleRequest) SetCustomFields(v map[string]interface{})
 }
 
 func (o PatchedWritableModuleRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -495,5 +496,3 @@ func (v *NullablePatchedWritableModuleRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

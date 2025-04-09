@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the Module type satisfies the MappedNullable interface at compile time
@@ -21,23 +21,23 @@ var _ MappedNullable = &Module{}
 
 // Module Adds support for custom fields and tags.
 type Module struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Device BriefDevice `json:"device"`
-	ModuleBay NestedModuleBay `json:"module_bay"`
-	ModuleType BriefModuleType `json:"module_type"`
-	Status *InventoryItemStatus `json:"status,omitempty"`
-	Serial *string `json:"serial,omitempty"`
+	Id         int32                `json:"id"`
+	Url        string               `json:"url"`
+	DisplayUrl *string              `json:"display_url,omitempty"`
+	Display    string               `json:"display"`
+	Device     BriefDevice          `json:"device"`
+	ModuleBay  NestedModuleBay      `json:"module_bay"`
+	ModuleType BriefModuleType      `json:"module_type"`
+	Status     *InventoryItemStatus `json:"status,omitempty"`
+	Serial     *string              `json:"serial,omitempty"`
 	// A unique tag used to identify this device
-	AssetTag NullableString `json:"asset_tag,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	AssetTag             NullableString         `json:"asset_tag,omitempty"`
+	Description          *string                `json:"description,omitempty"`
+	Comments             *string                `json:"comments,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -90,7 +90,6 @@ func (o *Module) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *Module) GetUrl() string {
 	if o == nil {
@@ -114,7 +113,6 @@ func (o *Module) GetUrlOk() (*string, bool) {
 func (o *Module) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *Module) GetDisplayUrl() string {
@@ -172,7 +170,6 @@ func (o *Module) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetDevice returns the Device field value
 func (o *Module) GetDevice() BriefDevice {
 	if o == nil {
@@ -196,7 +193,6 @@ func (o *Module) GetDeviceOk() (*BriefDevice, bool) {
 func (o *Module) SetDevice(v BriefDevice) {
 	o.Device = v
 }
-
 
 // GetModuleBay returns the ModuleBay field value
 func (o *Module) GetModuleBay() NestedModuleBay {
@@ -222,7 +218,6 @@ func (o *Module) SetModuleBay(v NestedModuleBay) {
 	o.ModuleBay = v
 }
 
-
 // GetModuleType returns the ModuleType field value
 func (o *Module) GetModuleType() BriefModuleType {
 	if o == nil {
@@ -246,7 +241,6 @@ func (o *Module) GetModuleTypeOk() (*BriefModuleType, bool) {
 func (o *Module) SetModuleType(v BriefModuleType) {
 	o.ModuleType = v
 }
-
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Module) GetStatus() InventoryItemStatus {
@@ -344,6 +338,7 @@ func (o *Module) HasAssetTag() bool {
 func (o *Module) SetAssetTag(v string) {
 	o.AssetTag.Set(&v)
 }
+
 // SetAssetTagNil sets the value for AssetTag to be an explicit nil
 func (o *Module) SetAssetTagNil() {
 	o.AssetTag.Set(nil)
@@ -514,6 +509,7 @@ func (o *Module) HasCreated() bool {
 func (o *Module) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *Module) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -556,6 +552,7 @@ func (o *Module) HasLastUpdated() bool {
 func (o *Module) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *Module) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -567,7 +564,7 @@ func (o *Module) UnsetLastUpdated() {
 }
 
 func (o Module) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -635,32 +632,31 @@ func (o *Module) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -734,5 +730,3 @@ func (v *NullableModule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

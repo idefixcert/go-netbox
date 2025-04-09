@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the TunnelGroup type satisfies the MappedNullable interface at compile time
@@ -21,18 +21,18 @@ var _ MappedNullable = &TunnelGroup{}
 
 // TunnelGroup Adds support for custom fields and tags.
 type TunnelGroup struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Description *string `json:"description,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
-	TunnelCount *int64 `json:"tunnel_count,omitempty"`
+	Id                   int32                  `json:"id"`
+	Url                  string                 `json:"url"`
+	DisplayUrl           *string                `json:"display_url,omitempty"`
+	Display              string                 `json:"display"`
+	Name                 string                 `json:"name"`
+	Slug                 string                 `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Description          *string                `json:"description,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
+	TunnelCount          *int64                 `json:"tunnel_count,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -84,7 +84,6 @@ func (o *TunnelGroup) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *TunnelGroup) GetUrl() string {
 	if o == nil {
@@ -108,7 +107,6 @@ func (o *TunnelGroup) GetUrlOk() (*string, bool) {
 func (o *TunnelGroup) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *TunnelGroup) GetDisplayUrl() string {
@@ -166,7 +164,6 @@ func (o *TunnelGroup) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *TunnelGroup) GetName() string {
 	if o == nil {
@@ -191,7 +188,6 @@ func (o *TunnelGroup) SetName(v string) {
 	o.Name = v
 }
 
-
 // GetSlug returns the Slug field value
 func (o *TunnelGroup) GetSlug() string {
 	if o == nil {
@@ -215,7 +211,6 @@ func (o *TunnelGroup) GetSlugOk() (*string, bool) {
 func (o *TunnelGroup) SetSlug(v string) {
 	o.Slug = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *TunnelGroup) GetDescription() string {
@@ -345,6 +340,7 @@ func (o *TunnelGroup) HasCreated() bool {
 func (o *TunnelGroup) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *TunnelGroup) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -387,6 +383,7 @@ func (o *TunnelGroup) HasLastUpdated() bool {
 func (o *TunnelGroup) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *TunnelGroup) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -430,7 +427,7 @@ func (o *TunnelGroup) SetTunnelCount(v int64) {
 }
 
 func (o TunnelGroup) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -487,32 +484,31 @@ func (o *TunnelGroup) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -582,5 +578,3 @@ func (v *NullableTunnelGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

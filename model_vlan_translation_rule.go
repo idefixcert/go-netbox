@@ -20,15 +20,15 @@ var _ MappedNullable = &VLANTranslationRule{}
 
 // VLANTranslationRule Adds support for custom fields and tags.
 type VLANTranslationRule struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
+	Id      int32  `json:"id"`
+	Url     string `json:"url"`
 	Display string `json:"display"`
-	Policy int32 `json:"policy"`
+	Policy  int32  `json:"policy"`
 	// Numeric VLAN ID (1-4094)
 	LocalVid int32 `json:"local_vid"`
 	// Numeric VLAN ID (1-4094)
-	RemoteVid int32 `json:"remote_vid"`
-	Description *string `json:"description,omitempty"`
+	RemoteVid            int32   `json:"remote_vid"`
+	Description          *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -81,7 +81,6 @@ func (o *VLANTranslationRule) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *VLANTranslationRule) GetUrl() string {
 	if o == nil {
@@ -105,7 +104,6 @@ func (o *VLANTranslationRule) GetUrlOk() (*string, bool) {
 func (o *VLANTranslationRule) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplay returns the Display field value
 func (o *VLANTranslationRule) GetDisplay() string {
@@ -131,7 +129,6 @@ func (o *VLANTranslationRule) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetPolicy returns the Policy field value
 func (o *VLANTranslationRule) GetPolicy() int32 {
 	if o == nil {
@@ -155,7 +152,6 @@ func (o *VLANTranslationRule) GetPolicyOk() (*int32, bool) {
 func (o *VLANTranslationRule) SetPolicy(v int32) {
 	o.Policy = v
 }
-
 
 // GetLocalVid returns the LocalVid field value
 func (o *VLANTranslationRule) GetLocalVid() int32 {
@@ -181,7 +177,6 @@ func (o *VLANTranslationRule) SetLocalVid(v int32) {
 	o.LocalVid = v
 }
 
-
 // GetRemoteVid returns the RemoteVid field value
 func (o *VLANTranslationRule) GetRemoteVid() int32 {
 	if o == nil {
@@ -205,7 +200,6 @@ func (o *VLANTranslationRule) GetRemoteVidOk() (*int32, bool) {
 func (o *VLANTranslationRule) SetRemoteVid(v int32) {
 	o.RemoteVid = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *VLANTranslationRule) GetDescription() string {
@@ -240,7 +234,7 @@ func (o *VLANTranslationRule) SetDescription(v string) {
 }
 
 func (o VLANTranslationRule) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -281,32 +275,31 @@ func (o *VLANTranslationRule) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -371,5 +364,3 @@ func (v *NullableVLANTranslationRule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

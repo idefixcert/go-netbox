@@ -19,8 +19,8 @@ var _ MappedNullable = &PatchedVLANTranslationPolicyRequest{}
 
 // PatchedVLANTranslationPolicyRequest Adds support for custom fields and tags.
 type PatchedVLANTranslationPolicyRequest struct {
-	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	Description          *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,7 +108,7 @@ func (o *PatchedVLANTranslationPolicyRequest) SetDescription(v string) {
 }
 
 func (o PatchedVLANTranslationPolicyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -188,5 +188,3 @@ func (v *NullablePatchedVLANTranslationPolicyRequest) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

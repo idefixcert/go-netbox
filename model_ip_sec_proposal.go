@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the IPSecProposal type satisfies the MappedNullable interface at compile time
@@ -21,23 +21,23 @@ var _ MappedNullable = &IPSecProposal{}
 
 // IPSecProposal Adds support for custom fields and tags.
 type IPSecProposal struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
-	EncryptionAlgorithm *IKEProposalEncryptionAlgorithm `json:"encryption_algorithm,omitempty"`
+	Id                      int32                               `json:"id"`
+	Url                     string                              `json:"url"`
+	DisplayUrl              *string                             `json:"display_url,omitempty"`
+	Display                 string                              `json:"display"`
+	Name                    string                              `json:"name"`
+	Description             *string                             `json:"description,omitempty"`
+	EncryptionAlgorithm     *IKEProposalEncryptionAlgorithm     `json:"encryption_algorithm,omitempty"`
 	AuthenticationAlgorithm *IKEProposalAuthenticationAlgorithm `json:"authentication_algorithm,omitempty"`
 	// Security association lifetime (seconds)
 	SaLifetimeSeconds NullableInt32 `json:"sa_lifetime_seconds,omitempty"`
 	// Security association lifetime (in kilobytes)
-	SaLifetimeData NullableInt32 `json:"sa_lifetime_data,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	SaLifetimeData       NullableInt32          `json:"sa_lifetime_data,omitempty"`
+	Comments             *string                `json:"comments,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -88,7 +88,6 @@ func (o *IPSecProposal) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *IPSecProposal) GetUrl() string {
 	if o == nil {
@@ -112,7 +111,6 @@ func (o *IPSecProposal) GetUrlOk() (*string, bool) {
 func (o *IPSecProposal) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *IPSecProposal) GetDisplayUrl() string {
@@ -170,7 +168,6 @@ func (o *IPSecProposal) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *IPSecProposal) GetName() string {
 	if o == nil {
@@ -194,7 +191,6 @@ func (o *IPSecProposal) GetNameOk() (*string, bool) {
 func (o *IPSecProposal) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *IPSecProposal) GetDescription() string {
@@ -324,6 +320,7 @@ func (o *IPSecProposal) HasSaLifetimeSeconds() bool {
 func (o *IPSecProposal) SetSaLifetimeSeconds(v int32) {
 	o.SaLifetimeSeconds.Set(&v)
 }
+
 // SetSaLifetimeSecondsNil sets the value for SaLifetimeSeconds to be an explicit nil
 func (o *IPSecProposal) SetSaLifetimeSecondsNil() {
 	o.SaLifetimeSeconds.Set(nil)
@@ -366,6 +363,7 @@ func (o *IPSecProposal) HasSaLifetimeData() bool {
 func (o *IPSecProposal) SetSaLifetimeData(v int32) {
 	o.SaLifetimeData.Set(&v)
 }
+
 // SetSaLifetimeDataNil sets the value for SaLifetimeData to be an explicit nil
 func (o *IPSecProposal) SetSaLifetimeDataNil() {
 	o.SaLifetimeData.Set(nil)
@@ -504,6 +502,7 @@ func (o *IPSecProposal) HasCreated() bool {
 func (o *IPSecProposal) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *IPSecProposal) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -546,6 +545,7 @@ func (o *IPSecProposal) HasLastUpdated() bool {
 func (o *IPSecProposal) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *IPSecProposal) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -557,7 +557,7 @@ func (o *IPSecProposal) UnsetLastUpdated() {
 }
 
 func (o IPSecProposal) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -624,32 +624,31 @@ func (o *IPSecProposal) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -722,5 +721,3 @@ func (v *NullableIPSecProposal) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

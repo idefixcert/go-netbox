@@ -19,12 +19,12 @@ var _ MappedNullable = &PatchedWritableVirtualCircuitTerminationRequest{}
 
 // PatchedWritableVirtualCircuitTerminationRequest Adds support for custom fields and tags.
 type PatchedWritableVirtualCircuitTerminationRequest struct {
-	VirtualCircuit *BriefVirtualCircuitRequest `json:"virtual_circuit,omitempty"`
-	Role *PatchedWritableTunnelTerminationRequestRole `json:"role,omitempty"`
-	Interface *BriefInterfaceRequest `json:"interface,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	VirtualCircuit       *BriefVirtualCircuitRequest                  `json:"virtual_circuit,omitempty"`
+	Role                 *PatchedWritableTunnelTerminationRequestRole `json:"role,omitempty"`
+	Interface            *BriefInterfaceRequest                       `json:"interface,omitempty"`
+	Description          *string                                      `json:"description,omitempty"`
+	Tags                 []NestedTagRequest                           `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}                       `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -240,7 +240,7 @@ func (o *PatchedWritableVirtualCircuitTerminationRequest) SetCustomFields(v map[
 }
 
 func (o PatchedWritableVirtualCircuitTerminationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -336,5 +336,3 @@ func (v *NullablePatchedWritableVirtualCircuitTerminationRequest) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

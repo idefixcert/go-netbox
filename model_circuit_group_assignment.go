@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the CircuitGroupAssignment type satisfies the MappedNullable interface at compile time
@@ -21,18 +21,18 @@ var _ MappedNullable = &CircuitGroupAssignment{}
 
 // CircuitGroupAssignment Base serializer for group assignments under CircuitSerializer.
 type CircuitGroupAssignment struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Group BriefCircuitGroup `json:"group"`
-	MemberType string `json:"member_type"`
-	MemberId int64 `json:"member_id"`
-	Member interface{} `json:"member,omitempty"`
-	Priority *BriefCircuitGroupAssignmentSerializerPriority `json:"priority,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Id                   int32                                          `json:"id"`
+	Url                  string                                         `json:"url"`
+	DisplayUrl           *string                                        `json:"display_url,omitempty"`
+	Display              string                                         `json:"display"`
+	Group                BriefCircuitGroup                              `json:"group"`
+	MemberType           string                                         `json:"member_type"`
+	MemberId             int64                                          `json:"member_id"`
+	Member               interface{}                                    `json:"member,omitempty"`
+	Priority             *BriefCircuitGroupAssignmentSerializerPriority `json:"priority,omitempty"`
+	Tags                 []NestedTag                                    `json:"tags,omitempty"`
+	Created              NullableTime                                   `json:"created,omitempty"`
+	LastUpdated          NullableTime                                   `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -85,7 +85,6 @@ func (o *CircuitGroupAssignment) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *CircuitGroupAssignment) GetUrl() string {
 	if o == nil {
@@ -109,7 +108,6 @@ func (o *CircuitGroupAssignment) GetUrlOk() (*string, bool) {
 func (o *CircuitGroupAssignment) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *CircuitGroupAssignment) GetDisplayUrl() string {
@@ -167,7 +165,6 @@ func (o *CircuitGroupAssignment) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetGroup returns the Group field value
 func (o *CircuitGroupAssignment) GetGroup() BriefCircuitGroup {
 	if o == nil {
@@ -191,7 +188,6 @@ func (o *CircuitGroupAssignment) GetGroupOk() (*BriefCircuitGroup, bool) {
 func (o *CircuitGroupAssignment) SetGroup(v BriefCircuitGroup) {
 	o.Group = v
 }
-
 
 // GetMemberType returns the MemberType field value
 func (o *CircuitGroupAssignment) GetMemberType() string {
@@ -217,7 +213,6 @@ func (o *CircuitGroupAssignment) SetMemberType(v string) {
 	o.MemberType = v
 }
 
-
 // GetMemberId returns the MemberId field value
 func (o *CircuitGroupAssignment) GetMemberId() int64 {
 	if o == nil {
@@ -241,7 +236,6 @@ func (o *CircuitGroupAssignment) GetMemberIdOk() (*int64, bool) {
 func (o *CircuitGroupAssignment) SetMemberId(v int64) {
 	o.MemberId = v
 }
-
 
 // GetMember returns the Member field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CircuitGroupAssignment) GetMember() interface{} {
@@ -372,6 +366,7 @@ func (o *CircuitGroupAssignment) HasCreated() bool {
 func (o *CircuitGroupAssignment) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *CircuitGroupAssignment) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -414,6 +409,7 @@ func (o *CircuitGroupAssignment) HasLastUpdated() bool {
 func (o *CircuitGroupAssignment) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *CircuitGroupAssignment) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -425,7 +421,7 @@ func (o *CircuitGroupAssignment) UnsetLastUpdated() {
 }
 
 func (o CircuitGroupAssignment) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -481,32 +477,31 @@ func (o *CircuitGroupAssignment) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -576,5 +571,3 @@ func (v *NullableCircuitGroupAssignment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

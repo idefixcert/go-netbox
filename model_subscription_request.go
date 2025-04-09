@@ -20,9 +20,9 @@ var _ MappedNullable = &SubscriptionRequest{}
 
 // SubscriptionRequest Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type SubscriptionRequest struct {
-	ObjectType string `json:"object_type"`
-	ObjectId int64 `json:"object_id"`
-	User BriefUserRequest `json:"user"`
+	ObjectType           string           `json:"object_type"`
+	ObjectId             int64            `json:"object_id"`
+	User                 BriefUserRequest `json:"user"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -72,7 +72,6 @@ func (o *SubscriptionRequest) SetObjectType(v string) {
 	o.ObjectType = v
 }
 
-
 // GetObjectId returns the ObjectId field value
 func (o *SubscriptionRequest) GetObjectId() int64 {
 	if o == nil {
@@ -96,7 +95,6 @@ func (o *SubscriptionRequest) GetObjectIdOk() (*int64, bool) {
 func (o *SubscriptionRequest) SetObjectId(v int64) {
 	o.ObjectId = v
 }
-
 
 // GetUser returns the User field value
 func (o *SubscriptionRequest) GetUser() BriefUserRequest {
@@ -122,9 +120,8 @@ func (o *SubscriptionRequest) SetUser(v BriefUserRequest) {
 	o.User = v
 }
 
-
 func (o SubscriptionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -156,32 +153,31 @@ func (o *SubscriptionRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -242,5 +238,3 @@ func (v *NullableSubscriptionRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

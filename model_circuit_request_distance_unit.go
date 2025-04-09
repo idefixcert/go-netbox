@@ -20,10 +20,10 @@ type CircuitRequestDistanceUnit string
 
 // List of CircuitRequest_distance_unit
 const (
-	CIRCUITREQUESTDISTANCEUNIT_KM CircuitRequestDistanceUnit = "km"
-	CIRCUITREQUESTDISTANCEUNIT_M CircuitRequestDistanceUnit = "m"
-	CIRCUITREQUESTDISTANCEUNIT_MI CircuitRequestDistanceUnit = "mi"
-	CIRCUITREQUESTDISTANCEUNIT_FT CircuitRequestDistanceUnit = "ft"
+	CIRCUITREQUESTDISTANCEUNIT_KM    CircuitRequestDistanceUnit = "km"
+	CIRCUITREQUESTDISTANCEUNIT_M     CircuitRequestDistanceUnit = "m"
+	CIRCUITREQUESTDISTANCEUNIT_MI    CircuitRequestDistanceUnit = "mi"
+	CIRCUITREQUESTDISTANCEUNIT_FT    CircuitRequestDistanceUnit = "ft"
 	CIRCUITREQUESTDISTANCEUNIT_EMPTY CircuitRequestDistanceUnit = ""
 )
 
@@ -114,4 +114,3 @@ func (v *NullableCircuitRequestDistanceUnit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

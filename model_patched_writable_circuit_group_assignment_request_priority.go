@@ -20,11 +20,11 @@ type PatchedWritableCircuitGroupAssignmentRequestPriority string
 
 // List of PatchedWritableCircuitGroupAssignmentRequest_priority
 const (
-	PATCHEDWRITABLECIRCUITGROUPASSIGNMENTREQUESTPRIORITY_PRIMARY PatchedWritableCircuitGroupAssignmentRequestPriority = "primary"
+	PATCHEDWRITABLECIRCUITGROUPASSIGNMENTREQUESTPRIORITY_PRIMARY   PatchedWritableCircuitGroupAssignmentRequestPriority = "primary"
 	PATCHEDWRITABLECIRCUITGROUPASSIGNMENTREQUESTPRIORITY_SECONDARY PatchedWritableCircuitGroupAssignmentRequestPriority = "secondary"
-	PATCHEDWRITABLECIRCUITGROUPASSIGNMENTREQUESTPRIORITY_TERTIARY PatchedWritableCircuitGroupAssignmentRequestPriority = "tertiary"
-	PATCHEDWRITABLECIRCUITGROUPASSIGNMENTREQUESTPRIORITY_INACTIVE PatchedWritableCircuitGroupAssignmentRequestPriority = "inactive"
-	PATCHEDWRITABLECIRCUITGROUPASSIGNMENTREQUESTPRIORITY_EMPTY PatchedWritableCircuitGroupAssignmentRequestPriority = ""
+	PATCHEDWRITABLECIRCUITGROUPASSIGNMENTREQUESTPRIORITY_TERTIARY  PatchedWritableCircuitGroupAssignmentRequestPriority = "tertiary"
+	PATCHEDWRITABLECIRCUITGROUPASSIGNMENTREQUESTPRIORITY_INACTIVE  PatchedWritableCircuitGroupAssignmentRequestPriority = "inactive"
+	PATCHEDWRITABLECIRCUITGROUPASSIGNMENTREQUESTPRIORITY_EMPTY     PatchedWritableCircuitGroupAssignmentRequestPriority = ""
 )
 
 // All allowed values of PatchedWritableCircuitGroupAssignmentRequestPriority enum
@@ -114,4 +114,3 @@ func (v *NullablePatchedWritableCircuitGroupAssignmentRequestPriority) Unmarshal
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

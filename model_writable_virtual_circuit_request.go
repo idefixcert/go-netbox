@@ -21,16 +21,16 @@ var _ MappedNullable = &WritableVirtualCircuitRequest{}
 // WritableVirtualCircuitRequest Adds support for custom fields and tags.
 type WritableVirtualCircuitRequest struct {
 	// Unique circuit ID
-	Cid string `json:"cid"`
-	ProviderNetwork BriefProviderNetworkRequest `json:"provider_network"`
-	ProviderAccount NullableBriefProviderAccountRequest `json:"provider_account,omitempty"`
-	Type BriefVirtualCircuitTypeRequest `json:"type"`
-	Status *CircuitStatusValue `json:"status,omitempty"`
-	Tenant NullableBriefTenantRequest `json:"tenant,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Cid                  string                              `json:"cid"`
+	ProviderNetwork      BriefProviderNetworkRequest         `json:"provider_network"`
+	ProviderAccount      NullableBriefProviderAccountRequest `json:"provider_account,omitempty"`
+	Type                 BriefVirtualCircuitTypeRequest      `json:"type"`
+	Status               *CircuitStatusValue                 `json:"status,omitempty"`
+	Tenant               NullableBriefTenantRequest          `json:"tenant,omitempty"`
+	Description          *string                             `json:"description,omitempty"`
+	Comments             *string                             `json:"comments,omitempty"`
+	Tags                 []NestedTagRequest                  `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}              `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -80,7 +80,6 @@ func (o *WritableVirtualCircuitRequest) SetCid(v string) {
 	o.Cid = v
 }
 
-
 // GetProviderNetwork returns the ProviderNetwork field value
 func (o *WritableVirtualCircuitRequest) GetProviderNetwork() BriefProviderNetworkRequest {
 	if o == nil {
@@ -104,7 +103,6 @@ func (o *WritableVirtualCircuitRequest) GetProviderNetworkOk() (*BriefProviderNe
 func (o *WritableVirtualCircuitRequest) SetProviderNetwork(v BriefProviderNetworkRequest) {
 	o.ProviderNetwork = v
 }
-
 
 // GetProviderAccount returns the ProviderAccount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableVirtualCircuitRequest) GetProviderAccount() BriefProviderAccountRequest {
@@ -138,6 +136,7 @@ func (o *WritableVirtualCircuitRequest) HasProviderAccount() bool {
 func (o *WritableVirtualCircuitRequest) SetProviderAccount(v BriefProviderAccountRequest) {
 	o.ProviderAccount.Set(&v)
 }
+
 // SetProviderAccountNil sets the value for ProviderAccount to be an explicit nil
 func (o *WritableVirtualCircuitRequest) SetProviderAccountNil() {
 	o.ProviderAccount.Set(nil)
@@ -171,7 +170,6 @@ func (o *WritableVirtualCircuitRequest) GetTypeOk() (*BriefVirtualCircuitTypeReq
 func (o *WritableVirtualCircuitRequest) SetType(v BriefVirtualCircuitTypeRequest) {
 	o.Type = v
 }
-
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *WritableVirtualCircuitRequest) GetStatus() CircuitStatusValue {
@@ -237,6 +235,7 @@ func (o *WritableVirtualCircuitRequest) HasTenant() bool {
 func (o *WritableVirtualCircuitRequest) SetTenant(v BriefTenantRequest) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *WritableVirtualCircuitRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -376,7 +375,7 @@ func (o *WritableVirtualCircuitRequest) SetCustomFields(v map[string]interface{}
 }
 
 func (o WritableVirtualCircuitRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -429,32 +428,31 @@ func (o *WritableVirtualCircuitRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -522,5 +520,3 @@ func (v *NullableWritableVirtualCircuitRequest) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

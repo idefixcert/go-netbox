@@ -19,13 +19,13 @@ var _ MappedNullable = &PatchedWritableContactAssignmentRequest{}
 
 // PatchedWritableContactAssignmentRequest Adds support for custom fields and tags.
 type PatchedWritableContactAssignmentRequest struct {
-	ObjectType *string `json:"object_type,omitempty"`
-	ObjectId *int64 `json:"object_id,omitempty"`
-	Contact *BriefContactRequest `json:"contact,omitempty"`
-	Role NullableBriefContactRoleRequest `json:"role,omitempty"`
-	Priority NullablePatchedWritableCircuitGroupAssignmentRequestPriority `json:"priority,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	ObjectType           *string                                                      `json:"object_type,omitempty"`
+	ObjectId             *int64                                                       `json:"object_id,omitempty"`
+	Contact              *BriefContactRequest                                         `json:"contact,omitempty"`
+	Role                 NullableBriefContactRoleRequest                              `json:"role,omitempty"`
+	Priority             NullablePatchedWritableCircuitGroupAssignmentRequestPriority `json:"priority,omitempty"`
+	Tags                 []NestedTagRequest                                           `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}                                       `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -176,6 +176,7 @@ func (o *PatchedWritableContactAssignmentRequest) HasRole() bool {
 func (o *PatchedWritableContactAssignmentRequest) SetRole(v BriefContactRoleRequest) {
 	o.Role.Set(&v)
 }
+
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *PatchedWritableContactAssignmentRequest) SetRoleNil() {
 	o.Role.Set(nil)
@@ -218,6 +219,7 @@ func (o *PatchedWritableContactAssignmentRequest) HasPriority() bool {
 func (o *PatchedWritableContactAssignmentRequest) SetPriority(v PatchedWritableCircuitGroupAssignmentRequestPriority) {
 	o.Priority.Set(&v)
 }
+
 // SetPriorityNil sets the value for Priority to be an explicit nil
 func (o *PatchedWritableContactAssignmentRequest) SetPriorityNil() {
 	o.Priority.Set(nil)
@@ -293,7 +295,7 @@ func (o *PatchedWritableContactAssignmentRequest) SetCustomFields(v map[string]i
 }
 
 func (o PatchedWritableContactAssignmentRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -393,5 +395,3 @@ func (v *NullablePatchedWritableContactAssignmentRequest) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

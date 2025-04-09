@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the VirtualMachineWithConfigContext type satisfies the MappedNullable interface at compile time
@@ -21,37 +21,37 @@ var _ MappedNullable = &VirtualMachineWithConfigContext{}
 
 // VirtualMachineWithConfigContext Adds support for custom fields and tags.
 type VirtualMachineWithConfigContext struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Status *InventoryItemStatus `json:"status,omitempty"`
-	Site NullableBriefSite `json:"site,omitempty"`
-	Cluster NullableBriefCluster `json:"cluster,omitempty"`
-	Device NullableBriefDevice `json:"device,omitempty"`
-	Serial *string `json:"serial,omitempty"`
-	Role NullableBriefDeviceRole `json:"role,omitempty"`
-	Tenant NullableBriefTenant `json:"tenant,omitempty"`
-	Platform NullableBriefPlatform `json:"platform,omitempty"`
-	PrimaryIp NullableBriefIPAddress `json:"primary_ip,omitempty"`
-	PrimaryIp4 NullableBriefIPAddress `json:"primary_ip4,omitempty"`
-	PrimaryIp6 NullableBriefIPAddress `json:"primary_ip6,omitempty"`
-	Vcpus NullableFloat64 `json:"vcpus,omitempty"`
-	Memory NullableInt32 `json:"memory,omitempty"`
-	Disk NullableInt32 `json:"disk,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	ConfigTemplate NullableBriefConfigTemplate `json:"config_template,omitempty"`
+	Id             int32                                  `json:"id"`
+	Url            string                                 `json:"url"`
+	DisplayUrl     *string                                `json:"display_url,omitempty"`
+	Display        string                                 `json:"display"`
+	Name           string                                 `json:"name"`
+	Status         *VirtualMachineWithConfigContextStatus `json:"status,omitempty"`
+	Site           NullableBriefSite                      `json:"site,omitempty"`
+	Cluster        NullableBriefCluster                   `json:"cluster,omitempty"`
+	Device         NullableBriefDevice                    `json:"device,omitempty"`
+	Serial         *string                                `json:"serial,omitempty"`
+	Role           NullableBriefDeviceRole                `json:"role,omitempty"`
+	Tenant         NullableBriefTenant                    `json:"tenant,omitempty"`
+	Platform       NullableBriefPlatform                  `json:"platform,omitempty"`
+	PrimaryIp      NullableBriefIPAddress                 `json:"primary_ip,omitempty"`
+	PrimaryIp4     NullableBriefIPAddress                 `json:"primary_ip4,omitempty"`
+	PrimaryIp6     NullableBriefIPAddress                 `json:"primary_ip6,omitempty"`
+	Vcpus          NullableFloat64                        `json:"vcpus,omitempty"`
+	Memory         NullableInt32                          `json:"memory,omitempty"`
+	Disk           NullableInt32                          `json:"disk,omitempty"`
+	Description    *string                                `json:"description,omitempty"`
+	Comments       *string                                `json:"comments,omitempty"`
+	ConfigTemplate NullableBriefConfigTemplate            `json:"config_template,omitempty"`
 	// Local config context data takes precedence over source contexts in the final rendered config context
-	LocalContextData interface{} `json:"local_context_data,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	ConfigContext interface{} `json:"config_context,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
-	InterfaceCount *int32 `json:"interface_count,omitempty"`
-	VirtualDiskCount int32 `json:"virtual_disk_count"`
+	LocalContextData     interface{}            `json:"local_context_data,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	ConfigContext        interface{}            `json:"config_context,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
+	InterfaceCount       *int32                 `json:"interface_count,omitempty"`
+	VirtualDiskCount     int32                  `json:"virtual_disk_count"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -103,7 +103,6 @@ func (o *VirtualMachineWithConfigContext) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *VirtualMachineWithConfigContext) GetUrl() string {
 	if o == nil {
@@ -127,7 +126,6 @@ func (o *VirtualMachineWithConfigContext) GetUrlOk() (*string, bool) {
 func (o *VirtualMachineWithConfigContext) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *VirtualMachineWithConfigContext) GetDisplayUrl() string {
@@ -185,7 +183,6 @@ func (o *VirtualMachineWithConfigContext) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *VirtualMachineWithConfigContext) GetName() string {
 	if o == nil {
@@ -210,11 +207,10 @@ func (o *VirtualMachineWithConfigContext) SetName(v string) {
 	o.Name = v
 }
 
-
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *VirtualMachineWithConfigContext) GetStatus() InventoryItemStatus {
+func (o *VirtualMachineWithConfigContext) GetStatus() VirtualMachineWithConfigContextStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret InventoryItemStatus
+		var ret VirtualMachineWithConfigContextStatus
 		return ret
 	}
 	return *o.Status
@@ -222,7 +218,7 @@ func (o *VirtualMachineWithConfigContext) GetStatus() InventoryItemStatus {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VirtualMachineWithConfigContext) GetStatusOk() (*InventoryItemStatus, bool) {
+func (o *VirtualMachineWithConfigContext) GetStatusOk() (*VirtualMachineWithConfigContextStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -238,8 +234,8 @@ func (o *VirtualMachineWithConfigContext) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given InventoryItemStatus and assigns it to the Status field.
-func (o *VirtualMachineWithConfigContext) SetStatus(v InventoryItemStatus) {
+// SetStatus gets a reference to the given VirtualMachineWithConfigContextStatus and assigns it to the Status field.
+func (o *VirtualMachineWithConfigContext) SetStatus(v VirtualMachineWithConfigContextStatus) {
 	o.Status = &v
 }
 
@@ -275,6 +271,7 @@ func (o *VirtualMachineWithConfigContext) HasSite() bool {
 func (o *VirtualMachineWithConfigContext) SetSite(v BriefSite) {
 	o.Site.Set(&v)
 }
+
 // SetSiteNil sets the value for Site to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetSiteNil() {
 	o.Site.Set(nil)
@@ -317,6 +314,7 @@ func (o *VirtualMachineWithConfigContext) HasCluster() bool {
 func (o *VirtualMachineWithConfigContext) SetCluster(v BriefCluster) {
 	o.Cluster.Set(&v)
 }
+
 // SetClusterNil sets the value for Cluster to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetClusterNil() {
 	o.Cluster.Set(nil)
@@ -359,6 +357,7 @@ func (o *VirtualMachineWithConfigContext) HasDevice() bool {
 func (o *VirtualMachineWithConfigContext) SetDevice(v BriefDevice) {
 	o.Device.Set(&v)
 }
+
 // SetDeviceNil sets the value for Device to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetDeviceNil() {
 	o.Device.Set(nil)
@@ -433,6 +432,7 @@ func (o *VirtualMachineWithConfigContext) HasRole() bool {
 func (o *VirtualMachineWithConfigContext) SetRole(v BriefDeviceRole) {
 	o.Role.Set(&v)
 }
+
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetRoleNil() {
 	o.Role.Set(nil)
@@ -475,6 +475,7 @@ func (o *VirtualMachineWithConfigContext) HasTenant() bool {
 func (o *VirtualMachineWithConfigContext) SetTenant(v BriefTenant) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -517,6 +518,7 @@ func (o *VirtualMachineWithConfigContext) HasPlatform() bool {
 func (o *VirtualMachineWithConfigContext) SetPlatform(v BriefPlatform) {
 	o.Platform.Set(&v)
 }
+
 // SetPlatformNil sets the value for Platform to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetPlatformNil() {
 	o.Platform.Set(nil)
@@ -559,6 +561,7 @@ func (o *VirtualMachineWithConfigContext) HasPrimaryIp() bool {
 func (o *VirtualMachineWithConfigContext) SetPrimaryIp(v BriefIPAddress) {
 	o.PrimaryIp.Set(&v)
 }
+
 // SetPrimaryIpNil sets the value for PrimaryIp to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetPrimaryIpNil() {
 	o.PrimaryIp.Set(nil)
@@ -601,6 +604,7 @@ func (o *VirtualMachineWithConfigContext) HasPrimaryIp4() bool {
 func (o *VirtualMachineWithConfigContext) SetPrimaryIp4(v BriefIPAddress) {
 	o.PrimaryIp4.Set(&v)
 }
+
 // SetPrimaryIp4Nil sets the value for PrimaryIp4 to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetPrimaryIp4Nil() {
 	o.PrimaryIp4.Set(nil)
@@ -643,6 +647,7 @@ func (o *VirtualMachineWithConfigContext) HasPrimaryIp6() bool {
 func (o *VirtualMachineWithConfigContext) SetPrimaryIp6(v BriefIPAddress) {
 	o.PrimaryIp6.Set(&v)
 }
+
 // SetPrimaryIp6Nil sets the value for PrimaryIp6 to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetPrimaryIp6Nil() {
 	o.PrimaryIp6.Set(nil)
@@ -685,6 +690,7 @@ func (o *VirtualMachineWithConfigContext) HasVcpus() bool {
 func (o *VirtualMachineWithConfigContext) SetVcpus(v float64) {
 	o.Vcpus.Set(&v)
 }
+
 // SetVcpusNil sets the value for Vcpus to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetVcpusNil() {
 	o.Vcpus.Set(nil)
@@ -727,6 +733,7 @@ func (o *VirtualMachineWithConfigContext) HasMemory() bool {
 func (o *VirtualMachineWithConfigContext) SetMemory(v int32) {
 	o.Memory.Set(&v)
 }
+
 // SetMemoryNil sets the value for Memory to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetMemoryNil() {
 	o.Memory.Set(nil)
@@ -769,6 +776,7 @@ func (o *VirtualMachineWithConfigContext) HasDisk() bool {
 func (o *VirtualMachineWithConfigContext) SetDisk(v int32) {
 	o.Disk.Set(&v)
 }
+
 // SetDiskNil sets the value for Disk to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetDiskNil() {
 	o.Disk.Set(nil)
@@ -875,6 +883,7 @@ func (o *VirtualMachineWithConfigContext) HasConfigTemplate() bool {
 func (o *VirtualMachineWithConfigContext) SetConfigTemplate(v BriefConfigTemplate) {
 	o.ConfigTemplate.Set(&v)
 }
+
 // SetConfigTemplateNil sets the value for ConfigTemplate to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetConfigTemplateNil() {
 	o.ConfigTemplate.Set(nil)
@@ -1047,6 +1056,7 @@ func (o *VirtualMachineWithConfigContext) HasCreated() bool {
 func (o *VirtualMachineWithConfigContext) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -1089,6 +1099,7 @@ func (o *VirtualMachineWithConfigContext) HasLastUpdated() bool {
 func (o *VirtualMachineWithConfigContext) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *VirtualMachineWithConfigContext) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -1155,9 +1166,8 @@ func (o *VirtualMachineWithConfigContext) SetVirtualDiskCount(v int32) {
 	o.VirtualDiskCount = v
 }
 
-
 func (o VirtualMachineWithConfigContext) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1268,32 +1278,31 @@ func (o *VirtualMachineWithConfigContext) UnmarshalJSON(data []byte) (err error)
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -1381,5 +1390,3 @@ func (v *NullableVirtualMachineWithConfigContext) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

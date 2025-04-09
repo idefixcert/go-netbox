@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the ConfigTemplate type satisfies the MappedNullable interface at compile time
@@ -21,24 +21,24 @@ var _ MappedNullable = &ConfigTemplate{}
 
 // ConfigTemplate Introduces support for Tag assignment. Adds `tags` serialization, and handles tag assignment on create() and update().
 type ConfigTemplate struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
+	Id          int32   `json:"id"`
+	Url         string  `json:"url"`
+	DisplayUrl  *string `json:"display_url,omitempty"`
+	Display     string  `json:"display"`
+	Name        string  `json:"name"`
 	Description *string `json:"description,omitempty"`
 	// Any <a href=\"https://jinja.palletsprojects.com/en/3.1.x/api/#jinja2.Environment\">additional parameters</a> to pass when constructing the Jinja2 environment.
 	EnvironmentParams interface{} `json:"environment_params,omitempty"`
 	// Jinja2 template code.
-	TemplateCode string `json:"template_code"`
-	DataSource *BriefDataSource `json:"data_source,omitempty"`
+	TemplateCode string           `json:"template_code"`
+	DataSource   *BriefDataSource `json:"data_source,omitempty"`
 	// Path to remote file (relative to data source root)
-	DataPath string `json:"data_path"`
-	DataFile *BriefDataFile `json:"data_file,omitempty"`
-	DataSynced NullableTime `json:"data_synced,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	DataPath             string         `json:"data_path"`
+	DataFile             *BriefDataFile `json:"data_file,omitempty"`
+	DataSynced           NullableTime   `json:"data_synced,omitempty"`
+	Tags                 []NestedTag    `json:"tags,omitempty"`
+	Created              NullableTime   `json:"created,omitempty"`
+	LastUpdated          NullableTime   `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -91,7 +91,6 @@ func (o *ConfigTemplate) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *ConfigTemplate) GetUrl() string {
 	if o == nil {
@@ -115,7 +114,6 @@ func (o *ConfigTemplate) GetUrlOk() (*string, bool) {
 func (o *ConfigTemplate) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *ConfigTemplate) GetDisplayUrl() string {
@@ -173,7 +171,6 @@ func (o *ConfigTemplate) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *ConfigTemplate) GetName() string {
 	if o == nil {
@@ -197,7 +194,6 @@ func (o *ConfigTemplate) GetNameOk() (*string, bool) {
 func (o *ConfigTemplate) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ConfigTemplate) GetDescription() string {
@@ -288,7 +284,6 @@ func (o *ConfigTemplate) SetTemplateCode(v string) {
 	o.TemplateCode = v
 }
 
-
 // GetDataSource returns the DataSource field value if set, zero value otherwise.
 func (o *ConfigTemplate) GetDataSource() BriefDataSource {
 	if o == nil || IsNil(o.DataSource) {
@@ -344,7 +339,6 @@ func (o *ConfigTemplate) GetDataPathOk() (*string, bool) {
 func (o *ConfigTemplate) SetDataPath(v string) {
 	o.DataPath = v
 }
-
 
 // GetDataFile returns the DataFile field value if set, zero value otherwise.
 func (o *ConfigTemplate) GetDataFile() BriefDataFile {
@@ -410,6 +404,7 @@ func (o *ConfigTemplate) HasDataSynced() bool {
 func (o *ConfigTemplate) SetDataSynced(v time.Time) {
 	o.DataSynced.Set(&v)
 }
+
 // SetDataSyncedNil sets the value for DataSynced to be an explicit nil
 func (o *ConfigTemplate) SetDataSyncedNil() {
 	o.DataSynced.Set(nil)
@@ -484,6 +479,7 @@ func (o *ConfigTemplate) HasCreated() bool {
 func (o *ConfigTemplate) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *ConfigTemplate) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -526,6 +522,7 @@ func (o *ConfigTemplate) HasLastUpdated() bool {
 func (o *ConfigTemplate) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *ConfigTemplate) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -537,7 +534,7 @@ func (o *ConfigTemplate) UnsetLastUpdated() {
 }
 
 func (o ConfigTemplate) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -602,32 +599,31 @@ func (o *ConfigTemplate) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -700,5 +696,3 @@ func (v *NullableConfigTemplate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

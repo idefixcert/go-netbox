@@ -20,20 +20,20 @@ var _ MappedNullable = &VLANRequest{}
 
 // VLANRequest Adds support for custom fields and tags.
 type VLANRequest struct {
-	Site NullableBriefSiteRequest `json:"site,omitempty"`
+	Site  NullableBriefSiteRequest      `json:"site,omitempty"`
 	Group NullableBriefVLANGroupRequest `json:"group,omitempty"`
 	// Numeric VLAN ID (1-4094)
-	Vid int32 `json:"vid"`
-	Name string `json:"name"`
-	Tenant NullableBriefTenantRequest `json:"tenant,omitempty"`
-	Status *IPRangeStatusValue `json:"status,omitempty"`
-	Role NullableBriefRoleRequest `json:"role,omitempty"`
-	Description *string `json:"description,omitempty"`
-	QinqRole *VLANQinqRoleValue `json:"qinq_role,omitempty"`
-	QinqSvlan NullableNestedVLANRequest `json:"qinq_svlan,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Vid                  int32                      `json:"vid"`
+	Name                 string                     `json:"name"`
+	Tenant               NullableBriefTenantRequest `json:"tenant,omitempty"`
+	Status               *IPRangeStatusValue        `json:"status,omitempty"`
+	Role                 NullableBriefRoleRequest   `json:"role,omitempty"`
+	Description          *string                    `json:"description,omitempty"`
+	QinqRole             *VLANQinqRoleValue         `json:"qinq_role,omitempty"`
+	QinqSvlan            NullableNestedVLANRequest  `json:"qinq_svlan,omitempty"`
+	Comments             *string                    `json:"comments,omitempty"`
+	Tags                 []NestedTagRequest         `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}     `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -90,6 +90,7 @@ func (o *VLANRequest) HasSite() bool {
 func (o *VLANRequest) SetSite(v BriefSiteRequest) {
 	o.Site.Set(&v)
 }
+
 // SetSiteNil sets the value for Site to be an explicit nil
 func (o *VLANRequest) SetSiteNil() {
 	o.Site.Set(nil)
@@ -132,6 +133,7 @@ func (o *VLANRequest) HasGroup() bool {
 func (o *VLANRequest) SetGroup(v BriefVLANGroupRequest) {
 	o.Group.Set(&v)
 }
+
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *VLANRequest) SetGroupNil() {
 	o.Group.Set(nil)
@@ -166,7 +168,6 @@ func (o *VLANRequest) SetVid(v int32) {
 	o.Vid = v
 }
 
-
 // GetName returns the Name field value
 func (o *VLANRequest) GetName() string {
 	if o == nil {
@@ -190,7 +191,6 @@ func (o *VLANRequest) GetNameOk() (*string, bool) {
 func (o *VLANRequest) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetTenant returns the Tenant field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VLANRequest) GetTenant() BriefTenantRequest {
@@ -224,6 +224,7 @@ func (o *VLANRequest) HasTenant() bool {
 func (o *VLANRequest) SetTenant(v BriefTenantRequest) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *VLANRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -298,6 +299,7 @@ func (o *VLANRequest) HasRole() bool {
 func (o *VLANRequest) SetRole(v BriefRoleRequest) {
 	o.Role.Set(&v)
 }
+
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *VLANRequest) SetRoleNil() {
 	o.Role.Set(nil)
@@ -404,6 +406,7 @@ func (o *VLANRequest) HasQinqSvlan() bool {
 func (o *VLANRequest) SetQinqSvlan(v NestedVLANRequest) {
 	o.QinqSvlan.Set(&v)
 }
+
 // SetQinqSvlanNil sets the value for QinqSvlan to be an explicit nil
 func (o *VLANRequest) SetQinqSvlanNil() {
 	o.QinqSvlan.Set(nil)
@@ -511,7 +514,7 @@ func (o *VLANRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o VLANRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -574,32 +577,31 @@ func (o *VLANRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -670,5 +672,3 @@ func (v *NullableVLANRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the Interface type satisfies the MappedNullable interface at compile time
@@ -21,67 +21,67 @@ var _ MappedNullable = &Interface{}
 
 // Interface Adds support for custom fields and tags.
 type Interface struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Device BriefDevice `json:"device"`
-	Vdcs []VirtualDeviceContext `json:"vdcs,omitempty"`
-	Module NullableBriefModule `json:"module,omitempty"`
-	Name string `json:"name"`
+	Id         int32                  `json:"id"`
+	Url        string                 `json:"url"`
+	DisplayUrl *string                `json:"display_url,omitempty"`
+	Display    string                 `json:"display"`
+	Device     BriefDevice            `json:"device"`
+	Vdcs       []VirtualDeviceContext `json:"vdcs,omitempty"`
+	Module     NullableBriefModule    `json:"module,omitempty"`
+	Name       string                 `json:"name"`
 	// Physical label
-	Label *string `json:"label,omitempty"`
-	Type InterfaceType `json:"type"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Parent NullableNestedInterface `json:"parent,omitempty"`
-	Bridge NullableNestedInterface `json:"bridge,omitempty"`
-	Lag NullableNestedInterface `json:"lag,omitempty"`
-	Mtu NullableInt32 `json:"mtu,omitempty"`
-	MacAddress NullableString `json:"mac_address,omitempty"`
+	Label             *string                 `json:"label,omitempty"`
+	Type              InterfaceType           `json:"type"`
+	Enabled           *bool                   `json:"enabled,omitempty"`
+	Parent            NullableNestedInterface `json:"parent,omitempty"`
+	Bridge            NullableNestedInterface `json:"bridge,omitempty"`
+	Lag               NullableNestedInterface `json:"lag,omitempty"`
+	Mtu               NullableInt32           `json:"mtu,omitempty"`
+	MacAddress        NullableString          `json:"mac_address,omitempty"`
 	PrimaryMacAddress NullableBriefMACAddress `json:"primary_mac_address,omitempty"`
-	MacAddresses []BriefMACAddress `json:"mac_addresses,omitempty"`
-	Speed NullableInt32 `json:"speed,omitempty"`
-	Duplex NullableInterfaceDuplex `json:"duplex,omitempty"`
-	Wwn NullableString `json:"wwn,omitempty"`
+	MacAddresses      []BriefMACAddress       `json:"mac_addresses,omitempty"`
+	Speed             NullableInt32           `json:"speed,omitempty"`
+	Duplex            NullableInterfaceDuplex `json:"duplex,omitempty"`
+	Wwn               NullableString          `json:"wwn,omitempty"`
 	// This interface is used only for out-of-band management
-	MgmtOnly *bool `json:"mgmt_only,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Mode *InterfaceMode `json:"mode,omitempty"`
-	RfRole *InterfaceRfRole `json:"rf_role,omitempty"`
-	RfChannel *InterfaceRfChannel `json:"rf_channel,omitempty"`
-	PoeMode *InterfacePoeMode `json:"poe_mode,omitempty"`
-	PoeType *InterfacePoeType `json:"poe_type,omitempty"`
+	MgmtOnly    *bool               `json:"mgmt_only,omitempty"`
+	Description *string             `json:"description,omitempty"`
+	Mode        *InterfaceMode      `json:"mode,omitempty"`
+	RfRole      *InterfaceRfRole    `json:"rf_role,omitempty"`
+	RfChannel   *InterfaceRfChannel `json:"rf_channel,omitempty"`
+	PoeMode     *InterfacePoeMode   `json:"poe_mode,omitempty"`
+	PoeType     *InterfacePoeType   `json:"poe_type,omitempty"`
 	// Populated by selected channel (if set)
 	RfChannelFrequency NullableFloat64 `json:"rf_channel_frequency,omitempty"`
 	// Populated by selected channel (if set)
-	RfChannelWidth NullableFloat64 `json:"rf_channel_width,omitempty"`
-	TxPower NullableInt32 `json:"tx_power,omitempty"`
-	UntaggedVlan NullableBriefVLAN `json:"untagged_vlan,omitempty"`
-	TaggedVlans []VLAN `json:"tagged_vlans,omitempty"`
-	QinqSvlan NullableBriefVLAN `json:"qinq_svlan,omitempty"`
+	RfChannelWidth        NullableFloat64                    `json:"rf_channel_width,omitempty"`
+	TxPower               NullableInt32                      `json:"tx_power,omitempty"`
+	UntaggedVlan          NullableBriefVLAN                  `json:"untagged_vlan,omitempty"`
+	TaggedVlans           []VLAN                             `json:"tagged_vlans,omitempty"`
+	QinqSvlan             NullableBriefVLAN                  `json:"qinq_svlan,omitempty"`
 	VlanTranslationPolicy NullableBriefVLANTranslationPolicy `json:"vlan_translation_policy,omitempty"`
 	// Treat as if a cable is connected
-	MarkConnected *bool `json:"mark_connected,omitempty"`
-	Cable NullableBriefCable `json:"cable,omitempty"`
-	CableEnd *string `json:"cable_end,omitempty"`
-	WirelessLink NullableNestedWirelessLink `json:"wireless_link,omitempty"`
-	LinkPeers []interface{} `json:"link_peers"`
+	MarkConnected *bool                      `json:"mark_connected,omitempty"`
+	Cable         NullableBriefCable         `json:"cable,omitempty"`
+	CableEnd      *string                    `json:"cable_end,omitempty"`
+	WirelessLink  NullableNestedWirelessLink `json:"wireless_link,omitempty"`
+	LinkPeers     []interface{}              `json:"link_peers"`
 	// Return the type of the peer link terminations, or None.
-	LinkPeersType NullableString `json:"link_peers_type,omitempty"`
-	WirelessLans []WirelessLAN `json:"wireless_lans,omitempty"`
-	Vrf NullableBriefVRF `json:"vrf,omitempty"`
-	L2vpnTermination NullableBriefL2VPNTermination `json:"l2vpn_termination,omitempty"`
-	ConnectedEndpoints []interface{} `json:"connected_endpoints,omitempty"`
-	ConnectedEndpointsType NullableString `json:"connected_endpoints_type,omitempty"`
-	ConnectedEndpointsReachable bool `json:"connected_endpoints_reachable"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
-	CountIpaddresses int32 `json:"count_ipaddresses"`
-	CountFhrpGroups int32 `json:"count_fhrp_groups"`
-	Occupied bool `json:"_occupied"`
-	AdditionalProperties map[string]interface{}
+	LinkPeersType               NullableString                `json:"link_peers_type,omitempty"`
+	WirelessLans                []WirelessLAN                 `json:"wireless_lans,omitempty"`
+	Vrf                         NullableBriefVRF              `json:"vrf,omitempty"`
+	L2vpnTermination            NullableBriefL2VPNTermination `json:"l2vpn_termination,omitempty"`
+	ConnectedEndpoints          []interface{}                 `json:"connected_endpoints,omitempty"`
+	ConnectedEndpointsType      NullableString                `json:"connected_endpoints_type,omitempty"`
+	ConnectedEndpointsReachable bool                          `json:"connected_endpoints_reachable"`
+	Tags                        []NestedTag                   `json:"tags,omitempty"`
+	CustomFields                map[string]interface{}        `json:"custom_fields,omitempty"`
+	Created                     NullableTime                  `json:"created,omitempty"`
+	LastUpdated                 NullableTime                  `json:"last_updated,omitempty"`
+	CountIpaddresses            int32                         `json:"count_ipaddresses"`
+	CountFhrpGroups             int32                         `json:"count_fhrp_groups"`
+	Occupied                    bool                          `json:"_occupied"`
+	AdditionalProperties        map[string]interface{}
 }
 
 type _Interface Interface
@@ -138,7 +138,6 @@ func (o *Interface) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *Interface) GetUrl() string {
 	if o == nil {
@@ -162,7 +161,6 @@ func (o *Interface) GetUrlOk() (*string, bool) {
 func (o *Interface) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *Interface) GetDisplayUrl() string {
@@ -220,7 +218,6 @@ func (o *Interface) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetDevice returns the Device field value
 func (o *Interface) GetDevice() BriefDevice {
 	if o == nil {
@@ -244,7 +241,6 @@ func (o *Interface) GetDeviceOk() (*BriefDevice, bool) {
 func (o *Interface) SetDevice(v BriefDevice) {
 	o.Device = v
 }
-
 
 // GetVdcs returns the Vdcs field value if set, zero value otherwise.
 func (o *Interface) GetVdcs() []VirtualDeviceContext {
@@ -310,6 +306,7 @@ func (o *Interface) HasModule() bool {
 func (o *Interface) SetModule(v BriefModule) {
 	o.Module.Set(&v)
 }
+
 // SetModuleNil sets the value for Module to be an explicit nil
 func (o *Interface) SetModuleNil() {
 	o.Module.Set(nil)
@@ -343,7 +340,6 @@ func (o *Interface) GetNameOk() (*string, bool) {
 func (o *Interface) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *Interface) GetLabel() string {
@@ -400,7 +396,6 @@ func (o *Interface) GetTypeOk() (*InterfaceType, bool) {
 func (o *Interface) SetType(v InterfaceType) {
 	o.Type = v
 }
-
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *Interface) GetEnabled() bool {
@@ -466,6 +461,7 @@ func (o *Interface) HasParent() bool {
 func (o *Interface) SetParent(v NestedInterface) {
 	o.Parent.Set(&v)
 }
+
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *Interface) SetParentNil() {
 	o.Parent.Set(nil)
@@ -508,6 +504,7 @@ func (o *Interface) HasBridge() bool {
 func (o *Interface) SetBridge(v NestedInterface) {
 	o.Bridge.Set(&v)
 }
+
 // SetBridgeNil sets the value for Bridge to be an explicit nil
 func (o *Interface) SetBridgeNil() {
 	o.Bridge.Set(nil)
@@ -550,6 +547,7 @@ func (o *Interface) HasLag() bool {
 func (o *Interface) SetLag(v NestedInterface) {
 	o.Lag.Set(&v)
 }
+
 // SetLagNil sets the value for Lag to be an explicit nil
 func (o *Interface) SetLagNil() {
 	o.Lag.Set(nil)
@@ -592,6 +590,7 @@ func (o *Interface) HasMtu() bool {
 func (o *Interface) SetMtu(v int32) {
 	o.Mtu.Set(&v)
 }
+
 // SetMtuNil sets the value for Mtu to be an explicit nil
 func (o *Interface) SetMtuNil() {
 	o.Mtu.Set(nil)
@@ -634,6 +633,7 @@ func (o *Interface) HasMacAddress() bool {
 func (o *Interface) SetMacAddress(v string) {
 	o.MacAddress.Set(&v)
 }
+
 // SetMacAddressNil sets the value for MacAddress to be an explicit nil
 func (o *Interface) SetMacAddressNil() {
 	o.MacAddress.Set(nil)
@@ -676,6 +676,7 @@ func (o *Interface) HasPrimaryMacAddress() bool {
 func (o *Interface) SetPrimaryMacAddress(v BriefMACAddress) {
 	o.PrimaryMacAddress.Set(&v)
 }
+
 // SetPrimaryMacAddressNil sets the value for PrimaryMacAddress to be an explicit nil
 func (o *Interface) SetPrimaryMacAddressNil() {
 	o.PrimaryMacAddress.Set(nil)
@@ -751,6 +752,7 @@ func (o *Interface) HasSpeed() bool {
 func (o *Interface) SetSpeed(v int32) {
 	o.Speed.Set(&v)
 }
+
 // SetSpeedNil sets the value for Speed to be an explicit nil
 func (o *Interface) SetSpeedNil() {
 	o.Speed.Set(nil)
@@ -793,6 +795,7 @@ func (o *Interface) HasDuplex() bool {
 func (o *Interface) SetDuplex(v InterfaceDuplex) {
 	o.Duplex.Set(&v)
 }
+
 // SetDuplexNil sets the value for Duplex to be an explicit nil
 func (o *Interface) SetDuplexNil() {
 	o.Duplex.Set(nil)
@@ -835,6 +838,7 @@ func (o *Interface) HasWwn() bool {
 func (o *Interface) SetWwn(v string) {
 	o.Wwn.Set(&v)
 }
+
 // SetWwnNil sets the value for Wwn to be an explicit nil
 func (o *Interface) SetWwnNil() {
 	o.Wwn.Set(nil)
@@ -1101,6 +1105,7 @@ func (o *Interface) HasRfChannelFrequency() bool {
 func (o *Interface) SetRfChannelFrequency(v float64) {
 	o.RfChannelFrequency.Set(&v)
 }
+
 // SetRfChannelFrequencyNil sets the value for RfChannelFrequency to be an explicit nil
 func (o *Interface) SetRfChannelFrequencyNil() {
 	o.RfChannelFrequency.Set(nil)
@@ -1143,6 +1148,7 @@ func (o *Interface) HasRfChannelWidth() bool {
 func (o *Interface) SetRfChannelWidth(v float64) {
 	o.RfChannelWidth.Set(&v)
 }
+
 // SetRfChannelWidthNil sets the value for RfChannelWidth to be an explicit nil
 func (o *Interface) SetRfChannelWidthNil() {
 	o.RfChannelWidth.Set(nil)
@@ -1185,6 +1191,7 @@ func (o *Interface) HasTxPower() bool {
 func (o *Interface) SetTxPower(v int32) {
 	o.TxPower.Set(&v)
 }
+
 // SetTxPowerNil sets the value for TxPower to be an explicit nil
 func (o *Interface) SetTxPowerNil() {
 	o.TxPower.Set(nil)
@@ -1227,6 +1234,7 @@ func (o *Interface) HasUntaggedVlan() bool {
 func (o *Interface) SetUntaggedVlan(v BriefVLAN) {
 	o.UntaggedVlan.Set(&v)
 }
+
 // SetUntaggedVlanNil sets the value for UntaggedVlan to be an explicit nil
 func (o *Interface) SetUntaggedVlanNil() {
 	o.UntaggedVlan.Set(nil)
@@ -1301,6 +1309,7 @@ func (o *Interface) HasQinqSvlan() bool {
 func (o *Interface) SetQinqSvlan(v BriefVLAN) {
 	o.QinqSvlan.Set(&v)
 }
+
 // SetQinqSvlanNil sets the value for QinqSvlan to be an explicit nil
 func (o *Interface) SetQinqSvlanNil() {
 	o.QinqSvlan.Set(nil)
@@ -1343,6 +1352,7 @@ func (o *Interface) HasVlanTranslationPolicy() bool {
 func (o *Interface) SetVlanTranslationPolicy(v BriefVLANTranslationPolicy) {
 	o.VlanTranslationPolicy.Set(&v)
 }
+
 // SetVlanTranslationPolicyNil sets the value for VlanTranslationPolicy to be an explicit nil
 func (o *Interface) SetVlanTranslationPolicyNil() {
 	o.VlanTranslationPolicy.Set(nil)
@@ -1417,6 +1427,7 @@ func (o *Interface) HasCable() bool {
 func (o *Interface) SetCable(v BriefCable) {
 	o.Cable.Set(&v)
 }
+
 // SetCableNil sets the value for Cable to be an explicit nil
 func (o *Interface) SetCableNil() {
 	o.Cable.Set(nil)
@@ -1491,6 +1502,7 @@ func (o *Interface) HasWirelessLink() bool {
 func (o *Interface) SetWirelessLink(v NestedWirelessLink) {
 	o.WirelessLink.Set(&v)
 }
+
 // SetWirelessLinkNil sets the value for WirelessLink to be an explicit nil
 func (o *Interface) SetWirelessLinkNil() {
 	o.WirelessLink.Set(nil)
@@ -1525,7 +1537,6 @@ func (o *Interface) SetLinkPeers(v []interface{}) {
 	o.LinkPeers = v
 }
 
-
 // GetLinkPeersType returns the LinkPeersType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Interface) GetLinkPeersType() string {
 	if o == nil || IsNil(o.LinkPeersType.Get()) {
@@ -1558,6 +1569,7 @@ func (o *Interface) HasLinkPeersType() bool {
 func (o *Interface) SetLinkPeersType(v string) {
 	o.LinkPeersType.Set(&v)
 }
+
 // SetLinkPeersTypeNil sets the value for LinkPeersType to be an explicit nil
 func (o *Interface) SetLinkPeersTypeNil() {
 	o.LinkPeersType.Set(nil)
@@ -1632,6 +1644,7 @@ func (o *Interface) HasVrf() bool {
 func (o *Interface) SetVrf(v BriefVRF) {
 	o.Vrf.Set(&v)
 }
+
 // SetVrfNil sets the value for Vrf to be an explicit nil
 func (o *Interface) SetVrfNil() {
 	o.Vrf.Set(nil)
@@ -1674,6 +1687,7 @@ func (o *Interface) HasL2vpnTermination() bool {
 func (o *Interface) SetL2vpnTermination(v BriefL2VPNTermination) {
 	o.L2vpnTermination.Set(&v)
 }
+
 // SetL2vpnTerminationNil sets the value for L2vpnTermination to be an explicit nil
 func (o *Interface) SetL2vpnTerminationNil() {
 	o.L2vpnTermination.Set(nil)
@@ -1749,6 +1763,7 @@ func (o *Interface) HasConnectedEndpointsType() bool {
 func (o *Interface) SetConnectedEndpointsType(v string) {
 	o.ConnectedEndpointsType.Set(&v)
 }
+
 // SetConnectedEndpointsTypeNil sets the value for ConnectedEndpointsType to be an explicit nil
 func (o *Interface) SetConnectedEndpointsTypeNil() {
 	o.ConnectedEndpointsType.Set(nil)
@@ -1782,7 +1797,6 @@ func (o *Interface) GetConnectedEndpointsReachableOk() (*bool, bool) {
 func (o *Interface) SetConnectedEndpointsReachable(v bool) {
 	o.ConnectedEndpointsReachable = v
 }
-
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *Interface) GetTags() []NestedTag {
@@ -1880,6 +1894,7 @@ func (o *Interface) HasCreated() bool {
 func (o *Interface) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *Interface) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -1922,6 +1937,7 @@ func (o *Interface) HasLastUpdated() bool {
 func (o *Interface) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *Interface) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -1956,7 +1972,6 @@ func (o *Interface) SetCountIpaddresses(v int32) {
 	o.CountIpaddresses = v
 }
 
-
 // GetCountFhrpGroups returns the CountFhrpGroups field value
 func (o *Interface) GetCountFhrpGroups() int32 {
 	if o == nil {
@@ -1980,7 +1995,6 @@ func (o *Interface) GetCountFhrpGroupsOk() (*int32, bool) {
 func (o *Interface) SetCountFhrpGroups(v int32) {
 	o.CountFhrpGroups = v
 }
-
 
 // GetOccupied returns the Occupied field value
 func (o *Interface) GetOccupied() bool {
@@ -2006,9 +2020,8 @@ func (o *Interface) SetOccupied(v bool) {
 	o.Occupied = v
 }
 
-
 func (o Interface) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -2185,32 +2198,31 @@ func (o *Interface) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -2322,5 +2334,3 @@ func (v *NullableInterface) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

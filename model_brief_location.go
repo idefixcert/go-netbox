@@ -20,14 +20,14 @@ var _ MappedNullable = &BriefLocation{}
 
 // BriefLocation Extends PrimaryModelSerializer to include MPTT support.
 type BriefLocation struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Description *string `json:"description,omitempty"`
-	RackCount *int32 `json:"rack_count,omitempty"`
-	Depth int32 `json:"_depth"`
+	Id                   int32   `json:"id"`
+	Url                  string  `json:"url"`
+	Display              string  `json:"display"`
+	Name                 string  `json:"name"`
+	Slug                 string  `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Description          *string `json:"description,omitempty"`
+	RackCount            *int32  `json:"rack_count,omitempty"`
+	Depth                int32   `json:"_depth"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -80,7 +80,6 @@ func (o *BriefLocation) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *BriefLocation) GetUrl() string {
 	if o == nil {
@@ -104,7 +103,6 @@ func (o *BriefLocation) GetUrlOk() (*string, bool) {
 func (o *BriefLocation) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplay returns the Display field value
 func (o *BriefLocation) GetDisplay() string {
@@ -130,7 +128,6 @@ func (o *BriefLocation) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *BriefLocation) GetName() string {
 	if o == nil {
@@ -155,7 +152,6 @@ func (o *BriefLocation) SetName(v string) {
 	o.Name = v
 }
 
-
 // GetSlug returns the Slug field value
 func (o *BriefLocation) GetSlug() string {
 	if o == nil {
@@ -179,7 +175,6 @@ func (o *BriefLocation) GetSlugOk() (*string, bool) {
 func (o *BriefLocation) SetSlug(v string) {
 	o.Slug = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *BriefLocation) GetDescription() string {
@@ -269,9 +264,8 @@ func (o *BriefLocation) SetDepth(v int32) {
 	o.Depth = v
 }
 
-
 func (o BriefLocation) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -315,32 +309,31 @@ func (o *BriefLocation) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -406,5 +399,3 @@ func (v *NullableBriefLocation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

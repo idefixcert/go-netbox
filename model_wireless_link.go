@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the WirelessLink type satisfies the MappedNullable interface at compile time
@@ -21,26 +21,26 @@ var _ MappedNullable = &WirelessLink{}
 
 // WirelessLink Adds support for custom fields and tags.
 type WirelessLink struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	InterfaceA BriefInterface `json:"interface_a"`
-	InterfaceB BriefInterface `json:"interface_b"`
-	Ssid *string `json:"ssid,omitempty"`
-	Status *CableStatus `json:"status,omitempty"`
-	Tenant NullableBriefTenant `json:"tenant,omitempty"`
-	AuthType *WirelessLANAuthType `json:"auth_type,omitempty"`
-	AuthCipher *WirelessLANAuthCipher `json:"auth_cipher,omitempty"`
-	AuthPsk *string `json:"auth_psk,omitempty"`
-	Distance NullableFloat64 `json:"distance,omitempty"`
-	DistanceUnit NullableCircuitDistanceUnit `json:"distance_unit,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Id                   int32                       `json:"id"`
+	Url                  string                      `json:"url"`
+	DisplayUrl           *string                     `json:"display_url,omitempty"`
+	Display              string                      `json:"display"`
+	InterfaceA           BriefInterface              `json:"interface_a"`
+	InterfaceB           BriefInterface              `json:"interface_b"`
+	Ssid                 *string                     `json:"ssid,omitempty"`
+	Status               *CableStatus                `json:"status,omitempty"`
+	Tenant               NullableBriefTenant         `json:"tenant,omitempty"`
+	AuthType             *WirelessLANAuthType        `json:"auth_type,omitempty"`
+	AuthCipher           *WirelessLANAuthCipher      `json:"auth_cipher,omitempty"`
+	AuthPsk              *string                     `json:"auth_psk,omitempty"`
+	Distance             NullableFloat64             `json:"distance,omitempty"`
+	DistanceUnit         NullableCircuitDistanceUnit `json:"distance_unit,omitempty"`
+	Description          *string                     `json:"description,omitempty"`
+	Comments             *string                     `json:"comments,omitempty"`
+	Tags                 []NestedTag                 `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}      `json:"custom_fields,omitempty"`
+	Created              NullableTime                `json:"created,omitempty"`
+	LastUpdated          NullableTime                `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -92,7 +92,6 @@ func (o *WirelessLink) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *WirelessLink) GetUrl() string {
 	if o == nil {
@@ -116,7 +115,6 @@ func (o *WirelessLink) GetUrlOk() (*string, bool) {
 func (o *WirelessLink) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *WirelessLink) GetDisplayUrl() string {
@@ -174,7 +172,6 @@ func (o *WirelessLink) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetInterfaceA returns the InterfaceA field value
 func (o *WirelessLink) GetInterfaceA() BriefInterface {
 	if o == nil {
@@ -199,7 +196,6 @@ func (o *WirelessLink) SetInterfaceA(v BriefInterface) {
 	o.InterfaceA = v
 }
 
-
 // GetInterfaceB returns the InterfaceB field value
 func (o *WirelessLink) GetInterfaceB() BriefInterface {
 	if o == nil {
@@ -223,7 +219,6 @@ func (o *WirelessLink) GetInterfaceBOk() (*BriefInterface, bool) {
 func (o *WirelessLink) SetInterfaceB(v BriefInterface) {
 	o.InterfaceB = v
 }
-
 
 // GetSsid returns the Ssid field value if set, zero value otherwise.
 func (o *WirelessLink) GetSsid() string {
@@ -321,6 +316,7 @@ func (o *WirelessLink) HasTenant() bool {
 func (o *WirelessLink) SetTenant(v BriefTenant) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *WirelessLink) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -459,6 +455,7 @@ func (o *WirelessLink) HasDistance() bool {
 func (o *WirelessLink) SetDistance(v float64) {
 	o.Distance.Set(&v)
 }
+
 // SetDistanceNil sets the value for Distance to be an explicit nil
 func (o *WirelessLink) SetDistanceNil() {
 	o.Distance.Set(nil)
@@ -501,6 +498,7 @@ func (o *WirelessLink) HasDistanceUnit() bool {
 func (o *WirelessLink) SetDistanceUnit(v CircuitDistanceUnit) {
 	o.DistanceUnit.Set(&v)
 }
+
 // SetDistanceUnitNil sets the value for DistanceUnit to be an explicit nil
 func (o *WirelessLink) SetDistanceUnitNil() {
 	o.DistanceUnit.Set(nil)
@@ -671,6 +669,7 @@ func (o *WirelessLink) HasCreated() bool {
 func (o *WirelessLink) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *WirelessLink) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -713,6 +712,7 @@ func (o *WirelessLink) HasLastUpdated() bool {
 func (o *WirelessLink) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *WirelessLink) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -724,7 +724,7 @@ func (o *WirelessLink) UnsetLastUpdated() {
 }
 
 func (o WirelessLink) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -805,32 +805,31 @@ func (o *WirelessLink) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -908,5 +907,3 @@ func (v *NullableWirelessLink) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

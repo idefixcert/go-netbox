@@ -19,15 +19,15 @@ var _ MappedNullable = &PatchedWritableIKEPolicyRequest{}
 
 // PatchedWritableIKEPolicyRequest Adds support for custom fields and tags.
 type PatchedWritableIKEPolicyRequest struct {
-	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Version *PatchedWritableIKEPolicyRequestVersion `json:"version,omitempty"`
-	Mode NullablePatchedWritableIKEPolicyRequestMode `json:"mode,omitempty"`
-	Proposals []int32 `json:"proposals,omitempty"`
-	PresharedKey *string `json:"preshared_key,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Name                 *string                                     `json:"name,omitempty"`
+	Description          *string                                     `json:"description,omitempty"`
+	Version              *PatchedWritableIKEPolicyRequestVersion     `json:"version,omitempty"`
+	Mode                 NullablePatchedWritableIKEPolicyRequestMode `json:"mode,omitempty"`
+	Proposals            []int32                                     `json:"proposals,omitempty"`
+	PresharedKey         *string                                     `json:"preshared_key,omitempty"`
+	Comments             *string                                     `json:"comments,omitempty"`
+	Tags                 []NestedTagRequest                          `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}                      `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -178,6 +178,7 @@ func (o *PatchedWritableIKEPolicyRequest) HasMode() bool {
 func (o *PatchedWritableIKEPolicyRequest) SetMode(v PatchedWritableIKEPolicyRequestMode) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *PatchedWritableIKEPolicyRequest) SetModeNil() {
 	o.Mode.Set(nil)
@@ -349,7 +350,7 @@ func (o *PatchedWritableIKEPolicyRequest) SetCustomFields(v map[string]interface
 }
 
 func (o PatchedWritableIKEPolicyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -457,5 +458,3 @@ func (v *NullablePatchedWritableIKEPolicyRequest) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the InventoryItemTemplate type satisfies the MappedNullable interface at compile time
@@ -21,26 +21,26 @@ var _ MappedNullable = &InventoryItemTemplate{}
 
 // InventoryItemTemplate Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type InventoryItemTemplate struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	Display string `json:"display"`
+	Id         int32           `json:"id"`
+	Url        string          `json:"url"`
+	Display    string          `json:"display"`
 	DeviceType BriefDeviceType `json:"device_type"`
-	Parent NullableInt32 `json:"parent,omitempty"`
+	Parent     NullableInt32   `json:"parent,omitempty"`
 	// {module} is accepted as a substitution for the module bay position when attached to a module type.
 	Name string `json:"name"`
 	// Physical label
-	Label *string `json:"label,omitempty"`
-	Role NullableBriefInventoryItemRole `json:"role,omitempty"`
-	Manufacturer NullableBriefManufacturer `json:"manufacturer,omitempty"`
+	Label        *string                        `json:"label,omitempty"`
+	Role         NullableBriefInventoryItemRole `json:"role,omitempty"`
+	Manufacturer NullableBriefManufacturer      `json:"manufacturer,omitempty"`
 	// Manufacturer-assigned part identifier
-	PartId *string `json:"part_id,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ComponentType NullableString `json:"component_type,omitempty"`
-	ComponentId NullableInt64 `json:"component_id,omitempty"`
-	Component interface{} `json:"component,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
-	Depth int32 `json:"_depth"`
+	PartId               *string        `json:"part_id,omitempty"`
+	Description          *string        `json:"description,omitempty"`
+	ComponentType        NullableString `json:"component_type,omitempty"`
+	ComponentId          NullableInt64  `json:"component_id,omitempty"`
+	Component            interface{}    `json:"component,omitempty"`
+	Created              NullableTime   `json:"created,omitempty"`
+	LastUpdated          NullableTime   `json:"last_updated,omitempty"`
+	Depth                int32          `json:"_depth"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -93,7 +93,6 @@ func (o *InventoryItemTemplate) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *InventoryItemTemplate) GetUrl() string {
 	if o == nil {
@@ -117,7 +116,6 @@ func (o *InventoryItemTemplate) GetUrlOk() (*string, bool) {
 func (o *InventoryItemTemplate) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplay returns the Display field value
 func (o *InventoryItemTemplate) GetDisplay() string {
@@ -143,7 +141,6 @@ func (o *InventoryItemTemplate) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetDeviceType returns the DeviceType field value
 func (o *InventoryItemTemplate) GetDeviceType() BriefDeviceType {
 	if o == nil {
@@ -167,7 +164,6 @@ func (o *InventoryItemTemplate) GetDeviceTypeOk() (*BriefDeviceType, bool) {
 func (o *InventoryItemTemplate) SetDeviceType(v BriefDeviceType) {
 	o.DeviceType = v
 }
-
 
 // GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InventoryItemTemplate) GetParent() int32 {
@@ -201,6 +197,7 @@ func (o *InventoryItemTemplate) HasParent() bool {
 func (o *InventoryItemTemplate) SetParent(v int32) {
 	o.Parent.Set(&v)
 }
+
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *InventoryItemTemplate) SetParentNil() {
 	o.Parent.Set(nil)
@@ -234,7 +231,6 @@ func (o *InventoryItemTemplate) GetNameOk() (*string, bool) {
 func (o *InventoryItemTemplate) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *InventoryItemTemplate) GetLabel() string {
@@ -300,6 +296,7 @@ func (o *InventoryItemTemplate) HasRole() bool {
 func (o *InventoryItemTemplate) SetRole(v BriefInventoryItemRole) {
 	o.Role.Set(&v)
 }
+
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *InventoryItemTemplate) SetRoleNil() {
 	o.Role.Set(nil)
@@ -342,6 +339,7 @@ func (o *InventoryItemTemplate) HasManufacturer() bool {
 func (o *InventoryItemTemplate) SetManufacturer(v BriefManufacturer) {
 	o.Manufacturer.Set(&v)
 }
+
 // SetManufacturerNil sets the value for Manufacturer to be an explicit nil
 func (o *InventoryItemTemplate) SetManufacturerNil() {
 	o.Manufacturer.Set(nil)
@@ -448,6 +446,7 @@ func (o *InventoryItemTemplate) HasComponentType() bool {
 func (o *InventoryItemTemplate) SetComponentType(v string) {
 	o.ComponentType.Set(&v)
 }
+
 // SetComponentTypeNil sets the value for ComponentType to be an explicit nil
 func (o *InventoryItemTemplate) SetComponentTypeNil() {
 	o.ComponentType.Set(nil)
@@ -490,6 +489,7 @@ func (o *InventoryItemTemplate) HasComponentId() bool {
 func (o *InventoryItemTemplate) SetComponentId(v int64) {
 	o.ComponentId.Set(&v)
 }
+
 // SetComponentIdNil sets the value for ComponentId to be an explicit nil
 func (o *InventoryItemTemplate) SetComponentIdNil() {
 	o.ComponentId.Set(nil)
@@ -565,6 +565,7 @@ func (o *InventoryItemTemplate) HasCreated() bool {
 func (o *InventoryItemTemplate) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *InventoryItemTemplate) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -607,6 +608,7 @@ func (o *InventoryItemTemplate) HasLastUpdated() bool {
 func (o *InventoryItemTemplate) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *InventoryItemTemplate) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -641,9 +643,8 @@ func (o *InventoryItemTemplate) SetDepth(v int32) {
 	o.Depth = v
 }
 
-
 func (o InventoryItemTemplate) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -714,32 +715,31 @@ func (o *InventoryItemTemplate) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -814,5 +814,3 @@ func (v *NullableInventoryItemTemplate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

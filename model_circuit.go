@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the Circuit type satisfies the MappedNullable interface at compile time
@@ -21,32 +21,32 @@ var _ MappedNullable = &Circuit{}
 
 // Circuit Adds support for custom fields and tags.
 type Circuit struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
+	Id         int32   `json:"id"`
+	Url        string  `json:"url"`
 	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
+	Display    string  `json:"display"`
 	// Unique circuit ID
-	Cid string `json:"cid"`
-	Provider BriefProvider `json:"provider"`
+	Cid             string                       `json:"cid"`
+	Provider        BriefProvider                `json:"provider"`
 	ProviderAccount NullableBriefProviderAccount `json:"provider_account,omitempty"`
-	Type BriefCircuitType `json:"type"`
-	Status *CircuitStatus `json:"status,omitempty"`
-	Tenant NullableBriefTenant `json:"tenant,omitempty"`
-	InstallDate NullableString `json:"install_date,omitempty"`
-	TerminationDate NullableString `json:"termination_date,omitempty"`
+	Type            BriefCircuitType             `json:"type"`
+	Status          *CircuitStatus               `json:"status,omitempty"`
+	Tenant          NullableBriefTenant          `json:"tenant,omitempty"`
+	InstallDate     NullableString               `json:"install_date,omitempty"`
+	TerminationDate NullableString               `json:"termination_date,omitempty"`
 	// Committed rate
-	CommitRate NullableInt32 `json:"commit_rate,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Distance NullableFloat64 `json:"distance,omitempty"`
-	DistanceUnit NullableCircuitDistanceUnit `json:"distance_unit,omitempty"`
-	TerminationA NullableCircuitCircuitTermination `json:"termination_a,omitempty"`
-	TerminationZ NullableCircuitCircuitTermination `json:"termination_z,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
-	Assignments []BriefCircuitGroupAssignmentSerializer `json:"assignments,omitempty"`
+	CommitRate           NullableInt32                           `json:"commit_rate,omitempty"`
+	Description          *string                                 `json:"description,omitempty"`
+	Distance             NullableFloat64                         `json:"distance,omitempty"`
+	DistanceUnit         NullableCircuitDistanceUnit             `json:"distance_unit,omitempty"`
+	TerminationA         NullableCircuitCircuitTermination       `json:"termination_a,omitempty"`
+	TerminationZ         NullableCircuitCircuitTermination       `json:"termination_z,omitempty"`
+	Comments             *string                                 `json:"comments,omitempty"`
+	Tags                 []NestedTag                             `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}                  `json:"custom_fields,omitempty"`
+	Created              NullableTime                            `json:"created,omitempty"`
+	LastUpdated          NullableTime                            `json:"last_updated,omitempty"`
+	Assignments          []BriefCircuitGroupAssignmentSerializer `json:"assignments,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -99,7 +99,6 @@ func (o *Circuit) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *Circuit) GetUrl() string {
 	if o == nil {
@@ -123,7 +122,6 @@ func (o *Circuit) GetUrlOk() (*string, bool) {
 func (o *Circuit) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *Circuit) GetDisplayUrl() string {
@@ -181,7 +179,6 @@ func (o *Circuit) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetCid returns the Cid field value
 func (o *Circuit) GetCid() string {
 	if o == nil {
@@ -206,7 +203,6 @@ func (o *Circuit) SetCid(v string) {
 	o.Cid = v
 }
 
-
 // GetProvider returns the Provider field value
 func (o *Circuit) GetProvider() BriefProvider {
 	if o == nil {
@@ -230,7 +226,6 @@ func (o *Circuit) GetProviderOk() (*BriefProvider, bool) {
 func (o *Circuit) SetProvider(v BriefProvider) {
 	o.Provider = v
 }
-
 
 // GetProviderAccount returns the ProviderAccount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Circuit) GetProviderAccount() BriefProviderAccount {
@@ -264,6 +259,7 @@ func (o *Circuit) HasProviderAccount() bool {
 func (o *Circuit) SetProviderAccount(v BriefProviderAccount) {
 	o.ProviderAccount.Set(&v)
 }
+
 // SetProviderAccountNil sets the value for ProviderAccount to be an explicit nil
 func (o *Circuit) SetProviderAccountNil() {
 	o.ProviderAccount.Set(nil)
@@ -297,7 +293,6 @@ func (o *Circuit) GetTypeOk() (*BriefCircuitType, bool) {
 func (o *Circuit) SetType(v BriefCircuitType) {
 	o.Type = v
 }
-
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Circuit) GetStatus() CircuitStatus {
@@ -363,6 +358,7 @@ func (o *Circuit) HasTenant() bool {
 func (o *Circuit) SetTenant(v BriefTenant) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *Circuit) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -405,6 +401,7 @@ func (o *Circuit) HasInstallDate() bool {
 func (o *Circuit) SetInstallDate(v string) {
 	o.InstallDate.Set(&v)
 }
+
 // SetInstallDateNil sets the value for InstallDate to be an explicit nil
 func (o *Circuit) SetInstallDateNil() {
 	o.InstallDate.Set(nil)
@@ -447,6 +444,7 @@ func (o *Circuit) HasTerminationDate() bool {
 func (o *Circuit) SetTerminationDate(v string) {
 	o.TerminationDate.Set(&v)
 }
+
 // SetTerminationDateNil sets the value for TerminationDate to be an explicit nil
 func (o *Circuit) SetTerminationDateNil() {
 	o.TerminationDate.Set(nil)
@@ -489,6 +487,7 @@ func (o *Circuit) HasCommitRate() bool {
 func (o *Circuit) SetCommitRate(v int32) {
 	o.CommitRate.Set(&v)
 }
+
 // SetCommitRateNil sets the value for CommitRate to be an explicit nil
 func (o *Circuit) SetCommitRateNil() {
 	o.CommitRate.Set(nil)
@@ -563,6 +562,7 @@ func (o *Circuit) HasDistance() bool {
 func (o *Circuit) SetDistance(v float64) {
 	o.Distance.Set(&v)
 }
+
 // SetDistanceNil sets the value for Distance to be an explicit nil
 func (o *Circuit) SetDistanceNil() {
 	o.Distance.Set(nil)
@@ -605,6 +605,7 @@ func (o *Circuit) HasDistanceUnit() bool {
 func (o *Circuit) SetDistanceUnit(v CircuitDistanceUnit) {
 	o.DistanceUnit.Set(&v)
 }
+
 // SetDistanceUnitNil sets the value for DistanceUnit to be an explicit nil
 func (o *Circuit) SetDistanceUnitNil() {
 	o.DistanceUnit.Set(nil)
@@ -647,6 +648,7 @@ func (o *Circuit) HasTerminationA() bool {
 func (o *Circuit) SetTerminationA(v CircuitCircuitTermination) {
 	o.TerminationA.Set(&v)
 }
+
 // SetTerminationANil sets the value for TerminationA to be an explicit nil
 func (o *Circuit) SetTerminationANil() {
 	o.TerminationA.Set(nil)
@@ -689,6 +691,7 @@ func (o *Circuit) HasTerminationZ() bool {
 func (o *Circuit) SetTerminationZ(v CircuitCircuitTermination) {
 	o.TerminationZ.Set(&v)
 }
+
 // SetTerminationZNil sets the value for TerminationZ to be an explicit nil
 func (o *Circuit) SetTerminationZNil() {
 	o.TerminationZ.Set(nil)
@@ -827,6 +830,7 @@ func (o *Circuit) HasCreated() bool {
 func (o *Circuit) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *Circuit) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -869,6 +873,7 @@ func (o *Circuit) HasLastUpdated() bool {
 func (o *Circuit) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *Circuit) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -912,7 +917,7 @@ func (o *Circuit) SetAssignments(v []BriefCircuitGroupAssignmentSerializer) {
 }
 
 func (o Circuit) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1004,32 +1009,31 @@ func (o *Circuit) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -1111,5 +1115,3 @@ func (v *NullableCircuit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

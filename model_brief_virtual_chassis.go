@@ -20,13 +20,13 @@ var _ MappedNullable = &BriefVirtualChassis{}
 
 // BriefVirtualChassis Adds support for custom fields and tags.
 type BriefVirtualChassis struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Master NullableNestedDevice `json:"master,omitempty"`
-	Description *string `json:"description,omitempty"`
-	MemberCount *int32 `json:"member_count,omitempty"`
+	Id                   int32                `json:"id"`
+	Url                  string               `json:"url"`
+	Display              string               `json:"display"`
+	Name                 string               `json:"name"`
+	Master               NullableNestedDevice `json:"master,omitempty"`
+	Description          *string              `json:"description,omitempty"`
+	MemberCount          *int32               `json:"member_count,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,6 @@ func (o *BriefVirtualChassis) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *BriefVirtualChassis) GetUrl() string {
 	if o == nil {
@@ -101,7 +100,6 @@ func (o *BriefVirtualChassis) GetUrlOk() (*string, bool) {
 func (o *BriefVirtualChassis) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplay returns the Display field value
 func (o *BriefVirtualChassis) GetDisplay() string {
@@ -127,7 +125,6 @@ func (o *BriefVirtualChassis) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *BriefVirtualChassis) GetName() string {
 	if o == nil {
@@ -151,7 +148,6 @@ func (o *BriefVirtualChassis) GetNameOk() (*string, bool) {
 func (o *BriefVirtualChassis) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetMaster returns the Master field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BriefVirtualChassis) GetMaster() NestedDevice {
@@ -185,6 +181,7 @@ func (o *BriefVirtualChassis) HasMaster() bool {
 func (o *BriefVirtualChassis) SetMaster(v NestedDevice) {
 	o.Master.Set(&v)
 }
+
 // SetMasterNil sets the value for Master to be an explicit nil
 func (o *BriefVirtualChassis) SetMasterNil() {
 	o.Master.Set(nil)
@@ -260,7 +257,7 @@ func (o *BriefVirtualChassis) SetMemberCount(v int32) {
 }
 
 func (o BriefVirtualChassis) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,32 +300,31 @@ func (o *BriefVirtualChassis) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -393,5 +389,3 @@ func (v *NullableBriefVirtualChassis) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

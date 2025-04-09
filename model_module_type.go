@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the ModuleType type satisfies the MappedNullable interface at compile time
@@ -21,23 +21,23 @@ var _ MappedNullable = &ModuleType{}
 
 // ModuleType Adds support for custom fields and tags.
 type ModuleType struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
+	Id           int32             `json:"id"`
+	Url          string            `json:"url"`
+	DisplayUrl   *string           `json:"display_url,omitempty"`
+	Display      string            `json:"display"`
 	Manufacturer BriefManufacturer `json:"manufacturer"`
-	Model string `json:"model"`
+	Model        string            `json:"model"`
 	// Discrete part number (optional)
-	PartNumber *string `json:"part_number,omitempty"`
-	Airflow NullableModuleTypeAirflow `json:"airflow,omitempty"`
-	Weight NullableFloat64 `json:"weight,omitempty"`
-	WeightUnit NullableDeviceTypeWeightUnit `json:"weight_unit,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	PartNumber           *string                      `json:"part_number,omitempty"`
+	Airflow              NullableModuleTypeAirflow    `json:"airflow,omitempty"`
+	Weight               NullableFloat64              `json:"weight,omitempty"`
+	WeightUnit           NullableDeviceTypeWeightUnit `json:"weight_unit,omitempty"`
+	Description          *string                      `json:"description,omitempty"`
+	Comments             *string                      `json:"comments,omitempty"`
+	Tags                 []NestedTag                  `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}       `json:"custom_fields,omitempty"`
+	Created              NullableTime                 `json:"created,omitempty"`
+	LastUpdated          NullableTime                 `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -89,7 +89,6 @@ func (o *ModuleType) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *ModuleType) GetUrl() string {
 	if o == nil {
@@ -113,7 +112,6 @@ func (o *ModuleType) GetUrlOk() (*string, bool) {
 func (o *ModuleType) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *ModuleType) GetDisplayUrl() string {
@@ -171,7 +169,6 @@ func (o *ModuleType) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetManufacturer returns the Manufacturer field value
 func (o *ModuleType) GetManufacturer() BriefManufacturer {
 	if o == nil {
@@ -196,7 +193,6 @@ func (o *ModuleType) SetManufacturer(v BriefManufacturer) {
 	o.Manufacturer = v
 }
 
-
 // GetModel returns the Model field value
 func (o *ModuleType) GetModel() string {
 	if o == nil {
@@ -220,7 +216,6 @@ func (o *ModuleType) GetModelOk() (*string, bool) {
 func (o *ModuleType) SetModel(v string) {
 	o.Model = v
 }
-
 
 // GetPartNumber returns the PartNumber field value if set, zero value otherwise.
 func (o *ModuleType) GetPartNumber() string {
@@ -286,6 +281,7 @@ func (o *ModuleType) HasAirflow() bool {
 func (o *ModuleType) SetAirflow(v ModuleTypeAirflow) {
 	o.Airflow.Set(&v)
 }
+
 // SetAirflowNil sets the value for Airflow to be an explicit nil
 func (o *ModuleType) SetAirflowNil() {
 	o.Airflow.Set(nil)
@@ -328,6 +324,7 @@ func (o *ModuleType) HasWeight() bool {
 func (o *ModuleType) SetWeight(v float64) {
 	o.Weight.Set(&v)
 }
+
 // SetWeightNil sets the value for Weight to be an explicit nil
 func (o *ModuleType) SetWeightNil() {
 	o.Weight.Set(nil)
@@ -370,6 +367,7 @@ func (o *ModuleType) HasWeightUnit() bool {
 func (o *ModuleType) SetWeightUnit(v DeviceTypeWeightUnit) {
 	o.WeightUnit.Set(&v)
 }
+
 // SetWeightUnitNil sets the value for WeightUnit to be an explicit nil
 func (o *ModuleType) SetWeightUnitNil() {
 	o.WeightUnit.Set(nil)
@@ -540,6 +538,7 @@ func (o *ModuleType) HasCreated() bool {
 func (o *ModuleType) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *ModuleType) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -582,6 +581,7 @@ func (o *ModuleType) HasLastUpdated() bool {
 func (o *ModuleType) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *ModuleType) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -593,7 +593,7 @@ func (o *ModuleType) UnsetLastUpdated() {
 }
 
 func (o ModuleType) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -662,32 +662,31 @@ func (o *ModuleType) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -761,5 +760,3 @@ func (v *NullableModuleType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

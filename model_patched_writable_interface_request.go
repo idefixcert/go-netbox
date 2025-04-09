@@ -19,45 +19,45 @@ var _ MappedNullable = &PatchedWritableInterfaceRequest{}
 
 // PatchedWritableInterfaceRequest Adds support for custom fields and tags.
 type PatchedWritableInterfaceRequest struct {
-	Device *BriefDeviceRequest `json:"device,omitempty"`
-	Vdcs []int32 `json:"vdcs,omitempty"`
+	Device *BriefDeviceRequest        `json:"device,omitempty"`
+	Vdcs   []int32                    `json:"vdcs,omitempty"`
 	Module NullableBriefModuleRequest `json:"module,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Name   *string                    `json:"name,omitempty"`
 	// Physical label
-	Label *string `json:"label,omitempty"`
-	Type *InterfaceTypeValue `json:"type,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Parent NullableInt32 `json:"parent,omitempty"`
-	Bridge NullableInt32 `json:"bridge,omitempty"`
-	Lag NullableInt32 `json:"lag,omitempty"`
-	Mtu NullableInt32 `json:"mtu,omitempty"`
+	Label             *string                        `json:"label,omitempty"`
+	Type              *InterfaceTypeValue            `json:"type,omitempty"`
+	Enabled           *bool                          `json:"enabled,omitempty"`
+	Parent            NullableInt32                  `json:"parent,omitempty"`
+	Bridge            NullableInt32                  `json:"bridge,omitempty"`
+	Lag               NullableInt32                  `json:"lag,omitempty"`
+	Mtu               NullableInt32                  `json:"mtu,omitempty"`
 	PrimaryMacAddress NullableBriefMACAddressRequest `json:"primary_mac_address,omitempty"`
-	Speed NullableInt32 `json:"speed,omitempty"`
-	Duplex NullableInterfaceRequestDuplex `json:"duplex,omitempty"`
-	Wwn NullableString `json:"wwn,omitempty"`
+	Speed             NullableInt32                  `json:"speed,omitempty"`
+	Duplex            NullableInterfaceRequestDuplex `json:"duplex,omitempty"`
+	Wwn               NullableString                 `json:"wwn,omitempty"`
 	// This interface is used only for out-of-band management
-	MgmtOnly *bool `json:"mgmt_only,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Mode NullablePatchedWritableInterfaceRequestMode `json:"mode,omitempty"`
-	RfRole NullableWirelessRole `json:"rf_role,omitempty"`
-	RfChannel NullableWirelessChannel `json:"rf_channel,omitempty"`
-	PoeMode NullableInterfaceTemplateRequestPoeMode `json:"poe_mode,omitempty"`
-	PoeType NullableInterfaceTemplateRequestPoeType `json:"poe_type,omitempty"`
+	MgmtOnly    *bool                                       `json:"mgmt_only,omitempty"`
+	Description *string                                     `json:"description,omitempty"`
+	Mode        NullablePatchedWritableInterfaceRequestMode `json:"mode,omitempty"`
+	RfRole      NullableWirelessRole                        `json:"rf_role,omitempty"`
+	RfChannel   NullableWirelessChannel                     `json:"rf_channel,omitempty"`
+	PoeMode     NullableInterfaceTemplateRequestPoeMode     `json:"poe_mode,omitempty"`
+	PoeType     NullableInterfaceTemplateRequestPoeType     `json:"poe_type,omitempty"`
 	// Populated by selected channel (if set)
 	RfChannelFrequency NullableFloat64 `json:"rf_channel_frequency,omitempty"`
 	// Populated by selected channel (if set)
-	RfChannelWidth NullableFloat64 `json:"rf_channel_width,omitempty"`
-	TxPower NullableInt32 `json:"tx_power,omitempty"`
-	UntaggedVlan NullableBriefVLANRequest `json:"untagged_vlan,omitempty"`
-	TaggedVlans []int32 `json:"tagged_vlans,omitempty"`
-	QinqSvlan NullableBriefVLANRequest `json:"qinq_svlan,omitempty"`
+	RfChannelWidth        NullableFloat64                           `json:"rf_channel_width,omitempty"`
+	TxPower               NullableInt32                             `json:"tx_power,omitempty"`
+	UntaggedVlan          NullableBriefVLANRequest                  `json:"untagged_vlan,omitempty"`
+	TaggedVlans           []int32                                   `json:"tagged_vlans,omitempty"`
+	QinqSvlan             NullableBriefVLANRequest                  `json:"qinq_svlan,omitempty"`
 	VlanTranslationPolicy NullableBriefVLANTranslationPolicyRequest `json:"vlan_translation_policy,omitempty"`
 	// Treat as if a cable is connected
-	MarkConnected *bool `json:"mark_connected,omitempty"`
-	WirelessLans []int32 `json:"wireless_lans,omitempty"`
-	Vrf NullableBriefVRFRequest `json:"vrf,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	MarkConnected        *bool                   `json:"mark_connected,omitempty"`
+	WirelessLans         []int32                 `json:"wireless_lans,omitempty"`
+	Vrf                  NullableBriefVRFRequest `json:"vrf,omitempty"`
+	Tags                 []NestedTagRequest      `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}  `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -176,6 +176,7 @@ func (o *PatchedWritableInterfaceRequest) HasModule() bool {
 func (o *PatchedWritableInterfaceRequest) SetModule(v BriefModuleRequest) {
 	o.Module.Set(&v)
 }
+
 // SetModuleNil sets the value for Module to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetModuleNil() {
 	o.Module.Set(nil)
@@ -346,6 +347,7 @@ func (o *PatchedWritableInterfaceRequest) HasParent() bool {
 func (o *PatchedWritableInterfaceRequest) SetParent(v int32) {
 	o.Parent.Set(&v)
 }
+
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetParentNil() {
 	o.Parent.Set(nil)
@@ -388,6 +390,7 @@ func (o *PatchedWritableInterfaceRequest) HasBridge() bool {
 func (o *PatchedWritableInterfaceRequest) SetBridge(v int32) {
 	o.Bridge.Set(&v)
 }
+
 // SetBridgeNil sets the value for Bridge to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetBridgeNil() {
 	o.Bridge.Set(nil)
@@ -430,6 +433,7 @@ func (o *PatchedWritableInterfaceRequest) HasLag() bool {
 func (o *PatchedWritableInterfaceRequest) SetLag(v int32) {
 	o.Lag.Set(&v)
 }
+
 // SetLagNil sets the value for Lag to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetLagNil() {
 	o.Lag.Set(nil)
@@ -472,6 +476,7 @@ func (o *PatchedWritableInterfaceRequest) HasMtu() bool {
 func (o *PatchedWritableInterfaceRequest) SetMtu(v int32) {
 	o.Mtu.Set(&v)
 }
+
 // SetMtuNil sets the value for Mtu to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetMtuNil() {
 	o.Mtu.Set(nil)
@@ -514,6 +519,7 @@ func (o *PatchedWritableInterfaceRequest) HasPrimaryMacAddress() bool {
 func (o *PatchedWritableInterfaceRequest) SetPrimaryMacAddress(v BriefMACAddressRequest) {
 	o.PrimaryMacAddress.Set(&v)
 }
+
 // SetPrimaryMacAddressNil sets the value for PrimaryMacAddress to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetPrimaryMacAddressNil() {
 	o.PrimaryMacAddress.Set(nil)
@@ -556,6 +562,7 @@ func (o *PatchedWritableInterfaceRequest) HasSpeed() bool {
 func (o *PatchedWritableInterfaceRequest) SetSpeed(v int32) {
 	o.Speed.Set(&v)
 }
+
 // SetSpeedNil sets the value for Speed to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetSpeedNil() {
 	o.Speed.Set(nil)
@@ -598,6 +605,7 @@ func (o *PatchedWritableInterfaceRequest) HasDuplex() bool {
 func (o *PatchedWritableInterfaceRequest) SetDuplex(v InterfaceRequestDuplex) {
 	o.Duplex.Set(&v)
 }
+
 // SetDuplexNil sets the value for Duplex to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetDuplexNil() {
 	o.Duplex.Set(nil)
@@ -640,6 +648,7 @@ func (o *PatchedWritableInterfaceRequest) HasWwn() bool {
 func (o *PatchedWritableInterfaceRequest) SetWwn(v string) {
 	o.Wwn.Set(&v)
 }
+
 // SetWwnNil sets the value for Wwn to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetWwnNil() {
 	o.Wwn.Set(nil)
@@ -746,6 +755,7 @@ func (o *PatchedWritableInterfaceRequest) HasMode() bool {
 func (o *PatchedWritableInterfaceRequest) SetMode(v PatchedWritableInterfaceRequestMode) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetModeNil() {
 	o.Mode.Set(nil)
@@ -788,6 +798,7 @@ func (o *PatchedWritableInterfaceRequest) HasRfRole() bool {
 func (o *PatchedWritableInterfaceRequest) SetRfRole(v WirelessRole) {
 	o.RfRole.Set(&v)
 }
+
 // SetRfRoleNil sets the value for RfRole to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetRfRoleNil() {
 	o.RfRole.Set(nil)
@@ -830,6 +841,7 @@ func (o *PatchedWritableInterfaceRequest) HasRfChannel() bool {
 func (o *PatchedWritableInterfaceRequest) SetRfChannel(v WirelessChannel) {
 	o.RfChannel.Set(&v)
 }
+
 // SetRfChannelNil sets the value for RfChannel to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetRfChannelNil() {
 	o.RfChannel.Set(nil)
@@ -872,6 +884,7 @@ func (o *PatchedWritableInterfaceRequest) HasPoeMode() bool {
 func (o *PatchedWritableInterfaceRequest) SetPoeMode(v InterfaceTemplateRequestPoeMode) {
 	o.PoeMode.Set(&v)
 }
+
 // SetPoeModeNil sets the value for PoeMode to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetPoeModeNil() {
 	o.PoeMode.Set(nil)
@@ -914,6 +927,7 @@ func (o *PatchedWritableInterfaceRequest) HasPoeType() bool {
 func (o *PatchedWritableInterfaceRequest) SetPoeType(v InterfaceTemplateRequestPoeType) {
 	o.PoeType.Set(&v)
 }
+
 // SetPoeTypeNil sets the value for PoeType to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetPoeTypeNil() {
 	o.PoeType.Set(nil)
@@ -956,6 +970,7 @@ func (o *PatchedWritableInterfaceRequest) HasRfChannelFrequency() bool {
 func (o *PatchedWritableInterfaceRequest) SetRfChannelFrequency(v float64) {
 	o.RfChannelFrequency.Set(&v)
 }
+
 // SetRfChannelFrequencyNil sets the value for RfChannelFrequency to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetRfChannelFrequencyNil() {
 	o.RfChannelFrequency.Set(nil)
@@ -998,6 +1013,7 @@ func (o *PatchedWritableInterfaceRequest) HasRfChannelWidth() bool {
 func (o *PatchedWritableInterfaceRequest) SetRfChannelWidth(v float64) {
 	o.RfChannelWidth.Set(&v)
 }
+
 // SetRfChannelWidthNil sets the value for RfChannelWidth to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetRfChannelWidthNil() {
 	o.RfChannelWidth.Set(nil)
@@ -1040,6 +1056,7 @@ func (o *PatchedWritableInterfaceRequest) HasTxPower() bool {
 func (o *PatchedWritableInterfaceRequest) SetTxPower(v int32) {
 	o.TxPower.Set(&v)
 }
+
 // SetTxPowerNil sets the value for TxPower to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetTxPowerNil() {
 	o.TxPower.Set(nil)
@@ -1082,6 +1099,7 @@ func (o *PatchedWritableInterfaceRequest) HasUntaggedVlan() bool {
 func (o *PatchedWritableInterfaceRequest) SetUntaggedVlan(v BriefVLANRequest) {
 	o.UntaggedVlan.Set(&v)
 }
+
 // SetUntaggedVlanNil sets the value for UntaggedVlan to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetUntaggedVlanNil() {
 	o.UntaggedVlan.Set(nil)
@@ -1156,6 +1174,7 @@ func (o *PatchedWritableInterfaceRequest) HasQinqSvlan() bool {
 func (o *PatchedWritableInterfaceRequest) SetQinqSvlan(v BriefVLANRequest) {
 	o.QinqSvlan.Set(&v)
 }
+
 // SetQinqSvlanNil sets the value for QinqSvlan to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetQinqSvlanNil() {
 	o.QinqSvlan.Set(nil)
@@ -1198,6 +1217,7 @@ func (o *PatchedWritableInterfaceRequest) HasVlanTranslationPolicy() bool {
 func (o *PatchedWritableInterfaceRequest) SetVlanTranslationPolicy(v BriefVLANTranslationPolicyRequest) {
 	o.VlanTranslationPolicy.Set(&v)
 }
+
 // SetVlanTranslationPolicyNil sets the value for VlanTranslationPolicy to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetVlanTranslationPolicyNil() {
 	o.VlanTranslationPolicy.Set(nil)
@@ -1304,6 +1324,7 @@ func (o *PatchedWritableInterfaceRequest) HasVrf() bool {
 func (o *PatchedWritableInterfaceRequest) SetVrf(v BriefVRFRequest) {
 	o.Vrf.Set(&v)
 }
+
 // SetVrfNil sets the value for Vrf to be an explicit nil
 func (o *PatchedWritableInterfaceRequest) SetVrfNil() {
 	o.Vrf.Set(nil)
@@ -1379,7 +1400,7 @@ func (o *PatchedWritableInterfaceRequest) SetCustomFields(v map[string]interface
 }
 
 func (o PatchedWritableInterfaceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1587,5 +1608,3 @@ func (v *NullablePatchedWritableInterfaceRequest) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

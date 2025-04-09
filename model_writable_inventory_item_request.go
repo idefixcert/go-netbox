@@ -21,25 +21,25 @@ var _ MappedNullable = &WritableInventoryItemRequest{}
 // WritableInventoryItemRequest Adds support for custom fields and tags.
 type WritableInventoryItemRequest struct {
 	Device BriefDeviceRequest `json:"device"`
-	Parent NullableInt32 `json:"parent,omitempty"`
-	Name string `json:"name"`
+	Parent NullableInt32      `json:"parent,omitempty"`
+	Name   string             `json:"name"`
 	// Physical label
-	Label *string `json:"label,omitempty"`
-	Status *InventoryItemStatusValue `json:"status,omitempty"`
-	Role NullableBriefInventoryItemRoleRequest `json:"role,omitempty"`
-	Manufacturer NullableBriefManufacturerRequest `json:"manufacturer,omitempty"`
+	Label        *string                               `json:"label,omitempty"`
+	Status       *ModuleRequestStatus                  `json:"status,omitempty"`
+	Role         NullableBriefInventoryItemRoleRequest `json:"role,omitempty"`
+	Manufacturer NullableBriefManufacturerRequest      `json:"manufacturer,omitempty"`
 	// Manufacturer-assigned part identifier
 	PartId *string `json:"part_id,omitempty"`
 	Serial *string `json:"serial,omitempty"`
 	// A unique tag used to identify this item
 	AssetTag NullableString `json:"asset_tag,omitempty"`
 	// This item was automatically discovered
-	Discovered *bool `json:"discovered,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ComponentType NullableString `json:"component_type,omitempty"`
-	ComponentId NullableInt64 `json:"component_id,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Discovered           *bool                  `json:"discovered,omitempty"`
+	Description          *string                `json:"description,omitempty"`
+	ComponentType        NullableString         `json:"component_type,omitempty"`
+	ComponentId          NullableInt64          `json:"component_id,omitempty"`
+	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -88,7 +88,6 @@ func (o *WritableInventoryItemRequest) SetDevice(v BriefDeviceRequest) {
 	o.Device = v
 }
 
-
 // GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableInventoryItemRequest) GetParent() int32 {
 	if o == nil || IsNil(o.Parent.Get()) {
@@ -121,6 +120,7 @@ func (o *WritableInventoryItemRequest) HasParent() bool {
 func (o *WritableInventoryItemRequest) SetParent(v int32) {
 	o.Parent.Set(&v)
 }
+
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *WritableInventoryItemRequest) SetParentNil() {
 	o.Parent.Set(nil)
@@ -155,7 +155,6 @@ func (o *WritableInventoryItemRequest) SetName(v string) {
 	o.Name = v
 }
 
-
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *WritableInventoryItemRequest) GetLabel() string {
 	if o == nil || IsNil(o.Label) {
@@ -189,9 +188,9 @@ func (o *WritableInventoryItemRequest) SetLabel(v string) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *WritableInventoryItemRequest) GetStatus() InventoryItemStatusValue {
+func (o *WritableInventoryItemRequest) GetStatus() ModuleRequestStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret InventoryItemStatusValue
+		var ret ModuleRequestStatus
 		return ret
 	}
 	return *o.Status
@@ -199,7 +198,7 @@ func (o *WritableInventoryItemRequest) GetStatus() InventoryItemStatusValue {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WritableInventoryItemRequest) GetStatusOk() (*InventoryItemStatusValue, bool) {
+func (o *WritableInventoryItemRequest) GetStatusOk() (*ModuleRequestStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -215,8 +214,8 @@ func (o *WritableInventoryItemRequest) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given InventoryItemStatusValue and assigns it to the Status field.
-func (o *WritableInventoryItemRequest) SetStatus(v InventoryItemStatusValue) {
+// SetStatus gets a reference to the given ModuleRequestStatus and assigns it to the Status field.
+func (o *WritableInventoryItemRequest) SetStatus(v ModuleRequestStatus) {
 	o.Status = &v
 }
 
@@ -252,6 +251,7 @@ func (o *WritableInventoryItemRequest) HasRole() bool {
 func (o *WritableInventoryItemRequest) SetRole(v BriefInventoryItemRoleRequest) {
 	o.Role.Set(&v)
 }
+
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *WritableInventoryItemRequest) SetRoleNil() {
 	o.Role.Set(nil)
@@ -294,6 +294,7 @@ func (o *WritableInventoryItemRequest) HasManufacturer() bool {
 func (o *WritableInventoryItemRequest) SetManufacturer(v BriefManufacturerRequest) {
 	o.Manufacturer.Set(&v)
 }
+
 // SetManufacturerNil sets the value for Manufacturer to be an explicit nil
 func (o *WritableInventoryItemRequest) SetManufacturerNil() {
 	o.Manufacturer.Set(nil)
@@ -400,6 +401,7 @@ func (o *WritableInventoryItemRequest) HasAssetTag() bool {
 func (o *WritableInventoryItemRequest) SetAssetTag(v string) {
 	o.AssetTag.Set(&v)
 }
+
 // SetAssetTagNil sets the value for AssetTag to be an explicit nil
 func (o *WritableInventoryItemRequest) SetAssetTagNil() {
 	o.AssetTag.Set(nil)
@@ -506,6 +508,7 @@ func (o *WritableInventoryItemRequest) HasComponentType() bool {
 func (o *WritableInventoryItemRequest) SetComponentType(v string) {
 	o.ComponentType.Set(&v)
 }
+
 // SetComponentTypeNil sets the value for ComponentType to be an explicit nil
 func (o *WritableInventoryItemRequest) SetComponentTypeNil() {
 	o.ComponentType.Set(nil)
@@ -548,6 +551,7 @@ func (o *WritableInventoryItemRequest) HasComponentId() bool {
 func (o *WritableInventoryItemRequest) SetComponentId(v int64) {
 	o.ComponentId.Set(&v)
 }
+
 // SetComponentIdNil sets the value for ComponentId to be an explicit nil
 func (o *WritableInventoryItemRequest) SetComponentIdNil() {
 	o.ComponentId.Set(nil)
@@ -623,7 +627,7 @@ func (o *WritableInventoryItemRequest) SetCustomFields(v map[string]interface{})
 }
 
 func (o WritableInventoryItemRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -695,32 +699,31 @@ func (o *WritableInventoryItemRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -794,5 +797,3 @@ func (v *NullableWritableInventoryItemRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

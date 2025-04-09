@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the Role type satisfies the MappedNullable interface at compile time
@@ -21,20 +21,20 @@ var _ MappedNullable = &Role{}
 
 // Role Adds support for custom fields and tags.
 type Role struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Weight *int32 `json:"weight,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
-	PrefixCount *int64 `json:"prefix_count,omitempty"`
-	VlanCount *int64 `json:"vlan_count,omitempty"`
+	Id                   int32                  `json:"id"`
+	Url                  string                 `json:"url"`
+	DisplayUrl           *string                `json:"display_url,omitempty"`
+	Display              string                 `json:"display"`
+	Name                 string                 `json:"name"`
+	Slug                 string                 `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Weight               *int32                 `json:"weight,omitempty"`
+	Description          *string                `json:"description,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
+	PrefixCount          *int64                 `json:"prefix_count,omitempty"`
+	VlanCount            *int64                 `json:"vlan_count,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -86,7 +86,6 @@ func (o *Role) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *Role) GetUrl() string {
 	if o == nil {
@@ -110,7 +109,6 @@ func (o *Role) GetUrlOk() (*string, bool) {
 func (o *Role) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *Role) GetDisplayUrl() string {
@@ -168,7 +166,6 @@ func (o *Role) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *Role) GetName() string {
 	if o == nil {
@@ -193,7 +190,6 @@ func (o *Role) SetName(v string) {
 	o.Name = v
 }
 
-
 // GetSlug returns the Slug field value
 func (o *Role) GetSlug() string {
 	if o == nil {
@@ -217,7 +213,6 @@ func (o *Role) GetSlugOk() (*string, bool) {
 func (o *Role) SetSlug(v string) {
 	o.Slug = v
 }
-
 
 // GetWeight returns the Weight field value if set, zero value otherwise.
 func (o *Role) GetWeight() int32 {
@@ -379,6 +374,7 @@ func (o *Role) HasCreated() bool {
 func (o *Role) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *Role) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -421,6 +417,7 @@ func (o *Role) HasLastUpdated() bool {
 func (o *Role) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *Role) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -496,7 +493,7 @@ func (o *Role) SetVlanCount(v int64) {
 }
 
 func (o Role) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -559,32 +556,31 @@ func (o *Role) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -656,5 +652,3 @@ func (v *NullableRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

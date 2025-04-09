@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the VMInterface type satisfies the MappedNullable interface at compile time
@@ -21,34 +21,34 @@ var _ MappedNullable = &VMInterface{}
 
 // VMInterface Adds support for custom fields and tags.
 type VMInterface struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	VirtualMachine BriefVirtualMachine `json:"virtual_machine"`
-	Name string `json:"name"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Parent NullableNestedVMInterface `json:"parent,omitempty"`
-	Bridge NullableNestedVMInterface `json:"bridge,omitempty"`
-	Mtu NullableInt32 `json:"mtu,omitempty"`
-	MacAddress NullableString `json:"mac_address,omitempty"`
-	PrimaryMacAddress NullableBriefMACAddress `json:"primary_mac_address,omitempty"`
-	MacAddresses []BriefMACAddress `json:"mac_addresses,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Mode *InterfaceMode `json:"mode,omitempty"`
-	UntaggedVlan NullableBriefVLAN `json:"untagged_vlan,omitempty"`
-	TaggedVlans []VLAN `json:"tagged_vlans,omitempty"`
-	QinqSvlan NullableBriefVLAN `json:"qinq_svlan,omitempty"`
+	Id                    int32                              `json:"id"`
+	Url                   string                             `json:"url"`
+	DisplayUrl            *string                            `json:"display_url,omitempty"`
+	Display               string                             `json:"display"`
+	VirtualMachine        BriefVirtualMachine                `json:"virtual_machine"`
+	Name                  string                             `json:"name"`
+	Enabled               *bool                              `json:"enabled,omitempty"`
+	Parent                NullableNestedVMInterface          `json:"parent,omitempty"`
+	Bridge                NullableNestedVMInterface          `json:"bridge,omitempty"`
+	Mtu                   NullableInt32                      `json:"mtu,omitempty"`
+	MacAddress            NullableString                     `json:"mac_address,omitempty"`
+	PrimaryMacAddress     NullableBriefMACAddress            `json:"primary_mac_address,omitempty"`
+	MacAddresses          []BriefMACAddress                  `json:"mac_addresses,omitempty"`
+	Description           *string                            `json:"description,omitempty"`
+	Mode                  *InterfaceMode                     `json:"mode,omitempty"`
+	UntaggedVlan          NullableBriefVLAN                  `json:"untagged_vlan,omitempty"`
+	TaggedVlans           []VLAN                             `json:"tagged_vlans,omitempty"`
+	QinqSvlan             NullableBriefVLAN                  `json:"qinq_svlan,omitempty"`
 	VlanTranslationPolicy NullableBriefVLANTranslationPolicy `json:"vlan_translation_policy,omitempty"`
-	Vrf NullableBriefVRF `json:"vrf,omitempty"`
-	L2vpnTermination NullableBriefL2VPNTermination `json:"l2vpn_termination,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
-	CountIpaddresses int32 `json:"count_ipaddresses"`
-	CountFhrpGroups int32 `json:"count_fhrp_groups"`
-	AdditionalProperties map[string]interface{}
+	Vrf                   NullableBriefVRF                   `json:"vrf,omitempty"`
+	L2vpnTermination      NullableBriefL2VPNTermination      `json:"l2vpn_termination,omitempty"`
+	Tags                  []NestedTag                        `json:"tags,omitempty"`
+	CustomFields          map[string]interface{}             `json:"custom_fields,omitempty"`
+	Created               NullableTime                       `json:"created,omitempty"`
+	LastUpdated           NullableTime                       `json:"last_updated,omitempty"`
+	CountIpaddresses      int32                              `json:"count_ipaddresses"`
+	CountFhrpGroups       int32                              `json:"count_fhrp_groups"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _VMInterface VMInterface
@@ -101,7 +101,6 @@ func (o *VMInterface) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *VMInterface) GetUrl() string {
 	if o == nil {
@@ -125,7 +124,6 @@ func (o *VMInterface) GetUrlOk() (*string, bool) {
 func (o *VMInterface) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *VMInterface) GetDisplayUrl() string {
@@ -183,7 +181,6 @@ func (o *VMInterface) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetVirtualMachine returns the VirtualMachine field value
 func (o *VMInterface) GetVirtualMachine() BriefVirtualMachine {
 	if o == nil {
@@ -208,7 +205,6 @@ func (o *VMInterface) SetVirtualMachine(v BriefVirtualMachine) {
 	o.VirtualMachine = v
 }
 
-
 // GetName returns the Name field value
 func (o *VMInterface) GetName() string {
 	if o == nil {
@@ -232,7 +228,6 @@ func (o *VMInterface) GetNameOk() (*string, bool) {
 func (o *VMInterface) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *VMInterface) GetEnabled() bool {
@@ -298,6 +293,7 @@ func (o *VMInterface) HasParent() bool {
 func (o *VMInterface) SetParent(v NestedVMInterface) {
 	o.Parent.Set(&v)
 }
+
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *VMInterface) SetParentNil() {
 	o.Parent.Set(nil)
@@ -340,6 +336,7 @@ func (o *VMInterface) HasBridge() bool {
 func (o *VMInterface) SetBridge(v NestedVMInterface) {
 	o.Bridge.Set(&v)
 }
+
 // SetBridgeNil sets the value for Bridge to be an explicit nil
 func (o *VMInterface) SetBridgeNil() {
 	o.Bridge.Set(nil)
@@ -382,6 +379,7 @@ func (o *VMInterface) HasMtu() bool {
 func (o *VMInterface) SetMtu(v int32) {
 	o.Mtu.Set(&v)
 }
+
 // SetMtuNil sets the value for Mtu to be an explicit nil
 func (o *VMInterface) SetMtuNil() {
 	o.Mtu.Set(nil)
@@ -424,6 +422,7 @@ func (o *VMInterface) HasMacAddress() bool {
 func (o *VMInterface) SetMacAddress(v string) {
 	o.MacAddress.Set(&v)
 }
+
 // SetMacAddressNil sets the value for MacAddress to be an explicit nil
 func (o *VMInterface) SetMacAddressNil() {
 	o.MacAddress.Set(nil)
@@ -466,6 +465,7 @@ func (o *VMInterface) HasPrimaryMacAddress() bool {
 func (o *VMInterface) SetPrimaryMacAddress(v BriefMACAddress) {
 	o.PrimaryMacAddress.Set(&v)
 }
+
 // SetPrimaryMacAddressNil sets the value for PrimaryMacAddress to be an explicit nil
 func (o *VMInterface) SetPrimaryMacAddressNil() {
 	o.PrimaryMacAddress.Set(nil)
@@ -605,6 +605,7 @@ func (o *VMInterface) HasUntaggedVlan() bool {
 func (o *VMInterface) SetUntaggedVlan(v BriefVLAN) {
 	o.UntaggedVlan.Set(&v)
 }
+
 // SetUntaggedVlanNil sets the value for UntaggedVlan to be an explicit nil
 func (o *VMInterface) SetUntaggedVlanNil() {
 	o.UntaggedVlan.Set(nil)
@@ -679,6 +680,7 @@ func (o *VMInterface) HasQinqSvlan() bool {
 func (o *VMInterface) SetQinqSvlan(v BriefVLAN) {
 	o.QinqSvlan.Set(&v)
 }
+
 // SetQinqSvlanNil sets the value for QinqSvlan to be an explicit nil
 func (o *VMInterface) SetQinqSvlanNil() {
 	o.QinqSvlan.Set(nil)
@@ -721,6 +723,7 @@ func (o *VMInterface) HasVlanTranslationPolicy() bool {
 func (o *VMInterface) SetVlanTranslationPolicy(v BriefVLANTranslationPolicy) {
 	o.VlanTranslationPolicy.Set(&v)
 }
+
 // SetVlanTranslationPolicyNil sets the value for VlanTranslationPolicy to be an explicit nil
 func (o *VMInterface) SetVlanTranslationPolicyNil() {
 	o.VlanTranslationPolicy.Set(nil)
@@ -763,6 +766,7 @@ func (o *VMInterface) HasVrf() bool {
 func (o *VMInterface) SetVrf(v BriefVRF) {
 	o.Vrf.Set(&v)
 }
+
 // SetVrfNil sets the value for Vrf to be an explicit nil
 func (o *VMInterface) SetVrfNil() {
 	o.Vrf.Set(nil)
@@ -805,6 +809,7 @@ func (o *VMInterface) HasL2vpnTermination() bool {
 func (o *VMInterface) SetL2vpnTermination(v BriefL2VPNTermination) {
 	o.L2vpnTermination.Set(&v)
 }
+
 // SetL2vpnTerminationNil sets the value for L2vpnTermination to be an explicit nil
 func (o *VMInterface) SetL2vpnTerminationNil() {
 	o.L2vpnTermination.Set(nil)
@@ -911,6 +916,7 @@ func (o *VMInterface) HasCreated() bool {
 func (o *VMInterface) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *VMInterface) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -953,6 +959,7 @@ func (o *VMInterface) HasLastUpdated() bool {
 func (o *VMInterface) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *VMInterface) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -987,7 +994,6 @@ func (o *VMInterface) SetCountIpaddresses(v int32) {
 	o.CountIpaddresses = v
 }
 
-
 // GetCountFhrpGroups returns the CountFhrpGroups field value
 func (o *VMInterface) GetCountFhrpGroups() int32 {
 	if o == nil {
@@ -1012,9 +1018,8 @@ func (o *VMInterface) SetCountFhrpGroups(v int32) {
 	o.CountFhrpGroups = v
 }
 
-
 func (o VMInterface) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1114,32 +1119,31 @@ func (o *VMInterface) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -1224,5 +1228,3 @@ func (v *NullableVMInterface) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the IPAddress type satisfies the MappedNullable interface at compile time
@@ -21,29 +21,29 @@ var _ MappedNullable = &IPAddress{}
 
 // IPAddress Adds support for custom fields and tags.
 type IPAddress struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Family AggregateFamily `json:"family"`
-	Address string `json:"address"`
-	Vrf NullableBriefVRF `json:"vrf,omitempty"`
-	Tenant NullableBriefTenant `json:"tenant,omitempty"`
-	Status *IPAddressStatus `json:"status,omitempty"`
-	Role *IPAddressRole `json:"role,omitempty"`
-	AssignedObjectType NullableString `json:"assigned_object_type,omitempty"`
-	AssignedObjectId NullableInt64 `json:"assigned_object_id,omitempty"`
-	AssignedObject interface{} `json:"assigned_object,omitempty"`
-	NatInside NullableNestedIPAddress `json:"nat_inside,omitempty"`
-	NatOutside []NestedIPAddress `json:"nat_outside"`
+	Id                 int32                   `json:"id"`
+	Url                string                  `json:"url"`
+	DisplayUrl         *string                 `json:"display_url,omitempty"`
+	Display            string                  `json:"display"`
+	Family             AggregateFamily         `json:"family"`
+	Address            string                  `json:"address"`
+	Vrf                NullableBriefVRF        `json:"vrf,omitempty"`
+	Tenant             NullableBriefTenant     `json:"tenant,omitempty"`
+	Status             *IPAddressStatus        `json:"status,omitempty"`
+	Role               *IPAddressRole          `json:"role,omitempty"`
+	AssignedObjectType NullableString          `json:"assigned_object_type,omitempty"`
+	AssignedObjectId   NullableInt64           `json:"assigned_object_id,omitempty"`
+	AssignedObject     interface{}             `json:"assigned_object,omitempty"`
+	NatInside          NullableNestedIPAddress `json:"nat_inside,omitempty"`
+	NatOutside         []NestedIPAddress       `json:"nat_outside"`
 	// Hostname or FQDN (not case-sensitive)
-	DnsName *string `json:"dns_name,omitempty" validate:"regexp=^([0-9A-Za-z_-]+|\\\\*)(\\\\.[0-9A-Za-z_-]+)*\\\\.?$"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	DnsName              *string                `json:"dns_name,omitempty" validate:"regexp=^([0-9A-Za-z_-]+|\\\\*)(\\\\.[0-9A-Za-z_-]+)*\\\\.?$"`
+	Description          *string                `json:"description,omitempty"`
+	Comments             *string                `json:"comments,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -96,7 +96,6 @@ func (o *IPAddress) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *IPAddress) GetUrl() string {
 	if o == nil {
@@ -120,7 +119,6 @@ func (o *IPAddress) GetUrlOk() (*string, bool) {
 func (o *IPAddress) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *IPAddress) GetDisplayUrl() string {
@@ -178,7 +176,6 @@ func (o *IPAddress) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetFamily returns the Family field value
 func (o *IPAddress) GetFamily() AggregateFamily {
 	if o == nil {
@@ -203,7 +200,6 @@ func (o *IPAddress) SetFamily(v AggregateFamily) {
 	o.Family = v
 }
 
-
 // GetAddress returns the Address field value
 func (o *IPAddress) GetAddress() string {
 	if o == nil {
@@ -227,7 +223,6 @@ func (o *IPAddress) GetAddressOk() (*string, bool) {
 func (o *IPAddress) SetAddress(v string) {
 	o.Address = v
 }
-
 
 // GetVrf returns the Vrf field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IPAddress) GetVrf() BriefVRF {
@@ -261,6 +256,7 @@ func (o *IPAddress) HasVrf() bool {
 func (o *IPAddress) SetVrf(v BriefVRF) {
 	o.Vrf.Set(&v)
 }
+
 // SetVrfNil sets the value for Vrf to be an explicit nil
 func (o *IPAddress) SetVrfNil() {
 	o.Vrf.Set(nil)
@@ -303,6 +299,7 @@ func (o *IPAddress) HasTenant() bool {
 func (o *IPAddress) SetTenant(v BriefTenant) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *IPAddress) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -409,6 +406,7 @@ func (o *IPAddress) HasAssignedObjectType() bool {
 func (o *IPAddress) SetAssignedObjectType(v string) {
 	o.AssignedObjectType.Set(&v)
 }
+
 // SetAssignedObjectTypeNil sets the value for AssignedObjectType to be an explicit nil
 func (o *IPAddress) SetAssignedObjectTypeNil() {
 	o.AssignedObjectType.Set(nil)
@@ -451,6 +449,7 @@ func (o *IPAddress) HasAssignedObjectId() bool {
 func (o *IPAddress) SetAssignedObjectId(v int64) {
 	o.AssignedObjectId.Set(&v)
 }
+
 // SetAssignedObjectIdNil sets the value for AssignedObjectId to be an explicit nil
 func (o *IPAddress) SetAssignedObjectIdNil() {
 	o.AssignedObjectId.Set(nil)
@@ -526,6 +525,7 @@ func (o *IPAddress) HasNatInside() bool {
 func (o *IPAddress) SetNatInside(v NestedIPAddress) {
 	o.NatInside.Set(&v)
 }
+
 // SetNatInsideNil sets the value for NatInside to be an explicit nil
 func (o *IPAddress) SetNatInsideNil() {
 	o.NatInside.Set(nil)
@@ -559,7 +559,6 @@ func (o *IPAddress) GetNatOutsideOk() ([]NestedIPAddress, bool) {
 func (o *IPAddress) SetNatOutside(v []NestedIPAddress) {
 	o.NatOutside = v
 }
-
 
 // GetDnsName returns the DnsName field value if set, zero value otherwise.
 func (o *IPAddress) GetDnsName() string {
@@ -753,6 +752,7 @@ func (o *IPAddress) HasCreated() bool {
 func (o *IPAddress) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *IPAddress) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -795,6 +795,7 @@ func (o *IPAddress) HasLastUpdated() bool {
 func (o *IPAddress) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *IPAddress) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -806,7 +807,7 @@ func (o *IPAddress) UnsetLastUpdated() {
 }
 
 func (o IPAddress) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -892,32 +893,31 @@ func (o *IPAddress) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -997,5 +997,3 @@ func (v *NullableIPAddress) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

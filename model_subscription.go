@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the Subscription type satisfies the MappedNullable interface at compile time
@@ -21,14 +21,14 @@ var _ MappedNullable = &Subscription{}
 
 // Subscription Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type Subscription struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	Display string `json:"display"`
-	ObjectType string `json:"object_type"`
-	ObjectId int64 `json:"object_id"`
-	Object interface{} `json:"object,omitempty"`
-	User BriefUser `json:"user"`
-	Created *time.Time `json:"created,omitempty"`
+	Id                   int32       `json:"id"`
+	Url                  string      `json:"url"`
+	Display              string      `json:"display"`
+	ObjectType           string      `json:"object_type"`
+	ObjectId             int64       `json:"object_id"`
+	Object               interface{} `json:"object,omitempty"`
+	User                 BriefUser   `json:"user"`
+	Created              *time.Time  `json:"created,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -81,7 +81,6 @@ func (o *Subscription) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *Subscription) GetUrl() string {
 	if o == nil {
@@ -105,7 +104,6 @@ func (o *Subscription) GetUrlOk() (*string, bool) {
 func (o *Subscription) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplay returns the Display field value
 func (o *Subscription) GetDisplay() string {
@@ -131,7 +129,6 @@ func (o *Subscription) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetObjectType returns the ObjectType field value
 func (o *Subscription) GetObjectType() string {
 	if o == nil {
@@ -156,7 +153,6 @@ func (o *Subscription) SetObjectType(v string) {
 	o.ObjectType = v
 }
 
-
 // GetObjectId returns the ObjectId field value
 func (o *Subscription) GetObjectId() int64 {
 	if o == nil {
@@ -180,7 +176,6 @@ func (o *Subscription) GetObjectIdOk() (*int64, bool) {
 func (o *Subscription) SetObjectId(v int64) {
 	o.ObjectId = v
 }
-
 
 // GetObject returns the Object field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscription) GetObject() interface{} {
@@ -239,7 +234,6 @@ func (o *Subscription) SetUser(v BriefUser) {
 	o.User = v
 }
 
-
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Subscription) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
@@ -273,7 +267,7 @@ func (o *Subscription) SetCreated(v time.Time) {
 }
 
 func (o Subscription) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -317,32 +311,31 @@ func (o *Subscription) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -408,5 +401,3 @@ func (v *NullableSubscription) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

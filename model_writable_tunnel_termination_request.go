@@ -20,13 +20,13 @@ var _ MappedNullable = &WritableTunnelTerminationRequest{}
 
 // WritableTunnelTerminationRequest Adds support for custom fields and tags.
 type WritableTunnelTerminationRequest struct {
-	Tunnel BriefTunnelRequest `json:"tunnel"`
-	Role *PatchedWritableTunnelTerminationRequestRole `json:"role,omitempty"`
-	TerminationType string `json:"termination_type"`
-	TerminationId NullableInt64 `json:"termination_id,omitempty"`
-	OutsideIp NullableBriefIPAddressRequest `json:"outside_ip,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Tunnel               BriefTunnelRequest                           `json:"tunnel"`
+	Role                 *PatchedWritableTunnelTerminationRequestRole `json:"role,omitempty"`
+	TerminationType      string                                       `json:"termination_type"`
+	TerminationId        NullableInt64                                `json:"termination_id,omitempty"`
+	OutsideIp            NullableBriefIPAddressRequest                `json:"outside_ip,omitempty"`
+	Tags                 []NestedTagRequest                           `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}                       `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -74,7 +74,6 @@ func (o *WritableTunnelTerminationRequest) GetTunnelOk() (*BriefTunnelRequest, b
 func (o *WritableTunnelTerminationRequest) SetTunnel(v BriefTunnelRequest) {
 	o.Tunnel = v
 }
-
 
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *WritableTunnelTerminationRequest) GetRole() PatchedWritableTunnelTerminationRequestRole {
@@ -132,7 +131,6 @@ func (o *WritableTunnelTerminationRequest) SetTerminationType(v string) {
 	o.TerminationType = v
 }
 
-
 // GetTerminationId returns the TerminationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableTunnelTerminationRequest) GetTerminationId() int64 {
 	if o == nil || IsNil(o.TerminationId.Get()) {
@@ -165,6 +163,7 @@ func (o *WritableTunnelTerminationRequest) HasTerminationId() bool {
 func (o *WritableTunnelTerminationRequest) SetTerminationId(v int64) {
 	o.TerminationId.Set(&v)
 }
+
 // SetTerminationIdNil sets the value for TerminationId to be an explicit nil
 func (o *WritableTunnelTerminationRequest) SetTerminationIdNil() {
 	o.TerminationId.Set(nil)
@@ -207,6 +206,7 @@ func (o *WritableTunnelTerminationRequest) HasOutsideIp() bool {
 func (o *WritableTunnelTerminationRequest) SetOutsideIp(v BriefIPAddressRequest) {
 	o.OutsideIp.Set(&v)
 }
+
 // SetOutsideIpNil sets the value for OutsideIp to be an explicit nil
 func (o *WritableTunnelTerminationRequest) SetOutsideIpNil() {
 	o.OutsideIp.Set(nil)
@@ -282,7 +282,7 @@ func (o *WritableTunnelTerminationRequest) SetCustomFields(v map[string]interfac
 }
 
 func (o WritableTunnelTerminationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -327,32 +327,31 @@ func (o *WritableTunnelTerminationRequest) UnmarshalJSON(data []byte) (err error
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -417,5 +416,3 @@ func (v *NullableWritableTunnelTerminationRequest) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

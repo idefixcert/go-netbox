@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the CustomLink type satisfies the MappedNullable interface at compile time
@@ -21,25 +21,25 @@ var _ MappedNullable = &CustomLink{}
 
 // CustomLink Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type CustomLink struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
+	Id          int32    `json:"id"`
+	Url         string   `json:"url"`
+	DisplayUrl  *string  `json:"display_url,omitempty"`
+	Display     string   `json:"display"`
 	ObjectTypes []string `json:"object_types"`
-	Name string `json:"name"`
-	Enabled *bool `json:"enabled,omitempty"`
+	Name        string   `json:"name"`
+	Enabled     *bool    `json:"enabled,omitempty"`
 	// Jinja2 template code for link text
 	LinkText string `json:"link_text"`
 	// Jinja2 template code for link URL
 	LinkUrl string `json:"link_url"`
-	Weight *int32 `json:"weight,omitempty"`
+	Weight  *int32 `json:"weight,omitempty"`
 	// Links with the same group will appear as a dropdown menu
-	GroupName *string `json:"group_name,omitempty"`
+	GroupName   *string                `json:"group_name,omitempty"`
 	ButtonClass *CustomLinkButtonClass `json:"button_class,omitempty"`
 	// Force link to open in a new window
-	NewWindow *bool `json:"new_window,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	NewWindow            *bool        `json:"new_window,omitempty"`
+	Created              NullableTime `json:"created,omitempty"`
+	LastUpdated          NullableTime `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -93,7 +93,6 @@ func (o *CustomLink) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *CustomLink) GetUrl() string {
 	if o == nil {
@@ -117,7 +116,6 @@ func (o *CustomLink) GetUrlOk() (*string, bool) {
 func (o *CustomLink) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *CustomLink) GetDisplayUrl() string {
@@ -175,7 +173,6 @@ func (o *CustomLink) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetObjectTypes returns the ObjectTypes field value
 func (o *CustomLink) GetObjectTypes() []string {
 	if o == nil {
@@ -200,7 +197,6 @@ func (o *CustomLink) SetObjectTypes(v []string) {
 	o.ObjectTypes = v
 }
 
-
 // GetName returns the Name field value
 func (o *CustomLink) GetName() string {
 	if o == nil {
@@ -224,7 +220,6 @@ func (o *CustomLink) GetNameOk() (*string, bool) {
 func (o *CustomLink) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *CustomLink) GetEnabled() bool {
@@ -282,7 +277,6 @@ func (o *CustomLink) SetLinkText(v string) {
 	o.LinkText = v
 }
 
-
 // GetLinkUrl returns the LinkUrl field value
 func (o *CustomLink) GetLinkUrl() string {
 	if o == nil {
@@ -306,7 +300,6 @@ func (o *CustomLink) GetLinkUrlOk() (*string, bool) {
 func (o *CustomLink) SetLinkUrl(v string) {
 	o.LinkUrl = v
 }
-
 
 // GetWeight returns the Weight field value if set, zero value otherwise.
 func (o *CustomLink) GetWeight() int32 {
@@ -468,6 +461,7 @@ func (o *CustomLink) HasCreated() bool {
 func (o *CustomLink) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *CustomLink) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -510,6 +504,7 @@ func (o *CustomLink) HasLastUpdated() bool {
 func (o *CustomLink) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *CustomLink) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -521,7 +516,7 @@ func (o *CustomLink) UnsetLastUpdated() {
 }
 
 func (o CustomLink) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -585,32 +580,31 @@ func (o *CustomLink) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -683,5 +677,3 @@ func (v *NullableCustomLink) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the CircuitGroup type satisfies the MappedNullable interface at compile time
@@ -21,19 +21,19 @@ var _ MappedNullable = &CircuitGroup{}
 
 // CircuitGroup Adds support for custom fields and tags.
 type CircuitGroup struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Description *string `json:"description,omitempty"`
-	Tenant NullableBriefTenant `json:"tenant,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
-	CircuitCount *int64 `json:"circuit_count,omitempty"`
+	Id                   int32                  `json:"id"`
+	Url                  string                 `json:"url"`
+	DisplayUrl           *string                `json:"display_url,omitempty"`
+	Display              string                 `json:"display"`
+	Name                 string                 `json:"name"`
+	Slug                 string                 `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Description          *string                `json:"description,omitempty"`
+	Tenant               NullableBriefTenant    `json:"tenant,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
+	CircuitCount         *int64                 `json:"circuit_count,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -85,7 +85,6 @@ func (o *CircuitGroup) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *CircuitGroup) GetUrl() string {
 	if o == nil {
@@ -109,7 +108,6 @@ func (o *CircuitGroup) GetUrlOk() (*string, bool) {
 func (o *CircuitGroup) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *CircuitGroup) GetDisplayUrl() string {
@@ -167,7 +165,6 @@ func (o *CircuitGroup) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *CircuitGroup) GetName() string {
 	if o == nil {
@@ -192,7 +189,6 @@ func (o *CircuitGroup) SetName(v string) {
 	o.Name = v
 }
 
-
 // GetSlug returns the Slug field value
 func (o *CircuitGroup) GetSlug() string {
 	if o == nil {
@@ -216,7 +212,6 @@ func (o *CircuitGroup) GetSlugOk() (*string, bool) {
 func (o *CircuitGroup) SetSlug(v string) {
 	o.Slug = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CircuitGroup) GetDescription() string {
@@ -282,6 +277,7 @@ func (o *CircuitGroup) HasTenant() bool {
 func (o *CircuitGroup) SetTenant(v BriefTenant) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *CircuitGroup) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -388,6 +384,7 @@ func (o *CircuitGroup) HasCreated() bool {
 func (o *CircuitGroup) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *CircuitGroup) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -430,6 +427,7 @@ func (o *CircuitGroup) HasLastUpdated() bool {
 func (o *CircuitGroup) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *CircuitGroup) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -473,7 +471,7 @@ func (o *CircuitGroup) SetCircuitCount(v int64) {
 }
 
 func (o CircuitGroup) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -533,32 +531,31 @@ func (o *CircuitGroup) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -629,5 +626,3 @@ func (v *NullableCircuitGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

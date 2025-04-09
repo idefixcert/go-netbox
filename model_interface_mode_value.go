@@ -20,11 +20,11 @@ type InterfaceModeValue string
 
 // List of Interface_mode_value
 const (
-	INTERFACEMODEVALUE_ACCESS InterfaceModeValue = "access"
-	INTERFACEMODEVALUE_TAGGED InterfaceModeValue = "tagged"
+	INTERFACEMODEVALUE_ACCESS     InterfaceModeValue = "access"
+	INTERFACEMODEVALUE_TAGGED     InterfaceModeValue = "tagged"
 	INTERFACEMODEVALUE_TAGGED_ALL InterfaceModeValue = "tagged-all"
-	INTERFACEMODEVALUE_Q_IN_Q InterfaceModeValue = "q-in-q"
-	INTERFACEMODEVALUE_EMPTY InterfaceModeValue = ""
+	INTERFACEMODEVALUE_Q_IN_Q     InterfaceModeValue = "q-in-q"
+	INTERFACEMODEVALUE_EMPTY      InterfaceModeValue = ""
 )
 
 // All allowed values of InterfaceModeValue enum
@@ -114,4 +114,3 @@ func (v *NullableInterfaceModeValue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

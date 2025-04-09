@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the DataFile type satisfies the MappedNullable interface at compile time
@@ -21,17 +21,17 @@ var _ MappedNullable = &DataFile{}
 
 // DataFile Adds support for custom fields and tags.
 type DataFile struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Source BriefDataSource `json:"source"`
+	Id         int32           `json:"id"`
+	Url        string          `json:"url"`
+	DisplayUrl *string         `json:"display_url,omitempty"`
+	Display    string          `json:"display"`
+	Source     BriefDataSource `json:"source"`
 	// File path relative to the data source's root
-	Path string `json:"path"`
+	Path        string    `json:"path"`
 	LastUpdated time.Time `json:"last_updated"`
-	Size int32 `json:"size"`
+	Size        int32     `json:"size"`
 	// SHA256 hash of the file data
-	Hash string `json:"hash"`
+	Hash                 string `json:"hash"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -86,7 +86,6 @@ func (o *DataFile) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *DataFile) GetUrl() string {
 	if o == nil {
@@ -110,7 +109,6 @@ func (o *DataFile) GetUrlOk() (*string, bool) {
 func (o *DataFile) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *DataFile) GetDisplayUrl() string {
@@ -168,7 +166,6 @@ func (o *DataFile) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetSource returns the Source field value
 func (o *DataFile) GetSource() BriefDataSource {
 	if o == nil {
@@ -192,7 +189,6 @@ func (o *DataFile) GetSourceOk() (*BriefDataSource, bool) {
 func (o *DataFile) SetSource(v BriefDataSource) {
 	o.Source = v
 }
-
 
 // GetPath returns the Path field value
 func (o *DataFile) GetPath() string {
@@ -218,7 +214,6 @@ func (o *DataFile) SetPath(v string) {
 	o.Path = v
 }
 
-
 // GetLastUpdated returns the LastUpdated field value
 func (o *DataFile) GetLastUpdated() time.Time {
 	if o == nil {
@@ -242,7 +237,6 @@ func (o *DataFile) GetLastUpdatedOk() (*time.Time, bool) {
 func (o *DataFile) SetLastUpdated(v time.Time) {
 	o.LastUpdated = v
 }
-
 
 // GetSize returns the Size field value
 func (o *DataFile) GetSize() int32 {
@@ -268,7 +262,6 @@ func (o *DataFile) SetSize(v int32) {
 	o.Size = v
 }
 
-
 // GetHash returns the Hash field value
 func (o *DataFile) GetHash() string {
 	if o == nil {
@@ -293,9 +286,8 @@ func (o *DataFile) SetHash(v string) {
 	o.Hash = v
 }
 
-
 func (o DataFile) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -340,32 +332,31 @@ func (o *DataFile) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -432,5 +423,3 @@ func (v *NullableDataFile) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

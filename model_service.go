@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the Service type satisfies the MappedNullable interface at compile time
@@ -21,22 +21,22 @@ var _ MappedNullable = &Service{}
 
 // Service Adds support for custom fields and tags.
 type Service struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Device NullableBriefDevice `json:"device,omitempty"`
-	VirtualMachine NullableBriefVirtualMachine `json:"virtual_machine,omitempty"`
-	Name string `json:"name"`
-	Protocol *ServiceProtocol `json:"protocol,omitempty"`
-	Ports []int32 `json:"ports"`
-	Ipaddresses []IPAddress `json:"ipaddresses,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Id                   int32                       `json:"id"`
+	Url                  string                      `json:"url"`
+	DisplayUrl           *string                     `json:"display_url,omitempty"`
+	Display              string                      `json:"display"`
+	Device               NullableBriefDevice         `json:"device,omitempty"`
+	VirtualMachine       NullableBriefVirtualMachine `json:"virtual_machine,omitempty"`
+	Name                 string                      `json:"name"`
+	Protocol             *ServiceProtocol            `json:"protocol,omitempty"`
+	Ports                []int32                     `json:"ports"`
+	Ipaddresses          []IPAddress                 `json:"ipaddresses,omitempty"`
+	Description          *string                     `json:"description,omitempty"`
+	Comments             *string                     `json:"comments,omitempty"`
+	Tags                 []NestedTag                 `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}      `json:"custom_fields,omitempty"`
+	Created              NullableTime                `json:"created,omitempty"`
+	LastUpdated          NullableTime                `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -88,7 +88,6 @@ func (o *Service) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *Service) GetUrl() string {
 	if o == nil {
@@ -112,7 +111,6 @@ func (o *Service) GetUrlOk() (*string, bool) {
 func (o *Service) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *Service) GetDisplayUrl() string {
@@ -170,7 +168,6 @@ func (o *Service) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetDevice returns the Device field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Service) GetDevice() BriefDevice {
 	if o == nil || IsNil(o.Device.Get()) {
@@ -203,6 +200,7 @@ func (o *Service) HasDevice() bool {
 func (o *Service) SetDevice(v BriefDevice) {
 	o.Device.Set(&v)
 }
+
 // SetDeviceNil sets the value for Device to be an explicit nil
 func (o *Service) SetDeviceNil() {
 	o.Device.Set(nil)
@@ -245,6 +243,7 @@ func (o *Service) HasVirtualMachine() bool {
 func (o *Service) SetVirtualMachine(v BriefVirtualMachine) {
 	o.VirtualMachine.Set(&v)
 }
+
 // SetVirtualMachineNil sets the value for VirtualMachine to be an explicit nil
 func (o *Service) SetVirtualMachineNil() {
 	o.VirtualMachine.Set(nil)
@@ -278,7 +277,6 @@ func (o *Service) GetNameOk() (*string, bool) {
 func (o *Service) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetProtocol returns the Protocol field value if set, zero value otherwise.
 func (o *Service) GetProtocol() ServiceProtocol {
@@ -335,7 +333,6 @@ func (o *Service) GetPortsOk() ([]int32, bool) {
 func (o *Service) SetPorts(v []int32) {
 	o.Ports = v
 }
-
 
 // GetIpaddresses returns the Ipaddresses field value if set, zero value otherwise.
 func (o *Service) GetIpaddresses() []IPAddress {
@@ -529,6 +526,7 @@ func (o *Service) HasCreated() bool {
 func (o *Service) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *Service) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -571,6 +569,7 @@ func (o *Service) HasLastUpdated() bool {
 func (o *Service) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *Service) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -582,7 +581,7 @@ func (o *Service) UnsetLastUpdated() {
 }
 
 func (o Service) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -651,32 +650,31 @@ func (o *Service) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -750,5 +748,3 @@ func (v *NullableService) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

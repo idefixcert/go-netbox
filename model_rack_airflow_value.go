@@ -22,7 +22,7 @@ type RackAirflowValue string
 const (
 	RACKAIRFLOWVALUE_FRONT_TO_REAR RackAirflowValue = "front-to-rear"
 	RACKAIRFLOWVALUE_REAR_TO_FRONT RackAirflowValue = "rear-to-front"
-	RACKAIRFLOWVALUE_EMPTY RackAirflowValue = ""
+	RACKAIRFLOWVALUE_EMPTY         RackAirflowValue = ""
 )
 
 // All allowed values of RackAirflowValue enum
@@ -110,4 +110,3 @@ func (v *NullableRackAirflowValue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

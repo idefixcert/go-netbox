@@ -20,12 +20,12 @@ var _ MappedNullable = &NestedProviderAccount{}
 
 // NestedProviderAccount Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a dictionary of attributes which can be used to uniquely identify the related object. This class should be subclassed to return a full representation of the related object on read.
 type NestedProviderAccount struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name *string `json:"name,omitempty"`
-	Account string `json:"account"`
+	Id                   int32   `json:"id"`
+	Url                  string  `json:"url"`
+	DisplayUrl           *string `json:"display_url,omitempty"`
+	Display              string  `json:"display"`
+	Name                 *string `json:"name,omitempty"`
+	Account              string  `json:"account"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,6 @@ func (o *NestedProviderAccount) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *NestedProviderAccount) GetUrl() string {
 	if o == nil {
@@ -100,7 +99,6 @@ func (o *NestedProviderAccount) GetUrlOk() (*string, bool) {
 func (o *NestedProviderAccount) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *NestedProviderAccount) GetDisplayUrl() string {
@@ -158,7 +156,6 @@ func (o *NestedProviderAccount) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *NestedProviderAccount) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -215,9 +212,8 @@ func (o *NestedProviderAccount) SetAccount(v string) {
 	o.Account = v
 }
 
-
 func (o NestedProviderAccount) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -257,32 +253,31 @@ func (o *NestedProviderAccount) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -346,5 +341,3 @@ func (v *NullableNestedProviderAccount) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

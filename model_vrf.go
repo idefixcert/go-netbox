@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the VRF type satisfies the MappedNullable interface at compile time
@@ -21,26 +21,26 @@ var _ MappedNullable = &VRF{}
 
 // VRF Adds support for custom fields and tags.
 type VRF struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
+	Id         int32   `json:"id"`
+	Url        string  `json:"url"`
 	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
+	Display    string  `json:"display"`
+	Name       string  `json:"name"`
 	// Unique route distinguisher (as defined in RFC 4364)
-	Rd NullableString `json:"rd,omitempty"`
+	Rd     NullableString      `json:"rd,omitempty"`
 	Tenant NullableBriefTenant `json:"tenant,omitempty"`
 	// Prevent duplicate prefixes/IP addresses within this VRF
-	EnforceUnique *bool `json:"enforce_unique,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	ImportTargets []RouteTarget `json:"import_targets,omitempty"`
-	ExportTargets []RouteTarget `json:"export_targets,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
-	IpaddressCount *int64 `json:"ipaddress_count,omitempty"`
-	PrefixCount *int64 `json:"prefix_count,omitempty"`
+	EnforceUnique        *bool                  `json:"enforce_unique,omitempty"`
+	Description          *string                `json:"description,omitempty"`
+	Comments             *string                `json:"comments,omitempty"`
+	ImportTargets        []RouteTarget          `json:"import_targets,omitempty"`
+	ExportTargets        []RouteTarget          `json:"export_targets,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
+	IpaddressCount       *int64                 `json:"ipaddress_count,omitempty"`
+	PrefixCount          *int64                 `json:"prefix_count,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -91,7 +91,6 @@ func (o *VRF) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *VRF) GetUrl() string {
 	if o == nil {
@@ -115,7 +114,6 @@ func (o *VRF) GetUrlOk() (*string, bool) {
 func (o *VRF) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *VRF) GetDisplayUrl() string {
@@ -173,7 +171,6 @@ func (o *VRF) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *VRF) GetName() string {
 	if o == nil {
@@ -197,7 +194,6 @@ func (o *VRF) GetNameOk() (*string, bool) {
 func (o *VRF) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetRd returns the Rd field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VRF) GetRd() string {
@@ -231,6 +227,7 @@ func (o *VRF) HasRd() bool {
 func (o *VRF) SetRd(v string) {
 	o.Rd.Set(&v)
 }
+
 // SetRdNil sets the value for Rd to be an explicit nil
 func (o *VRF) SetRdNil() {
 	o.Rd.Set(nil)
@@ -273,6 +270,7 @@ func (o *VRF) HasTenant() bool {
 func (o *VRF) SetTenant(v BriefTenant) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *VRF) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -539,6 +537,7 @@ func (o *VRF) HasCreated() bool {
 func (o *VRF) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *VRF) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -581,6 +580,7 @@ func (o *VRF) HasLastUpdated() bool {
 func (o *VRF) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *VRF) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -656,7 +656,7 @@ func (o *VRF) SetPrefixCount(v int64) {
 }
 
 func (o VRF) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -732,32 +732,31 @@ func (o *VRF) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -833,5 +832,3 @@ func (v *NullableVRF) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,13 +20,13 @@ var _ MappedNullable = &BriefRackType{}
 
 // BriefRackType Adds support for custom fields and tags.
 type BriefRackType struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	Display string `json:"display"`
-	Manufacturer BriefManufacturer `json:"manufacturer"`
-	Model string `json:"model"`
-	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Description *string `json:"description,omitempty"`
+	Id                   int32             `json:"id"`
+	Url                  string            `json:"url"`
+	Display              string            `json:"display"`
+	Manufacturer         BriefManufacturer `json:"manufacturer"`
+	Model                string            `json:"model"`
+	Slug                 string            `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Description          *string           `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,7 +79,6 @@ func (o *BriefRackType) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *BriefRackType) GetUrl() string {
 	if o == nil {
@@ -103,7 +102,6 @@ func (o *BriefRackType) GetUrlOk() (*string, bool) {
 func (o *BriefRackType) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplay returns the Display field value
 func (o *BriefRackType) GetDisplay() string {
@@ -129,7 +127,6 @@ func (o *BriefRackType) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetManufacturer returns the Manufacturer field value
 func (o *BriefRackType) GetManufacturer() BriefManufacturer {
 	if o == nil {
@@ -153,7 +150,6 @@ func (o *BriefRackType) GetManufacturerOk() (*BriefManufacturer, bool) {
 func (o *BriefRackType) SetManufacturer(v BriefManufacturer) {
 	o.Manufacturer = v
 }
-
 
 // GetModel returns the Model field value
 func (o *BriefRackType) GetModel() string {
@@ -179,7 +175,6 @@ func (o *BriefRackType) SetModel(v string) {
 	o.Model = v
 }
 
-
 // GetSlug returns the Slug field value
 func (o *BriefRackType) GetSlug() string {
 	if o == nil {
@@ -203,7 +198,6 @@ func (o *BriefRackType) GetSlugOk() (*string, bool) {
 func (o *BriefRackType) SetSlug(v string) {
 	o.Slug = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *BriefRackType) GetDescription() string {
@@ -238,7 +232,7 @@ func (o *BriefRackType) SetDescription(v string) {
 }
 
 func (o BriefRackType) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -279,32 +273,31 @@ func (o *BriefRackType) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -369,5 +362,3 @@ func (v *NullableBriefRackType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

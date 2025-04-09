@@ -19,8 +19,8 @@ var _ MappedNullable = &CircuitDistanceUnit{}
 
 // CircuitDistanceUnit struct for CircuitDistanceUnit
 type CircuitDistanceUnit struct {
-	Value *CircuitDistanceUnitValue `json:"value,omitempty"`
-	Label *CircuitDistanceUnitLabel `json:"label,omitempty"`
+	Value                *CircuitDistanceUnitValue `json:"value,omitempty"`
+	Label                *CircuitDistanceUnitLabel `json:"label,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,7 +108,7 @@ func (o *CircuitDistanceUnit) SetLabel(v CircuitDistanceUnitLabel) {
 }
 
 func (o CircuitDistanceUnit) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -188,5 +188,3 @@ func (v *NullableCircuitDistanceUnit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

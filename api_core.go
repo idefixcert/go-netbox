@@ -16,22 +16,21 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strings"
 	"reflect"
+	"strings"
 	"time"
 )
-
 
 type CoreAPI interface {
 
 	/*
-	CoreBackgroundQueuesRetrieve Method for CoreBackgroundQueuesRetrieve
+			CoreBackgroundQueuesRetrieve Method for CoreBackgroundQueuesRetrieve
 
-	Retrieve a list of RQ Queues.
-Note: Queue names are not URL safe so not returning a detail view.
+			Retrieve a list of RQ Queues.
+		Note: Queue names are not URL safe so not returning a detail view.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreBackgroundQueuesRetrieveRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiCoreBackgroundQueuesRetrieveRequest
 	*/
 	CoreBackgroundQueuesRetrieve(ctx context.Context) ApiCoreBackgroundQueuesRetrieveRequest
 
@@ -40,14 +39,14 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreBackgroundQueuesRetrieveExecute(r ApiCoreBackgroundQueuesRetrieveRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
-	CoreBackgroundQueuesRetrieve2 Method for CoreBackgroundQueuesRetrieve2
+			CoreBackgroundQueuesRetrieve2 Method for CoreBackgroundQueuesRetrieve2
 
-	Retrieve a list of RQ Queues.
-Note: Queue names are not URL safe so not returning a detail view.
+			Retrieve a list of RQ Queues.
+		Note: Queue names are not URL safe so not returning a detail view.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param name
-	@return ApiCoreBackgroundQueuesRetrieve2Request
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param name
+			@return ApiCoreBackgroundQueuesRetrieve2Request
 	*/
 	CoreBackgroundQueuesRetrieve2(ctx context.Context, name string) ApiCoreBackgroundQueuesRetrieve2Request
 
@@ -56,13 +55,13 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreBackgroundQueuesRetrieve2Execute(r ApiCoreBackgroundQueuesRetrieve2Request) (map[string]interface{}, *http.Response, error)
 
 	/*
-	CoreBackgroundTasksDeleteCreate Method for CoreBackgroundTasksDeleteCreate
+		CoreBackgroundTasksDeleteCreate Method for CoreBackgroundTasksDeleteCreate
 
-	Retrieve a list of RQ Tasks.
+		Retrieve a list of RQ Tasks.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiCoreBackgroundTasksDeleteCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id
+		@return ApiCoreBackgroundTasksDeleteCreateRequest
 	*/
 	CoreBackgroundTasksDeleteCreate(ctx context.Context, id string) ApiCoreBackgroundTasksDeleteCreateRequest
 
@@ -70,13 +69,13 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreBackgroundTasksDeleteCreateExecute(r ApiCoreBackgroundTasksDeleteCreateRequest) (*http.Response, error)
 
 	/*
-	CoreBackgroundTasksEnqueueCreate Method for CoreBackgroundTasksEnqueueCreate
+		CoreBackgroundTasksEnqueueCreate Method for CoreBackgroundTasksEnqueueCreate
 
-	Retrieve a list of RQ Tasks.
+		Retrieve a list of RQ Tasks.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiCoreBackgroundTasksEnqueueCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id
+		@return ApiCoreBackgroundTasksEnqueueCreateRequest
 	*/
 	CoreBackgroundTasksEnqueueCreate(ctx context.Context, id string) ApiCoreBackgroundTasksEnqueueCreateRequest
 
@@ -84,13 +83,13 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreBackgroundTasksEnqueueCreateExecute(r ApiCoreBackgroundTasksEnqueueCreateRequest) (*http.Response, error)
 
 	/*
-	CoreBackgroundTasksRequeueCreate Method for CoreBackgroundTasksRequeueCreate
+		CoreBackgroundTasksRequeueCreate Method for CoreBackgroundTasksRequeueCreate
 
-	Retrieve a list of RQ Tasks.
+		Retrieve a list of RQ Tasks.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiCoreBackgroundTasksRequeueCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id
+		@return ApiCoreBackgroundTasksRequeueCreateRequest
 	*/
 	CoreBackgroundTasksRequeueCreate(ctx context.Context, id string) ApiCoreBackgroundTasksRequeueCreateRequest
 
@@ -98,12 +97,12 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreBackgroundTasksRequeueCreateExecute(r ApiCoreBackgroundTasksRequeueCreateRequest) (*http.Response, error)
 
 	/*
-	CoreBackgroundTasksRetrieve Method for CoreBackgroundTasksRetrieve
+		CoreBackgroundTasksRetrieve Method for CoreBackgroundTasksRetrieve
 
-	Retrieve a list of RQ Tasks.
+		Retrieve a list of RQ Tasks.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreBackgroundTasksRetrieveRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiCoreBackgroundTasksRetrieveRequest
 	*/
 	CoreBackgroundTasksRetrieve(ctx context.Context) ApiCoreBackgroundTasksRetrieveRequest
 
@@ -112,13 +111,13 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreBackgroundTasksRetrieveExecute(r ApiCoreBackgroundTasksRetrieveRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
-	CoreBackgroundTasksRetrieve2 Method for CoreBackgroundTasksRetrieve2
+		CoreBackgroundTasksRetrieve2 Method for CoreBackgroundTasksRetrieve2
 
-	Retrieve a list of RQ Tasks.
+		Retrieve a list of RQ Tasks.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiCoreBackgroundTasksRetrieve2Request
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id
+		@return ApiCoreBackgroundTasksRetrieve2Request
 	*/
 	CoreBackgroundTasksRetrieve2(ctx context.Context, id string) ApiCoreBackgroundTasksRetrieve2Request
 
@@ -127,13 +126,13 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreBackgroundTasksRetrieve2Execute(r ApiCoreBackgroundTasksRetrieve2Request) (map[string]interface{}, *http.Response, error)
 
 	/*
-	CoreBackgroundTasksStopCreate Method for CoreBackgroundTasksStopCreate
+		CoreBackgroundTasksStopCreate Method for CoreBackgroundTasksStopCreate
 
-	Retrieve a list of RQ Tasks.
+		Retrieve a list of RQ Tasks.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiCoreBackgroundTasksStopCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id
+		@return ApiCoreBackgroundTasksStopCreateRequest
 	*/
 	CoreBackgroundTasksStopCreate(ctx context.Context, id string) ApiCoreBackgroundTasksStopCreateRequest
 
@@ -141,12 +140,12 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreBackgroundTasksStopCreateExecute(r ApiCoreBackgroundTasksStopCreateRequest) (*http.Response, error)
 
 	/*
-	CoreBackgroundWorkersRetrieve Method for CoreBackgroundWorkersRetrieve
+		CoreBackgroundWorkersRetrieve Method for CoreBackgroundWorkersRetrieve
 
-	Retrieve a list of RQ Workers.
+		Retrieve a list of RQ Workers.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreBackgroundWorkersRetrieveRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiCoreBackgroundWorkersRetrieveRequest
 	*/
 	CoreBackgroundWorkersRetrieve(ctx context.Context) ApiCoreBackgroundWorkersRetrieveRequest
 
@@ -155,13 +154,13 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreBackgroundWorkersRetrieveExecute(r ApiCoreBackgroundWorkersRetrieveRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
-	CoreBackgroundWorkersRetrieve2 Method for CoreBackgroundWorkersRetrieve2
+		CoreBackgroundWorkersRetrieve2 Method for CoreBackgroundWorkersRetrieve2
 
-	Retrieve a list of RQ Workers.
+		Retrieve a list of RQ Workers.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param name
-	@return ApiCoreBackgroundWorkersRetrieve2Request
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param name
+		@return ApiCoreBackgroundWorkersRetrieve2Request
 	*/
 	CoreBackgroundWorkersRetrieve2(ctx context.Context, name string) ApiCoreBackgroundWorkersRetrieve2Request
 
@@ -169,12 +168,12 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreBackgroundWorkersRetrieve2Execute(r ApiCoreBackgroundWorkersRetrieve2Request) (*http.Response, error)
 
 	/*
-	CoreDataFilesList Method for CoreDataFilesList
+		CoreDataFilesList Method for CoreDataFilesList
 
-	Get a list of data file objects.
+		Get a list of data file objects.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreDataFilesListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiCoreDataFilesListRequest
 	*/
 	CoreDataFilesList(ctx context.Context) ApiCoreDataFilesListRequest
 
@@ -183,13 +182,13 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreDataFilesListExecute(r ApiCoreDataFilesListRequest) (*PaginatedDataFileList, *http.Response, error)
 
 	/*
-	CoreDataFilesRetrieve Method for CoreDataFilesRetrieve
+		CoreDataFilesRetrieve Method for CoreDataFilesRetrieve
 
-	Get a data file object.
+		Get a data file object.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this data file.
-	@return ApiCoreDataFilesRetrieveRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id A unique integer value identifying this data file.
+		@return ApiCoreDataFilesRetrieveRequest
 	*/
 	CoreDataFilesRetrieve(ctx context.Context, id int32) ApiCoreDataFilesRetrieveRequest
 
@@ -198,12 +197,12 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreDataFilesRetrieveExecute(r ApiCoreDataFilesRetrieveRequest) (*DataFile, *http.Response, error)
 
 	/*
-	CoreDataSourcesBulkDestroy Method for CoreDataSourcesBulkDestroy
+		CoreDataSourcesBulkDestroy Method for CoreDataSourcesBulkDestroy
 
-	Delete a list of data source objects.
+		Delete a list of data source objects.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreDataSourcesBulkDestroyRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiCoreDataSourcesBulkDestroyRequest
 	*/
 	CoreDataSourcesBulkDestroy(ctx context.Context) ApiCoreDataSourcesBulkDestroyRequest
 
@@ -211,12 +210,12 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreDataSourcesBulkDestroyExecute(r ApiCoreDataSourcesBulkDestroyRequest) (*http.Response, error)
 
 	/*
-	CoreDataSourcesBulkPartialUpdate Method for CoreDataSourcesBulkPartialUpdate
+		CoreDataSourcesBulkPartialUpdate Method for CoreDataSourcesBulkPartialUpdate
 
-	Patch a list of data source objects.
+		Patch a list of data source objects.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreDataSourcesBulkPartialUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiCoreDataSourcesBulkPartialUpdateRequest
 	*/
 	CoreDataSourcesBulkPartialUpdate(ctx context.Context) ApiCoreDataSourcesBulkPartialUpdateRequest
 
@@ -225,12 +224,12 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreDataSourcesBulkPartialUpdateExecute(r ApiCoreDataSourcesBulkPartialUpdateRequest) ([]DataSource, *http.Response, error)
 
 	/*
-	CoreDataSourcesBulkUpdate Method for CoreDataSourcesBulkUpdate
+		CoreDataSourcesBulkUpdate Method for CoreDataSourcesBulkUpdate
 
-	Put a list of data source objects.
+		Put a list of data source objects.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreDataSourcesBulkUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiCoreDataSourcesBulkUpdateRequest
 	*/
 	CoreDataSourcesBulkUpdate(ctx context.Context) ApiCoreDataSourcesBulkUpdateRequest
 
@@ -239,12 +238,12 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreDataSourcesBulkUpdateExecute(r ApiCoreDataSourcesBulkUpdateRequest) ([]DataSource, *http.Response, error)
 
 	/*
-	CoreDataSourcesCreate Method for CoreDataSourcesCreate
+		CoreDataSourcesCreate Method for CoreDataSourcesCreate
 
-	Post a list of data source objects.
+		Post a list of data source objects.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreDataSourcesCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiCoreDataSourcesCreateRequest
 	*/
 	CoreDataSourcesCreate(ctx context.Context) ApiCoreDataSourcesCreateRequest
 
@@ -253,13 +252,13 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreDataSourcesCreateExecute(r ApiCoreDataSourcesCreateRequest) (*DataSource, *http.Response, error)
 
 	/*
-	CoreDataSourcesDestroy Method for CoreDataSourcesDestroy
+		CoreDataSourcesDestroy Method for CoreDataSourcesDestroy
 
-	Delete a data source object.
+		Delete a data source object.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this data source.
-	@return ApiCoreDataSourcesDestroyRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id A unique integer value identifying this data source.
+		@return ApiCoreDataSourcesDestroyRequest
 	*/
 	CoreDataSourcesDestroy(ctx context.Context, id int32) ApiCoreDataSourcesDestroyRequest
 
@@ -267,12 +266,12 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreDataSourcesDestroyExecute(r ApiCoreDataSourcesDestroyRequest) (*http.Response, error)
 
 	/*
-	CoreDataSourcesList Method for CoreDataSourcesList
+		CoreDataSourcesList Method for CoreDataSourcesList
 
-	Get a list of data source objects.
+		Get a list of data source objects.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreDataSourcesListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiCoreDataSourcesListRequest
 	*/
 	CoreDataSourcesList(ctx context.Context) ApiCoreDataSourcesListRequest
 
@@ -281,13 +280,13 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreDataSourcesListExecute(r ApiCoreDataSourcesListRequest) (*PaginatedDataSourceList, *http.Response, error)
 
 	/*
-	CoreDataSourcesPartialUpdate Method for CoreDataSourcesPartialUpdate
+		CoreDataSourcesPartialUpdate Method for CoreDataSourcesPartialUpdate
 
-	Patch a data source object.
+		Patch a data source object.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this data source.
-	@return ApiCoreDataSourcesPartialUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id A unique integer value identifying this data source.
+		@return ApiCoreDataSourcesPartialUpdateRequest
 	*/
 	CoreDataSourcesPartialUpdate(ctx context.Context, id int32) ApiCoreDataSourcesPartialUpdateRequest
 
@@ -296,13 +295,13 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreDataSourcesPartialUpdateExecute(r ApiCoreDataSourcesPartialUpdateRequest) (*DataSource, *http.Response, error)
 
 	/*
-	CoreDataSourcesRetrieve Method for CoreDataSourcesRetrieve
+		CoreDataSourcesRetrieve Method for CoreDataSourcesRetrieve
 
-	Get a data source object.
+		Get a data source object.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this data source.
-	@return ApiCoreDataSourcesRetrieveRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id A unique integer value identifying this data source.
+		@return ApiCoreDataSourcesRetrieveRequest
 	*/
 	CoreDataSourcesRetrieve(ctx context.Context, id int32) ApiCoreDataSourcesRetrieveRequest
 
@@ -311,13 +310,13 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreDataSourcesRetrieveExecute(r ApiCoreDataSourcesRetrieveRequest) (*DataSource, *http.Response, error)
 
 	/*
-	CoreDataSourcesSyncCreate Method for CoreDataSourcesSyncCreate
+		CoreDataSourcesSyncCreate Method for CoreDataSourcesSyncCreate
 
-	Enqueue a job to synchronize the DataSource.
+		Enqueue a job to synchronize the DataSource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this data source.
-	@return ApiCoreDataSourcesSyncCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id A unique integer value identifying this data source.
+		@return ApiCoreDataSourcesSyncCreateRequest
 	*/
 	CoreDataSourcesSyncCreate(ctx context.Context, id int32) ApiCoreDataSourcesSyncCreateRequest
 
@@ -326,13 +325,13 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreDataSourcesSyncCreateExecute(r ApiCoreDataSourcesSyncCreateRequest) (*DataSource, *http.Response, error)
 
 	/*
-	CoreDataSourcesUpdate Method for CoreDataSourcesUpdate
+		CoreDataSourcesUpdate Method for CoreDataSourcesUpdate
 
-	Put a data source object.
+		Put a data source object.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this data source.
-	@return ApiCoreDataSourcesUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id A unique integer value identifying this data source.
+		@return ApiCoreDataSourcesUpdateRequest
 	*/
 	CoreDataSourcesUpdate(ctx context.Context, id int32) ApiCoreDataSourcesUpdateRequest
 
@@ -341,12 +340,12 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreDataSourcesUpdateExecute(r ApiCoreDataSourcesUpdateRequest) (*DataSource, *http.Response, error)
 
 	/*
-	CoreJobsList Method for CoreJobsList
+		CoreJobsList Method for CoreJobsList
 
-	Retrieve a list of job results
+		Retrieve a list of job results
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreJobsListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiCoreJobsListRequest
 	*/
 	CoreJobsList(ctx context.Context) ApiCoreJobsListRequest
 
@@ -355,13 +354,13 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreJobsListExecute(r ApiCoreJobsListRequest) (*PaginatedJobList, *http.Response, error)
 
 	/*
-	CoreJobsRetrieve Method for CoreJobsRetrieve
+		CoreJobsRetrieve Method for CoreJobsRetrieve
 
-	Retrieve a list of job results
+		Retrieve a list of job results
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this job.
-	@return ApiCoreJobsRetrieveRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id A unique integer value identifying this job.
+		@return ApiCoreJobsRetrieveRequest
 	*/
 	CoreJobsRetrieve(ctx context.Context, id int32) ApiCoreJobsRetrieveRequest
 
@@ -370,12 +369,12 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreJobsRetrieveExecute(r ApiCoreJobsRetrieveRequest) (*Job, *http.Response, error)
 
 	/*
-	CoreObjectChangesList Method for CoreObjectChangesList
+		CoreObjectChangesList Method for CoreObjectChangesList
 
-	Retrieve a list of recent changes.
+		Retrieve a list of recent changes.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreObjectChangesListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiCoreObjectChangesListRequest
 	*/
 	CoreObjectChangesList(ctx context.Context) ApiCoreObjectChangesListRequest
 
@@ -384,13 +383,13 @@ Note: Queue names are not URL safe so not returning a detail view.
 	CoreObjectChangesListExecute(r ApiCoreObjectChangesListRequest) (*PaginatedObjectChangeList, *http.Response, error)
 
 	/*
-	CoreObjectChangesRetrieve Method for CoreObjectChangesRetrieve
+		CoreObjectChangesRetrieve Method for CoreObjectChangesRetrieve
 
-	Retrieve a list of recent changes.
+		Retrieve a list of recent changes.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this object change.
-	@return ApiCoreObjectChangesRetrieveRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id A unique integer value identifying this object change.
+		@return ApiCoreObjectChangesRetrieveRequest
 	*/
 	CoreObjectChangesRetrieve(ctx context.Context, id int32) ApiCoreObjectChangesRetrieveRequest
 
@@ -403,7 +402,7 @@ Note: Queue names are not URL safe so not returning a detail view.
 type CoreAPIService service
 
 type ApiCoreBackgroundQueuesRetrieveRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
 }
 
@@ -417,24 +416,25 @@ CoreBackgroundQueuesRetrieve Method for CoreBackgroundQueuesRetrieve
 Retrieve a list of RQ Queues.
 Note: Queue names are not URL safe so not returning a detail view.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCoreBackgroundQueuesRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCoreBackgroundQueuesRetrieveRequest
 */
 func (a *CoreAPIService) CoreBackgroundQueuesRetrieve(ctx context.Context) ApiCoreBackgroundQueuesRetrieveRequest {
 	return ApiCoreBackgroundQueuesRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CoreAPIService) CoreBackgroundQueuesRetrieveExecute(r ApiCoreBackgroundQueuesRetrieveRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBackgroundQueuesRetrieve")
@@ -517,9 +517,9 @@ func (a *CoreAPIService) CoreBackgroundQueuesRetrieveExecute(r ApiCoreBackground
 }
 
 type ApiCoreBackgroundQueuesRetrieve2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
-	name string
+	name       string
 }
 
 func (r ApiCoreBackgroundQueuesRetrieve2Request) Execute() (map[string]interface{}, *http.Response, error) {
@@ -532,26 +532,27 @@ CoreBackgroundQueuesRetrieve2 Method for CoreBackgroundQueuesRetrieve2
 Retrieve a list of RQ Queues.
 Note: Queue names are not URL safe so not returning a detail view.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param name
- @return ApiCoreBackgroundQueuesRetrieve2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param name
+	@return ApiCoreBackgroundQueuesRetrieve2Request
 */
 func (a *CoreAPIService) CoreBackgroundQueuesRetrieve2(ctx context.Context, name string) ApiCoreBackgroundQueuesRetrieve2Request {
 	return ApiCoreBackgroundQueuesRetrieve2Request{
 		ApiService: a,
-		ctx: ctx,
-		name: name,
+		ctx:        ctx,
+		name:       name,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CoreAPIService) CoreBackgroundQueuesRetrieve2Execute(r ApiCoreBackgroundQueuesRetrieve2Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBackgroundQueuesRetrieve2")
@@ -635,9 +636,9 @@ func (a *CoreAPIService) CoreBackgroundQueuesRetrieve2Execute(r ApiCoreBackgroun
 }
 
 type ApiCoreBackgroundTasksDeleteCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
-	id string
+	id         string
 }
 
 func (r ApiCoreBackgroundTasksDeleteCreateRequest) Execute() (*http.Response, error) {
@@ -649,24 +650,24 @@ CoreBackgroundTasksDeleteCreate Method for CoreBackgroundTasksDeleteCreate
 
 Retrieve a list of RQ Tasks.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiCoreBackgroundTasksDeleteCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiCoreBackgroundTasksDeleteCreateRequest
 */
 func (a *CoreAPIService) CoreBackgroundTasksDeleteCreate(ctx context.Context, id string) ApiCoreBackgroundTasksDeleteCreateRequest {
 	return ApiCoreBackgroundTasksDeleteCreateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *CoreAPIService) CoreBackgroundTasksDeleteCreateExecute(r ApiCoreBackgroundTasksDeleteCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBackgroundTasksDeleteCreate")
@@ -741,9 +742,9 @@ func (a *CoreAPIService) CoreBackgroundTasksDeleteCreateExecute(r ApiCoreBackgro
 }
 
 type ApiCoreBackgroundTasksEnqueueCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
-	id string
+	id         string
 }
 
 func (r ApiCoreBackgroundTasksEnqueueCreateRequest) Execute() (*http.Response, error) {
@@ -755,24 +756,24 @@ CoreBackgroundTasksEnqueueCreate Method for CoreBackgroundTasksEnqueueCreate
 
 Retrieve a list of RQ Tasks.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiCoreBackgroundTasksEnqueueCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiCoreBackgroundTasksEnqueueCreateRequest
 */
 func (a *CoreAPIService) CoreBackgroundTasksEnqueueCreate(ctx context.Context, id string) ApiCoreBackgroundTasksEnqueueCreateRequest {
 	return ApiCoreBackgroundTasksEnqueueCreateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *CoreAPIService) CoreBackgroundTasksEnqueueCreateExecute(r ApiCoreBackgroundTasksEnqueueCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBackgroundTasksEnqueueCreate")
@@ -847,9 +848,9 @@ func (a *CoreAPIService) CoreBackgroundTasksEnqueueCreateExecute(r ApiCoreBackgr
 }
 
 type ApiCoreBackgroundTasksRequeueCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
-	id string
+	id         string
 }
 
 func (r ApiCoreBackgroundTasksRequeueCreateRequest) Execute() (*http.Response, error) {
@@ -861,24 +862,24 @@ CoreBackgroundTasksRequeueCreate Method for CoreBackgroundTasksRequeueCreate
 
 Retrieve a list of RQ Tasks.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiCoreBackgroundTasksRequeueCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiCoreBackgroundTasksRequeueCreateRequest
 */
 func (a *CoreAPIService) CoreBackgroundTasksRequeueCreate(ctx context.Context, id string) ApiCoreBackgroundTasksRequeueCreateRequest {
 	return ApiCoreBackgroundTasksRequeueCreateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *CoreAPIService) CoreBackgroundTasksRequeueCreateExecute(r ApiCoreBackgroundTasksRequeueCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBackgroundTasksRequeueCreate")
@@ -953,7 +954,7 @@ func (a *CoreAPIService) CoreBackgroundTasksRequeueCreateExecute(r ApiCoreBackgr
 }
 
 type ApiCoreBackgroundTasksRetrieveRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
 }
 
@@ -966,24 +967,25 @@ CoreBackgroundTasksRetrieve Method for CoreBackgroundTasksRetrieve
 
 Retrieve a list of RQ Tasks.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCoreBackgroundTasksRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCoreBackgroundTasksRetrieveRequest
 */
 func (a *CoreAPIService) CoreBackgroundTasksRetrieve(ctx context.Context) ApiCoreBackgroundTasksRetrieveRequest {
 	return ApiCoreBackgroundTasksRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CoreAPIService) CoreBackgroundTasksRetrieveExecute(r ApiCoreBackgroundTasksRetrieveRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBackgroundTasksRetrieve")
@@ -1066,9 +1068,9 @@ func (a *CoreAPIService) CoreBackgroundTasksRetrieveExecute(r ApiCoreBackgroundT
 }
 
 type ApiCoreBackgroundTasksRetrieve2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
-	id string
+	id         string
 }
 
 func (r ApiCoreBackgroundTasksRetrieve2Request) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1080,26 +1082,27 @@ CoreBackgroundTasksRetrieve2 Method for CoreBackgroundTasksRetrieve2
 
 Retrieve a list of RQ Tasks.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiCoreBackgroundTasksRetrieve2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiCoreBackgroundTasksRetrieve2Request
 */
 func (a *CoreAPIService) CoreBackgroundTasksRetrieve2(ctx context.Context, id string) ApiCoreBackgroundTasksRetrieve2Request {
 	return ApiCoreBackgroundTasksRetrieve2Request{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CoreAPIService) CoreBackgroundTasksRetrieve2Execute(r ApiCoreBackgroundTasksRetrieve2Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBackgroundTasksRetrieve2")
@@ -1183,9 +1186,9 @@ func (a *CoreAPIService) CoreBackgroundTasksRetrieve2Execute(r ApiCoreBackground
 }
 
 type ApiCoreBackgroundTasksStopCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
-	id string
+	id         string
 }
 
 func (r ApiCoreBackgroundTasksStopCreateRequest) Execute() (*http.Response, error) {
@@ -1197,24 +1200,24 @@ CoreBackgroundTasksStopCreate Method for CoreBackgroundTasksStopCreate
 
 Retrieve a list of RQ Tasks.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiCoreBackgroundTasksStopCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiCoreBackgroundTasksStopCreateRequest
 */
 func (a *CoreAPIService) CoreBackgroundTasksStopCreate(ctx context.Context, id string) ApiCoreBackgroundTasksStopCreateRequest {
 	return ApiCoreBackgroundTasksStopCreateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *CoreAPIService) CoreBackgroundTasksStopCreateExecute(r ApiCoreBackgroundTasksStopCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBackgroundTasksStopCreate")
@@ -1289,7 +1292,7 @@ func (a *CoreAPIService) CoreBackgroundTasksStopCreateExecute(r ApiCoreBackgroun
 }
 
 type ApiCoreBackgroundWorkersRetrieveRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
 }
 
@@ -1302,24 +1305,25 @@ CoreBackgroundWorkersRetrieve Method for CoreBackgroundWorkersRetrieve
 
 Retrieve a list of RQ Workers.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCoreBackgroundWorkersRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCoreBackgroundWorkersRetrieveRequest
 */
 func (a *CoreAPIService) CoreBackgroundWorkersRetrieve(ctx context.Context) ApiCoreBackgroundWorkersRetrieveRequest {
 	return ApiCoreBackgroundWorkersRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CoreAPIService) CoreBackgroundWorkersRetrieveExecute(r ApiCoreBackgroundWorkersRetrieveRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBackgroundWorkersRetrieve")
@@ -1402,9 +1406,9 @@ func (a *CoreAPIService) CoreBackgroundWorkersRetrieveExecute(r ApiCoreBackgroun
 }
 
 type ApiCoreBackgroundWorkersRetrieve2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
-	name string
+	name       string
 }
 
 func (r ApiCoreBackgroundWorkersRetrieve2Request) Execute() (*http.Response, error) {
@@ -1416,24 +1420,24 @@ CoreBackgroundWorkersRetrieve2 Method for CoreBackgroundWorkersRetrieve2
 
 Retrieve a list of RQ Workers.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param name
- @return ApiCoreBackgroundWorkersRetrieve2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param name
+	@return ApiCoreBackgroundWorkersRetrieve2Request
 */
 func (a *CoreAPIService) CoreBackgroundWorkersRetrieve2(ctx context.Context, name string) ApiCoreBackgroundWorkersRetrieve2Request {
 	return ApiCoreBackgroundWorkersRetrieve2Request{
 		ApiService: a,
-		ctx: ctx,
-		name: name,
+		ctx:        ctx,
+		name:       name,
 	}
 }
 
 // Execute executes the request
 func (a *CoreAPIService) CoreBackgroundWorkersRetrieve2Execute(r ApiCoreBackgroundWorkersRetrieve2Request) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBackgroundWorkersRetrieve2")
@@ -1508,69 +1512,69 @@ func (a *CoreAPIService) CoreBackgroundWorkersRetrieve2Execute(r ApiCoreBackgrou
 }
 
 type ApiCoreDataFilesListRequest struct {
-	ctx context.Context
-	ApiService CoreAPI
-	created *[]time.Time
-	createdEmpty *[]time.Time
-	createdGt *[]time.Time
-	createdGte *[]time.Time
-	createdLt *[]time.Time
-	createdLte *[]time.Time
-	createdN *[]time.Time
-	createdByRequest *string
-	hash *[]string
-	hashEmpty *bool
-	hashIc *[]string
-	hashIe *[]string
-	hashIew *[]string
-	hashIsw *[]string
-	hashN *[]string
-	hashNic *[]string
-	hashNie *[]string
-	hashNiew *[]string
-	hashNisw *[]string
-	id *[]int32
-	idEmpty *bool
-	idGt *[]int32
-	idGte *[]int32
-	idLt *[]int32
-	idLte *[]int32
-	idN *[]int32
-	lastUpdated *[]time.Time
-	lastUpdatedEmpty *[]time.Time
-	lastUpdatedGt *[]time.Time
-	lastUpdatedGte *[]time.Time
-	lastUpdatedLt *[]time.Time
-	lastUpdatedLte *[]time.Time
-	lastUpdatedN *[]time.Time
-	limit *int32
+	ctx               context.Context
+	ApiService        CoreAPI
+	created           *[]time.Time
+	createdEmpty      *[]time.Time
+	createdGt         *[]time.Time
+	createdGte        *[]time.Time
+	createdLt         *[]time.Time
+	createdLte        *[]time.Time
+	createdN          *[]time.Time
+	createdByRequest  *string
+	hash              *[]string
+	hashEmpty         *bool
+	hashIc            *[]string
+	hashIe            *[]string
+	hashIew           *[]string
+	hashIsw           *[]string
+	hashN             *[]string
+	hashNic           *[]string
+	hashNie           *[]string
+	hashNiew          *[]string
+	hashNisw          *[]string
+	id                *[]int32
+	idEmpty           *bool
+	idGt              *[]int32
+	idGte             *[]int32
+	idLt              *[]int32
+	idLte             *[]int32
+	idN               *[]int32
+	lastUpdated       *[]time.Time
+	lastUpdatedEmpty  *[]time.Time
+	lastUpdatedGt     *[]time.Time
+	lastUpdatedGte    *[]time.Time
+	lastUpdatedLt     *[]time.Time
+	lastUpdatedLte    *[]time.Time
+	lastUpdatedN      *[]time.Time
+	limit             *int32
 	modifiedByRequest *string
-	offset *int32
-	ordering *string
-	path *[]string
-	pathEmpty *bool
-	pathIc *[]string
-	pathIe *[]string
-	pathIew *[]string
-	pathIsw *[]string
-	pathN *[]string
-	pathNic *[]string
-	pathNie *[]string
-	pathNiew *[]string
-	pathNisw *[]string
-	q *string
-	size *[]int32
-	sizeEmpty *bool
-	sizeGt *[]int32
-	sizeGte *[]int32
-	sizeLt *[]int32
-	sizeLte *[]int32
-	sizeN *[]int32
-	source *[]string
-	sourceN *[]string
-	sourceId *[]int32
-	sourceIdN *[]int32
-	updatedByRequest *string
+	offset            *int32
+	ordering          *string
+	path              *[]string
+	pathEmpty         *bool
+	pathIc            *[]string
+	pathIe            *[]string
+	pathIew           *[]string
+	pathIsw           *[]string
+	pathN             *[]string
+	pathNic           *[]string
+	pathNie           *[]string
+	pathNiew          *[]string
+	pathNisw          *[]string
+	q                 *string
+	size              *[]int32
+	sizeEmpty         *bool
+	sizeGt            *[]int32
+	sizeGte           *[]int32
+	sizeLt            *[]int32
+	sizeLte           *[]int32
+	sizeN             *[]int32
+	source            *[]string
+	sourceN           *[]string
+	sourceId          *[]int32
+	sourceIdN         *[]int32
+	updatedByRequest  *string
 }
 
 func (r ApiCoreDataFilesListRequest) Created(created []time.Time) ApiCoreDataFilesListRequest {
@@ -1894,24 +1898,25 @@ CoreDataFilesList Method for CoreDataFilesList
 
 Get a list of data file objects.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCoreDataFilesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCoreDataFilesListRequest
 */
 func (a *CoreAPIService) CoreDataFilesList(ctx context.Context) ApiCoreDataFilesListRequest {
 	return ApiCoreDataFilesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return PaginatedDataFileList
+//
+//	@return PaginatedDataFileList
 func (a *CoreAPIService) CoreDataFilesListExecute(r ApiCoreDataFilesListRequest) (*PaginatedDataFileList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PaginatedDataFileList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedDataFileList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreDataFilesList")
@@ -2577,9 +2582,9 @@ func (a *CoreAPIService) CoreDataFilesListExecute(r ApiCoreDataFilesListRequest)
 }
 
 type ApiCoreDataFilesRetrieveRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
-	id int32
+	id         int32
 }
 
 func (r ApiCoreDataFilesRetrieveRequest) Execute() (*DataFile, *http.Response, error) {
@@ -2591,26 +2596,27 @@ CoreDataFilesRetrieve Method for CoreDataFilesRetrieve
 
 Get a data file object.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this data file.
- @return ApiCoreDataFilesRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this data file.
+	@return ApiCoreDataFilesRetrieveRequest
 */
 func (a *CoreAPIService) CoreDataFilesRetrieve(ctx context.Context, id int32) ApiCoreDataFilesRetrieveRequest {
 	return ApiCoreDataFilesRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return DataFile
+//
+//	@return DataFile
 func (a *CoreAPIService) CoreDataFilesRetrieveExecute(r ApiCoreDataFilesRetrieveRequest) (*DataFile, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DataFile
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DataFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreDataFilesRetrieve")
@@ -2694,8 +2700,8 @@ func (a *CoreAPIService) CoreDataFilesRetrieveExecute(r ApiCoreDataFilesRetrieve
 }
 
 type ApiCoreDataSourcesBulkDestroyRequest struct {
-	ctx context.Context
-	ApiService CoreAPI
+	ctx               context.Context
+	ApiService        CoreAPI
 	dataSourceRequest *[]DataSourceRequest
 }
 
@@ -2713,22 +2719,22 @@ CoreDataSourcesBulkDestroy Method for CoreDataSourcesBulkDestroy
 
 Delete a list of data source objects.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCoreDataSourcesBulkDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCoreDataSourcesBulkDestroyRequest
 */
 func (a *CoreAPIService) CoreDataSourcesBulkDestroy(ctx context.Context) ApiCoreDataSourcesBulkDestroyRequest {
 	return ApiCoreDataSourcesBulkDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CoreAPIService) CoreDataSourcesBulkDestroyExecute(r ApiCoreDataSourcesBulkDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreDataSourcesBulkDestroy")
@@ -2807,8 +2813,8 @@ func (a *CoreAPIService) CoreDataSourcesBulkDestroyExecute(r ApiCoreDataSourcesB
 }
 
 type ApiCoreDataSourcesBulkPartialUpdateRequest struct {
-	ctx context.Context
-	ApiService CoreAPI
+	ctx               context.Context
+	ApiService        CoreAPI
 	dataSourceRequest *[]DataSourceRequest
 }
 
@@ -2826,24 +2832,25 @@ CoreDataSourcesBulkPartialUpdate Method for CoreDataSourcesBulkPartialUpdate
 
 Patch a list of data source objects.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCoreDataSourcesBulkPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCoreDataSourcesBulkPartialUpdateRequest
 */
 func (a *CoreAPIService) CoreDataSourcesBulkPartialUpdate(ctx context.Context) ApiCoreDataSourcesBulkPartialUpdateRequest {
 	return ApiCoreDataSourcesBulkPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []DataSource
+//
+//	@return []DataSource
 func (a *CoreAPIService) CoreDataSourcesBulkPartialUpdateExecute(r ApiCoreDataSourcesBulkPartialUpdateRequest) ([]DataSource, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []DataSource
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []DataSource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreDataSourcesBulkPartialUpdate")
@@ -2931,8 +2938,8 @@ func (a *CoreAPIService) CoreDataSourcesBulkPartialUpdateExecute(r ApiCoreDataSo
 }
 
 type ApiCoreDataSourcesBulkUpdateRequest struct {
-	ctx context.Context
-	ApiService CoreAPI
+	ctx               context.Context
+	ApiService        CoreAPI
 	dataSourceRequest *[]DataSourceRequest
 }
 
@@ -2950,24 +2957,25 @@ CoreDataSourcesBulkUpdate Method for CoreDataSourcesBulkUpdate
 
 Put a list of data source objects.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCoreDataSourcesBulkUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCoreDataSourcesBulkUpdateRequest
 */
 func (a *CoreAPIService) CoreDataSourcesBulkUpdate(ctx context.Context) ApiCoreDataSourcesBulkUpdateRequest {
 	return ApiCoreDataSourcesBulkUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []DataSource
+//
+//	@return []DataSource
 func (a *CoreAPIService) CoreDataSourcesBulkUpdateExecute(r ApiCoreDataSourcesBulkUpdateRequest) ([]DataSource, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []DataSource
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []DataSource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreDataSourcesBulkUpdate")
@@ -3055,8 +3063,8 @@ func (a *CoreAPIService) CoreDataSourcesBulkUpdateExecute(r ApiCoreDataSourcesBu
 }
 
 type ApiCoreDataSourcesCreateRequest struct {
-	ctx context.Context
-	ApiService CoreAPI
+	ctx                       context.Context
+	ApiService                CoreAPI
 	writableDataSourceRequest *WritableDataSourceRequest
 }
 
@@ -3074,24 +3082,25 @@ CoreDataSourcesCreate Method for CoreDataSourcesCreate
 
 Post a list of data source objects.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCoreDataSourcesCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCoreDataSourcesCreateRequest
 */
 func (a *CoreAPIService) CoreDataSourcesCreate(ctx context.Context) ApiCoreDataSourcesCreateRequest {
 	return ApiCoreDataSourcesCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return DataSource
+//
+//	@return DataSource
 func (a *CoreAPIService) CoreDataSourcesCreateExecute(r ApiCoreDataSourcesCreateRequest) (*DataSource, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DataSource
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DataSource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreDataSourcesCreate")
@@ -3179,9 +3188,9 @@ func (a *CoreAPIService) CoreDataSourcesCreateExecute(r ApiCoreDataSourcesCreate
 }
 
 type ApiCoreDataSourcesDestroyRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
-	id int32
+	id         int32
 }
 
 func (r ApiCoreDataSourcesDestroyRequest) Execute() (*http.Response, error) {
@@ -3193,24 +3202,24 @@ CoreDataSourcesDestroy Method for CoreDataSourcesDestroy
 
 Delete a data source object.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this data source.
- @return ApiCoreDataSourcesDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this data source.
+	@return ApiCoreDataSourcesDestroyRequest
 */
 func (a *CoreAPIService) CoreDataSourcesDestroy(ctx context.Context, id int32) ApiCoreDataSourcesDestroyRequest {
 	return ApiCoreDataSourcesDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *CoreAPIService) CoreDataSourcesDestroyExecute(r ApiCoreDataSourcesDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreDataSourcesDestroy")
@@ -3285,101 +3294,101 @@ func (a *CoreAPIService) CoreDataSourcesDestroyExecute(r ApiCoreDataSourcesDestr
 }
 
 type ApiCoreDataSourcesListRequest struct {
-	ctx context.Context
-	ApiService CoreAPI
-	created *[]time.Time
-	createdEmpty *[]time.Time
-	createdGt *[]time.Time
-	createdGte *[]time.Time
-	createdLt *[]time.Time
-	createdLte *[]time.Time
-	createdN *[]time.Time
-	createdByRequest *string
-	description *[]string
-	descriptionEmpty *bool
-	descriptionIc *[]string
-	descriptionIe *[]string
-	descriptionIew *[]string
-	descriptionIsw *[]string
-	descriptionN *[]string
-	descriptionNic *[]string
-	descriptionNie *[]string
-	descriptionNiew *[]string
-	descriptionNisw *[]string
-	enabled *bool
-	id *[]int32
-	idEmpty *bool
-	idGt *[]int32
-	idGte *[]int32
-	idLt *[]int32
-	idLte *[]int32
-	idN *[]int32
-	lastSynced *[]time.Time
-	lastSyncedEmpty *bool
-	lastSyncedGt *[]time.Time
-	lastSyncedGte *[]time.Time
-	lastSyncedLt *[]time.Time
-	lastSyncedLte *[]time.Time
-	lastSyncedN *[]time.Time
-	lastUpdated *[]time.Time
-	lastUpdatedEmpty *[]time.Time
-	lastUpdatedGt *[]time.Time
-	lastUpdatedGte *[]time.Time
-	lastUpdatedLt *[]time.Time
-	lastUpdatedLte *[]time.Time
-	lastUpdatedN *[]time.Time
-	limit *int32
+	ctx               context.Context
+	ApiService        CoreAPI
+	created           *[]time.Time
+	createdEmpty      *[]time.Time
+	createdGt         *[]time.Time
+	createdGte        *[]time.Time
+	createdLt         *[]time.Time
+	createdLte        *[]time.Time
+	createdN          *[]time.Time
+	createdByRequest  *string
+	description       *[]string
+	descriptionEmpty  *bool
+	descriptionIc     *[]string
+	descriptionIe     *[]string
+	descriptionIew    *[]string
+	descriptionIsw    *[]string
+	descriptionN      *[]string
+	descriptionNic    *[]string
+	descriptionNie    *[]string
+	descriptionNiew   *[]string
+	descriptionNisw   *[]string
+	enabled           *bool
+	id                *[]int32
+	idEmpty           *bool
+	idGt              *[]int32
+	idGte             *[]int32
+	idLt              *[]int32
+	idLte             *[]int32
+	idN               *[]int32
+	lastSynced        *[]time.Time
+	lastSyncedEmpty   *bool
+	lastSyncedGt      *[]time.Time
+	lastSyncedGte     *[]time.Time
+	lastSyncedLt      *[]time.Time
+	lastSyncedLte     *[]time.Time
+	lastSyncedN       *[]time.Time
+	lastUpdated       *[]time.Time
+	lastUpdatedEmpty  *[]time.Time
+	lastUpdatedGt     *[]time.Time
+	lastUpdatedGte    *[]time.Time
+	lastUpdatedLt     *[]time.Time
+	lastUpdatedLte    *[]time.Time
+	lastUpdatedN      *[]time.Time
+	limit             *int32
 	modifiedByRequest *string
-	name *[]string
-	nameEmpty *bool
-	nameIc *[]string
-	nameIe *[]string
-	nameIew *[]string
-	nameIsw *[]string
-	nameN *[]string
-	nameNic *[]string
-	nameNie *[]string
-	nameNiew *[]string
-	nameNisw *[]string
-	offset *int32
-	ordering *string
-	q *string
-	sourceUrl *[]string
-	sourceUrlEmpty *bool
-	sourceUrlIc *[]string
-	sourceUrlIe *[]string
-	sourceUrlIew *[]string
-	sourceUrlIsw *[]string
-	sourceUrlN *[]string
-	sourceUrlNic *[]string
-	sourceUrlNie *[]string
-	sourceUrlNiew *[]string
-	sourceUrlNisw *[]string
-	status *[]string
-	statusEmpty *bool
-	statusIc *[]string
-	statusIe *[]string
-	statusIew *[]string
-	statusIsw *[]string
-	statusN *[]string
-	statusNic *[]string
-	statusNie *[]string
-	statusNiew *[]string
-	statusNisw *[]string
-	tag *[]string
-	tagN *[]string
-	type_ *[]string
-	typeEmpty *bool
-	typeIc *[]string
-	typeIe *[]string
-	typeIew *[]string
-	typeIsw *[]string
-	typeN *[]string
-	typeNic *[]string
-	typeNie *[]string
-	typeNiew *[]string
-	typeNisw *[]string
-	updatedByRequest *string
+	name              *[]string
+	nameEmpty         *bool
+	nameIc            *[]string
+	nameIe            *[]string
+	nameIew           *[]string
+	nameIsw           *[]string
+	nameN             *[]string
+	nameNic           *[]string
+	nameNie           *[]string
+	nameNiew          *[]string
+	nameNisw          *[]string
+	offset            *int32
+	ordering          *string
+	q                 *string
+	sourceUrl         *[]string
+	sourceUrlEmpty    *bool
+	sourceUrlIc       *[]string
+	sourceUrlIe       *[]string
+	sourceUrlIew      *[]string
+	sourceUrlIsw      *[]string
+	sourceUrlN        *[]string
+	sourceUrlNic      *[]string
+	sourceUrlNie      *[]string
+	sourceUrlNiew     *[]string
+	sourceUrlNisw     *[]string
+	status            *[]string
+	statusEmpty       *bool
+	statusIc          *[]string
+	statusIe          *[]string
+	statusIew         *[]string
+	statusIsw         *[]string
+	statusN           *[]string
+	statusNic         *[]string
+	statusNie         *[]string
+	statusNiew        *[]string
+	statusNisw        *[]string
+	tag               *[]string
+	tagN              *[]string
+	type_             *[]string
+	typeEmpty         *bool
+	typeIc            *[]string
+	typeIe            *[]string
+	typeIew           *[]string
+	typeIsw           *[]string
+	typeN             *[]string
+	typeNic           *[]string
+	typeNie           *[]string
+	typeNiew          *[]string
+	typeNisw          *[]string
+	updatedByRequest  *string
 }
 
 func (r ApiCoreDataSourcesListRequest) Created(created []time.Time) ApiCoreDataSourcesListRequest {
@@ -3860,24 +3869,25 @@ CoreDataSourcesList Method for CoreDataSourcesList
 
 Get a list of data source objects.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCoreDataSourcesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCoreDataSourcesListRequest
 */
 func (a *CoreAPIService) CoreDataSourcesList(ctx context.Context) ApiCoreDataSourcesListRequest {
 	return ApiCoreDataSourcesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return PaginatedDataSourceList
+//
+//	@return PaginatedDataSourceList
 func (a *CoreAPIService) CoreDataSourcesListExecute(r ApiCoreDataSourcesListRequest) (*PaginatedDataSourceList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PaginatedDataSourceList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedDataSourceList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreDataSourcesList")
@@ -4863,9 +4873,9 @@ func (a *CoreAPIService) CoreDataSourcesListExecute(r ApiCoreDataSourcesListRequ
 }
 
 type ApiCoreDataSourcesPartialUpdateRequest struct {
-	ctx context.Context
-	ApiService CoreAPI
-	id int32
+	ctx                              context.Context
+	ApiService                       CoreAPI
+	id                               int32
 	patchedWritableDataSourceRequest *PatchedWritableDataSourceRequest
 }
 
@@ -4883,26 +4893,27 @@ CoreDataSourcesPartialUpdate Method for CoreDataSourcesPartialUpdate
 
 Patch a data source object.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this data source.
- @return ApiCoreDataSourcesPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this data source.
+	@return ApiCoreDataSourcesPartialUpdateRequest
 */
 func (a *CoreAPIService) CoreDataSourcesPartialUpdate(ctx context.Context, id int32) ApiCoreDataSourcesPartialUpdateRequest {
 	return ApiCoreDataSourcesPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return DataSource
+//
+//	@return DataSource
 func (a *CoreAPIService) CoreDataSourcesPartialUpdateExecute(r ApiCoreDataSourcesPartialUpdateRequest) (*DataSource, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DataSource
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DataSource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreDataSourcesPartialUpdate")
@@ -4988,9 +4999,9 @@ func (a *CoreAPIService) CoreDataSourcesPartialUpdateExecute(r ApiCoreDataSource
 }
 
 type ApiCoreDataSourcesRetrieveRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
-	id int32
+	id         int32
 }
 
 func (r ApiCoreDataSourcesRetrieveRequest) Execute() (*DataSource, *http.Response, error) {
@@ -5002,26 +5013,27 @@ CoreDataSourcesRetrieve Method for CoreDataSourcesRetrieve
 
 Get a data source object.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this data source.
- @return ApiCoreDataSourcesRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this data source.
+	@return ApiCoreDataSourcesRetrieveRequest
 */
 func (a *CoreAPIService) CoreDataSourcesRetrieve(ctx context.Context, id int32) ApiCoreDataSourcesRetrieveRequest {
 	return ApiCoreDataSourcesRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return DataSource
+//
+//	@return DataSource
 func (a *CoreAPIService) CoreDataSourcesRetrieveExecute(r ApiCoreDataSourcesRetrieveRequest) (*DataSource, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DataSource
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DataSource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreDataSourcesRetrieve")
@@ -5105,9 +5117,9 @@ func (a *CoreAPIService) CoreDataSourcesRetrieveExecute(r ApiCoreDataSourcesRetr
 }
 
 type ApiCoreDataSourcesSyncCreateRequest struct {
-	ctx context.Context
-	ApiService CoreAPI
-	id int32
+	ctx                       context.Context
+	ApiService                CoreAPI
+	id                        int32
 	writableDataSourceRequest *WritableDataSourceRequest
 }
 
@@ -5125,26 +5137,27 @@ CoreDataSourcesSyncCreate Method for CoreDataSourcesSyncCreate
 
 Enqueue a job to synchronize the DataSource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this data source.
- @return ApiCoreDataSourcesSyncCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this data source.
+	@return ApiCoreDataSourcesSyncCreateRequest
 */
 func (a *CoreAPIService) CoreDataSourcesSyncCreate(ctx context.Context, id int32) ApiCoreDataSourcesSyncCreateRequest {
 	return ApiCoreDataSourcesSyncCreateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return DataSource
+//
+//	@return DataSource
 func (a *CoreAPIService) CoreDataSourcesSyncCreateExecute(r ApiCoreDataSourcesSyncCreateRequest) (*DataSource, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DataSource
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DataSource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreDataSourcesSyncCreate")
@@ -5233,9 +5246,9 @@ func (a *CoreAPIService) CoreDataSourcesSyncCreateExecute(r ApiCoreDataSourcesSy
 }
 
 type ApiCoreDataSourcesUpdateRequest struct {
-	ctx context.Context
-	ApiService CoreAPI
-	id int32
+	ctx                       context.Context
+	ApiService                CoreAPI
+	id                        int32
 	writableDataSourceRequest *WritableDataSourceRequest
 }
 
@@ -5253,26 +5266,27 @@ CoreDataSourcesUpdate Method for CoreDataSourcesUpdate
 
 Put a data source object.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this data source.
- @return ApiCoreDataSourcesUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this data source.
+	@return ApiCoreDataSourcesUpdateRequest
 */
 func (a *CoreAPIService) CoreDataSourcesUpdate(ctx context.Context, id int32) ApiCoreDataSourcesUpdateRequest {
 	return ApiCoreDataSourcesUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return DataSource
+//
+//	@return DataSource
 func (a *CoreAPIService) CoreDataSourcesUpdateExecute(r ApiCoreDataSourcesUpdateRequest) (*DataSource, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DataSource
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DataSource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreDataSourcesUpdate")
@@ -5361,72 +5375,72 @@ func (a *CoreAPIService) CoreDataSourcesUpdateExecute(r ApiCoreDataSourcesUpdate
 }
 
 type ApiCoreJobsListRequest struct {
-	ctx context.Context
-	ApiService CoreAPI
-	completed *time.Time
-	completedAfter *time.Time
+	ctx             context.Context
+	ApiService      CoreAPI
+	completed       *time.Time
+	completedAfter  *time.Time
 	completedBefore *time.Time
-	created *time.Time
-	createdAfter *time.Time
-	createdBefore *time.Time
-	id *[]int32
-	idEmpty *bool
-	idGt *[]int32
-	idGte *[]int32
-	idLt *[]int32
-	idLte *[]int32
-	idN *[]int32
-	interval *[]int32
-	intervalEmpty *bool
-	intervalGt *[]int32
-	intervalGte *[]int32
-	intervalLt *[]int32
-	intervalLte *[]int32
-	intervalN *[]int32
-	jobId *string
-	limit *int32
-	name *[]string
-	nameEmpty *bool
-	nameIc *[]string
-	nameIe *[]string
-	nameIew *[]string
-	nameIsw *[]string
-	nameN *[]string
-	nameNic *[]string
-	nameNie *[]string
-	nameNiew *[]string
-	nameNisw *[]string
-	objectId *[]int32
-	objectIdEmpty *bool
-	objectIdGt *[]int32
-	objectIdGte *[]int32
-	objectIdLt *[]int32
-	objectIdLte *[]int32
-	objectIdN *[]int32
-	objectType *int32
-	objectTypeN *int32
-	offset *int32
-	ordering *string
-	q *string
-	scheduled *time.Time
-	scheduledAfter *time.Time
+	created         *time.Time
+	createdAfter    *time.Time
+	createdBefore   *time.Time
+	id              *[]int32
+	idEmpty         *bool
+	idGt            *[]int32
+	idGte           *[]int32
+	idLt            *[]int32
+	idLte           *[]int32
+	idN             *[]int32
+	interval        *[]int32
+	intervalEmpty   *bool
+	intervalGt      *[]int32
+	intervalGte     *[]int32
+	intervalLt      *[]int32
+	intervalLte     *[]int32
+	intervalN       *[]int32
+	jobId           *string
+	limit           *int32
+	name            *[]string
+	nameEmpty       *bool
+	nameIc          *[]string
+	nameIe          *[]string
+	nameIew         *[]string
+	nameIsw         *[]string
+	nameN           *[]string
+	nameNic         *[]string
+	nameNie         *[]string
+	nameNiew        *[]string
+	nameNisw        *[]string
+	objectId        *[]int32
+	objectIdEmpty   *bool
+	objectIdGt      *[]int32
+	objectIdGte     *[]int32
+	objectIdLt      *[]int32
+	objectIdLte     *[]int32
+	objectIdN       *[]int32
+	objectType      *int32
+	objectTypeN     *int32
+	offset          *int32
+	ordering        *string
+	q               *string
+	scheduled       *time.Time
+	scheduledAfter  *time.Time
 	scheduledBefore *time.Time
-	started *time.Time
-	startedAfter *time.Time
-	startedBefore *time.Time
-	status *[]string
-	statusEmpty *bool
-	statusIc *[]string
-	statusIe *[]string
-	statusIew *[]string
-	statusIsw *[]string
-	statusN *[]string
-	statusNic *[]string
-	statusNie *[]string
-	statusNiew *[]string
-	statusNisw *[]string
-	user *int32
-	userN *int32
+	started         *time.Time
+	startedAfter    *time.Time
+	startedBefore   *time.Time
+	status          *[]string
+	statusEmpty     *bool
+	statusIc        *[]string
+	statusIe        *[]string
+	statusIew       *[]string
+	statusIsw       *[]string
+	statusN         *[]string
+	statusNic       *[]string
+	statusNie       *[]string
+	statusNiew      *[]string
+	statusNisw      *[]string
+	user            *int32
+	userN           *int32
 }
 
 func (r ApiCoreJobsListRequest) Completed(completed time.Time) ApiCoreJobsListRequest {
@@ -5762,24 +5776,25 @@ CoreJobsList Method for CoreJobsList
 
 Retrieve a list of job results
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCoreJobsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCoreJobsListRequest
 */
 func (a *CoreAPIService) CoreJobsList(ctx context.Context) ApiCoreJobsListRequest {
 	return ApiCoreJobsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return PaginatedJobList
+//
+//	@return PaginatedJobList
 func (a *CoreAPIService) CoreJobsListExecute(r ApiCoreJobsListRequest) (*PaginatedJobList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PaginatedJobList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedJobList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreJobsList")
@@ -6358,9 +6373,9 @@ func (a *CoreAPIService) CoreJobsListExecute(r ApiCoreJobsListRequest) (*Paginat
 }
 
 type ApiCoreJobsRetrieveRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
-	id int32
+	id         int32
 }
 
 func (r ApiCoreJobsRetrieveRequest) Execute() (*Job, *http.Response, error) {
@@ -6372,26 +6387,27 @@ CoreJobsRetrieve Method for CoreJobsRetrieve
 
 Retrieve a list of job results
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this job.
- @return ApiCoreJobsRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this job.
+	@return ApiCoreJobsRetrieveRequest
 */
 func (a *CoreAPIService) CoreJobsRetrieve(ctx context.Context, id int32) ApiCoreJobsRetrieveRequest {
 	return ApiCoreJobsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return Job
+//
+//	@return Job
 func (a *CoreAPIService) CoreJobsRetrieveExecute(r ApiCoreJobsRetrieveRequest) (*Job, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Job
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Job
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreJobsRetrieve")
@@ -6475,69 +6491,69 @@ func (a *CoreAPIService) CoreJobsRetrieveExecute(r ApiCoreJobsRetrieveRequest) (
 }
 
 type ApiCoreObjectChangesListRequest struct {
-	ctx context.Context
-	ApiService CoreAPI
-	action *CoreObjectChangesListActionParameter
-	changedObjectId *[]int32
+	ctx                  context.Context
+	ApiService           CoreAPI
+	action               *CoreObjectChangesListActionParameter
+	changedObjectId      *[]int32
 	changedObjectIdEmpty *bool
-	changedObjectIdGt *[]int32
-	changedObjectIdGte *[]int32
-	changedObjectIdLt *[]int32
-	changedObjectIdLte *[]int32
-	changedObjectIdN *[]int32
-	changedObjectType *string
-	changedObjectTypeN *string
-	changedObjectTypeId *[]int32
+	changedObjectIdGt    *[]int32
+	changedObjectIdGte   *[]int32
+	changedObjectIdLt    *[]int32
+	changedObjectIdLte   *[]int32
+	changedObjectIdN     *[]int32
+	changedObjectType    *string
+	changedObjectTypeN   *string
+	changedObjectTypeId  *[]int32
 	changedObjectTypeIdN *[]int32
-	id *[]int32
-	idEmpty *bool
-	idGt *[]int32
-	idGte *[]int32
-	idLt *[]int32
-	idLte *[]int32
-	idN *[]int32
-	limit *int32
-	objectRepr *[]string
-	objectReprEmpty *bool
-	objectReprIc *[]string
-	objectReprIe *[]string
-	objectReprIew *[]string
-	objectReprIsw *[]string
-	objectReprN *[]string
-	objectReprNic *[]string
-	objectReprNie *[]string
-	objectReprNiew *[]string
-	objectReprNisw *[]string
-	offset *int32
-	ordering *string
-	q *string
-	relatedObjectId *[]int32
+	id                   *[]int32
+	idEmpty              *bool
+	idGt                 *[]int32
+	idGte                *[]int32
+	idLt                 *[]int32
+	idLte                *[]int32
+	idN                  *[]int32
+	limit                *int32
+	objectRepr           *[]string
+	objectReprEmpty      *bool
+	objectReprIc         *[]string
+	objectReprIe         *[]string
+	objectReprIew        *[]string
+	objectReprIsw        *[]string
+	objectReprN          *[]string
+	objectReprNic        *[]string
+	objectReprNie        *[]string
+	objectReprNiew       *[]string
+	objectReprNisw       *[]string
+	offset               *int32
+	ordering             *string
+	q                    *string
+	relatedObjectId      *[]int32
 	relatedObjectIdEmpty *bool
-	relatedObjectIdGt *[]int32
-	relatedObjectIdGte *[]int32
-	relatedObjectIdLt *[]int32
-	relatedObjectIdLte *[]int32
-	relatedObjectIdN *[]int32
-	relatedObjectType *int32
-	relatedObjectTypeN *int32
-	requestId *string
-	timeAfter *time.Time
-	timeBefore *time.Time
-	user *[]string
-	userN *[]string
-	userId *[]*int32
-	userIdN *[]*int32
-	userName *[]string
-	userNameEmpty *bool
-	userNameIc *[]string
-	userNameIe *[]string
-	userNameIew *[]string
-	userNameIsw *[]string
-	userNameN *[]string
-	userNameNic *[]string
-	userNameNie *[]string
-	userNameNiew *[]string
-	userNameNisw *[]string
+	relatedObjectIdGt    *[]int32
+	relatedObjectIdGte   *[]int32
+	relatedObjectIdLt    *[]int32
+	relatedObjectIdLte   *[]int32
+	relatedObjectIdN     *[]int32
+	relatedObjectType    *int32
+	relatedObjectTypeN   *int32
+	requestId            *string
+	timeAfter            *time.Time
+	timeBefore           *time.Time
+	user                 *[]string
+	userN                *[]string
+	userId               *[]*int32
+	userIdN              *[]*int32
+	userName             *[]string
+	userNameEmpty        *bool
+	userNameIc           *[]string
+	userNameIe           *[]string
+	userNameIew          *[]string
+	userNameIsw          *[]string
+	userNameN            *[]string
+	userNameNic          *[]string
+	userNameNie          *[]string
+	userNameNiew         *[]string
+	userNameNisw         *[]string
 }
 
 // * &#x60;create&#x60; - Created * &#x60;update&#x60; - Updated * &#x60;delete&#x60; - Deleted
@@ -6863,24 +6879,25 @@ CoreObjectChangesList Method for CoreObjectChangesList
 
 Retrieve a list of recent changes.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCoreObjectChangesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCoreObjectChangesListRequest
 */
 func (a *CoreAPIService) CoreObjectChangesList(ctx context.Context) ApiCoreObjectChangesListRequest {
 	return ApiCoreObjectChangesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return PaginatedObjectChangeList
+//
+//	@return PaginatedObjectChangeList
 func (a *CoreAPIService) CoreObjectChangesListExecute(r ApiCoreObjectChangesListRequest) (*PaginatedObjectChangeList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PaginatedObjectChangeList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedObjectChangeList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreObjectChangesList")
@@ -7498,9 +7515,9 @@ func (a *CoreAPIService) CoreObjectChangesListExecute(r ApiCoreObjectChangesList
 }
 
 type ApiCoreObjectChangesRetrieveRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CoreAPI
-	id int32
+	id         int32
 }
 
 func (r ApiCoreObjectChangesRetrieveRequest) Execute() (*ObjectChange, *http.Response, error) {
@@ -7512,26 +7529,27 @@ CoreObjectChangesRetrieve Method for CoreObjectChangesRetrieve
 
 Retrieve a list of recent changes.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this object change.
- @return ApiCoreObjectChangesRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this object change.
+	@return ApiCoreObjectChangesRetrieveRequest
 */
 func (a *CoreAPIService) CoreObjectChangesRetrieve(ctx context.Context, id int32) ApiCoreObjectChangesRetrieveRequest {
 	return ApiCoreObjectChangesRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ObjectChange
+//
+//	@return ObjectChange
 func (a *CoreAPIService) CoreObjectChangesRetrieveExecute(r ApiCoreObjectChangesRetrieveRequest) (*ObjectChange, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ObjectChange
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ObjectChange
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreObjectChangesRetrieve")

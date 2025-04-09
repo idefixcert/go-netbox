@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the SavedFilter type satisfies the MappedNullable interface at compile time
@@ -21,21 +21,21 @@ var _ MappedNullable = &SavedFilter{}
 
 // SavedFilter Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type SavedFilter struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	ObjectTypes []string `json:"object_types"`
-	Name string `json:"name"`
-	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Description *string `json:"description,omitempty"`
-	User NullableInt32 `json:"user,omitempty"`
-	Weight *int32 `json:"weight,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Shared *bool `json:"shared,omitempty"`
-	Parameters interface{} `json:"parameters"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Id                   int32         `json:"id"`
+	Url                  string        `json:"url"`
+	DisplayUrl           *string       `json:"display_url,omitempty"`
+	Display              string        `json:"display"`
+	ObjectTypes          []string      `json:"object_types"`
+	Name                 string        `json:"name"`
+	Slug                 string        `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Description          *string       `json:"description,omitempty"`
+	User                 NullableInt32 `json:"user,omitempty"`
+	Weight               *int32        `json:"weight,omitempty"`
+	Enabled              *bool         `json:"enabled,omitempty"`
+	Shared               *bool         `json:"shared,omitempty"`
+	Parameters           interface{}   `json:"parameters"`
+	Created              NullableTime  `json:"created,omitempty"`
+	LastUpdated          NullableTime  `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -89,7 +89,6 @@ func (o *SavedFilter) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *SavedFilter) GetUrl() string {
 	if o == nil {
@@ -113,7 +112,6 @@ func (o *SavedFilter) GetUrlOk() (*string, bool) {
 func (o *SavedFilter) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *SavedFilter) GetDisplayUrl() string {
@@ -171,7 +169,6 @@ func (o *SavedFilter) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetObjectTypes returns the ObjectTypes field value
 func (o *SavedFilter) GetObjectTypes() []string {
 	if o == nil {
@@ -195,7 +192,6 @@ func (o *SavedFilter) GetObjectTypesOk() ([]string, bool) {
 func (o *SavedFilter) SetObjectTypes(v []string) {
 	o.ObjectTypes = v
 }
-
 
 // GetName returns the Name field value
 func (o *SavedFilter) GetName() string {
@@ -221,7 +217,6 @@ func (o *SavedFilter) SetName(v string) {
 	o.Name = v
 }
 
-
 // GetSlug returns the Slug field value
 func (o *SavedFilter) GetSlug() string {
 	if o == nil {
@@ -245,7 +240,6 @@ func (o *SavedFilter) GetSlugOk() (*string, bool) {
 func (o *SavedFilter) SetSlug(v string) {
 	o.Slug = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *SavedFilter) GetDescription() string {
@@ -311,6 +305,7 @@ func (o *SavedFilter) HasUser() bool {
 func (o *SavedFilter) SetUser(v int32) {
 	o.User.Set(&v)
 }
+
 // SetUserNil sets the value for User to be an explicit nil
 func (o *SavedFilter) SetUserNil() {
 	o.User.Set(nil)
@@ -443,7 +438,6 @@ func (o *SavedFilter) SetParameters(v interface{}) {
 	o.Parameters = v
 }
 
-
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SavedFilter) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created.Get()) {
@@ -476,6 +470,7 @@ func (o *SavedFilter) HasCreated() bool {
 func (o *SavedFilter) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *SavedFilter) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -518,6 +513,7 @@ func (o *SavedFilter) HasLastUpdated() bool {
 func (o *SavedFilter) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *SavedFilter) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -529,7 +525,7 @@ func (o *SavedFilter) UnsetLastUpdated() {
 }
 
 func (o SavedFilter) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -595,32 +591,31 @@ func (o *SavedFilter) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -693,5 +688,3 @@ func (v *NullableSavedFilter) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

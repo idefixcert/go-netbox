@@ -20,11 +20,11 @@ var _ MappedNullable = &CircuitGroupAssignmentRequest{}
 
 // CircuitGroupAssignmentRequest Base serializer for group assignments under CircuitSerializer.
 type CircuitGroupAssignmentRequest struct {
-	Group BriefCircuitGroupRequest `json:"group"`
-	MemberType string `json:"member_type"`
-	MemberId int64 `json:"member_id"`
-	Priority *BriefCircuitGroupAssignmentSerializerPriorityValue `json:"priority,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
+	Group                BriefCircuitGroupRequest                            `json:"group"`
+	MemberType           string                                              `json:"member_type"`
+	MemberId             int64                                               `json:"member_id"`
+	Priority             *BriefCircuitGroupAssignmentSerializerPriorityValue `json:"priority,omitempty"`
+	Tags                 []NestedTagRequest                                  `json:"tags,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -74,7 +74,6 @@ func (o *CircuitGroupAssignmentRequest) SetGroup(v BriefCircuitGroupRequest) {
 	o.Group = v
 }
 
-
 // GetMemberType returns the MemberType field value
 func (o *CircuitGroupAssignmentRequest) GetMemberType() string {
 	if o == nil {
@@ -99,7 +98,6 @@ func (o *CircuitGroupAssignmentRequest) SetMemberType(v string) {
 	o.MemberType = v
 }
 
-
 // GetMemberId returns the MemberId field value
 func (o *CircuitGroupAssignmentRequest) GetMemberId() int64 {
 	if o == nil {
@@ -123,7 +121,6 @@ func (o *CircuitGroupAssignmentRequest) GetMemberIdOk() (*int64, bool) {
 func (o *CircuitGroupAssignmentRequest) SetMemberId(v int64) {
 	o.MemberId = v
 }
-
 
 // GetPriority returns the Priority field value if set, zero value otherwise.
 func (o *CircuitGroupAssignmentRequest) GetPriority() BriefCircuitGroupAssignmentSerializerPriorityValue {
@@ -190,7 +187,7 @@ func (o *CircuitGroupAssignmentRequest) SetTags(v []NestedTagRequest) {
 }
 
 func (o CircuitGroupAssignmentRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,32 +225,31 @@ func (o *CircuitGroupAssignmentRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -316,5 +312,3 @@ func (v *NullableCircuitGroupAssignmentRequest) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

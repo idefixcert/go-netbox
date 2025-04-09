@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the MACAddress type satisfies the MappedNullable interface at compile time
@@ -21,20 +21,20 @@ var _ MappedNullable = &MACAddress{}
 
 // MACAddress Adds support for custom fields and tags.
 type MACAddress struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	MacAddress string `json:"mac_address"`
-	AssignedObjectType NullableString `json:"assigned_object_type,omitempty"`
-	AssignedObjectId NullableInt64 `json:"assigned_object_id,omitempty"`
-	AssignedObject interface{} `json:"assigned_object,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Id                   int32                  `json:"id"`
+	Url                  string                 `json:"url"`
+	DisplayUrl           *string                `json:"display_url,omitempty"`
+	Display              string                 `json:"display"`
+	MacAddress           string                 `json:"mac_address"`
+	AssignedObjectType   NullableString         `json:"assigned_object_type,omitempty"`
+	AssignedObjectId     NullableInt64          `json:"assigned_object_id,omitempty"`
+	AssignedObject       interface{}            `json:"assigned_object,omitempty"`
+	Description          *string                `json:"description,omitempty"`
+	Comments             *string                `json:"comments,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -85,7 +85,6 @@ func (o *MACAddress) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *MACAddress) GetUrl() string {
 	if o == nil {
@@ -109,7 +108,6 @@ func (o *MACAddress) GetUrlOk() (*string, bool) {
 func (o *MACAddress) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *MACAddress) GetDisplayUrl() string {
@@ -167,7 +165,6 @@ func (o *MACAddress) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetMacAddress returns the MacAddress field value
 func (o *MACAddress) GetMacAddress() string {
 	if o == nil {
@@ -191,7 +188,6 @@ func (o *MACAddress) GetMacAddressOk() (*string, bool) {
 func (o *MACAddress) SetMacAddress(v string) {
 	o.MacAddress = v
 }
-
 
 // GetAssignedObjectType returns the AssignedObjectType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MACAddress) GetAssignedObjectType() string {
@@ -225,6 +221,7 @@ func (o *MACAddress) HasAssignedObjectType() bool {
 func (o *MACAddress) SetAssignedObjectType(v string) {
 	o.AssignedObjectType.Set(&v)
 }
+
 // SetAssignedObjectTypeNil sets the value for AssignedObjectType to be an explicit nil
 func (o *MACAddress) SetAssignedObjectTypeNil() {
 	o.AssignedObjectType.Set(nil)
@@ -267,6 +264,7 @@ func (o *MACAddress) HasAssignedObjectId() bool {
 func (o *MACAddress) SetAssignedObjectId(v int64) {
 	o.AssignedObjectId.Set(&v)
 }
+
 // SetAssignedObjectIdNil sets the value for AssignedObjectId to be an explicit nil
 func (o *MACAddress) SetAssignedObjectIdNil() {
 	o.AssignedObjectId.Set(nil)
@@ -470,6 +468,7 @@ func (o *MACAddress) HasCreated() bool {
 func (o *MACAddress) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *MACAddress) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -512,6 +511,7 @@ func (o *MACAddress) HasLastUpdated() bool {
 func (o *MACAddress) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *MACAddress) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -523,7 +523,7 @@ func (o *MACAddress) UnsetLastUpdated() {
 }
 
 func (o MACAddress) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -587,32 +587,31 @@ func (o *MACAddress) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -684,5 +683,3 @@ func (v *NullableMACAddress) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

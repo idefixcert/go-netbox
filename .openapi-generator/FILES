@@ -469,6 +469,7 @@ docs/ModuleBayRequest.md
 docs/ModuleBayTemplate.md
 docs/ModuleBayTemplateRequest.md
 docs/ModuleRequest.md
+docs/ModuleRequestStatus.md
 docs/ModuleType.md
 docs/ModuleTypeAirflow.md
 docs/ModuleTypeAirflowLabel.md
@@ -971,6 +972,8 @@ docs/VirtualDisk.md
 docs/VirtualDiskRequest.md
 docs/VirtualMachineWithConfigContext.md
 docs/VirtualMachineWithConfigContextRequest.md
+docs/VirtualMachineWithConfigContextStatus.md
+docs/VirtualMachineWithConfigContextStatusLabel.md
 docs/VirtualizationAPI.md
 docs/VpnAPI.md
 docs/Webhook.md
@@ -1509,6 +1512,7 @@ model_module_bay_request.go
 model_module_bay_template.go
 model_module_bay_template_request.go
 model_module_request.go
+model_module_request_status.go
 model_module_type.go
 model_module_type_airflow.go
 model_module_type_airflow_label.go
@@ -1992,6 +1996,8 @@ model_virtual_disk.go
 model_virtual_disk_request.go
 model_virtual_machine_with_config_context.go
 model_virtual_machine_with_config_context_request.go
+model_virtual_machine_with_config_context_status.go
+model_virtual_machine_with_config_context_status_label.go
 model_vlan.go
 model_vlan_group.go
 model_vlan_group_request.go

@@ -20,16 +20,16 @@ var _ MappedNullable = &PatchedWritableVirtualCircuitRequest{}
 // PatchedWritableVirtualCircuitRequest Adds support for custom fields and tags.
 type PatchedWritableVirtualCircuitRequest struct {
 	// Unique circuit ID
-	Cid *string `json:"cid,omitempty"`
-	ProviderNetwork *BriefProviderNetworkRequest `json:"provider_network,omitempty"`
-	ProviderAccount NullableBriefProviderAccountRequest `json:"provider_account,omitempty"`
-	Type *BriefVirtualCircuitTypeRequest `json:"type,omitempty"`
-	Status *CircuitStatusValue `json:"status,omitempty"`
-	Tenant NullableBriefTenantRequest `json:"tenant,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Cid                  *string                             `json:"cid,omitempty"`
+	ProviderNetwork      *BriefProviderNetworkRequest        `json:"provider_network,omitempty"`
+	ProviderAccount      NullableBriefProviderAccountRequest `json:"provider_account,omitempty"`
+	Type                 *BriefVirtualCircuitTypeRequest     `json:"type,omitempty"`
+	Status               *CircuitStatusValue                 `json:"status,omitempty"`
+	Tenant               NullableBriefTenantRequest          `json:"tenant,omitempty"`
+	Description          *string                             `json:"description,omitempty"`
+	Comments             *string                             `json:"comments,omitempty"`
+	Tags                 []NestedTagRequest                  `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}              `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -148,6 +148,7 @@ func (o *PatchedWritableVirtualCircuitRequest) HasProviderAccount() bool {
 func (o *PatchedWritableVirtualCircuitRequest) SetProviderAccount(v BriefProviderAccountRequest) {
 	o.ProviderAccount.Set(&v)
 }
+
 // SetProviderAccountNil sets the value for ProviderAccount to be an explicit nil
 func (o *PatchedWritableVirtualCircuitRequest) SetProviderAccountNil() {
 	o.ProviderAccount.Set(nil)
@@ -254,6 +255,7 @@ func (o *PatchedWritableVirtualCircuitRequest) HasTenant() bool {
 func (o *PatchedWritableVirtualCircuitRequest) SetTenant(v BriefTenantRequest) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *PatchedWritableVirtualCircuitRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -393,7 +395,7 @@ func (o *PatchedWritableVirtualCircuitRequest) SetCustomFields(v map[string]inte
 }
 
 func (o PatchedWritableVirtualCircuitRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -505,5 +507,3 @@ func (v *NullablePatchedWritableVirtualCircuitRequest) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

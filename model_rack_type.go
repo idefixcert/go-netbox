@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the RackType type satisfies the MappedNullable interface at compile time
@@ -21,16 +21,16 @@ var _ MappedNullable = &RackType{}
 
 // RackType Adds support for custom fields and tags.
 type RackType struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Manufacturer BriefManufacturer `json:"manufacturer"`
-	Model string `json:"model"`
-	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Description *string `json:"description,omitempty"`
-	FormFactor NullableRackFormFactor `json:"form_factor,omitempty"`
-	Width *RackWidth `json:"width,omitempty"`
+	Id           int32                  `json:"id"`
+	Url          string                 `json:"url"`
+	DisplayUrl   *string                `json:"display_url,omitempty"`
+	Display      string                 `json:"display"`
+	Manufacturer BriefManufacturer      `json:"manufacturer"`
+	Model        string                 `json:"model"`
+	Slug         string                 `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Description  *string                `json:"description,omitempty"`
+	FormFactor   NullableRackFormFactor `json:"form_factor,omitempty"`
+	Width        *RackWidth             `json:"width,omitempty"`
 	// Height in rack units
 	UHeight *int32 `json:"u_height,omitempty"`
 	// Starting unit for rack
@@ -40,19 +40,19 @@ type RackType struct {
 	// Outer dimension of rack (width)
 	OuterWidth NullableInt32 `json:"outer_width,omitempty"`
 	// Outer dimension of rack (depth)
-	OuterDepth NullableInt32 `json:"outer_depth,omitempty"`
-	OuterUnit NullableRackOuterUnit `json:"outer_unit,omitempty"`
-	Weight NullableFloat64 `json:"weight,omitempty"`
+	OuterDepth NullableInt32         `json:"outer_depth,omitempty"`
+	OuterUnit  NullableRackOuterUnit `json:"outer_unit,omitempty"`
+	Weight     NullableFloat64       `json:"weight,omitempty"`
 	// Maximum load capacity for the rack
-	MaxWeight NullableInt32 `json:"max_weight,omitempty"`
+	MaxWeight  NullableInt32                `json:"max_weight,omitempty"`
 	WeightUnit NullableDeviceTypeWeightUnit `json:"weight_unit,omitempty"`
 	// Maximum depth of a mounted device, in millimeters. For four-post racks, this is the distance between the front and rear rails.
-	MountingDepth NullableInt32 `json:"mounting_depth,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	MountingDepth        NullableInt32          `json:"mounting_depth,omitempty"`
+	Comments             *string                `json:"comments,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -105,7 +105,6 @@ func (o *RackType) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *RackType) GetUrl() string {
 	if o == nil {
@@ -129,7 +128,6 @@ func (o *RackType) GetUrlOk() (*string, bool) {
 func (o *RackType) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *RackType) GetDisplayUrl() string {
@@ -187,7 +185,6 @@ func (o *RackType) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetManufacturer returns the Manufacturer field value
 func (o *RackType) GetManufacturer() BriefManufacturer {
 	if o == nil {
@@ -211,7 +208,6 @@ func (o *RackType) GetManufacturerOk() (*BriefManufacturer, bool) {
 func (o *RackType) SetManufacturer(v BriefManufacturer) {
 	o.Manufacturer = v
 }
-
 
 // GetModel returns the Model field value
 func (o *RackType) GetModel() string {
@@ -237,7 +233,6 @@ func (o *RackType) SetModel(v string) {
 	o.Model = v
 }
 
-
 // GetSlug returns the Slug field value
 func (o *RackType) GetSlug() string {
 	if o == nil {
@@ -261,7 +256,6 @@ func (o *RackType) GetSlugOk() (*string, bool) {
 func (o *RackType) SetSlug(v string) {
 	o.Slug = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *RackType) GetDescription() string {
@@ -327,6 +321,7 @@ func (o *RackType) HasFormFactor() bool {
 func (o *RackType) SetFormFactor(v RackFormFactor) {
 	o.FormFactor.Set(&v)
 }
+
 // SetFormFactorNil sets the value for FormFactor to be an explicit nil
 func (o *RackType) SetFormFactorNil() {
 	o.FormFactor.Set(nil)
@@ -497,6 +492,7 @@ func (o *RackType) HasOuterWidth() bool {
 func (o *RackType) SetOuterWidth(v int32) {
 	o.OuterWidth.Set(&v)
 }
+
 // SetOuterWidthNil sets the value for OuterWidth to be an explicit nil
 func (o *RackType) SetOuterWidthNil() {
 	o.OuterWidth.Set(nil)
@@ -539,6 +535,7 @@ func (o *RackType) HasOuterDepth() bool {
 func (o *RackType) SetOuterDepth(v int32) {
 	o.OuterDepth.Set(&v)
 }
+
 // SetOuterDepthNil sets the value for OuterDepth to be an explicit nil
 func (o *RackType) SetOuterDepthNil() {
 	o.OuterDepth.Set(nil)
@@ -581,6 +578,7 @@ func (o *RackType) HasOuterUnit() bool {
 func (o *RackType) SetOuterUnit(v RackOuterUnit) {
 	o.OuterUnit.Set(&v)
 }
+
 // SetOuterUnitNil sets the value for OuterUnit to be an explicit nil
 func (o *RackType) SetOuterUnitNil() {
 	o.OuterUnit.Set(nil)
@@ -623,6 +621,7 @@ func (o *RackType) HasWeight() bool {
 func (o *RackType) SetWeight(v float64) {
 	o.Weight.Set(&v)
 }
+
 // SetWeightNil sets the value for Weight to be an explicit nil
 func (o *RackType) SetWeightNil() {
 	o.Weight.Set(nil)
@@ -665,6 +664,7 @@ func (o *RackType) HasMaxWeight() bool {
 func (o *RackType) SetMaxWeight(v int32) {
 	o.MaxWeight.Set(&v)
 }
+
 // SetMaxWeightNil sets the value for MaxWeight to be an explicit nil
 func (o *RackType) SetMaxWeightNil() {
 	o.MaxWeight.Set(nil)
@@ -707,6 +707,7 @@ func (o *RackType) HasWeightUnit() bool {
 func (o *RackType) SetWeightUnit(v DeviceTypeWeightUnit) {
 	o.WeightUnit.Set(&v)
 }
+
 // SetWeightUnitNil sets the value for WeightUnit to be an explicit nil
 func (o *RackType) SetWeightUnitNil() {
 	o.WeightUnit.Set(nil)
@@ -749,6 +750,7 @@ func (o *RackType) HasMountingDepth() bool {
 func (o *RackType) SetMountingDepth(v int32) {
 	o.MountingDepth.Set(&v)
 }
+
 // SetMountingDepthNil sets the value for MountingDepth to be an explicit nil
 func (o *RackType) SetMountingDepthNil() {
 	o.MountingDepth.Set(nil)
@@ -887,6 +889,7 @@ func (o *RackType) HasCreated() bool {
 func (o *RackType) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *RackType) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -929,6 +932,7 @@ func (o *RackType) HasLastUpdated() bool {
 func (o *RackType) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *RackType) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -940,7 +944,7 @@ func (o *RackType) UnsetLastUpdated() {
 }
 
 func (o RackType) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1035,32 +1039,31 @@ func (o *RackType) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -1143,5 +1146,3 @@ func (v *NullableRackType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

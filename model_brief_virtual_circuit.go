@@ -20,13 +20,13 @@ var _ MappedNullable = &BriefVirtualCircuit{}
 
 // BriefVirtualCircuit Adds support for custom fields and tags.
 type BriefVirtualCircuit struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
+	Id      int32  `json:"id"`
+	Url     string `json:"url"`
 	Display string `json:"display"`
 	// Unique circuit ID
-	Cid string `json:"cid"`
-	ProviderNetwork BriefProviderNetwork `json:"provider_network"`
-	Description *string `json:"description,omitempty"`
+	Cid                  string               `json:"cid"`
+	ProviderNetwork      BriefProviderNetwork `json:"provider_network"`
+	Description          *string              `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,7 +78,6 @@ func (o *BriefVirtualCircuit) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *BriefVirtualCircuit) GetUrl() string {
 	if o == nil {
@@ -102,7 +101,6 @@ func (o *BriefVirtualCircuit) GetUrlOk() (*string, bool) {
 func (o *BriefVirtualCircuit) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplay returns the Display field value
 func (o *BriefVirtualCircuit) GetDisplay() string {
@@ -128,7 +126,6 @@ func (o *BriefVirtualCircuit) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetCid returns the Cid field value
 func (o *BriefVirtualCircuit) GetCid() string {
 	if o == nil {
@@ -153,7 +150,6 @@ func (o *BriefVirtualCircuit) SetCid(v string) {
 	o.Cid = v
 }
 
-
 // GetProviderNetwork returns the ProviderNetwork field value
 func (o *BriefVirtualCircuit) GetProviderNetwork() BriefProviderNetwork {
 	if o == nil {
@@ -177,7 +173,6 @@ func (o *BriefVirtualCircuit) GetProviderNetworkOk() (*BriefProviderNetwork, boo
 func (o *BriefVirtualCircuit) SetProviderNetwork(v BriefProviderNetwork) {
 	o.ProviderNetwork = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *BriefVirtualCircuit) GetDescription() string {
@@ -212,7 +207,7 @@ func (o *BriefVirtualCircuit) SetDescription(v string) {
 }
 
 func (o BriefVirtualCircuit) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -251,32 +246,31 @@ func (o *BriefVirtualCircuit) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -340,5 +334,3 @@ func (v *NullableBriefVirtualCircuit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

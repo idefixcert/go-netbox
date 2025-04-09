@@ -19,13 +19,13 @@ var _ MappedNullable = &PatchedMACAddressRequest{}
 
 // PatchedMACAddressRequest Adds support for custom fields and tags.
 type PatchedMACAddressRequest struct {
-	MacAddress *string `json:"mac_address,omitempty"`
-	AssignedObjectType NullableString `json:"assigned_object_type,omitempty"`
-	AssignedObjectId NullableInt64 `json:"assigned_object_id,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	MacAddress           *string                `json:"mac_address,omitempty"`
+	AssignedObjectType   NullableString         `json:"assigned_object_type,omitempty"`
+	AssignedObjectId     NullableInt64          `json:"assigned_object_id,omitempty"`
+	Description          *string                `json:"description,omitempty"`
+	Comments             *string                `json:"comments,omitempty"`
+	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -112,6 +112,7 @@ func (o *PatchedMACAddressRequest) HasAssignedObjectType() bool {
 func (o *PatchedMACAddressRequest) SetAssignedObjectType(v string) {
 	o.AssignedObjectType.Set(&v)
 }
+
 // SetAssignedObjectTypeNil sets the value for AssignedObjectType to be an explicit nil
 func (o *PatchedMACAddressRequest) SetAssignedObjectTypeNil() {
 	o.AssignedObjectType.Set(nil)
@@ -154,6 +155,7 @@ func (o *PatchedMACAddressRequest) HasAssignedObjectId() bool {
 func (o *PatchedMACAddressRequest) SetAssignedObjectId(v int64) {
 	o.AssignedObjectId.Set(&v)
 }
+
 // SetAssignedObjectIdNil sets the value for AssignedObjectId to be an explicit nil
 func (o *PatchedMACAddressRequest) SetAssignedObjectIdNil() {
 	o.AssignedObjectId.Set(nil)
@@ -293,7 +295,7 @@ func (o *PatchedMACAddressRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o PatchedMACAddressRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -393,5 +395,3 @@ func (v *NullablePatchedMACAddressRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

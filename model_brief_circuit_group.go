@@ -20,10 +20,10 @@ var _ MappedNullable = &BriefCircuitGroup{}
 
 // BriefCircuitGroup Adds support for custom fields and tags.
 type BriefCircuitGroup struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	Display string `json:"display"`
-	Name string `json:"name"`
+	Id                   int32  `json:"id"`
+	Url                  string `json:"url"`
+	Display              string `json:"display"`
+	Name                 string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -74,7 +74,6 @@ func (o *BriefCircuitGroup) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *BriefCircuitGroup) GetUrl() string {
 	if o == nil {
@@ -98,7 +97,6 @@ func (o *BriefCircuitGroup) GetUrlOk() (*string, bool) {
 func (o *BriefCircuitGroup) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplay returns the Display field value
 func (o *BriefCircuitGroup) GetDisplay() string {
@@ -124,7 +122,6 @@ func (o *BriefCircuitGroup) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *BriefCircuitGroup) GetName() string {
 	if o == nil {
@@ -149,9 +146,8 @@ func (o *BriefCircuitGroup) SetName(v string) {
 	o.Name = v
 }
 
-
 func (o BriefCircuitGroup) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -185,32 +181,31 @@ func (o *BriefCircuitGroup) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -272,5 +267,3 @@ func (v *NullableBriefCircuitGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

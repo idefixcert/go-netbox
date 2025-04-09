@@ -19,12 +19,12 @@ var _ MappedNullable = &PatchedVirtualCircuitTypeRequest{}
 
 // PatchedVirtualCircuitTypeRequest Adds support for custom fields and tags.
 type PatchedVirtualCircuitTypeRequest struct {
-	Name *string `json:"name,omitempty"`
-	Slug *string `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Color *string `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
-	Description *string `json:"description,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Name                 *string                `json:"name,omitempty"`
+	Slug                 *string                `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Color                *string                `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
+	Description          *string                `json:"description,omitempty"`
+	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -240,7 +240,7 @@ func (o *PatchedVirtualCircuitTypeRequest) SetCustomFields(v map[string]interfac
 }
 
 func (o PatchedVirtualCircuitTypeRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -336,5 +336,3 @@ func (v *NullablePatchedVirtualCircuitTypeRequest) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

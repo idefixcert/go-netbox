@@ -20,9 +20,9 @@ type DcimInterfacesListModeParameter string
 
 // List of dcim_interfaces_list_mode_parameter
 const (
-	DCIMINTERFACESLISTMODEPARAMETER_ACCESS DcimInterfacesListModeParameter = "access"
-	DCIMINTERFACESLISTMODEPARAMETER_Q_IN_Q DcimInterfacesListModeParameter = "q-in-q"
-	DCIMINTERFACESLISTMODEPARAMETER_TAGGED DcimInterfacesListModeParameter = "tagged"
+	DCIMINTERFACESLISTMODEPARAMETER_ACCESS     DcimInterfacesListModeParameter = "access"
+	DCIMINTERFACESLISTMODEPARAMETER_Q_IN_Q     DcimInterfacesListModeParameter = "q-in-q"
+	DCIMINTERFACESLISTMODEPARAMETER_TAGGED     DcimInterfacesListModeParameter = "tagged"
 	DCIMINTERFACESLISTMODEPARAMETER_TAGGED_ALL DcimInterfacesListModeParameter = "tagged-all"
 )
 
@@ -112,4 +112,3 @@ func (v *NullableDcimInterfacesListModeParameter) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

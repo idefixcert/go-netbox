@@ -20,7 +20,7 @@ type VLANQinqRoleLabel string
 
 // List of VLAN_qinq_role_label
 const (
-	VLANQINQROLELABEL_SERVICE VLANQinqRoleLabel = "Service"
+	VLANQINQROLELABEL_SERVICE  VLANQinqRoleLabel = "Service"
 	VLANQINQROLELABEL_CUSTOMER VLANQinqRoleLabel = "Customer"
 )
 
@@ -108,4 +108,3 @@ func (v *NullableVLANQinqRoleLabel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

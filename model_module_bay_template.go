@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the ModuleBayTemplate type satisfies the MappedNullable interface at compile time
@@ -21,9 +21,9 @@ var _ MappedNullable = &ModuleBayTemplate{}
 
 // ModuleBayTemplate Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type ModuleBayTemplate struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	Display string `json:"display"`
+	Id         int32                   `json:"id"`
+	Url        string                  `json:"url"`
+	Display    string                  `json:"display"`
 	DeviceType NullableBriefDeviceType `json:"device_type,omitempty"`
 	ModuleType NullableBriefModuleType `json:"module_type,omitempty"`
 	// {module} is accepted as a substitution for the module bay position when attached to a module type.
@@ -31,10 +31,10 @@ type ModuleBayTemplate struct {
 	// Physical label
 	Label *string `json:"label,omitempty"`
 	// Identifier to reference when renaming installed components
-	Position *string `json:"position,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Position             *string      `json:"position,omitempty"`
+	Description          *string      `json:"description,omitempty"`
+	Created              NullableTime `json:"created,omitempty"`
+	LastUpdated          NullableTime `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -85,7 +85,6 @@ func (o *ModuleBayTemplate) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *ModuleBayTemplate) GetUrl() string {
 	if o == nil {
@@ -110,7 +109,6 @@ func (o *ModuleBayTemplate) SetUrl(v string) {
 	o.Url = v
 }
 
-
 // GetDisplay returns the Display field value
 func (o *ModuleBayTemplate) GetDisplay() string {
 	if o == nil {
@@ -134,7 +132,6 @@ func (o *ModuleBayTemplate) GetDisplayOk() (*string, bool) {
 func (o *ModuleBayTemplate) SetDisplay(v string) {
 	o.Display = v
 }
-
 
 // GetDeviceType returns the DeviceType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ModuleBayTemplate) GetDeviceType() BriefDeviceType {
@@ -168,6 +165,7 @@ func (o *ModuleBayTemplate) HasDeviceType() bool {
 func (o *ModuleBayTemplate) SetDeviceType(v BriefDeviceType) {
 	o.DeviceType.Set(&v)
 }
+
 // SetDeviceTypeNil sets the value for DeviceType to be an explicit nil
 func (o *ModuleBayTemplate) SetDeviceTypeNil() {
 	o.DeviceType.Set(nil)
@@ -210,6 +208,7 @@ func (o *ModuleBayTemplate) HasModuleType() bool {
 func (o *ModuleBayTemplate) SetModuleType(v BriefModuleType) {
 	o.ModuleType.Set(&v)
 }
+
 // SetModuleTypeNil sets the value for ModuleType to be an explicit nil
 func (o *ModuleBayTemplate) SetModuleTypeNil() {
 	o.ModuleType.Set(nil)
@@ -243,7 +242,6 @@ func (o *ModuleBayTemplate) GetNameOk() (*string, bool) {
 func (o *ModuleBayTemplate) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *ModuleBayTemplate) GetLabel() string {
@@ -373,6 +371,7 @@ func (o *ModuleBayTemplate) HasCreated() bool {
 func (o *ModuleBayTemplate) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *ModuleBayTemplate) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -415,6 +414,7 @@ func (o *ModuleBayTemplate) HasLastUpdated() bool {
 func (o *ModuleBayTemplate) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *ModuleBayTemplate) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -426,7 +426,7 @@ func (o *ModuleBayTemplate) UnsetLastUpdated() {
 }
 
 func (o ModuleBayTemplate) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -481,32 +481,31 @@ func (o *ModuleBayTemplate) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -575,5 +574,3 @@ func (v *NullableModuleBayTemplate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

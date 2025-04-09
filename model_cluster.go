@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the Cluster type satisfies the MappedNullable interface at compile time
@@ -21,29 +21,29 @@ var _ MappedNullable = &Cluster{}
 
 // Cluster Adds support for custom fields and tags.
 type Cluster struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Type BriefClusterType `json:"type"`
-	Group NullableBriefClusterGroup `json:"group,omitempty"`
-	Status *ClusterStatus `json:"status,omitempty"`
-	Tenant NullableBriefTenant `json:"tenant,omitempty"`
-	ScopeType NullableString `json:"scope_type,omitempty"`
-	ScopeId NullableInt32 `json:"scope_id,omitempty"`
-	Scope interface{} `json:"scope,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
-	DeviceCount *int64 `json:"device_count,omitempty"`
-	VirtualmachineCount *int64 `json:"virtualmachine_count,omitempty"`
-	AllocatedVcpus *float64 `json:"allocated_vcpus,omitempty"`
-	AllocatedMemory *int32 `json:"allocated_memory,omitempty"`
-	AllocatedDisk *int32 `json:"allocated_disk,omitempty"`
+	Id                   int32                     `json:"id"`
+	Url                  string                    `json:"url"`
+	DisplayUrl           *string                   `json:"display_url,omitempty"`
+	Display              string                    `json:"display"`
+	Name                 string                    `json:"name"`
+	Type                 BriefClusterType          `json:"type"`
+	Group                NullableBriefClusterGroup `json:"group,omitempty"`
+	Status               *ClusterStatus            `json:"status,omitempty"`
+	Tenant               NullableBriefTenant       `json:"tenant,omitempty"`
+	ScopeType            NullableString            `json:"scope_type,omitempty"`
+	ScopeId              NullableInt32             `json:"scope_id,omitempty"`
+	Scope                interface{}               `json:"scope,omitempty"`
+	Description          *string                   `json:"description,omitempty"`
+	Comments             *string                   `json:"comments,omitempty"`
+	Tags                 []NestedTag               `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}    `json:"custom_fields,omitempty"`
+	Created              NullableTime              `json:"created,omitempty"`
+	LastUpdated          NullableTime              `json:"last_updated,omitempty"`
+	DeviceCount          *int64                    `json:"device_count,omitempty"`
+	VirtualmachineCount  *int64                    `json:"virtualmachine_count,omitempty"`
+	AllocatedVcpus       *float64                  `json:"allocated_vcpus,omitempty"`
+	AllocatedMemory      *int32                    `json:"allocated_memory,omitempty"`
+	AllocatedDisk        *int32                    `json:"allocated_disk,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -95,7 +95,6 @@ func (o *Cluster) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *Cluster) GetUrl() string {
 	if o == nil {
@@ -119,7 +118,6 @@ func (o *Cluster) GetUrlOk() (*string, bool) {
 func (o *Cluster) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *Cluster) GetDisplayUrl() string {
@@ -177,7 +175,6 @@ func (o *Cluster) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *Cluster) GetName() string {
 	if o == nil {
@@ -202,7 +199,6 @@ func (o *Cluster) SetName(v string) {
 	o.Name = v
 }
 
-
 // GetType returns the Type field value
 func (o *Cluster) GetType() BriefClusterType {
 	if o == nil {
@@ -226,7 +222,6 @@ func (o *Cluster) GetTypeOk() (*BriefClusterType, bool) {
 func (o *Cluster) SetType(v BriefClusterType) {
 	o.Type = v
 }
-
 
 // GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Cluster) GetGroup() BriefClusterGroup {
@@ -260,6 +255,7 @@ func (o *Cluster) HasGroup() bool {
 func (o *Cluster) SetGroup(v BriefClusterGroup) {
 	o.Group.Set(&v)
 }
+
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *Cluster) SetGroupNil() {
 	o.Group.Set(nil)
@@ -334,6 +330,7 @@ func (o *Cluster) HasTenant() bool {
 func (o *Cluster) SetTenant(v BriefTenant) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *Cluster) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -376,6 +373,7 @@ func (o *Cluster) HasScopeType() bool {
 func (o *Cluster) SetScopeType(v string) {
 	o.ScopeType.Set(&v)
 }
+
 // SetScopeTypeNil sets the value for ScopeType to be an explicit nil
 func (o *Cluster) SetScopeTypeNil() {
 	o.ScopeType.Set(nil)
@@ -418,6 +416,7 @@ func (o *Cluster) HasScopeId() bool {
 func (o *Cluster) SetScopeId(v int32) {
 	o.ScopeId.Set(&v)
 }
+
 // SetScopeIdNil sets the value for ScopeId to be an explicit nil
 func (o *Cluster) SetScopeIdNil() {
 	o.ScopeId.Set(nil)
@@ -621,6 +620,7 @@ func (o *Cluster) HasCreated() bool {
 func (o *Cluster) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *Cluster) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -663,6 +663,7 @@ func (o *Cluster) HasLastUpdated() bool {
 func (o *Cluster) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *Cluster) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -834,7 +835,7 @@ func (o *Cluster) SetAllocatedDisk(v int32) {
 }
 
 func (o Cluster) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -924,32 +925,31 @@ func (o *Cluster) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -1030,5 +1030,3 @@ func (v *NullableCluster) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

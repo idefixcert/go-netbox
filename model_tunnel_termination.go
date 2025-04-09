@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the TunnelTermination type satisfies the MappedNullable interface at compile time
@@ -21,20 +21,20 @@ var _ MappedNullable = &TunnelTermination{}
 
 // TunnelTermination Adds support for custom fields and tags.
 type TunnelTermination struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Tunnel BriefTunnel `json:"tunnel"`
-	Role TunnelTerminationRole `json:"role"`
-	TerminationType string `json:"termination_type"`
-	TerminationId NullableInt64 `json:"termination_id,omitempty"`
-	Termination interface{} `json:"termination,omitempty"`
-	OutsideIp NullableBriefIPAddress `json:"outside_ip,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Id                   int32                  `json:"id"`
+	Url                  string                 `json:"url"`
+	DisplayUrl           *string                `json:"display_url,omitempty"`
+	Display              string                 `json:"display"`
+	Tunnel               BriefTunnel            `json:"tunnel"`
+	Role                 TunnelTerminationRole  `json:"role"`
+	TerminationType      string                 `json:"termination_type"`
+	TerminationId        NullableInt64          `json:"termination_id,omitempty"`
+	Termination          interface{}            `json:"termination,omitempty"`
+	OutsideIp            NullableBriefIPAddress `json:"outside_ip,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -87,7 +87,6 @@ func (o *TunnelTermination) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *TunnelTermination) GetUrl() string {
 	if o == nil {
@@ -111,7 +110,6 @@ func (o *TunnelTermination) GetUrlOk() (*string, bool) {
 func (o *TunnelTermination) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *TunnelTermination) GetDisplayUrl() string {
@@ -169,7 +167,6 @@ func (o *TunnelTermination) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetTunnel returns the Tunnel field value
 func (o *TunnelTermination) GetTunnel() BriefTunnel {
 	if o == nil {
@@ -193,7 +190,6 @@ func (o *TunnelTermination) GetTunnelOk() (*BriefTunnel, bool) {
 func (o *TunnelTermination) SetTunnel(v BriefTunnel) {
 	o.Tunnel = v
 }
-
 
 // GetRole returns the Role field value
 func (o *TunnelTermination) GetRole() TunnelTerminationRole {
@@ -219,7 +215,6 @@ func (o *TunnelTermination) SetRole(v TunnelTerminationRole) {
 	o.Role = v
 }
 
-
 // GetTerminationType returns the TerminationType field value
 func (o *TunnelTermination) GetTerminationType() string {
 	if o == nil {
@@ -243,7 +238,6 @@ func (o *TunnelTermination) GetTerminationTypeOk() (*string, bool) {
 func (o *TunnelTermination) SetTerminationType(v string) {
 	o.TerminationType = v
 }
-
 
 // GetTerminationId returns the TerminationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TunnelTermination) GetTerminationId() int64 {
@@ -277,6 +271,7 @@ func (o *TunnelTermination) HasTerminationId() bool {
 func (o *TunnelTermination) SetTerminationId(v int64) {
 	o.TerminationId.Set(&v)
 }
+
 // SetTerminationIdNil sets the value for TerminationId to be an explicit nil
 func (o *TunnelTermination) SetTerminationIdNil() {
 	o.TerminationId.Set(nil)
@@ -352,6 +347,7 @@ func (o *TunnelTermination) HasOutsideIp() bool {
 func (o *TunnelTermination) SetOutsideIp(v BriefIPAddress) {
 	o.OutsideIp.Set(&v)
 }
+
 // SetOutsideIpNil sets the value for OutsideIp to be an explicit nil
 func (o *TunnelTermination) SetOutsideIpNil() {
 	o.OutsideIp.Set(nil)
@@ -458,6 +454,7 @@ func (o *TunnelTermination) HasCreated() bool {
 func (o *TunnelTermination) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *TunnelTermination) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -500,6 +497,7 @@ func (o *TunnelTermination) HasLastUpdated() bool {
 func (o *TunnelTermination) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *TunnelTermination) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -511,7 +509,7 @@ func (o *TunnelTermination) UnsetLastUpdated() {
 }
 
 func (o TunnelTermination) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -573,32 +571,31 @@ func (o *TunnelTermination) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -670,5 +667,3 @@ func (v *NullableTunnelTermination) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

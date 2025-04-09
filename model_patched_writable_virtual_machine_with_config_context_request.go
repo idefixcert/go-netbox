@@ -19,27 +19,27 @@ var _ MappedNullable = &PatchedWritableVirtualMachineWithConfigContextRequest{}
 
 // PatchedWritableVirtualMachineWithConfigContextRequest Adds support for custom fields and tags.
 type PatchedWritableVirtualMachineWithConfigContextRequest struct {
-	Name *string `json:"name,omitempty"`
-	Status *InventoryItemStatusValue `json:"status,omitempty"`
-	Site NullableBriefSiteRequest `json:"site,omitempty"`
-	Cluster NullableBriefClusterRequest `json:"cluster,omitempty"`
-	Device NullableBriefDeviceRequest `json:"device,omitempty"`
-	Serial *string `json:"serial,omitempty"`
-	Role NullableBriefDeviceRoleRequest `json:"role,omitempty"`
-	Tenant NullableBriefTenantRequest `json:"tenant,omitempty"`
-	Platform NullableBriefPlatformRequest `json:"platform,omitempty"`
-	PrimaryIp4 NullableBriefIPAddressRequest `json:"primary_ip4,omitempty"`
-	PrimaryIp6 NullableBriefIPAddressRequest `json:"primary_ip6,omitempty"`
-	Vcpus NullableFloat64 `json:"vcpus,omitempty"`
-	Memory NullableInt32 `json:"memory,omitempty"`
-	Disk NullableInt32 `json:"disk,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
+	Name           *string                            `json:"name,omitempty"`
+	Status         *ModuleRequestStatus               `json:"status,omitempty"`
+	Site           NullableBriefSiteRequest           `json:"site,omitempty"`
+	Cluster        NullableBriefClusterRequest        `json:"cluster,omitempty"`
+	Device         NullableBriefDeviceRequest         `json:"device,omitempty"`
+	Serial         *string                            `json:"serial,omitempty"`
+	Role           NullableBriefDeviceRoleRequest     `json:"role,omitempty"`
+	Tenant         NullableBriefTenantRequest         `json:"tenant,omitempty"`
+	Platform       NullableBriefPlatformRequest       `json:"platform,omitempty"`
+	PrimaryIp4     NullableBriefIPAddressRequest      `json:"primary_ip4,omitempty"`
+	PrimaryIp6     NullableBriefIPAddressRequest      `json:"primary_ip6,omitempty"`
+	Vcpus          NullableFloat64                    `json:"vcpus,omitempty"`
+	Memory         NullableInt32                      `json:"memory,omitempty"`
+	Disk           NullableInt32                      `json:"disk,omitempty"`
+	Description    *string                            `json:"description,omitempty"`
+	Comments       *string                            `json:"comments,omitempty"`
 	ConfigTemplate NullableBriefConfigTemplateRequest `json:"config_template,omitempty"`
 	// Local config context data takes precedence over source contexts in the final rendered config context
-	LocalContextData interface{} `json:"local_context_data,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	LocalContextData     interface{}            `json:"local_context_data,omitempty"`
+	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -95,9 +95,9 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetName(v string
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *PatchedWritableVirtualMachineWithConfigContextRequest) GetStatus() InventoryItemStatusValue {
+func (o *PatchedWritableVirtualMachineWithConfigContextRequest) GetStatus() ModuleRequestStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret InventoryItemStatusValue
+		var ret ModuleRequestStatus
 		return ret
 	}
 	return *o.Status
@@ -105,7 +105,7 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) GetStatus() Inve
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedWritableVirtualMachineWithConfigContextRequest) GetStatusOk() (*InventoryItemStatusValue, bool) {
+func (o *PatchedWritableVirtualMachineWithConfigContextRequest) GetStatusOk() (*ModuleRequestStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -121,8 +121,8 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) HasStatus() bool
 	return false
 }
 
-// SetStatus gets a reference to the given InventoryItemStatusValue and assigns it to the Status field.
-func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetStatus(v InventoryItemStatusValue) {
+// SetStatus gets a reference to the given ModuleRequestStatus and assigns it to the Status field.
+func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetStatus(v ModuleRequestStatus) {
 	o.Status = &v
 }
 
@@ -158,6 +158,7 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) HasSite() bool {
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetSite(v BriefSiteRequest) {
 	o.Site.Set(&v)
 }
+
 // SetSiteNil sets the value for Site to be an explicit nil
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetSiteNil() {
 	o.Site.Set(nil)
@@ -200,6 +201,7 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) HasCluster() boo
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetCluster(v BriefClusterRequest) {
 	o.Cluster.Set(&v)
 }
+
 // SetClusterNil sets the value for Cluster to be an explicit nil
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetClusterNil() {
 	o.Cluster.Set(nil)
@@ -242,6 +244,7 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) HasDevice() bool
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetDevice(v BriefDeviceRequest) {
 	o.Device.Set(&v)
 }
+
 // SetDeviceNil sets the value for Device to be an explicit nil
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetDeviceNil() {
 	o.Device.Set(nil)
@@ -316,6 +319,7 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) HasRole() bool {
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetRole(v BriefDeviceRoleRequest) {
 	o.Role.Set(&v)
 }
+
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetRoleNil() {
 	o.Role.Set(nil)
@@ -358,6 +362,7 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) HasTenant() bool
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetTenant(v BriefTenantRequest) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -400,6 +405,7 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) HasPlatform() bo
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetPlatform(v BriefPlatformRequest) {
 	o.Platform.Set(&v)
 }
+
 // SetPlatformNil sets the value for Platform to be an explicit nil
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetPlatformNil() {
 	o.Platform.Set(nil)
@@ -442,6 +448,7 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) HasPrimaryIp4() 
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetPrimaryIp4(v BriefIPAddressRequest) {
 	o.PrimaryIp4.Set(&v)
 }
+
 // SetPrimaryIp4Nil sets the value for PrimaryIp4 to be an explicit nil
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetPrimaryIp4Nil() {
 	o.PrimaryIp4.Set(nil)
@@ -484,6 +491,7 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) HasPrimaryIp6() 
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetPrimaryIp6(v BriefIPAddressRequest) {
 	o.PrimaryIp6.Set(&v)
 }
+
 // SetPrimaryIp6Nil sets the value for PrimaryIp6 to be an explicit nil
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetPrimaryIp6Nil() {
 	o.PrimaryIp6.Set(nil)
@@ -526,6 +534,7 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) HasVcpus() bool 
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetVcpus(v float64) {
 	o.Vcpus.Set(&v)
 }
+
 // SetVcpusNil sets the value for Vcpus to be an explicit nil
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetVcpusNil() {
 	o.Vcpus.Set(nil)
@@ -568,6 +577,7 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) HasMemory() bool
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetMemory(v int32) {
 	o.Memory.Set(&v)
 }
+
 // SetMemoryNil sets the value for Memory to be an explicit nil
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetMemoryNil() {
 	o.Memory.Set(nil)
@@ -610,6 +620,7 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) HasDisk() bool {
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetDisk(v int32) {
 	o.Disk.Set(&v)
 }
+
 // SetDiskNil sets the value for Disk to be an explicit nil
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetDiskNil() {
 	o.Disk.Set(nil)
@@ -716,6 +727,7 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) HasConfigTemplat
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetConfigTemplate(v BriefConfigTemplateRequest) {
 	o.ConfigTemplate.Set(&v)
 }
+
 // SetConfigTemplateNil sets the value for ConfigTemplate to be an explicit nil
 func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetConfigTemplateNil() {
 	o.ConfigTemplate.Set(nil)
@@ -824,7 +836,7 @@ func (o *PatchedWritableVirtualMachineWithConfigContextRequest) SetCustomFields(
 }
 
 func (o PatchedWritableVirtualMachineWithConfigContextRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -976,5 +988,3 @@ func (v *NullablePatchedWritableVirtualMachineWithConfigContextRequest) Unmarsha
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

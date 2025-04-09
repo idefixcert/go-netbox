@@ -20,11 +20,11 @@ var _ MappedNullable = &BriefCircuitGroupAssignmentSerializer{}
 
 // BriefCircuitGroupAssignmentSerializer Base serializer for group assignments under CircuitSerializer.
 type BriefCircuitGroupAssignmentSerializer struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	Display string `json:"display"`
-	Group BriefCircuitGroup `json:"group"`
-	Priority *BriefCircuitGroupAssignmentSerializerPriority `json:"priority,omitempty"`
+	Id                   int32                                          `json:"id"`
+	Url                  string                                         `json:"url"`
+	Display              string                                         `json:"display"`
+	Group                BriefCircuitGroup                              `json:"group"`
+	Priority             *BriefCircuitGroupAssignmentSerializerPriority `json:"priority,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,7 +75,6 @@ func (o *BriefCircuitGroupAssignmentSerializer) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *BriefCircuitGroupAssignmentSerializer) GetUrl() string {
 	if o == nil {
@@ -99,7 +98,6 @@ func (o *BriefCircuitGroupAssignmentSerializer) GetUrlOk() (*string, bool) {
 func (o *BriefCircuitGroupAssignmentSerializer) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplay returns the Display field value
 func (o *BriefCircuitGroupAssignmentSerializer) GetDisplay() string {
@@ -125,7 +123,6 @@ func (o *BriefCircuitGroupAssignmentSerializer) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetGroup returns the Group field value
 func (o *BriefCircuitGroupAssignmentSerializer) GetGroup() BriefCircuitGroup {
 	if o == nil {
@@ -149,7 +146,6 @@ func (o *BriefCircuitGroupAssignmentSerializer) GetGroupOk() (*BriefCircuitGroup
 func (o *BriefCircuitGroupAssignmentSerializer) SetGroup(v BriefCircuitGroup) {
 	o.Group = v
 }
-
 
 // GetPriority returns the Priority field value if set, zero value otherwise.
 func (o *BriefCircuitGroupAssignmentSerializer) GetPriority() BriefCircuitGroupAssignmentSerializerPriority {
@@ -184,7 +180,7 @@ func (o *BriefCircuitGroupAssignmentSerializer) SetPriority(v BriefCircuitGroupA
 }
 
 func (o BriefCircuitGroupAssignmentSerializer) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -221,32 +217,31 @@ func (o *BriefCircuitGroupAssignmentSerializer) UnmarshalJSON(data []byte) (err 
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -309,5 +304,3 @@ func (v *NullableBriefCircuitGroupAssignmentSerializer) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

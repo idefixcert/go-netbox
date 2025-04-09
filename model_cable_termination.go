@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the CableTermination type satisfies the MappedNullable interface at compile time
@@ -21,16 +21,16 @@ var _ MappedNullable = &CableTermination{}
 
 // CableTermination Adds support for custom fields and tags.
 type CableTermination struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	Display string `json:"display"`
-	Cable int32 `json:"cable"`
-	CableEnd *End1 `json:"cable_end,omitempty"`
-	TerminationType string `json:"termination_type"`
-	TerminationId int64 `json:"termination_id"`
-	Termination interface{} `json:"termination,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Id                   int32        `json:"id"`
+	Url                  string       `json:"url"`
+	Display              string       `json:"display"`
+	Cable                int32        `json:"cable"`
+	CableEnd             *End1        `json:"cable_end,omitempty"`
+	TerminationType      string       `json:"termination_type"`
+	TerminationId        int64        `json:"termination_id"`
+	Termination          interface{}  `json:"termination,omitempty"`
+	Created              NullableTime `json:"created,omitempty"`
+	LastUpdated          NullableTime `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -83,7 +83,6 @@ func (o *CableTermination) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *CableTermination) GetUrl() string {
 	if o == nil {
@@ -107,7 +106,6 @@ func (o *CableTermination) GetUrlOk() (*string, bool) {
 func (o *CableTermination) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplay returns the Display field value
 func (o *CableTermination) GetDisplay() string {
@@ -133,7 +131,6 @@ func (o *CableTermination) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetCable returns the Cable field value
 func (o *CableTermination) GetCable() int32 {
 	if o == nil {
@@ -157,7 +154,6 @@ func (o *CableTermination) GetCableOk() (*int32, bool) {
 func (o *CableTermination) SetCable(v int32) {
 	o.Cable = v
 }
-
 
 // GetCableEnd returns the CableEnd field value if set, zero value otherwise.
 func (o *CableTermination) GetCableEnd() End1 {
@@ -215,7 +211,6 @@ func (o *CableTermination) SetTerminationType(v string) {
 	o.TerminationType = v
 }
 
-
 // GetTerminationId returns the TerminationId field value
 func (o *CableTermination) GetTerminationId() int64 {
 	if o == nil {
@@ -239,7 +234,6 @@ func (o *CableTermination) GetTerminationIdOk() (*int64, bool) {
 func (o *CableTermination) SetTerminationId(v int64) {
 	o.TerminationId = v
 }
-
 
 // GetTermination returns the Termination field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CableTermination) GetTermination() interface{} {
@@ -306,6 +300,7 @@ func (o *CableTermination) HasCreated() bool {
 func (o *CableTermination) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *CableTermination) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -348,6 +343,7 @@ func (o *CableTermination) HasLastUpdated() bool {
 func (o *CableTermination) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *CableTermination) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -359,7 +355,7 @@ func (o *CableTermination) UnsetLastUpdated() {
 }
 
 func (o CableTermination) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -409,32 +405,31 @@ func (o *CableTermination) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -502,5 +497,3 @@ func (v *NullableCableTermination) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

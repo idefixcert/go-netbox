@@ -21,9 +21,9 @@ type CircuitDistanceUnitLabel string
 // List of Circuit_distance_unit_label
 const (
 	CIRCUITDISTANCEUNITLABEL_KILOMETERS CircuitDistanceUnitLabel = "Kilometers"
-	CIRCUITDISTANCEUNITLABEL_METERS CircuitDistanceUnitLabel = "Meters"
-	CIRCUITDISTANCEUNITLABEL_MILES CircuitDistanceUnitLabel = "Miles"
-	CIRCUITDISTANCEUNITLABEL_FEET CircuitDistanceUnitLabel = "Feet"
+	CIRCUITDISTANCEUNITLABEL_METERS     CircuitDistanceUnitLabel = "Meters"
+	CIRCUITDISTANCEUNITLABEL_MILES      CircuitDistanceUnitLabel = "Miles"
+	CIRCUITDISTANCEUNITLABEL_FEET       CircuitDistanceUnitLabel = "Feet"
 )
 
 // All allowed values of CircuitDistanceUnitLabel enum
@@ -112,4 +112,3 @@ func (v *NullableCircuitDistanceUnitLabel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

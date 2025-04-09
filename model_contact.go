@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the Contact type satisfies the MappedNullable interface at compile time
@@ -21,23 +21,23 @@ var _ MappedNullable = &Contact{}
 
 // Contact Adds support for custom fields and tags.
 type Contact struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Group NullableBriefContactGroup `json:"group,omitempty"`
-	Name string `json:"name"`
-	Title *string `json:"title,omitempty"`
-	Phone *string `json:"phone,omitempty"`
-	Email *string `json:"email,omitempty"`
-	Address *string `json:"address,omitempty"`
-	Link *string `json:"link,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Id                   int32                     `json:"id"`
+	Url                  string                    `json:"url"`
+	DisplayUrl           *string                   `json:"display_url,omitempty"`
+	Display              string                    `json:"display"`
+	Group                NullableBriefContactGroup `json:"group,omitempty"`
+	Name                 string                    `json:"name"`
+	Title                *string                   `json:"title,omitempty"`
+	Phone                *string                   `json:"phone,omitempty"`
+	Email                *string                   `json:"email,omitempty"`
+	Address              *string                   `json:"address,omitempty"`
+	Link                 *string                   `json:"link,omitempty"`
+	Description          *string                   `json:"description,omitempty"`
+	Comments             *string                   `json:"comments,omitempty"`
+	Tags                 []NestedTag               `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}    `json:"custom_fields,omitempty"`
+	Created              NullableTime              `json:"created,omitempty"`
+	LastUpdated          NullableTime              `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -88,7 +88,6 @@ func (o *Contact) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *Contact) GetUrl() string {
 	if o == nil {
@@ -112,7 +111,6 @@ func (o *Contact) GetUrlOk() (*string, bool) {
 func (o *Contact) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *Contact) GetDisplayUrl() string {
@@ -170,7 +168,6 @@ func (o *Contact) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Contact) GetGroup() BriefContactGroup {
 	if o == nil || IsNil(o.Group.Get()) {
@@ -203,6 +200,7 @@ func (o *Contact) HasGroup() bool {
 func (o *Contact) SetGroup(v BriefContactGroup) {
 	o.Group.Set(&v)
 }
+
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *Contact) SetGroupNil() {
 	o.Group.Set(nil)
@@ -236,7 +234,6 @@ func (o *Contact) GetNameOk() (*string, bool) {
 func (o *Contact) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *Contact) GetTitle() string {
@@ -558,6 +555,7 @@ func (o *Contact) HasCreated() bool {
 func (o *Contact) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *Contact) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -600,6 +598,7 @@ func (o *Contact) HasLastUpdated() bool {
 func (o *Contact) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *Contact) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -611,7 +610,7 @@ func (o *Contact) UnsetLastUpdated() {
 }
 
 func (o Contact) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -684,32 +683,31 @@ func (o *Contact) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -784,5 +782,3 @@ func (v *NullableContact) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

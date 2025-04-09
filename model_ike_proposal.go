@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the IKEProposal type satisfies the MappedNullable interface at compile time
@@ -21,23 +21,23 @@ var _ MappedNullable = &IKEProposal{}
 
 // IKEProposal Adds support for custom fields and tags.
 type IKEProposal struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
-	AuthenticationMethod IKEProposalAuthenticationMethod `json:"authentication_method"`
-	EncryptionAlgorithm IKEProposalEncryptionAlgorithm `json:"encryption_algorithm"`
+	Id                      int32                               `json:"id"`
+	Url                     string                              `json:"url"`
+	DisplayUrl              *string                             `json:"display_url,omitempty"`
+	Display                 string                              `json:"display"`
+	Name                    string                              `json:"name"`
+	Description             *string                             `json:"description,omitempty"`
+	AuthenticationMethod    IKEProposalAuthenticationMethod     `json:"authentication_method"`
+	EncryptionAlgorithm     IKEProposalEncryptionAlgorithm      `json:"encryption_algorithm"`
 	AuthenticationAlgorithm *IKEProposalAuthenticationAlgorithm `json:"authentication_algorithm,omitempty"`
-	Group IKEProposalGroup `json:"group"`
+	Group                   IKEProposalGroup                    `json:"group"`
 	// Security association lifetime (in seconds)
-	SaLifetime NullableInt32 `json:"sa_lifetime,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	SaLifetime           NullableInt32          `json:"sa_lifetime,omitempty"`
+	Comments             *string                `json:"comments,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -91,7 +91,6 @@ func (o *IKEProposal) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *IKEProposal) GetUrl() string {
 	if o == nil {
@@ -115,7 +114,6 @@ func (o *IKEProposal) GetUrlOk() (*string, bool) {
 func (o *IKEProposal) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *IKEProposal) GetDisplayUrl() string {
@@ -173,7 +171,6 @@ func (o *IKEProposal) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *IKEProposal) GetName() string {
 	if o == nil {
@@ -197,7 +194,6 @@ func (o *IKEProposal) GetNameOk() (*string, bool) {
 func (o *IKEProposal) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *IKEProposal) GetDescription() string {
@@ -255,7 +251,6 @@ func (o *IKEProposal) SetAuthenticationMethod(v IKEProposalAuthenticationMethod)
 	o.AuthenticationMethod = v
 }
 
-
 // GetEncryptionAlgorithm returns the EncryptionAlgorithm field value
 func (o *IKEProposal) GetEncryptionAlgorithm() IKEProposalEncryptionAlgorithm {
 	if o == nil {
@@ -279,7 +274,6 @@ func (o *IKEProposal) GetEncryptionAlgorithmOk() (*IKEProposalEncryptionAlgorith
 func (o *IKEProposal) SetEncryptionAlgorithm(v IKEProposalEncryptionAlgorithm) {
 	o.EncryptionAlgorithm = v
 }
-
 
 // GetAuthenticationAlgorithm returns the AuthenticationAlgorithm field value if set, zero value otherwise.
 func (o *IKEProposal) GetAuthenticationAlgorithm() IKEProposalAuthenticationAlgorithm {
@@ -337,7 +331,6 @@ func (o *IKEProposal) SetGroup(v IKEProposalGroup) {
 	o.Group = v
 }
 
-
 // GetSaLifetime returns the SaLifetime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IKEProposal) GetSaLifetime() int32 {
 	if o == nil || IsNil(o.SaLifetime.Get()) {
@@ -370,6 +363,7 @@ func (o *IKEProposal) HasSaLifetime() bool {
 func (o *IKEProposal) SetSaLifetime(v int32) {
 	o.SaLifetime.Set(&v)
 }
+
 // SetSaLifetimeNil sets the value for SaLifetime to be an explicit nil
 func (o *IKEProposal) SetSaLifetimeNil() {
 	o.SaLifetime.Set(nil)
@@ -508,6 +502,7 @@ func (o *IKEProposal) HasCreated() bool {
 func (o *IKEProposal) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *IKEProposal) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -550,6 +545,7 @@ func (o *IKEProposal) HasLastUpdated() bool {
 func (o *IKEProposal) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *IKEProposal) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -561,7 +557,7 @@ func (o *IKEProposal) UnsetLastUpdated() {
 }
 
 func (o IKEProposal) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -628,32 +624,31 @@ func (o *IKEProposal) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -727,5 +722,3 @@ func (v *NullableIKEProposal) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

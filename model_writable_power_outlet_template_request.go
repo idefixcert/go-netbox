@@ -25,11 +25,11 @@ type WritablePowerOutletTemplateRequest struct {
 	// {module} is accepted as a substitution for the module bay position when attached to a module type.
 	Name string `json:"name"`
 	// Physical label
-	Label *string `json:"label,omitempty"`
-	Type NullablePatchedWritablePowerOutletTemplateRequestType `json:"type,omitempty"`
-	PowerPort NullableBriefPowerPortTemplateRequest `json:"power_port,omitempty"`
-	FeedLeg NullablePatchedWritablePowerOutletRequestFeedLeg `json:"feed_leg,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Label                *string                                               `json:"label,omitempty"`
+	Type                 NullablePatchedWritablePowerOutletTemplateRequestType `json:"type,omitempty"`
+	PowerPort            NullableBriefPowerPortTemplateRequest                 `json:"power_port,omitempty"`
+	FeedLeg              NullablePatchedWritablePowerOutletRequestFeedLeg      `json:"feed_leg,omitempty"`
+	Description          *string                                               `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -85,6 +85,7 @@ func (o *WritablePowerOutletTemplateRequest) HasDeviceType() bool {
 func (o *WritablePowerOutletTemplateRequest) SetDeviceType(v BriefDeviceTypeRequest) {
 	o.DeviceType.Set(&v)
 }
+
 // SetDeviceTypeNil sets the value for DeviceType to be an explicit nil
 func (o *WritablePowerOutletTemplateRequest) SetDeviceTypeNil() {
 	o.DeviceType.Set(nil)
@@ -127,6 +128,7 @@ func (o *WritablePowerOutletTemplateRequest) HasModuleType() bool {
 func (o *WritablePowerOutletTemplateRequest) SetModuleType(v BriefModuleTypeRequest) {
 	o.ModuleType.Set(&v)
 }
+
 // SetModuleTypeNil sets the value for ModuleType to be an explicit nil
 func (o *WritablePowerOutletTemplateRequest) SetModuleTypeNil() {
 	o.ModuleType.Set(nil)
@@ -160,7 +162,6 @@ func (o *WritablePowerOutletTemplateRequest) GetNameOk() (*string, bool) {
 func (o *WritablePowerOutletTemplateRequest) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *WritablePowerOutletTemplateRequest) GetLabel() string {
@@ -226,6 +227,7 @@ func (o *WritablePowerOutletTemplateRequest) HasType() bool {
 func (o *WritablePowerOutletTemplateRequest) SetType(v PatchedWritablePowerOutletTemplateRequestType) {
 	o.Type.Set(&v)
 }
+
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *WritablePowerOutletTemplateRequest) SetTypeNil() {
 	o.Type.Set(nil)
@@ -268,6 +270,7 @@ func (o *WritablePowerOutletTemplateRequest) HasPowerPort() bool {
 func (o *WritablePowerOutletTemplateRequest) SetPowerPort(v BriefPowerPortTemplateRequest) {
 	o.PowerPort.Set(&v)
 }
+
 // SetPowerPortNil sets the value for PowerPort to be an explicit nil
 func (o *WritablePowerOutletTemplateRequest) SetPowerPortNil() {
 	o.PowerPort.Set(nil)
@@ -310,6 +313,7 @@ func (o *WritablePowerOutletTemplateRequest) HasFeedLeg() bool {
 func (o *WritablePowerOutletTemplateRequest) SetFeedLeg(v PatchedWritablePowerOutletRequestFeedLeg) {
 	o.FeedLeg.Set(&v)
 }
+
 // SetFeedLegNil sets the value for FeedLeg to be an explicit nil
 func (o *WritablePowerOutletTemplateRequest) SetFeedLegNil() {
 	o.FeedLeg.Set(nil)
@@ -353,7 +357,7 @@ func (o *WritablePowerOutletTemplateRequest) SetDescription(v string) {
 }
 
 func (o WritablePowerOutletTemplateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -402,32 +406,31 @@ func (o *WritablePowerOutletTemplateRequest) UnmarshalJSON(data []byte) (err err
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -493,5 +496,3 @@ func (v *NullableWritablePowerOutletTemplateRequest) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

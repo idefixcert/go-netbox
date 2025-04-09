@@ -21,23 +21,23 @@ var _ MappedNullable = &WritableCircuitRequest{}
 // WritableCircuitRequest Adds support for custom fields and tags.
 type WritableCircuitRequest struct {
 	// Unique circuit ID
-	Cid string `json:"cid"`
-	Provider BriefProviderRequest `json:"provider"`
+	Cid             string                              `json:"cid"`
+	Provider        BriefProviderRequest                `json:"provider"`
 	ProviderAccount NullableBriefProviderAccountRequest `json:"provider_account,omitempty"`
-	Type BriefCircuitTypeRequest `json:"type"`
-	Status *CircuitStatusValue `json:"status,omitempty"`
-	Tenant NullableBriefTenantRequest `json:"tenant,omitempty"`
-	InstallDate NullableString `json:"install_date,omitempty"`
-	TerminationDate NullableString `json:"termination_date,omitempty"`
+	Type            BriefCircuitTypeRequest             `json:"type"`
+	Status          *CircuitStatusValue                 `json:"status,omitempty"`
+	Tenant          NullableBriefTenantRequest          `json:"tenant,omitempty"`
+	InstallDate     NullableString                      `json:"install_date,omitempty"`
+	TerminationDate NullableString                      `json:"termination_date,omitempty"`
 	// Committed rate
-	CommitRate NullableInt32 `json:"commit_rate,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Distance NullableFloat64 `json:"distance,omitempty"`
-	DistanceUnit NullableCircuitRequestDistanceUnit `json:"distance_unit,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Assignments []BriefCircuitGroupAssignmentSerializerRequest `json:"assignments,omitempty"`
+	CommitRate           NullableInt32                                  `json:"commit_rate,omitempty"`
+	Description          *string                                        `json:"description,omitempty"`
+	Distance             NullableFloat64                                `json:"distance,omitempty"`
+	DistanceUnit         NullableCircuitRequestDistanceUnit             `json:"distance_unit,omitempty"`
+	Comments             *string                                        `json:"comments,omitempty"`
+	Tags                 []NestedTagRequest                             `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}                         `json:"custom_fields,omitempty"`
+	Assignments          []BriefCircuitGroupAssignmentSerializerRequest `json:"assignments,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -87,7 +87,6 @@ func (o *WritableCircuitRequest) SetCid(v string) {
 	o.Cid = v
 }
 
-
 // GetProvider returns the Provider field value
 func (o *WritableCircuitRequest) GetProvider() BriefProviderRequest {
 	if o == nil {
@@ -111,7 +110,6 @@ func (o *WritableCircuitRequest) GetProviderOk() (*BriefProviderRequest, bool) {
 func (o *WritableCircuitRequest) SetProvider(v BriefProviderRequest) {
 	o.Provider = v
 }
-
 
 // GetProviderAccount returns the ProviderAccount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableCircuitRequest) GetProviderAccount() BriefProviderAccountRequest {
@@ -145,6 +143,7 @@ func (o *WritableCircuitRequest) HasProviderAccount() bool {
 func (o *WritableCircuitRequest) SetProviderAccount(v BriefProviderAccountRequest) {
 	o.ProviderAccount.Set(&v)
 }
+
 // SetProviderAccountNil sets the value for ProviderAccount to be an explicit nil
 func (o *WritableCircuitRequest) SetProviderAccountNil() {
 	o.ProviderAccount.Set(nil)
@@ -178,7 +177,6 @@ func (o *WritableCircuitRequest) GetTypeOk() (*BriefCircuitTypeRequest, bool) {
 func (o *WritableCircuitRequest) SetType(v BriefCircuitTypeRequest) {
 	o.Type = v
 }
-
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *WritableCircuitRequest) GetStatus() CircuitStatusValue {
@@ -244,6 +242,7 @@ func (o *WritableCircuitRequest) HasTenant() bool {
 func (o *WritableCircuitRequest) SetTenant(v BriefTenantRequest) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *WritableCircuitRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -286,6 +285,7 @@ func (o *WritableCircuitRequest) HasInstallDate() bool {
 func (o *WritableCircuitRequest) SetInstallDate(v string) {
 	o.InstallDate.Set(&v)
 }
+
 // SetInstallDateNil sets the value for InstallDate to be an explicit nil
 func (o *WritableCircuitRequest) SetInstallDateNil() {
 	o.InstallDate.Set(nil)
@@ -328,6 +328,7 @@ func (o *WritableCircuitRequest) HasTerminationDate() bool {
 func (o *WritableCircuitRequest) SetTerminationDate(v string) {
 	o.TerminationDate.Set(&v)
 }
+
 // SetTerminationDateNil sets the value for TerminationDate to be an explicit nil
 func (o *WritableCircuitRequest) SetTerminationDateNil() {
 	o.TerminationDate.Set(nil)
@@ -370,6 +371,7 @@ func (o *WritableCircuitRequest) HasCommitRate() bool {
 func (o *WritableCircuitRequest) SetCommitRate(v int32) {
 	o.CommitRate.Set(&v)
 }
+
 // SetCommitRateNil sets the value for CommitRate to be an explicit nil
 func (o *WritableCircuitRequest) SetCommitRateNil() {
 	o.CommitRate.Set(nil)
@@ -444,6 +446,7 @@ func (o *WritableCircuitRequest) HasDistance() bool {
 func (o *WritableCircuitRequest) SetDistance(v float64) {
 	o.Distance.Set(&v)
 }
+
 // SetDistanceNil sets the value for Distance to be an explicit nil
 func (o *WritableCircuitRequest) SetDistanceNil() {
 	o.Distance.Set(nil)
@@ -486,6 +489,7 @@ func (o *WritableCircuitRequest) HasDistanceUnit() bool {
 func (o *WritableCircuitRequest) SetDistanceUnit(v CircuitRequestDistanceUnit) {
 	o.DistanceUnit.Set(&v)
 }
+
 // SetDistanceUnitNil sets the value for DistanceUnit to be an explicit nil
 func (o *WritableCircuitRequest) SetDistanceUnitNil() {
 	o.DistanceUnit.Set(nil)
@@ -625,7 +629,7 @@ func (o *WritableCircuitRequest) SetAssignments(v []BriefCircuitGroupAssignmentS
 }
 
 func (o WritableCircuitRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -696,32 +700,31 @@ func (o *WritableCircuitRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -795,5 +798,3 @@ func (v *NullableWritableCircuitRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

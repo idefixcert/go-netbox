@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the EventRule type satisfies the MappedNullable interface at compile time
@@ -21,26 +21,26 @@ var _ MappedNullable = &EventRule{}
 
 // EventRule Adds support for custom fields and tags.
 type EventRule struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
+	Id          int32    `json:"id"`
+	Url         string   `json:"url"`
+	DisplayUrl  *string  `json:"display_url,omitempty"`
+	Display     string   `json:"display"`
 	ObjectTypes []string `json:"object_types"`
-	Name string `json:"name"`
-	Enabled *bool `json:"enabled,omitempty"`
+	Name        string   `json:"name"`
+	Enabled     *bool    `json:"enabled,omitempty"`
 	// The types of event which will trigger this rule.
 	EventTypes []EventRuleEventTypesInner `json:"event_types"`
 	// A set of conditions which determine whether the event will be generated.
-	Conditions interface{} `json:"conditions,omitempty"`
-	ActionType EventRuleActionType `json:"action_type"`
-	ActionObjectType string `json:"action_object_type"`
-	ActionObjectId NullableInt64 `json:"action_object_id,omitempty"`
-	ActionObject map[string]interface{} `json:"action_object"`
-	Description *string `json:"description,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Conditions           interface{}            `json:"conditions,omitempty"`
+	ActionType           EventRuleActionType    `json:"action_type"`
+	ActionObjectType     string                 `json:"action_object_type"`
+	ActionObjectId       NullableInt64          `json:"action_object_id,omitempty"`
+	ActionObject         map[string]interface{} `json:"action_object"`
+	Description          *string                `json:"description,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -96,7 +96,6 @@ func (o *EventRule) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *EventRule) GetUrl() string {
 	if o == nil {
@@ -120,7 +119,6 @@ func (o *EventRule) GetUrlOk() (*string, bool) {
 func (o *EventRule) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *EventRule) GetDisplayUrl() string {
@@ -178,7 +176,6 @@ func (o *EventRule) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetObjectTypes returns the ObjectTypes field value
 func (o *EventRule) GetObjectTypes() []string {
 	if o == nil {
@@ -203,7 +200,6 @@ func (o *EventRule) SetObjectTypes(v []string) {
 	o.ObjectTypes = v
 }
 
-
 // GetName returns the Name field value
 func (o *EventRule) GetName() string {
 	if o == nil {
@@ -227,7 +223,6 @@ func (o *EventRule) GetNameOk() (*string, bool) {
 func (o *EventRule) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *EventRule) GetEnabled() bool {
@@ -284,7 +279,6 @@ func (o *EventRule) GetEventTypesOk() ([]EventRuleEventTypesInner, bool) {
 func (o *EventRule) SetEventTypes(v []EventRuleEventTypesInner) {
 	o.EventTypes = v
 }
-
 
 // GetConditions returns the Conditions field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EventRule) GetConditions() interface{} {
@@ -343,7 +337,6 @@ func (o *EventRule) SetActionType(v EventRuleActionType) {
 	o.ActionType = v
 }
 
-
 // GetActionObjectType returns the ActionObjectType field value
 func (o *EventRule) GetActionObjectType() string {
 	if o == nil {
@@ -367,7 +360,6 @@ func (o *EventRule) GetActionObjectTypeOk() (*string, bool) {
 func (o *EventRule) SetActionObjectType(v string) {
 	o.ActionObjectType = v
 }
-
 
 // GetActionObjectId returns the ActionObjectId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EventRule) GetActionObjectId() int64 {
@@ -401,6 +393,7 @@ func (o *EventRule) HasActionObjectId() bool {
 func (o *EventRule) SetActionObjectId(v int64) {
 	o.ActionObjectId.Set(&v)
 }
+
 // SetActionObjectIdNil sets the value for ActionObjectId to be an explicit nil
 func (o *EventRule) SetActionObjectIdNil() {
 	o.ActionObjectId.Set(nil)
@@ -434,7 +427,6 @@ func (o *EventRule) GetActionObjectOk() (map[string]interface{}, bool) {
 func (o *EventRule) SetActionObject(v map[string]interface{}) {
 	o.ActionObject = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *EventRule) GetDescription() string {
@@ -564,6 +556,7 @@ func (o *EventRule) HasCreated() bool {
 func (o *EventRule) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *EventRule) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -606,6 +599,7 @@ func (o *EventRule) HasLastUpdated() bool {
 func (o *EventRule) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *EventRule) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -617,7 +611,7 @@ func (o *EventRule) UnsetLastUpdated() {
 }
 
 func (o EventRule) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -688,32 +682,31 @@ func (o *EventRule) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -789,5 +782,3 @@ func (v *NullableEventRule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

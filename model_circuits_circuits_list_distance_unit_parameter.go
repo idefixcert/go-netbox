@@ -22,7 +22,7 @@ type CircuitsCircuitsListDistanceUnitParameter string
 const (
 	CIRCUITSCIRCUITSLISTDISTANCEUNITPARAMETER_FT CircuitsCircuitsListDistanceUnitParameter = "ft"
 	CIRCUITSCIRCUITSLISTDISTANCEUNITPARAMETER_KM CircuitsCircuitsListDistanceUnitParameter = "km"
-	CIRCUITSCIRCUITSLISTDISTANCEUNITPARAMETER_M CircuitsCircuitsListDistanceUnitParameter = "m"
+	CIRCUITSCIRCUITSLISTDISTANCEUNITPARAMETER_M  CircuitsCircuitsListDistanceUnitParameter = "m"
 	CIRCUITSCIRCUITSLISTDISTANCEUNITPARAMETER_MI CircuitsCircuitsListDistanceUnitParameter = "mi"
 )
 
@@ -112,4 +112,3 @@ func (v *NullableCircuitsCircuitsListDistanceUnitParameter) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

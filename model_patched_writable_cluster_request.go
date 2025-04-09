@@ -19,17 +19,17 @@ var _ MappedNullable = &PatchedWritableClusterRequest{}
 
 // PatchedWritableClusterRequest Adds support for custom fields and tags.
 type PatchedWritableClusterRequest struct {
-	Name *string `json:"name,omitempty"`
-	Type *BriefClusterTypeRequest `json:"type,omitempty"`
-	Group NullableBriefClusterGroupRequest `json:"group,omitempty"`
-	Status *ClusterStatusValue `json:"status,omitempty"`
-	Tenant NullableBriefTenantRequest `json:"tenant,omitempty"`
-	ScopeType NullableString `json:"scope_type,omitempty"`
-	ScopeId NullableInt32 `json:"scope_id,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Name                 *string                          `json:"name,omitempty"`
+	Type                 *BriefClusterTypeRequest         `json:"type,omitempty"`
+	Group                NullableBriefClusterGroupRequest `json:"group,omitempty"`
+	Status               *ClusterStatusValue              `json:"status,omitempty"`
+	Tenant               NullableBriefTenantRequest       `json:"tenant,omitempty"`
+	ScopeType            NullableString                   `json:"scope_type,omitempty"`
+	ScopeId              NullableInt32                    `json:"scope_id,omitempty"`
+	Description          *string                          `json:"description,omitempty"`
+	Comments             *string                          `json:"comments,omitempty"`
+	Tags                 []NestedTagRequest               `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}           `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -148,6 +148,7 @@ func (o *PatchedWritableClusterRequest) HasGroup() bool {
 func (o *PatchedWritableClusterRequest) SetGroup(v BriefClusterGroupRequest) {
 	o.Group.Set(&v)
 }
+
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *PatchedWritableClusterRequest) SetGroupNil() {
 	o.Group.Set(nil)
@@ -222,6 +223,7 @@ func (o *PatchedWritableClusterRequest) HasTenant() bool {
 func (o *PatchedWritableClusterRequest) SetTenant(v BriefTenantRequest) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *PatchedWritableClusterRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -264,6 +266,7 @@ func (o *PatchedWritableClusterRequest) HasScopeType() bool {
 func (o *PatchedWritableClusterRequest) SetScopeType(v string) {
 	o.ScopeType.Set(&v)
 }
+
 // SetScopeTypeNil sets the value for ScopeType to be an explicit nil
 func (o *PatchedWritableClusterRequest) SetScopeTypeNil() {
 	o.ScopeType.Set(nil)
@@ -306,6 +309,7 @@ func (o *PatchedWritableClusterRequest) HasScopeId() bool {
 func (o *PatchedWritableClusterRequest) SetScopeId(v int32) {
 	o.ScopeId.Set(&v)
 }
+
 // SetScopeIdNil sets the value for ScopeId to be an explicit nil
 func (o *PatchedWritableClusterRequest) SetScopeIdNil() {
 	o.ScopeId.Set(nil)
@@ -445,7 +449,7 @@ func (o *PatchedWritableClusterRequest) SetCustomFields(v map[string]interface{}
 }
 
 func (o PatchedWritableClusterRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -561,5 +565,3 @@ func (v *NullablePatchedWritableClusterRequest) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

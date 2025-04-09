@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the VirtualCircuitTermination type satisfies the MappedNullable interface at compile time
@@ -21,18 +21,18 @@ var _ MappedNullable = &VirtualCircuitTermination{}
 
 // VirtualCircuitTermination Adds support for custom fields and tags.
 type VirtualCircuitTermination struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	VirtualCircuit BriefVirtualCircuit `json:"virtual_circuit"`
-	Role *TunnelTerminationRole `json:"role,omitempty"`
-	Interface BriefInterface `json:"interface"`
-	Description *string `json:"description,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Id                   int32                  `json:"id"`
+	Url                  string                 `json:"url"`
+	DisplayUrl           *string                `json:"display_url,omitempty"`
+	Display              string                 `json:"display"`
+	VirtualCircuit       BriefVirtualCircuit    `json:"virtual_circuit"`
+	Role                 *TunnelTerminationRole `json:"role,omitempty"`
+	Interface            BriefInterface         `json:"interface"`
+	Description          *string                `json:"description,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -84,7 +84,6 @@ func (o *VirtualCircuitTermination) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *VirtualCircuitTermination) GetUrl() string {
 	if o == nil {
@@ -108,7 +107,6 @@ func (o *VirtualCircuitTermination) GetUrlOk() (*string, bool) {
 func (o *VirtualCircuitTermination) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *VirtualCircuitTermination) GetDisplayUrl() string {
@@ -166,7 +164,6 @@ func (o *VirtualCircuitTermination) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetVirtualCircuit returns the VirtualCircuit field value
 func (o *VirtualCircuitTermination) GetVirtualCircuit() BriefVirtualCircuit {
 	if o == nil {
@@ -190,7 +187,6 @@ func (o *VirtualCircuitTermination) GetVirtualCircuitOk() (*BriefVirtualCircuit,
 func (o *VirtualCircuitTermination) SetVirtualCircuit(v BriefVirtualCircuit) {
 	o.VirtualCircuit = v
 }
-
 
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *VirtualCircuitTermination) GetRole() TunnelTerminationRole {
@@ -247,7 +243,6 @@ func (o *VirtualCircuitTermination) GetInterfaceOk() (*BriefInterface, bool) {
 func (o *VirtualCircuitTermination) SetInterface(v BriefInterface) {
 	o.Interface = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *VirtualCircuitTermination) GetDescription() string {
@@ -377,6 +372,7 @@ func (o *VirtualCircuitTermination) HasCreated() bool {
 func (o *VirtualCircuitTermination) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *VirtualCircuitTermination) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -419,6 +415,7 @@ func (o *VirtualCircuitTermination) HasLastUpdated() bool {
 func (o *VirtualCircuitTermination) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *VirtualCircuitTermination) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -430,7 +427,7 @@ func (o *VirtualCircuitTermination) UnsetLastUpdated() {
 }
 
 func (o VirtualCircuitTermination) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -487,32 +484,31 @@ func (o *VirtualCircuitTermination) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -582,5 +578,3 @@ func (v *NullableVirtualCircuitTermination) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

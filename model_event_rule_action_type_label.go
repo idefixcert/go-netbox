@@ -20,8 +20,8 @@ type EventRuleActionTypeLabel string
 
 // List of EventRule_action_type_label
 const (
-	EVENTRULEACTIONTYPELABEL_WEBHOOK EventRuleActionTypeLabel = "Webhook"
-	EVENTRULEACTIONTYPELABEL_SCRIPT EventRuleActionTypeLabel = "Script"
+	EVENTRULEACTIONTYPELABEL_WEBHOOK      EventRuleActionTypeLabel = "Webhook"
+	EVENTRULEACTIONTYPELABEL_SCRIPT       EventRuleActionTypeLabel = "Script"
 	EVENTRULEACTIONTYPELABEL_NOTIFICATION EventRuleActionTypeLabel = "Notification"
 )
 
@@ -110,4 +110,3 @@ func (v *NullableEventRuleActionTypeLabel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

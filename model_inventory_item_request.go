@@ -21,25 +21,25 @@ var _ MappedNullable = &InventoryItemRequest{}
 // InventoryItemRequest Adds support for custom fields and tags.
 type InventoryItemRequest struct {
 	Device BriefDeviceRequest `json:"device"`
-	Parent NullableInt32 `json:"parent,omitempty"`
-	Name string `json:"name"`
+	Parent NullableInt32      `json:"parent,omitempty"`
+	Name   string             `json:"name"`
 	// Physical label
-	Label *string `json:"label,omitempty"`
-	Status *InventoryItemStatusValue `json:"status,omitempty"`
-	Role NullableBriefInventoryItemRoleRequest `json:"role,omitempty"`
-	Manufacturer NullableBriefManufacturerRequest `json:"manufacturer,omitempty"`
+	Label        *string                               `json:"label,omitempty"`
+	Status       *InventoryItemStatusValue             `json:"status,omitempty"`
+	Role         NullableBriefInventoryItemRoleRequest `json:"role,omitempty"`
+	Manufacturer NullableBriefManufacturerRequest      `json:"manufacturer,omitempty"`
 	// Manufacturer-assigned part identifier
 	PartId *string `json:"part_id,omitempty"`
 	Serial *string `json:"serial,omitempty"`
 	// A unique tag used to identify this item
 	AssetTag NullableString `json:"asset_tag,omitempty"`
 	// This item was automatically discovered
-	Discovered *bool `json:"discovered,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ComponentType NullableString `json:"component_type,omitempty"`
-	ComponentId NullableInt64 `json:"component_id,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Discovered           *bool                  `json:"discovered,omitempty"`
+	Description          *string                `json:"description,omitempty"`
+	ComponentType        NullableString         `json:"component_type,omitempty"`
+	ComponentId          NullableInt64          `json:"component_id,omitempty"`
+	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -88,7 +88,6 @@ func (o *InventoryItemRequest) SetDevice(v BriefDeviceRequest) {
 	o.Device = v
 }
 
-
 // GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InventoryItemRequest) GetParent() int32 {
 	if o == nil || IsNil(o.Parent.Get()) {
@@ -121,6 +120,7 @@ func (o *InventoryItemRequest) HasParent() bool {
 func (o *InventoryItemRequest) SetParent(v int32) {
 	o.Parent.Set(&v)
 }
+
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *InventoryItemRequest) SetParentNil() {
 	o.Parent.Set(nil)
@@ -154,7 +154,6 @@ func (o *InventoryItemRequest) GetNameOk() (*string, bool) {
 func (o *InventoryItemRequest) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *InventoryItemRequest) GetLabel() string {
@@ -252,6 +251,7 @@ func (o *InventoryItemRequest) HasRole() bool {
 func (o *InventoryItemRequest) SetRole(v BriefInventoryItemRoleRequest) {
 	o.Role.Set(&v)
 }
+
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *InventoryItemRequest) SetRoleNil() {
 	o.Role.Set(nil)
@@ -294,6 +294,7 @@ func (o *InventoryItemRequest) HasManufacturer() bool {
 func (o *InventoryItemRequest) SetManufacturer(v BriefManufacturerRequest) {
 	o.Manufacturer.Set(&v)
 }
+
 // SetManufacturerNil sets the value for Manufacturer to be an explicit nil
 func (o *InventoryItemRequest) SetManufacturerNil() {
 	o.Manufacturer.Set(nil)
@@ -400,6 +401,7 @@ func (o *InventoryItemRequest) HasAssetTag() bool {
 func (o *InventoryItemRequest) SetAssetTag(v string) {
 	o.AssetTag.Set(&v)
 }
+
 // SetAssetTagNil sets the value for AssetTag to be an explicit nil
 func (o *InventoryItemRequest) SetAssetTagNil() {
 	o.AssetTag.Set(nil)
@@ -506,6 +508,7 @@ func (o *InventoryItemRequest) HasComponentType() bool {
 func (o *InventoryItemRequest) SetComponentType(v string) {
 	o.ComponentType.Set(&v)
 }
+
 // SetComponentTypeNil sets the value for ComponentType to be an explicit nil
 func (o *InventoryItemRequest) SetComponentTypeNil() {
 	o.ComponentType.Set(nil)
@@ -548,6 +551,7 @@ func (o *InventoryItemRequest) HasComponentId() bool {
 func (o *InventoryItemRequest) SetComponentId(v int64) {
 	o.ComponentId.Set(&v)
 }
+
 // SetComponentIdNil sets the value for ComponentId to be an explicit nil
 func (o *InventoryItemRequest) SetComponentIdNil() {
 	o.ComponentId.Set(nil)
@@ -623,7 +627,7 @@ func (o *InventoryItemRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o InventoryItemRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -695,32 +699,31 @@ func (o *InventoryItemRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -794,5 +797,3 @@ func (v *NullableInventoryItemRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the FHRPGroupAssignment type satisfies the MappedNullable interface at compile time
@@ -21,16 +21,16 @@ var _ MappedNullable = &FHRPGroupAssignment{}
 
 // FHRPGroupAssignment Adds support for custom fields and tags.
 type FHRPGroupAssignment struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	Display string `json:"display"`
-	Group BriefFHRPGroup `json:"group"`
-	InterfaceType string `json:"interface_type"`
-	InterfaceId int64 `json:"interface_id"`
-	Interface interface{} `json:"interface,omitempty"`
-	Priority int32 `json:"priority"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Id                   int32          `json:"id"`
+	Url                  string         `json:"url"`
+	Display              string         `json:"display"`
+	Group                BriefFHRPGroup `json:"group"`
+	InterfaceType        string         `json:"interface_type"`
+	InterfaceId          int64          `json:"interface_id"`
+	Interface            interface{}    `json:"interface,omitempty"`
+	Priority             int32          `json:"priority"`
+	Created              NullableTime   `json:"created,omitempty"`
+	LastUpdated          NullableTime   `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -84,7 +84,6 @@ func (o *FHRPGroupAssignment) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *FHRPGroupAssignment) GetUrl() string {
 	if o == nil {
@@ -108,7 +107,6 @@ func (o *FHRPGroupAssignment) GetUrlOk() (*string, bool) {
 func (o *FHRPGroupAssignment) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplay returns the Display field value
 func (o *FHRPGroupAssignment) GetDisplay() string {
@@ -134,7 +132,6 @@ func (o *FHRPGroupAssignment) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetGroup returns the Group field value
 func (o *FHRPGroupAssignment) GetGroup() BriefFHRPGroup {
 	if o == nil {
@@ -158,7 +155,6 @@ func (o *FHRPGroupAssignment) GetGroupOk() (*BriefFHRPGroup, bool) {
 func (o *FHRPGroupAssignment) SetGroup(v BriefFHRPGroup) {
 	o.Group = v
 }
-
 
 // GetInterfaceType returns the InterfaceType field value
 func (o *FHRPGroupAssignment) GetInterfaceType() string {
@@ -184,7 +180,6 @@ func (o *FHRPGroupAssignment) SetInterfaceType(v string) {
 	o.InterfaceType = v
 }
 
-
 // GetInterfaceId returns the InterfaceId field value
 func (o *FHRPGroupAssignment) GetInterfaceId() int64 {
 	if o == nil {
@@ -208,7 +203,6 @@ func (o *FHRPGroupAssignment) GetInterfaceIdOk() (*int64, bool) {
 func (o *FHRPGroupAssignment) SetInterfaceId(v int64) {
 	o.InterfaceId = v
 }
-
 
 // GetInterface returns the Interface field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FHRPGroupAssignment) GetInterface() interface{} {
@@ -267,7 +261,6 @@ func (o *FHRPGroupAssignment) SetPriority(v int32) {
 	o.Priority = v
 }
 
-
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FHRPGroupAssignment) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created.Get()) {
@@ -300,6 +293,7 @@ func (o *FHRPGroupAssignment) HasCreated() bool {
 func (o *FHRPGroupAssignment) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *FHRPGroupAssignment) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -342,6 +336,7 @@ func (o *FHRPGroupAssignment) HasLastUpdated() bool {
 func (o *FHRPGroupAssignment) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *FHRPGroupAssignment) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -353,7 +348,7 @@ func (o *FHRPGroupAssignment) UnsetLastUpdated() {
 }
 
 func (o FHRPGroupAssignment) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -402,32 +397,31 @@ func (o *FHRPGroupAssignment) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -495,5 +489,3 @@ func (v *NullableFHRPGroupAssignment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

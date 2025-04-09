@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the Notification type satisfies the MappedNullable interface at compile time
@@ -21,16 +21,16 @@ var _ MappedNullable = &Notification{}
 
 // Notification Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type Notification struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	Display string `json:"display"`
-	ObjectType string `json:"object_type"`
-	ObjectId int64 `json:"object_id"`
-	Object interface{} `json:"object,omitempty"`
-	User BriefUser `json:"user"`
-	Created *time.Time `json:"created,omitempty"`
-	Read NullableTime `json:"read,omitempty"`
-	EventType Event `json:"event_type"`
+	Id                   int32        `json:"id"`
+	Url                  string       `json:"url"`
+	Display              string       `json:"display"`
+	ObjectType           string       `json:"object_type"`
+	ObjectId             int64        `json:"object_id"`
+	Object               interface{}  `json:"object,omitempty"`
+	User                 BriefUser    `json:"user"`
+	Created              *time.Time   `json:"created,omitempty"`
+	Read                 NullableTime `json:"read,omitempty"`
+	EventType            Event        `json:"event_type"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -84,7 +84,6 @@ func (o *Notification) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *Notification) GetUrl() string {
 	if o == nil {
@@ -108,7 +107,6 @@ func (o *Notification) GetUrlOk() (*string, bool) {
 func (o *Notification) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplay returns the Display field value
 func (o *Notification) GetDisplay() string {
@@ -134,7 +132,6 @@ func (o *Notification) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetObjectType returns the ObjectType field value
 func (o *Notification) GetObjectType() string {
 	if o == nil {
@@ -159,7 +156,6 @@ func (o *Notification) SetObjectType(v string) {
 	o.ObjectType = v
 }
 
-
 // GetObjectId returns the ObjectId field value
 func (o *Notification) GetObjectId() int64 {
 	if o == nil {
@@ -183,7 +179,6 @@ func (o *Notification) GetObjectIdOk() (*int64, bool) {
 func (o *Notification) SetObjectId(v int64) {
 	o.ObjectId = v
 }
-
 
 // GetObject returns the Object field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Notification) GetObject() interface{} {
@@ -241,7 +236,6 @@ func (o *Notification) GetUserOk() (*BriefUser, bool) {
 func (o *Notification) SetUser(v BriefUser) {
 	o.User = v
 }
-
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Notification) GetCreated() time.Time {
@@ -307,6 +301,7 @@ func (o *Notification) HasRead() bool {
 func (o *Notification) SetRead(v time.Time) {
 	o.Read.Set(&v)
 }
+
 // SetReadNil sets the value for Read to be an explicit nil
 func (o *Notification) SetReadNil() {
 	o.Read.Set(nil)
@@ -341,9 +336,8 @@ func (o *Notification) SetEventType(v Event) {
 	o.EventType = v
 }
 
-
 func (o Notification) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -392,32 +386,31 @@ func (o *Notification) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -485,5 +478,3 @@ func (v *NullableNotification) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

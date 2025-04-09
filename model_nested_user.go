@@ -20,12 +20,12 @@ var _ MappedNullable = &NestedUser{}
 
 // NestedUser Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a dictionary of attributes which can be used to uniquely identify the related object. This class should be subclassed to return a full representation of the related object on read.
 type NestedUser struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
+	Id         int32   `json:"id"`
+	Url        string  `json:"url"`
 	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
+	Display    string  `json:"display"`
 	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
-	Username string `json:"username" validate:"regexp=^[\\\\w.@+-]+$"`
+	Username             string `json:"username" validate:"regexp=^[\\\\w.@+-]+$"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,6 @@ func (o *NestedUser) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *NestedUser) GetUrl() string {
 	if o == nil {
@@ -100,7 +99,6 @@ func (o *NestedUser) GetUrlOk() (*string, bool) {
 func (o *NestedUser) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *NestedUser) GetDisplayUrl() string {
@@ -158,7 +156,6 @@ func (o *NestedUser) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetUsername returns the Username field value
 func (o *NestedUser) GetUsername() string {
 	if o == nil {
@@ -183,9 +180,8 @@ func (o *NestedUser) SetUsername(v string) {
 	o.Username = v
 }
 
-
 func (o NestedUser) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -222,32 +218,31 @@ func (o *NestedUser) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -310,5 +305,3 @@ func (v *NullableNestedUser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

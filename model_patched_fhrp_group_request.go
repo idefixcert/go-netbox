@@ -19,15 +19,15 @@ var _ MappedNullable = &PatchedFHRPGroupRequest{}
 
 // PatchedFHRPGroupRequest Adds support for custom fields and tags.
 type PatchedFHRPGroupRequest struct {
-	Name *string `json:"name,omitempty"`
-	Protocol *BriefFHRPGroupProtocol `json:"protocol,omitempty"`
-	GroupId *int32 `json:"group_id,omitempty"`
-	AuthType NullableAuthenticationType `json:"auth_type,omitempty"`
-	AuthKey *string `json:"auth_key,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Name                 *string                    `json:"name,omitempty"`
+	Protocol             *BriefFHRPGroupProtocol    `json:"protocol,omitempty"`
+	GroupId              *int32                     `json:"group_id,omitempty"`
+	AuthType             NullableAuthenticationType `json:"auth_type,omitempty"`
+	AuthKey              *string                    `json:"auth_key,omitempty"`
+	Description          *string                    `json:"description,omitempty"`
+	Comments             *string                    `json:"comments,omitempty"`
+	Tags                 []NestedTagRequest         `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}     `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -178,6 +178,7 @@ func (o *PatchedFHRPGroupRequest) HasAuthType() bool {
 func (o *PatchedFHRPGroupRequest) SetAuthType(v AuthenticationType) {
 	o.AuthType.Set(&v)
 }
+
 // SetAuthTypeNil sets the value for AuthType to be an explicit nil
 func (o *PatchedFHRPGroupRequest) SetAuthTypeNil() {
 	o.AuthType.Set(nil)
@@ -349,7 +350,7 @@ func (o *PatchedFHRPGroupRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o PatchedFHRPGroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -457,5 +458,3 @@ func (v *NullablePatchedFHRPGroupRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

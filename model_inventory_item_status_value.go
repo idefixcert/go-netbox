@@ -15,17 +15,18 @@ import (
 	"fmt"
 )
 
-// InventoryItemStatusValue * `offline` - Offline * `active` - Active * `planned` - Planned * `staged` - Staged * `failed` - Failed * `decommissioning` - Decommissioning
+// InventoryItemStatusValue * `offline` - Offline * `active` - Active * `planned` - Planned * `staged` - Staged * `failed` - Failed * `decommissioning` - Decommissioning * `paused` - Paused
 type InventoryItemStatusValue string
 
 // List of InventoryItem_status_value
 const (
-	INVENTORYITEMSTATUSVALUE_OFFLINE InventoryItemStatusValue = "offline"
-	INVENTORYITEMSTATUSVALUE_ACTIVE InventoryItemStatusValue = "active"
-	INVENTORYITEMSTATUSVALUE_PLANNED InventoryItemStatusValue = "planned"
-	INVENTORYITEMSTATUSVALUE_STAGED InventoryItemStatusValue = "staged"
-	INVENTORYITEMSTATUSVALUE_FAILED InventoryItemStatusValue = "failed"
+	INVENTORYITEMSTATUSVALUE_OFFLINE         InventoryItemStatusValue = "offline"
+	INVENTORYITEMSTATUSVALUE_ACTIVE          InventoryItemStatusValue = "active"
+	INVENTORYITEMSTATUSVALUE_PLANNED         InventoryItemStatusValue = "planned"
+	INVENTORYITEMSTATUSVALUE_STAGED          InventoryItemStatusValue = "staged"
+	INVENTORYITEMSTATUSVALUE_FAILED          InventoryItemStatusValue = "failed"
 	INVENTORYITEMSTATUSVALUE_DECOMMISSIONING InventoryItemStatusValue = "decommissioning"
+	INVENTORYITEMSTATUSVALUE_PAUSED          InventoryItemStatusValue = "paused"
 )
 
 // All allowed values of InventoryItemStatusValue enum
@@ -36,6 +37,7 @@ var AllowedInventoryItemStatusValueEnumValues = []InventoryItemStatusValue{
 	"staged",
 	"failed",
 	"decommissioning",
+	"paused",
 }
 
 func (v *InventoryItemStatusValue) UnmarshalJSON(src []byte) error {
@@ -116,4 +118,3 @@ func (v *NullableInventoryItemStatusValue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

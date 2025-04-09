@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the SiteGroup type satisfies the MappedNullable interface at compile time
@@ -21,21 +21,21 @@ var _ MappedNullable = &SiteGroup{}
 
 // SiteGroup Extends PrimaryModelSerializer to include MPTT support.
 type SiteGroup struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Parent NullableNestedSiteGroup `json:"parent,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
-	SiteCount *int32 `json:"site_count,omitempty"`
-	PrefixCount *int64 `json:"prefix_count,omitempty"`
-	Depth int32 `json:"_depth"`
+	Id                   int32                   `json:"id"`
+	Url                  string                  `json:"url"`
+	DisplayUrl           *string                 `json:"display_url,omitempty"`
+	Display              string                  `json:"display"`
+	Name                 string                  `json:"name"`
+	Slug                 string                  `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Parent               NullableNestedSiteGroup `json:"parent,omitempty"`
+	Description          *string                 `json:"description,omitempty"`
+	Tags                 []NestedTag             `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}  `json:"custom_fields,omitempty"`
+	Created              NullableTime            `json:"created,omitempty"`
+	LastUpdated          NullableTime            `json:"last_updated,omitempty"`
+	SiteCount            *int32                  `json:"site_count,omitempty"`
+	PrefixCount          *int64                  `json:"prefix_count,omitempty"`
+	Depth                int32                   `json:"_depth"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -88,7 +88,6 @@ func (o *SiteGroup) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *SiteGroup) GetUrl() string {
 	if o == nil {
@@ -112,7 +111,6 @@ func (o *SiteGroup) GetUrlOk() (*string, bool) {
 func (o *SiteGroup) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *SiteGroup) GetDisplayUrl() string {
@@ -170,7 +168,6 @@ func (o *SiteGroup) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *SiteGroup) GetName() string {
 	if o == nil {
@@ -195,7 +192,6 @@ func (o *SiteGroup) SetName(v string) {
 	o.Name = v
 }
 
-
 // GetSlug returns the Slug field value
 func (o *SiteGroup) GetSlug() string {
 	if o == nil {
@@ -219,7 +215,6 @@ func (o *SiteGroup) GetSlugOk() (*string, bool) {
 func (o *SiteGroup) SetSlug(v string) {
 	o.Slug = v
 }
-
 
 // GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SiteGroup) GetParent() NestedSiteGroup {
@@ -253,6 +248,7 @@ func (o *SiteGroup) HasParent() bool {
 func (o *SiteGroup) SetParent(v NestedSiteGroup) {
 	o.Parent.Set(&v)
 }
+
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *SiteGroup) SetParentNil() {
 	o.Parent.Set(nil)
@@ -391,6 +387,7 @@ func (o *SiteGroup) HasCreated() bool {
 func (o *SiteGroup) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *SiteGroup) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -433,6 +430,7 @@ func (o *SiteGroup) HasLastUpdated() bool {
 func (o *SiteGroup) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *SiteGroup) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -531,9 +529,8 @@ func (o *SiteGroup) SetDepth(v int32) {
 	o.Depth = v
 }
 
-
 func (o SiteGroup) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -598,32 +595,31 @@ func (o *SiteGroup) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -696,5 +692,3 @@ func (v *NullableSiteGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

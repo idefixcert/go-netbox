@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the L2VPN type satisfies the MappedNullable interface at compile time
@@ -21,23 +21,23 @@ var _ MappedNullable = &L2VPN{}
 
 // L2VPN Adds support for custom fields and tags.
 type L2VPN struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Identifier NullableInt64 `json:"identifier,omitempty"`
-	Name string `json:"name"`
-	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Type *BriefL2VPNType `json:"type,omitempty"`
-	ImportTargets []RouteTarget `json:"import_targets,omitempty"`
-	ExportTargets []RouteTarget `json:"export_targets,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tenant NullableBriefTenant `json:"tenant,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Id                   int32                  `json:"id"`
+	Url                  string                 `json:"url"`
+	DisplayUrl           *string                `json:"display_url,omitempty"`
+	Display              string                 `json:"display"`
+	Identifier           NullableInt64          `json:"identifier,omitempty"`
+	Name                 string                 `json:"name"`
+	Slug                 string                 `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Type                 *BriefL2VPNType        `json:"type,omitempty"`
+	ImportTargets        []RouteTarget          `json:"import_targets,omitempty"`
+	ExportTargets        []RouteTarget          `json:"export_targets,omitempty"`
+	Description          *string                `json:"description,omitempty"`
+	Comments             *string                `json:"comments,omitempty"`
+	Tenant               NullableBriefTenant    `json:"tenant,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -89,7 +89,6 @@ func (o *L2VPN) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *L2VPN) GetUrl() string {
 	if o == nil {
@@ -113,7 +112,6 @@ func (o *L2VPN) GetUrlOk() (*string, bool) {
 func (o *L2VPN) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *L2VPN) GetDisplayUrl() string {
@@ -171,7 +169,6 @@ func (o *L2VPN) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetIdentifier returns the Identifier field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *L2VPN) GetIdentifier() int64 {
 	if o == nil || IsNil(o.Identifier.Get()) {
@@ -204,6 +201,7 @@ func (o *L2VPN) HasIdentifier() bool {
 func (o *L2VPN) SetIdentifier(v int64) {
 	o.Identifier.Set(&v)
 }
+
 // SetIdentifierNil sets the value for Identifier to be an explicit nil
 func (o *L2VPN) SetIdentifierNil() {
 	o.Identifier.Set(nil)
@@ -238,7 +236,6 @@ func (o *L2VPN) SetName(v string) {
 	o.Name = v
 }
 
-
 // GetSlug returns the Slug field value
 func (o *L2VPN) GetSlug() string {
 	if o == nil {
@@ -262,7 +259,6 @@ func (o *L2VPN) GetSlugOk() (*string, bool) {
 func (o *L2VPN) SetSlug(v string) {
 	o.Slug = v
 }
-
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *L2VPN) GetType() BriefL2VPNType {
@@ -456,6 +452,7 @@ func (o *L2VPN) HasTenant() bool {
 func (o *L2VPN) SetTenant(v BriefTenant) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *L2VPN) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -562,6 +559,7 @@ func (o *L2VPN) HasCreated() bool {
 func (o *L2VPN) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *L2VPN) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -604,6 +602,7 @@ func (o *L2VPN) HasLastUpdated() bool {
 func (o *L2VPN) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *L2VPN) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -615,7 +614,7 @@ func (o *L2VPN) UnsetLastUpdated() {
 }
 
 func (o L2VPN) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -687,32 +686,31 @@ func (o *L2VPN) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -787,5 +785,3 @@ func (v *NullableL2VPN) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the VirtualCircuit type satisfies the MappedNullable interface at compile time
@@ -21,23 +21,23 @@ var _ MappedNullable = &VirtualCircuit{}
 
 // VirtualCircuit Adds support for custom fields and tags.
 type VirtualCircuit struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
+	Id         int32   `json:"id"`
+	Url        string  `json:"url"`
 	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
+	Display    string  `json:"display"`
 	// Unique circuit ID
-	Cid string `json:"cid"`
-	ProviderNetwork BriefProviderNetwork `json:"provider_network"`
-	ProviderAccount NullableBriefProviderAccount `json:"provider_account,omitempty"`
-	Type BriefVirtualCircuitType `json:"type"`
-	Status *CircuitStatus `json:"status,omitempty"`
-	Tenant NullableBriefTenant `json:"tenant,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Cid                  string                       `json:"cid"`
+	ProviderNetwork      BriefProviderNetwork         `json:"provider_network"`
+	ProviderAccount      NullableBriefProviderAccount `json:"provider_account,omitempty"`
+	Type                 BriefVirtualCircuitType      `json:"type"`
+	Status               *CircuitStatus               `json:"status,omitempty"`
+	Tenant               NullableBriefTenant          `json:"tenant,omitempty"`
+	Description          *string                      `json:"description,omitempty"`
+	Comments             *string                      `json:"comments,omitempty"`
+	Tags                 []NestedTag                  `json:"tags,omitempty"`
+	CustomFields         map[string]interface{}       `json:"custom_fields,omitempty"`
+	Created              NullableTime                 `json:"created,omitempty"`
+	LastUpdated          NullableTime                 `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -90,7 +90,6 @@ func (o *VirtualCircuit) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *VirtualCircuit) GetUrl() string {
 	if o == nil {
@@ -114,7 +113,6 @@ func (o *VirtualCircuit) GetUrlOk() (*string, bool) {
 func (o *VirtualCircuit) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *VirtualCircuit) GetDisplayUrl() string {
@@ -172,7 +170,6 @@ func (o *VirtualCircuit) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetCid returns the Cid field value
 func (o *VirtualCircuit) GetCid() string {
 	if o == nil {
@@ -197,7 +194,6 @@ func (o *VirtualCircuit) SetCid(v string) {
 	o.Cid = v
 }
 
-
 // GetProviderNetwork returns the ProviderNetwork field value
 func (o *VirtualCircuit) GetProviderNetwork() BriefProviderNetwork {
 	if o == nil {
@@ -221,7 +217,6 @@ func (o *VirtualCircuit) GetProviderNetworkOk() (*BriefProviderNetwork, bool) {
 func (o *VirtualCircuit) SetProviderNetwork(v BriefProviderNetwork) {
 	o.ProviderNetwork = v
 }
-
 
 // GetProviderAccount returns the ProviderAccount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VirtualCircuit) GetProviderAccount() BriefProviderAccount {
@@ -255,6 +250,7 @@ func (o *VirtualCircuit) HasProviderAccount() bool {
 func (o *VirtualCircuit) SetProviderAccount(v BriefProviderAccount) {
 	o.ProviderAccount.Set(&v)
 }
+
 // SetProviderAccountNil sets the value for ProviderAccount to be an explicit nil
 func (o *VirtualCircuit) SetProviderAccountNil() {
 	o.ProviderAccount.Set(nil)
@@ -288,7 +284,6 @@ func (o *VirtualCircuit) GetTypeOk() (*BriefVirtualCircuitType, bool) {
 func (o *VirtualCircuit) SetType(v BriefVirtualCircuitType) {
 	o.Type = v
 }
-
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *VirtualCircuit) GetStatus() CircuitStatus {
@@ -354,6 +349,7 @@ func (o *VirtualCircuit) HasTenant() bool {
 func (o *VirtualCircuit) SetTenant(v BriefTenant) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *VirtualCircuit) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -524,6 +520,7 @@ func (o *VirtualCircuit) HasCreated() bool {
 func (o *VirtualCircuit) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *VirtualCircuit) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -566,6 +563,7 @@ func (o *VirtualCircuit) HasLastUpdated() bool {
 func (o *VirtualCircuit) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *VirtualCircuit) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -577,7 +575,7 @@ func (o *VirtualCircuit) UnsetLastUpdated() {
 }
 
 func (o VirtualCircuit) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -645,32 +643,31 @@ func (o *VirtualCircuit) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -744,5 +741,3 @@ func (v *NullableVirtualCircuit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

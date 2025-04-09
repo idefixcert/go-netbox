@@ -19,22 +19,22 @@ var _ MappedNullable = &PatchedWritablePrefixRequest{}
 
 // PatchedWritablePrefixRequest Adds support for custom fields and tags.
 type PatchedWritablePrefixRequest struct {
-	Prefix *string `json:"prefix,omitempty"`
-	Vrf NullableBriefVRFRequest `json:"vrf,omitempty"`
-	ScopeType NullableString `json:"scope_type,omitempty"`
-	ScopeId NullableInt32 `json:"scope_id,omitempty"`
-	Tenant NullableBriefTenantRequest `json:"tenant,omitempty"`
-	Vlan NullableBriefVLANRequest `json:"vlan,omitempty"`
-	Status *PatchedWritablePrefixRequestStatus `json:"status,omitempty"`
-	Role NullableBriefRoleRequest `json:"role,omitempty"`
+	Prefix    *string                             `json:"prefix,omitempty"`
+	Vrf       NullableBriefVRFRequest             `json:"vrf,omitempty"`
+	ScopeType NullableString                      `json:"scope_type,omitempty"`
+	ScopeId   NullableInt32                       `json:"scope_id,omitempty"`
+	Tenant    NullableBriefTenantRequest          `json:"tenant,omitempty"`
+	Vlan      NullableBriefVLANRequest            `json:"vlan,omitempty"`
+	Status    *PatchedWritablePrefixRequestStatus `json:"status,omitempty"`
+	Role      NullableBriefRoleRequest            `json:"role,omitempty"`
 	// All IP addresses within this prefix are considered usable
 	IsPool *bool `json:"is_pool,omitempty"`
 	// Treat as fully utilized
-	MarkUtilized *bool `json:"mark_utilized,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	MarkUtilized         *bool                  `json:"mark_utilized,omitempty"`
+	Description          *string                `json:"description,omitempty"`
+	Comments             *string                `json:"comments,omitempty"`
+	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -121,6 +121,7 @@ func (o *PatchedWritablePrefixRequest) HasVrf() bool {
 func (o *PatchedWritablePrefixRequest) SetVrf(v BriefVRFRequest) {
 	o.Vrf.Set(&v)
 }
+
 // SetVrfNil sets the value for Vrf to be an explicit nil
 func (o *PatchedWritablePrefixRequest) SetVrfNil() {
 	o.Vrf.Set(nil)
@@ -163,6 +164,7 @@ func (o *PatchedWritablePrefixRequest) HasScopeType() bool {
 func (o *PatchedWritablePrefixRequest) SetScopeType(v string) {
 	o.ScopeType.Set(&v)
 }
+
 // SetScopeTypeNil sets the value for ScopeType to be an explicit nil
 func (o *PatchedWritablePrefixRequest) SetScopeTypeNil() {
 	o.ScopeType.Set(nil)
@@ -205,6 +207,7 @@ func (o *PatchedWritablePrefixRequest) HasScopeId() bool {
 func (o *PatchedWritablePrefixRequest) SetScopeId(v int32) {
 	o.ScopeId.Set(&v)
 }
+
 // SetScopeIdNil sets the value for ScopeId to be an explicit nil
 func (o *PatchedWritablePrefixRequest) SetScopeIdNil() {
 	o.ScopeId.Set(nil)
@@ -247,6 +250,7 @@ func (o *PatchedWritablePrefixRequest) HasTenant() bool {
 func (o *PatchedWritablePrefixRequest) SetTenant(v BriefTenantRequest) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *PatchedWritablePrefixRequest) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -289,6 +293,7 @@ func (o *PatchedWritablePrefixRequest) HasVlan() bool {
 func (o *PatchedWritablePrefixRequest) SetVlan(v BriefVLANRequest) {
 	o.Vlan.Set(&v)
 }
+
 // SetVlanNil sets the value for Vlan to be an explicit nil
 func (o *PatchedWritablePrefixRequest) SetVlanNil() {
 	o.Vlan.Set(nil)
@@ -363,6 +368,7 @@ func (o *PatchedWritablePrefixRequest) HasRole() bool {
 func (o *PatchedWritablePrefixRequest) SetRole(v BriefRoleRequest) {
 	o.Role.Set(&v)
 }
+
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *PatchedWritablePrefixRequest) SetRoleNil() {
 	o.Role.Set(nil)
@@ -566,7 +572,7 @@ func (o *PatchedWritablePrefixRequest) SetCustomFields(v map[string]interface{})
 }
 
 func (o PatchedWritablePrefixRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -694,5 +700,3 @@ func (v *NullablePatchedWritablePrefixRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

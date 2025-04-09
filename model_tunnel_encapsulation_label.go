@@ -21,13 +21,13 @@ type TunnelEncapsulationLabel string
 // List of Tunnel_encapsulation_label
 const (
 	TUNNELENCAPSULATIONLABEL_I_PSEC___TRANSPORT TunnelEncapsulationLabel = "IPsec - Transport"
-	TUNNELENCAPSULATIONLABEL_I_PSEC___TUNNEL TunnelEncapsulationLabel = "IPsec - Tunnel"
-	TUNNELENCAPSULATIONLABEL_IP_IN_IP TunnelEncapsulationLabel = "IP-in-IP"
-	TUNNELENCAPSULATIONLABEL_GRE TunnelEncapsulationLabel = "GRE"
-	TUNNELENCAPSULATIONLABEL_WIRE_GUARD TunnelEncapsulationLabel = "WireGuard"
-	TUNNELENCAPSULATIONLABEL_OPEN_VPN TunnelEncapsulationLabel = "OpenVPN"
-	TUNNELENCAPSULATIONLABEL_L2_TP TunnelEncapsulationLabel = "L2TP"
-	TUNNELENCAPSULATIONLABEL_PPTP TunnelEncapsulationLabel = "PPTP"
+	TUNNELENCAPSULATIONLABEL_I_PSEC___TUNNEL    TunnelEncapsulationLabel = "IPsec - Tunnel"
+	TUNNELENCAPSULATIONLABEL_IP_IN_IP           TunnelEncapsulationLabel = "IP-in-IP"
+	TUNNELENCAPSULATIONLABEL_GRE                TunnelEncapsulationLabel = "GRE"
+	TUNNELENCAPSULATIONLABEL_WIRE_GUARD         TunnelEncapsulationLabel = "WireGuard"
+	TUNNELENCAPSULATIONLABEL_OPEN_VPN           TunnelEncapsulationLabel = "OpenVPN"
+	TUNNELENCAPSULATIONLABEL_L2_TP              TunnelEncapsulationLabel = "L2TP"
+	TUNNELENCAPSULATIONLABEL_PPTP               TunnelEncapsulationLabel = "PPTP"
 )
 
 // All allowed values of TunnelEncapsulationLabel enum
@@ -120,4 +120,3 @@ func (v *NullableTunnelEncapsulationLabel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

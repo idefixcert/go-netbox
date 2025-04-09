@@ -19,8 +19,8 @@ var _ MappedNullable = &InventoryItemStatus{}
 
 // InventoryItemStatus struct for InventoryItemStatus
 type InventoryItemStatus struct {
-	Value *InventoryItemStatusValue `json:"value,omitempty"`
-	Label *InventoryItemStatusLabel `json:"label,omitempty"`
+	Value                *InventoryItemStatusValue `json:"value,omitempty"`
+	Label                *InventoryItemStatusLabel `json:"label,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,7 +108,7 @@ func (o *InventoryItemStatus) SetLabel(v InventoryItemStatusLabel) {
 }
 
 func (o InventoryItemStatus) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -188,5 +188,3 @@ func (v *NullableInventoryItemStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

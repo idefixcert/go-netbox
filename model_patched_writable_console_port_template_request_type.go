@@ -20,22 +20,22 @@ type PatchedWritableConsolePortTemplateRequestType string
 
 // List of PatchedWritableConsolePortTemplateRequest_type
 const (
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_DE_9 PatchedWritableConsolePortTemplateRequestType = "de-9"
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_DB_25 PatchedWritableConsolePortTemplateRequestType = "db-25"
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_RJ_11 PatchedWritableConsolePortTemplateRequestType = "rj-11"
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_RJ_12 PatchedWritableConsolePortTemplateRequestType = "rj-12"
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_RJ_45 PatchedWritableConsolePortTemplateRequestType = "rj-45"
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_MINI_DIN_8 PatchedWritableConsolePortTemplateRequestType = "mini-din-8"
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_A PatchedWritableConsolePortTemplateRequestType = "usb-a"
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_B PatchedWritableConsolePortTemplateRequestType = "usb-b"
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_C PatchedWritableConsolePortTemplateRequestType = "usb-c"
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_MINI_A PatchedWritableConsolePortTemplateRequestType = "usb-mini-a"
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_MINI_B PatchedWritableConsolePortTemplateRequestType = "usb-mini-b"
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_MICRO_A PatchedWritableConsolePortTemplateRequestType = "usb-micro-a"
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_MICRO_B PatchedWritableConsolePortTemplateRequestType = "usb-micro-b"
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_DE_9         PatchedWritableConsolePortTemplateRequestType = "de-9"
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_DB_25        PatchedWritableConsolePortTemplateRequestType = "db-25"
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_RJ_11        PatchedWritableConsolePortTemplateRequestType = "rj-11"
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_RJ_12        PatchedWritableConsolePortTemplateRequestType = "rj-12"
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_RJ_45        PatchedWritableConsolePortTemplateRequestType = "rj-45"
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_MINI_DIN_8   PatchedWritableConsolePortTemplateRequestType = "mini-din-8"
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_A        PatchedWritableConsolePortTemplateRequestType = "usb-a"
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_B        PatchedWritableConsolePortTemplateRequestType = "usb-b"
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_C        PatchedWritableConsolePortTemplateRequestType = "usb-c"
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_MINI_A   PatchedWritableConsolePortTemplateRequestType = "usb-mini-a"
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_MINI_B   PatchedWritableConsolePortTemplateRequestType = "usb-mini-b"
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_MICRO_A  PatchedWritableConsolePortTemplateRequestType = "usb-micro-a"
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_MICRO_B  PatchedWritableConsolePortTemplateRequestType = "usb-micro-b"
 	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_USB_MICRO_AB PatchedWritableConsolePortTemplateRequestType = "usb-micro-ab"
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_OTHER PatchedWritableConsolePortTemplateRequestType = "other"
-	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_EMPTY PatchedWritableConsolePortTemplateRequestType = ""
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_OTHER        PatchedWritableConsolePortTemplateRequestType = "other"
+	PATCHEDWRITABLECONSOLEPORTTEMPLATEREQUESTTYPE_EMPTY        PatchedWritableConsolePortTemplateRequestType = ""
 )
 
 // All allowed values of PatchedWritableConsolePortTemplateRequestType enum
@@ -136,4 +136,3 @@ func (v *NullablePatchedWritableConsolePortTemplateRequestType) UnmarshalJSON(sr
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

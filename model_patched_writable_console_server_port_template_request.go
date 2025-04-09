@@ -24,9 +24,9 @@ type PatchedWritableConsoleServerPortTemplateRequest struct {
 	// {module} is accepted as a substitution for the module bay position when attached to a module type.
 	Name *string `json:"name,omitempty"`
 	// Physical label
-	Label *string `json:"label,omitempty"`
-	Type NullablePatchedWritableConsolePortTemplateRequestType `json:"type,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Label                *string                                               `json:"label,omitempty"`
+	Type                 NullablePatchedWritableConsolePortTemplateRequestType `json:"type,omitempty"`
+	Description          *string                                               `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -81,6 +81,7 @@ func (o *PatchedWritableConsoleServerPortTemplateRequest) HasDeviceType() bool {
 func (o *PatchedWritableConsoleServerPortTemplateRequest) SetDeviceType(v BriefDeviceTypeRequest) {
 	o.DeviceType.Set(&v)
 }
+
 // SetDeviceTypeNil sets the value for DeviceType to be an explicit nil
 func (o *PatchedWritableConsoleServerPortTemplateRequest) SetDeviceTypeNil() {
 	o.DeviceType.Set(nil)
@@ -123,6 +124,7 @@ func (o *PatchedWritableConsoleServerPortTemplateRequest) HasModuleType() bool {
 func (o *PatchedWritableConsoleServerPortTemplateRequest) SetModuleType(v BriefModuleTypeRequest) {
 	o.ModuleType.Set(&v)
 }
+
 // SetModuleTypeNil sets the value for ModuleType to be an explicit nil
 func (o *PatchedWritableConsoleServerPortTemplateRequest) SetModuleTypeNil() {
 	o.ModuleType.Set(nil)
@@ -229,6 +231,7 @@ func (o *PatchedWritableConsoleServerPortTemplateRequest) HasType() bool {
 func (o *PatchedWritableConsoleServerPortTemplateRequest) SetType(v PatchedWritableConsolePortTemplateRequestType) {
 	o.Type.Set(&v)
 }
+
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *PatchedWritableConsoleServerPortTemplateRequest) SetTypeNil() {
 	o.Type.Set(nil)
@@ -272,7 +275,7 @@ func (o *PatchedWritableConsoleServerPortTemplateRequest) SetDescription(v strin
 }
 
 func (o PatchedWritableConsoleServerPortTemplateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -368,5 +371,3 @@ func (v *NullablePatchedWritableConsoleServerPortTemplateRequest) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

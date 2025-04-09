@@ -20,25 +20,25 @@ var _ MappedNullable = &CustomFieldRequest{}
 
 // CustomFieldRequest Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type CustomFieldRequest struct {
-	ObjectTypes []string `json:"object_types"`
-	Type CustomFieldTypeValue `json:"type"`
-	RelatedObjectType NullableString `json:"related_object_type,omitempty"`
+	ObjectTypes       []string             `json:"object_types"`
+	Type              CustomFieldTypeValue `json:"type"`
+	RelatedObjectType NullableString       `json:"related_object_type,omitempty"`
 	// Internal field name
 	Name string `json:"name" validate:"regexp=^[a-z0-9_]+$"`
 	// Name of the field as displayed to users (if not provided, 'the field's name will be used)
 	Label *string `json:"label,omitempty"`
 	// Custom fields within the same group will be displayed together
-	GroupName *string `json:"group_name,omitempty"`
+	GroupName   *string `json:"group_name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// This field is required when creating new objects or editing an existing object.
 	Required *bool `json:"required,omitempty"`
 	// The value of this field must be unique for the assigned object
 	Unique *bool `json:"unique,omitempty"`
 	// Weighting for search. Lower values are considered more important. Fields with a search weight of zero will be ignored.
-	SearchWeight *int32 `json:"search_weight,omitempty"`
-	FilterLogic *CustomFieldFilterLogicValue `json:"filter_logic,omitempty"`
-	UiVisible *CustomFieldUiVisibleValue `json:"ui_visible,omitempty"`
-	UiEditable *CustomFieldUiEditableValue `json:"ui_editable,omitempty"`
+	SearchWeight *int32                       `json:"search_weight,omitempty"`
+	FilterLogic  *CustomFieldFilterLogicValue `json:"filter_logic,omitempty"`
+	UiVisible    *CustomFieldUiVisibleValue   `json:"ui_visible,omitempty"`
+	UiEditable   *CustomFieldUiEditableValue  `json:"ui_editable,omitempty"`
 	// Replicate this value when cloning objects
 	IsCloneable *bool `json:"is_cloneable,omitempty"`
 	// Default value for the field (must be a JSON value). Encapsulate strings with double quotes (e.g. \"Foo\").
@@ -52,9 +52,9 @@ type CustomFieldRequest struct {
 	// Maximum allowed value (for numeric fields)
 	ValidationMaximum NullableInt64 `json:"validation_maximum,omitempty"`
 	// Regular expression to enforce on text field values. Use ^ and $ to force matching of entire string. For example, <code>^[A-Z]{3}$</code> will limit values to exactly three uppercase letters.
-	ValidationRegex *string `json:"validation_regex,omitempty"`
-	ChoiceSet NullableBriefCustomFieldChoiceSetRequest `json:"choice_set,omitempty"`
-	Comments *string `json:"comments,omitempty"`
+	ValidationRegex      *string                                  `json:"validation_regex,omitempty"`
+	ChoiceSet            NullableBriefCustomFieldChoiceSetRequest `json:"choice_set,omitempty"`
+	Comments             *string                                  `json:"comments,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -104,7 +104,6 @@ func (o *CustomFieldRequest) SetObjectTypes(v []string) {
 	o.ObjectTypes = v
 }
 
-
 // GetType returns the Type field value
 func (o *CustomFieldRequest) GetType() CustomFieldTypeValue {
 	if o == nil {
@@ -128,7 +127,6 @@ func (o *CustomFieldRequest) GetTypeOk() (*CustomFieldTypeValue, bool) {
 func (o *CustomFieldRequest) SetType(v CustomFieldTypeValue) {
 	o.Type = v
 }
-
 
 // GetRelatedObjectType returns the RelatedObjectType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomFieldRequest) GetRelatedObjectType() string {
@@ -162,6 +160,7 @@ func (o *CustomFieldRequest) HasRelatedObjectType() bool {
 func (o *CustomFieldRequest) SetRelatedObjectType(v string) {
 	o.RelatedObjectType.Set(&v)
 }
+
 // SetRelatedObjectTypeNil sets the value for RelatedObjectType to be an explicit nil
 func (o *CustomFieldRequest) SetRelatedObjectTypeNil() {
 	o.RelatedObjectType.Set(nil)
@@ -195,7 +194,6 @@ func (o *CustomFieldRequest) GetNameOk() (*string, bool) {
 func (o *CustomFieldRequest) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *CustomFieldRequest) GetLabel() string {
@@ -647,6 +645,7 @@ func (o *CustomFieldRequest) HasValidationMinimum() bool {
 func (o *CustomFieldRequest) SetValidationMinimum(v int64) {
 	o.ValidationMinimum.Set(&v)
 }
+
 // SetValidationMinimumNil sets the value for ValidationMinimum to be an explicit nil
 func (o *CustomFieldRequest) SetValidationMinimumNil() {
 	o.ValidationMinimum.Set(nil)
@@ -689,6 +688,7 @@ func (o *CustomFieldRequest) HasValidationMaximum() bool {
 func (o *CustomFieldRequest) SetValidationMaximum(v int64) {
 	o.ValidationMaximum.Set(&v)
 }
+
 // SetValidationMaximumNil sets the value for ValidationMaximum to be an explicit nil
 func (o *CustomFieldRequest) SetValidationMaximumNil() {
 	o.ValidationMaximum.Set(nil)
@@ -763,6 +763,7 @@ func (o *CustomFieldRequest) HasChoiceSet() bool {
 func (o *CustomFieldRequest) SetChoiceSet(v BriefCustomFieldChoiceSetRequest) {
 	o.ChoiceSet.Set(&v)
 }
+
 // SetChoiceSetNil sets the value for ChoiceSet to be an explicit nil
 func (o *CustomFieldRequest) SetChoiceSetNil() {
 	o.ChoiceSet.Set(nil)
@@ -806,7 +807,7 @@ func (o *CustomFieldRequest) SetComments(v string) {
 }
 
 func (o CustomFieldRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -895,32 +896,31 @@ func (o *CustomFieldRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -1000,5 +1000,3 @@ func (v *NullableCustomFieldRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

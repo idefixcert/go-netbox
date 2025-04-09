@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the RackReservation type satisfies the MappedNullable interface at compile time
@@ -21,20 +21,20 @@ var _ MappedNullable = &RackReservation{}
 
 // RackReservation Adds support for custom fields and tags.
 type RackReservation struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Rack BriefRack `json:"rack"`
-	Units []int32 `json:"units"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
-	User BriefUser `json:"user"`
-	Tenant NullableBriefTenant `json:"tenant,omitempty"`
-	Description string `json:"description"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTag `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	Id                   int32                  `json:"id"`
+	Url                  string                 `json:"url"`
+	DisplayUrl           *string                `json:"display_url,omitempty"`
+	Display              string                 `json:"display"`
+	Rack                 BriefRack              `json:"rack"`
+	Units                []int32                `json:"units"`
+	Created              NullableTime           `json:"created,omitempty"`
+	LastUpdated          NullableTime           `json:"last_updated,omitempty"`
+	User                 BriefUser              `json:"user"`
+	Tenant               NullableBriefTenant    `json:"tenant,omitempty"`
+	Description          string                 `json:"description"`
+	Comments             *string                `json:"comments,omitempty"`
+	Tags                 []NestedTag            `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -88,7 +88,6 @@ func (o *RackReservation) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *RackReservation) GetUrl() string {
 	if o == nil {
@@ -112,7 +111,6 @@ func (o *RackReservation) GetUrlOk() (*string, bool) {
 func (o *RackReservation) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *RackReservation) GetDisplayUrl() string {
@@ -170,7 +168,6 @@ func (o *RackReservation) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetRack returns the Rack field value
 func (o *RackReservation) GetRack() BriefRack {
 	if o == nil {
@@ -195,7 +192,6 @@ func (o *RackReservation) SetRack(v BriefRack) {
 	o.Rack = v
 }
 
-
 // GetUnits returns the Units field value
 func (o *RackReservation) GetUnits() []int32 {
 	if o == nil {
@@ -219,7 +215,6 @@ func (o *RackReservation) GetUnitsOk() ([]int32, bool) {
 func (o *RackReservation) SetUnits(v []int32) {
 	o.Units = v
 }
-
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RackReservation) GetCreated() time.Time {
@@ -253,6 +248,7 @@ func (o *RackReservation) HasCreated() bool {
 func (o *RackReservation) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *RackReservation) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -295,6 +291,7 @@ func (o *RackReservation) HasLastUpdated() bool {
 func (o *RackReservation) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *RackReservation) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -329,7 +326,6 @@ func (o *RackReservation) SetUser(v BriefUser) {
 	o.User = v
 }
 
-
 // GetTenant returns the Tenant field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RackReservation) GetTenant() BriefTenant {
 	if o == nil || IsNil(o.Tenant.Get()) {
@@ -362,6 +358,7 @@ func (o *RackReservation) HasTenant() bool {
 func (o *RackReservation) SetTenant(v BriefTenant) {
 	o.Tenant.Set(&v)
 }
+
 // SetTenantNil sets the value for Tenant to be an explicit nil
 func (o *RackReservation) SetTenantNil() {
 	o.Tenant.Set(nil)
@@ -395,7 +392,6 @@ func (o *RackReservation) GetDescriptionOk() (*string, bool) {
 func (o *RackReservation) SetDescription(v string) {
 	o.Description = v
 }
-
 
 // GetComments returns the Comments field value if set, zero value otherwise.
 func (o *RackReservation) GetComments() string {
@@ -494,7 +490,7 @@ func (o *RackReservation) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o RackReservation) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -555,32 +551,31 @@ func (o *RackReservation) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -652,5 +647,3 @@ func (v *NullableRackReservation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

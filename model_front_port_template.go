@@ -12,8 +12,8 @@ package netbox
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the FrontPortTemplate type satisfies the MappedNullable interface at compile time
@@ -21,22 +21,22 @@ var _ MappedNullable = &FrontPortTemplate{}
 
 // FrontPortTemplate Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type FrontPortTemplate struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	Display string `json:"display"`
+	Id         int32                   `json:"id"`
+	Url        string                  `json:"url"`
+	Display    string                  `json:"display"`
 	DeviceType NullableBriefDeviceType `json:"device_type,omitempty"`
 	ModuleType NullableBriefModuleType `json:"module_type,omitempty"`
 	// {module} is accepted as a substitution for the module bay position when attached to a module type.
 	Name string `json:"name"`
 	// Physical label
-	Label *string `json:"label,omitempty"`
-	Type FrontPortType `json:"type"`
-	Color *string `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
-	RearPort BriefRearPortTemplate `json:"rear_port"`
-	RearPortPosition *int32 `json:"rear_port_position,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Created NullableTime `json:"created,omitempty"`
-	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	Label                *string               `json:"label,omitempty"`
+	Type                 FrontPortType         `json:"type"`
+	Color                *string               `json:"color,omitempty" validate:"regexp=^[0-9a-f]{6}$"`
+	RearPort             BriefRearPortTemplate `json:"rear_port"`
+	RearPortPosition     *int32                `json:"rear_port_position,omitempty"`
+	Description          *string               `json:"description,omitempty"`
+	Created              NullableTime          `json:"created,omitempty"`
+	LastUpdated          NullableTime          `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -89,7 +89,6 @@ func (o *FrontPortTemplate) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *FrontPortTemplate) GetUrl() string {
 	if o == nil {
@@ -114,7 +113,6 @@ func (o *FrontPortTemplate) SetUrl(v string) {
 	o.Url = v
 }
 
-
 // GetDisplay returns the Display field value
 func (o *FrontPortTemplate) GetDisplay() string {
 	if o == nil {
@@ -138,7 +136,6 @@ func (o *FrontPortTemplate) GetDisplayOk() (*string, bool) {
 func (o *FrontPortTemplate) SetDisplay(v string) {
 	o.Display = v
 }
-
 
 // GetDeviceType returns the DeviceType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FrontPortTemplate) GetDeviceType() BriefDeviceType {
@@ -172,6 +169,7 @@ func (o *FrontPortTemplate) HasDeviceType() bool {
 func (o *FrontPortTemplate) SetDeviceType(v BriefDeviceType) {
 	o.DeviceType.Set(&v)
 }
+
 // SetDeviceTypeNil sets the value for DeviceType to be an explicit nil
 func (o *FrontPortTemplate) SetDeviceTypeNil() {
 	o.DeviceType.Set(nil)
@@ -214,6 +212,7 @@ func (o *FrontPortTemplate) HasModuleType() bool {
 func (o *FrontPortTemplate) SetModuleType(v BriefModuleType) {
 	o.ModuleType.Set(&v)
 }
+
 // SetModuleTypeNil sets the value for ModuleType to be an explicit nil
 func (o *FrontPortTemplate) SetModuleTypeNil() {
 	o.ModuleType.Set(nil)
@@ -247,7 +246,6 @@ func (o *FrontPortTemplate) GetNameOk() (*string, bool) {
 func (o *FrontPortTemplate) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *FrontPortTemplate) GetLabel() string {
@@ -305,7 +303,6 @@ func (o *FrontPortTemplate) SetType(v FrontPortType) {
 	o.Type = v
 }
 
-
 // GetColor returns the Color field value if set, zero value otherwise.
 func (o *FrontPortTemplate) GetColor() string {
 	if o == nil || IsNil(o.Color) {
@@ -361,7 +358,6 @@ func (o *FrontPortTemplate) GetRearPortOk() (*BriefRearPortTemplate, bool) {
 func (o *FrontPortTemplate) SetRearPort(v BriefRearPortTemplate) {
 	o.RearPort = v
 }
-
 
 // GetRearPortPosition returns the RearPortPosition field value if set, zero value otherwise.
 func (o *FrontPortTemplate) GetRearPortPosition() int32 {
@@ -459,6 +455,7 @@ func (o *FrontPortTemplate) HasCreated() bool {
 func (o *FrontPortTemplate) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *FrontPortTemplate) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -501,6 +498,7 @@ func (o *FrontPortTemplate) HasLastUpdated() bool {
 func (o *FrontPortTemplate) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
 func (o *FrontPortTemplate) SetLastUpdatedNil() {
 	o.LastUpdated.Set(nil)
@@ -512,7 +510,7 @@ func (o *FrontPortTemplate) UnsetLastUpdated() {
 }
 
 func (o FrontPortTemplate) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -574,32 +572,31 @@ func (o *FrontPortTemplate) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -671,5 +668,3 @@ func (v *NullableFrontPortTemplate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

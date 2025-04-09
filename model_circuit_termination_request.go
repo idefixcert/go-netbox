@@ -20,10 +20,10 @@ var _ MappedNullable = &CircuitTerminationRequest{}
 
 // CircuitTerminationRequest Adds support for custom fields and tags.
 type CircuitTerminationRequest struct {
-	Circuit BriefCircuitRequest `json:"circuit"`
-	TermSide TerminationSide1 `json:"term_side"`
-	TerminationType NullableString `json:"termination_type,omitempty"`
-	TerminationId NullableInt32 `json:"termination_id,omitempty"`
+	Circuit         BriefCircuitRequest `json:"circuit"`
+	TermSide        TerminationSide1    `json:"term_side"`
+	TerminationType NullableString      `json:"termination_type,omitempty"`
+	TerminationId   NullableInt32       `json:"termination_id,omitempty"`
 	// Physical circuit speed
 	PortSpeed NullableInt32 `json:"port_speed,omitempty"`
 	// Upstream speed, if different from port speed
@@ -31,12 +31,12 @@ type CircuitTerminationRequest struct {
 	// ID of the local cross-connect
 	XconnectId *string `json:"xconnect_id,omitempty"`
 	// Patch panel ID and port number(s)
-	PpInfo *string `json:"pp_info,omitempty"`
+	PpInfo      *string `json:"pp_info,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// Treat as if a cable is connected
-	MarkConnected *bool `json:"mark_connected,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	MarkConnected        *bool                  `json:"mark_connected,omitempty"`
+	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -85,7 +85,6 @@ func (o *CircuitTerminationRequest) SetCircuit(v BriefCircuitRequest) {
 	o.Circuit = v
 }
 
-
 // GetTermSide returns the TermSide field value
 func (o *CircuitTerminationRequest) GetTermSide() TerminationSide1 {
 	if o == nil {
@@ -109,7 +108,6 @@ func (o *CircuitTerminationRequest) GetTermSideOk() (*TerminationSide1, bool) {
 func (o *CircuitTerminationRequest) SetTermSide(v TerminationSide1) {
 	o.TermSide = v
 }
-
 
 // GetTerminationType returns the TerminationType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CircuitTerminationRequest) GetTerminationType() string {
@@ -143,6 +141,7 @@ func (o *CircuitTerminationRequest) HasTerminationType() bool {
 func (o *CircuitTerminationRequest) SetTerminationType(v string) {
 	o.TerminationType.Set(&v)
 }
+
 // SetTerminationTypeNil sets the value for TerminationType to be an explicit nil
 func (o *CircuitTerminationRequest) SetTerminationTypeNil() {
 	o.TerminationType.Set(nil)
@@ -185,6 +184,7 @@ func (o *CircuitTerminationRequest) HasTerminationId() bool {
 func (o *CircuitTerminationRequest) SetTerminationId(v int32) {
 	o.TerminationId.Set(&v)
 }
+
 // SetTerminationIdNil sets the value for TerminationId to be an explicit nil
 func (o *CircuitTerminationRequest) SetTerminationIdNil() {
 	o.TerminationId.Set(nil)
@@ -227,6 +227,7 @@ func (o *CircuitTerminationRequest) HasPortSpeed() bool {
 func (o *CircuitTerminationRequest) SetPortSpeed(v int32) {
 	o.PortSpeed.Set(&v)
 }
+
 // SetPortSpeedNil sets the value for PortSpeed to be an explicit nil
 func (o *CircuitTerminationRequest) SetPortSpeedNil() {
 	o.PortSpeed.Set(nil)
@@ -269,6 +270,7 @@ func (o *CircuitTerminationRequest) HasUpstreamSpeed() bool {
 func (o *CircuitTerminationRequest) SetUpstreamSpeed(v int32) {
 	o.UpstreamSpeed.Set(&v)
 }
+
 // SetUpstreamSpeedNil sets the value for UpstreamSpeed to be an explicit nil
 func (o *CircuitTerminationRequest) SetUpstreamSpeedNil() {
 	o.UpstreamSpeed.Set(nil)
@@ -472,7 +474,7 @@ func (o *CircuitTerminationRequest) SetCustomFields(v map[string]interface{}) {
 }
 
 func (o CircuitTerminationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -532,32 +534,31 @@ func (o *CircuitTerminationRequest) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -627,5 +628,3 @@ func (v *NullableCircuitTerminationRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

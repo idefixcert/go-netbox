@@ -19,17 +19,17 @@ var _ MappedNullable = &PatchedWritableIPSecProposalRequest{}
 
 // PatchedWritableIPSecProposalRequest Adds support for custom fields and tags.
 type PatchedWritableIPSecProposalRequest struct {
-	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	EncryptionAlgorithm NullableEncryption `json:"encryption_algorithm,omitempty"`
+	Name                    *string                `json:"name,omitempty"`
+	Description             *string                `json:"description,omitempty"`
+	EncryptionAlgorithm     NullableEncryption     `json:"encryption_algorithm,omitempty"`
 	AuthenticationAlgorithm NullableAuthentication `json:"authentication_algorithm,omitempty"`
 	// Security association lifetime (seconds)
 	SaLifetimeSeconds NullableInt32 `json:"sa_lifetime_seconds,omitempty"`
 	// Security association lifetime (in kilobytes)
-	SaLifetimeData NullableInt32 `json:"sa_lifetime_data,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	Tags []NestedTagRequest `json:"tags,omitempty"`
-	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
+	SaLifetimeData       NullableInt32          `json:"sa_lifetime_data,omitempty"`
+	Comments             *string                `json:"comments,omitempty"`
+	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
+	CustomFields         map[string]interface{} `json:"custom_fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -148,6 +148,7 @@ func (o *PatchedWritableIPSecProposalRequest) HasEncryptionAlgorithm() bool {
 func (o *PatchedWritableIPSecProposalRequest) SetEncryptionAlgorithm(v Encryption) {
 	o.EncryptionAlgorithm.Set(&v)
 }
+
 // SetEncryptionAlgorithmNil sets the value for EncryptionAlgorithm to be an explicit nil
 func (o *PatchedWritableIPSecProposalRequest) SetEncryptionAlgorithmNil() {
 	o.EncryptionAlgorithm.Set(nil)
@@ -190,6 +191,7 @@ func (o *PatchedWritableIPSecProposalRequest) HasAuthenticationAlgorithm() bool 
 func (o *PatchedWritableIPSecProposalRequest) SetAuthenticationAlgorithm(v Authentication) {
 	o.AuthenticationAlgorithm.Set(&v)
 }
+
 // SetAuthenticationAlgorithmNil sets the value for AuthenticationAlgorithm to be an explicit nil
 func (o *PatchedWritableIPSecProposalRequest) SetAuthenticationAlgorithmNil() {
 	o.AuthenticationAlgorithm.Set(nil)
@@ -232,6 +234,7 @@ func (o *PatchedWritableIPSecProposalRequest) HasSaLifetimeSeconds() bool {
 func (o *PatchedWritableIPSecProposalRequest) SetSaLifetimeSeconds(v int32) {
 	o.SaLifetimeSeconds.Set(&v)
 }
+
 // SetSaLifetimeSecondsNil sets the value for SaLifetimeSeconds to be an explicit nil
 func (o *PatchedWritableIPSecProposalRequest) SetSaLifetimeSecondsNil() {
 	o.SaLifetimeSeconds.Set(nil)
@@ -274,6 +277,7 @@ func (o *PatchedWritableIPSecProposalRequest) HasSaLifetimeData() bool {
 func (o *PatchedWritableIPSecProposalRequest) SetSaLifetimeData(v int32) {
 	o.SaLifetimeData.Set(&v)
 }
+
 // SetSaLifetimeDataNil sets the value for SaLifetimeData to be an explicit nil
 func (o *PatchedWritableIPSecProposalRequest) SetSaLifetimeDataNil() {
 	o.SaLifetimeData.Set(nil)
@@ -381,7 +385,7 @@ func (o *PatchedWritableIPSecProposalRequest) SetCustomFields(v map[string]inter
 }
 
 func (o PatchedWritableIPSecProposalRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -489,5 +493,3 @@ func (v *NullablePatchedWritableIPSecProposalRequest) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

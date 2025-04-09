@@ -20,14 +20,14 @@ var _ MappedNullable = &CircuitCircuitTerminationRequest{}
 // CircuitCircuitTerminationRequest Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a dictionary of attributes which can be used to uniquely identify the related object. This class should be subclassed to return a full representation of the related object on read.
 type CircuitCircuitTerminationRequest struct {
 	TerminationType NullableString `json:"termination_type,omitempty"`
-	TerminationId NullableInt32 `json:"termination_id,omitempty"`
+	TerminationId   NullableInt32  `json:"termination_id,omitempty"`
 	// Physical circuit speed
 	PortSpeed NullableInt32 `json:"port_speed,omitempty"`
 	// Upstream speed, if different from port speed
 	UpstreamSpeed NullableInt32 `json:"upstream_speed,omitempty"`
 	// ID of the local cross-connect
-	XconnectId *string `json:"xconnect_id,omitempty"`
-	Description *string `json:"description,omitempty"`
+	XconnectId           *string `json:"xconnect_id,omitempty"`
+	Description          *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -82,6 +82,7 @@ func (o *CircuitCircuitTerminationRequest) HasTerminationType() bool {
 func (o *CircuitCircuitTerminationRequest) SetTerminationType(v string) {
 	o.TerminationType.Set(&v)
 }
+
 // SetTerminationTypeNil sets the value for TerminationType to be an explicit nil
 func (o *CircuitCircuitTerminationRequest) SetTerminationTypeNil() {
 	o.TerminationType.Set(nil)
@@ -124,6 +125,7 @@ func (o *CircuitCircuitTerminationRequest) HasTerminationId() bool {
 func (o *CircuitCircuitTerminationRequest) SetTerminationId(v int32) {
 	o.TerminationId.Set(&v)
 }
+
 // SetTerminationIdNil sets the value for TerminationId to be an explicit nil
 func (o *CircuitCircuitTerminationRequest) SetTerminationIdNil() {
 	o.TerminationId.Set(nil)
@@ -166,6 +168,7 @@ func (o *CircuitCircuitTerminationRequest) HasPortSpeed() bool {
 func (o *CircuitCircuitTerminationRequest) SetPortSpeed(v int32) {
 	o.PortSpeed.Set(&v)
 }
+
 // SetPortSpeedNil sets the value for PortSpeed to be an explicit nil
 func (o *CircuitCircuitTerminationRequest) SetPortSpeedNil() {
 	o.PortSpeed.Set(nil)
@@ -208,6 +211,7 @@ func (o *CircuitCircuitTerminationRequest) HasUpstreamSpeed() bool {
 func (o *CircuitCircuitTerminationRequest) SetUpstreamSpeed(v int32) {
 	o.UpstreamSpeed.Set(&v)
 }
+
 // SetUpstreamSpeedNil sets the value for UpstreamSpeed to be an explicit nil
 func (o *CircuitCircuitTerminationRequest) SetUpstreamSpeedNil() {
 	o.UpstreamSpeed.Set(nil)
@@ -283,7 +287,7 @@ func (o *CircuitCircuitTerminationRequest) SetDescription(v string) {
 }
 
 func (o CircuitCircuitTerminationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -379,5 +383,3 @@ func (v *NullableCircuitCircuitTerminationRequest) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

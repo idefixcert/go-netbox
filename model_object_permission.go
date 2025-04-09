@@ -20,20 +20,20 @@ var _ MappedNullable = &ObjectPermission{}
 
 // ObjectPermission Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)
 type ObjectPermission struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	DisplayUrl *string `json:"display_url,omitempty"`
-	Display string `json:"display"`
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
+	Id          int32    `json:"id"`
+	Url         string   `json:"url"`
+	DisplayUrl  *string  `json:"display_url,omitempty"`
+	Display     string   `json:"display"`
+	Name        string   `json:"name"`
+	Description *string  `json:"description,omitempty"`
+	Enabled     *bool    `json:"enabled,omitempty"`
 	ObjectTypes []string `json:"object_types"`
 	// The list of actions granted by this permission
 	Actions []string `json:"actions"`
 	// Queryset filter matching the applicable objects of the selected type(s)
-	Constraints interface{} `json:"constraints,omitempty"`
-	Groups []NestedGroup `json:"groups,omitempty"`
-	Users []NestedUser `json:"users,omitempty"`
+	Constraints          interface{}   `json:"constraints,omitempty"`
+	Groups               []NestedGroup `json:"groups,omitempty"`
+	Users                []NestedUser  `json:"users,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -86,7 +86,6 @@ func (o *ObjectPermission) SetId(v int32) {
 	o.Id = v
 }
 
-
 // GetUrl returns the Url field value
 func (o *ObjectPermission) GetUrl() string {
 	if o == nil {
@@ -110,7 +109,6 @@ func (o *ObjectPermission) GetUrlOk() (*string, bool) {
 func (o *ObjectPermission) SetUrl(v string) {
 	o.Url = v
 }
-
 
 // GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *ObjectPermission) GetDisplayUrl() string {
@@ -168,7 +166,6 @@ func (o *ObjectPermission) SetDisplay(v string) {
 	o.Display = v
 }
 
-
 // GetName returns the Name field value
 func (o *ObjectPermission) GetName() string {
 	if o == nil {
@@ -192,7 +189,6 @@ func (o *ObjectPermission) GetNameOk() (*string, bool) {
 func (o *ObjectPermission) SetName(v string) {
 	o.Name = v
 }
-
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ObjectPermission) GetDescription() string {
@@ -282,7 +278,6 @@ func (o *ObjectPermission) SetObjectTypes(v []string) {
 	o.ObjectTypes = v
 }
 
-
 // GetActions returns the Actions field value
 func (o *ObjectPermission) GetActions() []string {
 	if o == nil {
@@ -306,7 +301,6 @@ func (o *ObjectPermission) GetActionsOk() ([]string, bool) {
 func (o *ObjectPermission) SetActions(v []string) {
 	o.Actions = v
 }
-
 
 // GetConstraints returns the Constraints field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ObjectPermission) GetConstraints() interface{} {
@@ -406,7 +400,7 @@ func (o *ObjectPermission) SetUsers(v []NestedUser) {
 }
 
 func (o ObjectPermission) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -462,32 +456,31 @@ func (o *ObjectPermission) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -557,5 +550,3 @@ func (v *NullableObjectPermission) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
