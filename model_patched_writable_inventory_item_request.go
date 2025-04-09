@@ -24,7 +24,7 @@ type PatchedWritableInventoryItemRequest struct {
 	Name   *string             `json:"name,omitempty"`
 	// Physical label
 	Label        *string                               `json:"label,omitempty"`
-	Status       *ModuleRequestStatus                  `json:"status,omitempty"`
+	Status       *InventoryItemStatusValue             `json:"status,omitempty"`
 	Role         NullableBriefInventoryItemRoleRequest `json:"role,omitempty"`
 	Manufacturer NullableBriefManufacturerRequest      `json:"manufacturer,omitempty"`
 	// Manufacturer-assigned part identifier
@@ -201,9 +201,9 @@ func (o *PatchedWritableInventoryItemRequest) SetLabel(v string) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *PatchedWritableInventoryItemRequest) GetStatus() ModuleRequestStatus {
+func (o *PatchedWritableInventoryItemRequest) GetStatus() InventoryItemStatusValue {
 	if o == nil || IsNil(o.Status) {
-		var ret ModuleRequestStatus
+		var ret InventoryItemStatusValue
 		return ret
 	}
 	return *o.Status
@@ -211,7 +211,7 @@ func (o *PatchedWritableInventoryItemRequest) GetStatus() ModuleRequestStatus {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedWritableInventoryItemRequest) GetStatusOk() (*ModuleRequestStatus, bool) {
+func (o *PatchedWritableInventoryItemRequest) GetStatusOk() (*InventoryItemStatusValue, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -227,8 +227,8 @@ func (o *PatchedWritableInventoryItemRequest) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given ModuleRequestStatus and assigns it to the Status field.
-func (o *PatchedWritableInventoryItemRequest) SetStatus(v ModuleRequestStatus) {
+// SetStatus gets a reference to the given InventoryItemStatusValue and assigns it to the Status field.
+func (o *PatchedWritableInventoryItemRequest) SetStatus(v InventoryItemStatusValue) {
 	o.Status = &v
 }
 

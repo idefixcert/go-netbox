@@ -134952,6 +134952,7 @@ components:
           - staged
           - failed
           - decommissioning
+          - paused
           type: string
           description: '* `offline` - Offline
 
@@ -134963,7 +134964,9 @@ components:
 
             * `failed` - Failed
 
-            * `decommissioning` - Decommissioning'
+            * `decommissioning` - Decommissioning
+
+            * `paused` - Paused'
           x-spec-enum-id: 2217e87d0c3efdda
         serial:
           type: string
@@ -145472,6 +145475,7 @@ components:
           - staged
           - failed
           - decommissioning
+          - paused
           type: string
           description: '* `offline` - Offline
 
@@ -145483,7 +145487,9 @@ components:
 
             * `failed` - Failed
 
-            * `decommissioning` - Decommissioning'
+            * `decommissioning` - Decommissioning
+
+            * `paused` - Paused'
           x-spec-enum-id: 2217e87d0c3efdda
         role:
           allOf:
@@ -145724,6 +145730,7 @@ components:
           - staged
           - failed
           - decommissioning
+          - paused
           type: string
           description: '* `offline` - Offline
 
@@ -145735,7 +145742,9 @@ components:
 
             * `failed` - Failed
 
-            * `decommissioning` - Decommissioning'
+            * `decommissioning` - Decommissioning
+
+            * `paused` - Paused'
           x-spec-enum-id: 2217e87d0c3efdda
         serial:
           type: string
@@ -159372,6 +159381,7 @@ components:
               - staged
               - failed
               - decommissioning
+              - paused
               type: string
               description: '* `offline` - Offline
 
@@ -159383,7 +159393,9 @@ components:
 
                 * `failed` - Failed
 
-                * `decommissioning` - Decommissioning'
+                * `decommissioning` - Decommissioning
+
+                * `paused` - Paused'
               x-spec-enum-id: 2217e87d0c3efdda
             label:
               type: string
@@ -159394,6 +159406,7 @@ components:
               - Staged
               - Failed
               - Decommissioning
+              - Paused
         site:
           allOf:
           - $ref: '#/components/schemas/BriefSite'

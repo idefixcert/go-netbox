@@ -20,11 +20,11 @@ var _ MappedNullable = &ModuleRequest{}
 
 // ModuleRequest Adds support for custom fields and tags.
 type ModuleRequest struct {
-	Device     BriefDeviceRequest     `json:"device"`
-	ModuleBay  NestedModuleBayRequest `json:"module_bay"`
-	ModuleType BriefModuleTypeRequest `json:"module_type"`
-	Status     *ModuleRequestStatus   `json:"status,omitempty"`
-	Serial     *string                `json:"serial,omitempty"`
+	Device     BriefDeviceRequest        `json:"device"`
+	ModuleBay  NestedModuleBayRequest    `json:"module_bay"`
+	ModuleType BriefModuleTypeRequest    `json:"module_type"`
+	Status     *InventoryItemStatusValue `json:"status,omitempty"`
+	Serial     *string                   `json:"serial,omitempty"`
 	// A unique tag used to identify this device
 	AssetTag             NullableString         `json:"asset_tag,omitempty"`
 	Description          *string                `json:"description,omitempty"`
@@ -129,9 +129,9 @@ func (o *ModuleRequest) SetModuleType(v BriefModuleTypeRequest) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ModuleRequest) GetStatus() ModuleRequestStatus {
+func (o *ModuleRequest) GetStatus() InventoryItemStatusValue {
 	if o == nil || IsNil(o.Status) {
-		var ret ModuleRequestStatus
+		var ret InventoryItemStatusValue
 		return ret
 	}
 	return *o.Status
@@ -139,7 +139,7 @@ func (o *ModuleRequest) GetStatus() ModuleRequestStatus {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModuleRequest) GetStatusOk() (*ModuleRequestStatus, bool) {
+func (o *ModuleRequest) GetStatusOk() (*InventoryItemStatusValue, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -155,8 +155,8 @@ func (o *ModuleRequest) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given ModuleRequestStatus and assigns it to the Status field.
-func (o *ModuleRequest) SetStatus(v ModuleRequestStatus) {
+// SetStatus gets a reference to the given InventoryItemStatusValue and assigns it to the Status field.
+func (o *ModuleRequest) SetStatus(v InventoryItemStatusValue) {
 	o.Status = &v
 }
 

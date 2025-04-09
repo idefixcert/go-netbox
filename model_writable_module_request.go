@@ -20,11 +20,11 @@ var _ MappedNullable = &WritableModuleRequest{}
 
 // WritableModuleRequest Adds support for custom fields and tags.
 type WritableModuleRequest struct {
-	Device     BriefDeviceRequest     `json:"device"`
-	ModuleBay  int32                  `json:"module_bay"`
-	ModuleType BriefModuleTypeRequest `json:"module_type"`
-	Status     *ModuleRequestStatus   `json:"status,omitempty"`
-	Serial     *string                `json:"serial,omitempty"`
+	Device     BriefDeviceRequest                                           `json:"device"`
+	ModuleBay  int32                                                        `json:"module_bay"`
+	ModuleType BriefModuleTypeRequest                                       `json:"module_type"`
+	Status     *PatchedWritableVirtualMachineWithConfigContextRequestStatus `json:"status,omitempty"`
+	Serial     *string                                                      `json:"serial,omitempty"`
 	// A unique tag used to identify this device
 	AssetTag             NullableString         `json:"asset_tag,omitempty"`
 	Description          *string                `json:"description,omitempty"`
@@ -129,9 +129,9 @@ func (o *WritableModuleRequest) SetModuleType(v BriefModuleTypeRequest) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *WritableModuleRequest) GetStatus() ModuleRequestStatus {
+func (o *WritableModuleRequest) GetStatus() PatchedWritableVirtualMachineWithConfigContextRequestStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret ModuleRequestStatus
+		var ret PatchedWritableVirtualMachineWithConfigContextRequestStatus
 		return ret
 	}
 	return *o.Status
@@ -139,7 +139,7 @@ func (o *WritableModuleRequest) GetStatus() ModuleRequestStatus {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WritableModuleRequest) GetStatusOk() (*ModuleRequestStatus, bool) {
+func (o *WritableModuleRequest) GetStatusOk() (*PatchedWritableVirtualMachineWithConfigContextRequestStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -155,8 +155,8 @@ func (o *WritableModuleRequest) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given ModuleRequestStatus and assigns it to the Status field.
-func (o *WritableModuleRequest) SetStatus(v ModuleRequestStatus) {
+// SetStatus gets a reference to the given PatchedWritableVirtualMachineWithConfigContextRequestStatus and assigns it to the Status field.
+func (o *WritableModuleRequest) SetStatus(v PatchedWritableVirtualMachineWithConfigContextRequestStatus) {
 	o.Status = &v
 }
 

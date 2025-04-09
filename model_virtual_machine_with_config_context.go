@@ -21,28 +21,28 @@ var _ MappedNullable = &VirtualMachineWithConfigContext{}
 
 // VirtualMachineWithConfigContext Adds support for custom fields and tags.
 type VirtualMachineWithConfigContext struct {
-	Id             int32                                  `json:"id"`
-	Url            string                                 `json:"url"`
-	DisplayUrl     *string                                `json:"display_url,omitempty"`
-	Display        string                                 `json:"display"`
-	Name           string                                 `json:"name"`
-	Status         *VirtualMachineWithConfigContextStatus `json:"status,omitempty"`
-	Site           NullableBriefSite                      `json:"site,omitempty"`
-	Cluster        NullableBriefCluster                   `json:"cluster,omitempty"`
-	Device         NullableBriefDevice                    `json:"device,omitempty"`
-	Serial         *string                                `json:"serial,omitempty"`
-	Role           NullableBriefDeviceRole                `json:"role,omitempty"`
-	Tenant         NullableBriefTenant                    `json:"tenant,omitempty"`
-	Platform       NullableBriefPlatform                  `json:"platform,omitempty"`
-	PrimaryIp      NullableBriefIPAddress                 `json:"primary_ip,omitempty"`
-	PrimaryIp4     NullableBriefIPAddress                 `json:"primary_ip4,omitempty"`
-	PrimaryIp6     NullableBriefIPAddress                 `json:"primary_ip6,omitempty"`
-	Vcpus          NullableFloat64                        `json:"vcpus,omitempty"`
-	Memory         NullableInt32                          `json:"memory,omitempty"`
-	Disk           NullableInt32                          `json:"disk,omitempty"`
-	Description    *string                                `json:"description,omitempty"`
-	Comments       *string                                `json:"comments,omitempty"`
-	ConfigTemplate NullableBriefConfigTemplate            `json:"config_template,omitempty"`
+	Id             int32                       `json:"id"`
+	Url            string                      `json:"url"`
+	DisplayUrl     *string                     `json:"display_url,omitempty"`
+	Display        string                      `json:"display"`
+	Name           string                      `json:"name"`
+	Status         *InventoryItemStatus        `json:"status,omitempty"`
+	Site           NullableBriefSite           `json:"site,omitempty"`
+	Cluster        NullableBriefCluster        `json:"cluster,omitempty"`
+	Device         NullableBriefDevice         `json:"device,omitempty"`
+	Serial         *string                     `json:"serial,omitempty"`
+	Role           NullableBriefDeviceRole     `json:"role,omitempty"`
+	Tenant         NullableBriefTenant         `json:"tenant,omitempty"`
+	Platform       NullableBriefPlatform       `json:"platform,omitempty"`
+	PrimaryIp      NullableBriefIPAddress      `json:"primary_ip,omitempty"`
+	PrimaryIp4     NullableBriefIPAddress      `json:"primary_ip4,omitempty"`
+	PrimaryIp6     NullableBriefIPAddress      `json:"primary_ip6,omitempty"`
+	Vcpus          NullableFloat64             `json:"vcpus,omitempty"`
+	Memory         NullableInt32               `json:"memory,omitempty"`
+	Disk           NullableInt32               `json:"disk,omitempty"`
+	Description    *string                     `json:"description,omitempty"`
+	Comments       *string                     `json:"comments,omitempty"`
+	ConfigTemplate NullableBriefConfigTemplate `json:"config_template,omitempty"`
 	// Local config context data takes precedence over source contexts in the final rendered config context
 	LocalContextData     interface{}            `json:"local_context_data,omitempty"`
 	Tags                 []NestedTag            `json:"tags,omitempty"`
@@ -208,9 +208,9 @@ func (o *VirtualMachineWithConfigContext) SetName(v string) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *VirtualMachineWithConfigContext) GetStatus() VirtualMachineWithConfigContextStatus {
+func (o *VirtualMachineWithConfigContext) GetStatus() InventoryItemStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret VirtualMachineWithConfigContextStatus
+		var ret InventoryItemStatus
 		return ret
 	}
 	return *o.Status
@@ -218,7 +218,7 @@ func (o *VirtualMachineWithConfigContext) GetStatus() VirtualMachineWithConfigCo
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VirtualMachineWithConfigContext) GetStatusOk() (*VirtualMachineWithConfigContextStatus, bool) {
+func (o *VirtualMachineWithConfigContext) GetStatusOk() (*InventoryItemStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -234,8 +234,8 @@ func (o *VirtualMachineWithConfigContext) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given VirtualMachineWithConfigContextStatus and assigns it to the Status field.
-func (o *VirtualMachineWithConfigContext) SetStatus(v VirtualMachineWithConfigContextStatus) {
+// SetStatus gets a reference to the given InventoryItemStatus and assigns it to the Status field.
+func (o *VirtualMachineWithConfigContext) SetStatus(v InventoryItemStatus) {
 	o.Status = &v
 }
 

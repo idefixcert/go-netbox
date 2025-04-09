@@ -24,10 +24,10 @@ type WritableInventoryItemRequest struct {
 	Parent NullableInt32      `json:"parent,omitempty"`
 	Name   string             `json:"name"`
 	// Physical label
-	Label        *string                               `json:"label,omitempty"`
-	Status       *ModuleRequestStatus                  `json:"status,omitempty"`
-	Role         NullableBriefInventoryItemRoleRequest `json:"role,omitempty"`
-	Manufacturer NullableBriefManufacturerRequest      `json:"manufacturer,omitempty"`
+	Label        *string                                                      `json:"label,omitempty"`
+	Status       *PatchedWritableVirtualMachineWithConfigContextRequestStatus `json:"status,omitempty"`
+	Role         NullableBriefInventoryItemRoleRequest                        `json:"role,omitempty"`
+	Manufacturer NullableBriefManufacturerRequest                             `json:"manufacturer,omitempty"`
 	// Manufacturer-assigned part identifier
 	PartId *string `json:"part_id,omitempty"`
 	Serial *string `json:"serial,omitempty"`
@@ -188,9 +188,9 @@ func (o *WritableInventoryItemRequest) SetLabel(v string) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *WritableInventoryItemRequest) GetStatus() ModuleRequestStatus {
+func (o *WritableInventoryItemRequest) GetStatus() PatchedWritableVirtualMachineWithConfigContextRequestStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret ModuleRequestStatus
+		var ret PatchedWritableVirtualMachineWithConfigContextRequestStatus
 		return ret
 	}
 	return *o.Status
@@ -198,7 +198,7 @@ func (o *WritableInventoryItemRequest) GetStatus() ModuleRequestStatus {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WritableInventoryItemRequest) GetStatusOk() (*ModuleRequestStatus, bool) {
+func (o *WritableInventoryItemRequest) GetStatusOk() (*PatchedWritableVirtualMachineWithConfigContextRequestStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -214,8 +214,8 @@ func (o *WritableInventoryItemRequest) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given ModuleRequestStatus and assigns it to the Status field.
-func (o *WritableInventoryItemRequest) SetStatus(v ModuleRequestStatus) {
+// SetStatus gets a reference to the given PatchedWritableVirtualMachineWithConfigContextRequestStatus and assigns it to the Status field.
+func (o *WritableInventoryItemRequest) SetStatus(v PatchedWritableVirtualMachineWithConfigContextRequestStatus) {
 	o.Status = &v
 }
 

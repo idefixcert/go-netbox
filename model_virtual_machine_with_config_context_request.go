@@ -20,23 +20,23 @@ var _ MappedNullable = &VirtualMachineWithConfigContextRequest{}
 
 // VirtualMachineWithConfigContextRequest Adds support for custom fields and tags.
 type VirtualMachineWithConfigContextRequest struct {
-	Name           string                             `json:"name"`
-	Status         *ModuleRequestStatus               `json:"status,omitempty"`
-	Site           NullableBriefSiteRequest           `json:"site,omitempty"`
-	Cluster        NullableBriefClusterRequest        `json:"cluster,omitempty"`
-	Device         NullableBriefDeviceRequest         `json:"device,omitempty"`
-	Serial         *string                            `json:"serial,omitempty"`
-	Role           NullableBriefDeviceRoleRequest     `json:"role,omitempty"`
-	Tenant         NullableBriefTenantRequest         `json:"tenant,omitempty"`
-	Platform       NullableBriefPlatformRequest       `json:"platform,omitempty"`
-	PrimaryIp4     NullableBriefIPAddressRequest      `json:"primary_ip4,omitempty"`
-	PrimaryIp6     NullableBriefIPAddressRequest      `json:"primary_ip6,omitempty"`
-	Vcpus          NullableFloat64                    `json:"vcpus,omitempty"`
-	Memory         NullableInt32                      `json:"memory,omitempty"`
-	Disk           NullableInt32                      `json:"disk,omitempty"`
-	Description    *string                            `json:"description,omitempty"`
-	Comments       *string                            `json:"comments,omitempty"`
-	ConfigTemplate NullableBriefConfigTemplateRequest `json:"config_template,omitempty"`
+	Name           string                                                       `json:"name"`
+	Status         *PatchedWritableVirtualMachineWithConfigContextRequestStatus `json:"status,omitempty"`
+	Site           NullableBriefSiteRequest                                     `json:"site,omitempty"`
+	Cluster        NullableBriefClusterRequest                                  `json:"cluster,omitempty"`
+	Device         NullableBriefDeviceRequest                                   `json:"device,omitempty"`
+	Serial         *string                                                      `json:"serial,omitempty"`
+	Role           NullableBriefDeviceRoleRequest                               `json:"role,omitempty"`
+	Tenant         NullableBriefTenantRequest                                   `json:"tenant,omitempty"`
+	Platform       NullableBriefPlatformRequest                                 `json:"platform,omitempty"`
+	PrimaryIp4     NullableBriefIPAddressRequest                                `json:"primary_ip4,omitempty"`
+	PrimaryIp6     NullableBriefIPAddressRequest                                `json:"primary_ip6,omitempty"`
+	Vcpus          NullableFloat64                                              `json:"vcpus,omitempty"`
+	Memory         NullableInt32                                                `json:"memory,omitempty"`
+	Disk           NullableInt32                                                `json:"disk,omitempty"`
+	Description    *string                                                      `json:"description,omitempty"`
+	Comments       *string                                                      `json:"comments,omitempty"`
+	ConfigTemplate NullableBriefConfigTemplateRequest                           `json:"config_template,omitempty"`
 	// Local config context data takes precedence over source contexts in the final rendered config context
 	LocalContextData     interface{}            `json:"local_context_data,omitempty"`
 	Tags                 []NestedTagRequest     `json:"tags,omitempty"`
@@ -89,9 +89,9 @@ func (o *VirtualMachineWithConfigContextRequest) SetName(v string) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *VirtualMachineWithConfigContextRequest) GetStatus() ModuleRequestStatus {
+func (o *VirtualMachineWithConfigContextRequest) GetStatus() PatchedWritableVirtualMachineWithConfigContextRequestStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret ModuleRequestStatus
+		var ret PatchedWritableVirtualMachineWithConfigContextRequestStatus
 		return ret
 	}
 	return *o.Status
@@ -99,7 +99,7 @@ func (o *VirtualMachineWithConfigContextRequest) GetStatus() ModuleRequestStatus
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VirtualMachineWithConfigContextRequest) GetStatusOk() (*ModuleRequestStatus, bool) {
+func (o *VirtualMachineWithConfigContextRequest) GetStatusOk() (*PatchedWritableVirtualMachineWithConfigContextRequestStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -115,8 +115,8 @@ func (o *VirtualMachineWithConfigContextRequest) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given ModuleRequestStatus and assigns it to the Status field.
-func (o *VirtualMachineWithConfigContextRequest) SetStatus(v ModuleRequestStatus) {
+// SetStatus gets a reference to the given PatchedWritableVirtualMachineWithConfigContextRequestStatus and assigns it to the Status field.
+func (o *VirtualMachineWithConfigContextRequest) SetStatus(v PatchedWritableVirtualMachineWithConfigContextRequestStatus) {
 	o.Status = &v
 }
 
